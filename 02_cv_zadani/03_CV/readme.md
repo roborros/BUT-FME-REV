@@ -189,3 +189,33 @@ int max1(int *p,int len){
 7)stejně tak funkce nikdy neví, jak je pole dlouhé
 8)hranaté závorky [] jsou ve skutečnosti operátor ukazatele “n-tá hodnota daného typu, počítáno od ukazatele”
 9)pole je v zásadě konstantní ukazatel
+
+
+## Úloha 3.4: Polní cvičení
+
+*Vytvořte funkci pro práci s poli:
+
+    1) void vypis_obracene(int *pole,int n) - pole procházejte pomocí ukazatele. Argument n udává delku pole.
+    2) int sum(int *pole,int n) – sečte n prvních prvků pole pole a vrátí součet
+    3) int *max(int *pole,int n) – projde n prvních prvků pole pole a vrátí pointer na nejvyšší hodnotu. V hlavním programu vypište nejvyšší hodnotu a její pozici v poli.
+    4) int *najdi(int co, int *kde,int n) – projde n prvních prvků pole kde a vrátí pointer na první výskyt hodnoty co. Vytvořte hlavní program, který od uživatele načte číslo a ve staticky inicializovaném poli nalezne všechny jeho výskyty a vypíše je.
+    5) (bonus) int fibonacci(int *pole,int n) – naplní pole prvními n členy Fibonacciho posloupnosti
+    
+### pole lze staticky inicializovat například takto:
+```c
+int pole[8] = {1,5,7,6,3,5,2,1};
+```
+## Úloha 3.5: Řetězce
+
+### Řetězce jsou v C realizovány jako pole typu char, například:
+```c
+char buf[5];
+char retez[80] = "Ahoj!";
+```
+Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 0). To znamená, že uložení řetězce “ahoj” vyžaduje pole o minimální délce pět znaků.
+
+1) Vytvořte program, který bude načítat znaky z terminálu pomocí funkce getch() až do načtení konce řádku ('\n'). Znaky ukládejte do řetězce, který poté vypište.
+
+2) Program rozšiřte o funkci int delka(char *ret), který vrátí délku řetězce ve znacích. Využijte procházení pole pomocí indexů.
+
+3) Program rozšiřte o funkci int naopak(char *ret), který vypíše řetězec naopak. Využijte procházení pole pomocí ukazatelů.
