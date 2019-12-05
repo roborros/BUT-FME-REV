@@ -93,3 +93,89 @@ int *max1(int *a, int* b){
 Poznámka: s výhodou můžete využít tělo programu z předchozího příkladu.
 ```
 2) Vytvořte funkci pricti(int *a, int prirustek), která k hodnotě proměnné a připočte prirustek.
+
+##Příklad 3.3: Pole
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <xc.h>
+ 
+#include "rev-basic.h"
+#include "simdelay.h"
+ 
+#pragma config WDTEN = OFF
+#pragma config FOSC = INTIO7
+#pragma config MCLRE = EXTMCLR
+#pragma config FCMEN = ON
+ 
+#define DELKA 5
+ 
+// deklarace funkci
+int max1(int *p,int len);
+void vypis_pole(int *p,int len);
+ 
+// funkce main
+void main(void){
+ 
+    // definice pole o delce dane symbolickou konstantou
+    // delka musi byt vzdy konstanta!
+    int cisla[DELKA];   
+ 
+    /*
+    // totez by bylo mozne takto:
+    int cisla[5];
+    */
+ 
+    int i, a;
+ 
+    REV_init();
+ 
+    // nacitani v cyklu
+    for(i = 0; i < DELKA; i++){
+          printf("Vloz %d. cislo:", i + 1);
+ 
+          // funkci getch() se zadava ukazatel na prvek pole
+          cisla[i] = getch() - '0';
+ 
+    }
+ 
+    // vypis pole - pres index
+    for(i = 0; i < DELKA; i++){
+          printf("%d. cislo bylo %d\n",i + 1, cisla[i]);
+    }
+ 
+    // volani funkci - predava pole=konstantni pointer a delka
+    vypis_pole(cisla,DELKA);   // nevraci nic
+    a = max1(cisla,DELKA);      // vraci int
+ 
+    printf("Nejvetsi bylo cislo %d\n",a);
+ 
+    getch();
+ 
+}
+ 
+// definice funkce vypis pole
+void vypis_pole(int *p,int len){
+    int i;
+    for(i = 0; i < len; i++){
+          printf("%d. cislo bylo %d\n",i + 1, *(p + i) );
+    }
+}
+ 
+// definice funkce max
+int max1(int *p,int len){
+    int max, i;
+ 
+    if(len < 1) return 0;
+ 
+    max = p[0];
+ 
+    for(i = 1; i < len; i++){
+          max = max > p[i] ? max : p[i];
+    }
+    return max;
+}
+
+
+```
