@@ -85,3 +85,11 @@ int *max1(int *a, int* b){
    2) operátorem reference & se získá adresa proměnné: p_i = &a;
    3) operátorem dereference * se získá hodnota na adrese ukazatele: a = *p_i;
    4) ukazatel jako argument funkce umožňuje tzv. volání referencí, tj. funkce může mj. měnit obsah referencované proměnné
+
+### Úloha 3.2: Cvičení s ukazateli
+
+1) Vytvořte funkci prohod(int *a, int *b), která prohodí obsahy proměnných a a b.
+```
+Poznámka: s výhodou můžete využít tělo programu z předchozího příkladu.
+```
+2) Vytvořte funkci pricti(int *a, int prirustek), která k hodnotě proměnné a připočte prirustek.
