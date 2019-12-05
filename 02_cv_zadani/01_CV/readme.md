@@ -61,7 +61,7 @@ for(i = 1; i < LIMIT; i++ ){
   printf("Akutalni hodnota: %d\n", i);
 }
 ```
-###Upravte příklad 1.1 takto:
+### Upravte příklad 1.1 takto:
 
     1) program vypíše řetězec “Ahoj svete!” třináctkrát za sebou. Každý řetězec bude na novém řádku a uvozen pořadovým číslem – využijte cyklus!
     2) pro každé pořadové číslo program zjistí, zda je číslo dělitelné pěti a vypíše poznámku do závorky.
