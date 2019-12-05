@@ -94,7 +94,7 @@ Poznámka: s výhodou můžete využít tělo programu z předchozího příklad
 ```
 2) Vytvořte funkci pricti(int *a, int prirustek), která k hodnotě proměnné a připočte prirustek.
 
-##Příklad 3.3: Pole
+## Příklad 3.3: Pole
 
 ```c
 #include <stdio.h>
@@ -177,5 +177,15 @@ int max1(int *p,int len){
     return max;
 }
 
-
 ```
+
+ ### Povšimněte si:
+*k prvkům pole se přistupuje prostřednictvím hranatých závorek
+    *pole jsou vždy indexovány od NULY
+    *index posledního prvku je tedy o jedna menší než délka pole
+    *jazyk C nekontroluje meze polí – překladač vás nechá zapisovat libovolně, avšak hrozí přepsání jiných dat, přepsaní textu programu a nebo (nejčastěji) havárie programu.
+*funkcím se předává pole jako argument pouze prostřednictvím reference
+    *na první pohled tedy nepoznáte, zda se jedná o jednu proměnnou nebo o pole
+    *stejně tak funkce nikdy neví, jak je pole dlouhé
+    *hranaté závorky [] jsou ve skutečnosti operátor ukazatele “n-tá hodnota daného typu, počítáno od ukazatele”
+    *pole je v zásadě konstantní ukazatel
