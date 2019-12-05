@@ -1,7 +1,7 @@
 # REV - První cvičení
 - Seznam me se s vývojovým prostředím MPLAB. Stahněte ukázkový projekt, zkompilujte jej a nahrajte do MCU.
 ## Příklad 1.1
-- Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count a binárně bliká třemi LEDkami. 
+* Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count a binárně bliká třemi LEDkami. 
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,3 +36,34 @@ void main(void) {
     }
 }
 ```
+
+## Úloha 1.2
+
+* Další důležitou strukturou jsou cykly. Příklad využití cyklu while: 
+```c
+// plny nazev promenne
+int cislo = 10;
+ 
+while(cislo > 0){
+  printf("Akutalni hodnota: %d\n",cislo);
+  cislo--;
+}
+```
+
+* Příklad využití cyklu for: 
+```c
+#define LIMIT 10
+ 
+// kratky nazev pro index
+int i;
+ 
+for(i = 1; i < LIMIT; i++ ){
+  printf("Akutalni hodnota: %d\n", i);
+}
+```
+###Upravte příklad 1.1 takto:
+
+    1) program vypíše řetězec “Ahoj svete!” třináctkrát za sebou. Každý řetězec bude na novém řádku a uvozen pořadovým číslem – využijte cyklus!
+    2) pro každé pořadové číslo program zjistí, zda je číslo dělitelné pěti a vypíše poznámku do závorky.
+    3) program vypíše jen sudá čísla do 30
+    4) program vypise fibonaciho posloupnost do 50
