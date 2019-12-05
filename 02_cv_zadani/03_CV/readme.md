@@ -184,7 +184,7 @@ int max1(int *p,int len){
 
    2) pole jsou vždy indexovány od NULY
 
-    3)index posledního prvku je tedy o jedna menší než délka pole
+   3) index posledního prvku je tedy o jedna menší než délka pole
 
    4) jazyk C nekontroluje meze polí – překladač vás nechá zapisovat libovolně, avšak hrozí přepsání jiných dat, přepsaní textu programu a nebo (nejčastěji) havárie programu.
 
