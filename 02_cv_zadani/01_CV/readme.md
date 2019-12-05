@@ -1,5 +1,6 @@
 # REV - První cvičení
 ## Příklad 1.1
+Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count a binárně bliká třemi LEDkami. 
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,7 +22,7 @@ void main(void) {
  
     REV_init();
  
-    for(;;){
+    while(1){
         count++;
  
         REV_led(1,count & 1);
