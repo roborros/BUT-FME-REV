@@ -230,7 +230,7 @@ Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 
 
 ## Příklad 4.1: Základní práce se strukturou
 
--Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem na pointer: 
+- Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem na pointer: 
 
 ```c
 #include <stdio.h>
