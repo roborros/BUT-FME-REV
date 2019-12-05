@@ -17,7 +17,7 @@ Funkcionalitu ověřte na vhodném testovacím programu.
 
 ## Úloha 2.2
 
- 1) Z předchozí úlohy 6) vytvořte knihovnu tr.c a příslušný hlavičkový soubor tr.h.
+1) Z předchozí úlohy 6) vytvořte knihovnu tr.c a příslušný hlavičkový soubor tr.h.
 
 V hlavním souboru main.c načtěte hlavičkový soubor tr.h, načtěte od uživatele strany trojúhelníku a otestuje jednotlivé funkce.
 
@@ -27,4 +27,4 @@ Nezapomeňte:
     soubory tr.c a tr.h musí být součástí projektu ve vývojovém prostředí
     pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Rebuild all”
 
- 2) Upravte funkce tr_ok(), tr_plocha() a tr_obvod() tak, aby si modul tr.c “zapamatoval” celkový počet volání funkcí knihovny tr.c. Využijte globální proměnnou, definovanou v modulu tr.c.
+2) Upravte funkce tr_ok(), tr_plocha() a tr_obvod() tak, aby si modul tr.c “zapamatoval” celkový počet volání funkcí knihovny tr.c. Využijte globální proměnnou, definovanou v modulu tr.c.
