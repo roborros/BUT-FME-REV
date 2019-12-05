@@ -180,12 +180,12 @@ int max1(int *p,int len){
 ```
 
  ### Povšimněte si:
-*k prvkům pole se přistupuje prostřednictvím hranatých závorek
-    *pole jsou vždy indexovány od NULY
-    *index posledního prvku je tedy o jedna menší než délka pole
-    *jazyk C nekontroluje meze polí – překladač vás nechá zapisovat libovolně, avšak hrozí přepsání jiných dat, přepsaní textu programu a nebo (nejčastěji) havárie programu.
-*funkcím se předává pole jako argument pouze prostřednictvím reference
-    *na první pohled tedy nepoznáte, zda se jedná o jednu proměnnou nebo o pole
-    *stejně tak funkce nikdy neví, jak je pole dlouhé
-    *hranaté závorky [] jsou ve skutečnosti operátor ukazatele “n-tá hodnota daného typu, počítáno od ukazatele”
-    *pole je v zásadě konstantní ukazatel
+1)k prvkům pole se přistupuje prostřednictvím hranatých závorek
+2)pole jsou vždy indexovány od NULY
+3)index posledního prvku je tedy o jedna menší než délka pole
+4)jazyk C nekontroluje meze polí – překladač vás nechá zapisovat libovolně, avšak hrozí přepsání jiných dat, přepsaní textu programu a nebo (nejčastěji) havárie programu.
+5)funkcím se předává pole jako argument pouze prostřednictvím reference
+6)na první pohled tedy nepoznáte, zda se jedná o jednu proměnnou nebo o pole
+7)stejně tak funkce nikdy neví, jak je pole dlouhé
+8)hranaté závorky [] jsou ve skutečnosti operátor ukazatele “n-tá hodnota daného typu, počítáno od ukazatele”
+9)pole je v zásadě konstantní ukazatel
