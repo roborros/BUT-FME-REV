@@ -227,3 +227,62 @@ Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 
 2) Program rozšiřte o funkci int delka(char *ret), který vrátí délku řetězce ve znacích. Využijte procházení pole pomocí indexů.
 
 3) Program rozšiřte o funkci int naopak(char *ret), který vypíše řetězec naopak. Využijte procházení pole pomocí ukazatelů.
+
+## Příklad 4.1: Základní práce se strukturou
+
+-Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem na pointer: 
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+ 
+#define DELKA_JMENA 30
+ 
+// definice typu "t_kopec"
+typedef struct {
+        char jmeno[DELKA_JMENA + 1];
+        int vyska;        
+}t_kopec;
+ 
+// deklarace fce, ktera prijima parametr typu "t_kopec"
+void vypis_kopec(t_kopec kopec);
+ 
+// funkce main
+int main(void){
+ 
+    // definice s inicializaci
+    t_kopec palacak = {"Palackeho vrch",340};
+    t_kopec *aktualni;
+ 
+    // definice bez inicialize
+    t_kopec kozi;
+ 
+    // pristup k prvkum struktury
+    strncpy(kozi.jmeno,"Kozi hora",DELKA_JMENA);  // nelze kozi.jmeno = "Kozi hora"
+    kozi.vyska = 286;
+ 
+    printf("Zname tyto kopce:\n");
+ 
+    // vypis pomoci funkce, ktere predame jednotlive struktury jako parametr
+    vypis_kopec(palacak);    
+    vypis_kopec(kozi);
+ 
+    // pouzijeme ukazatel
+    aktualni = &palacak;
+ 
+    // zmenime hodnotu
+    aktualni->vyska = aktualni->vyska + 2;
+ 
+    // a znovu vypiseme
+    vypis_kopec(palacak);    
+ 
+    getch();
+    return 0;
+}
+ 
+// definice fce, ktera prijima parametr typu "t_kopec"
+void vypis_kopec(t_kopec kopec){
+    printf ("  Kopec jmenem \"%s\" je vysoky %d m\n", kopec.jmeno, kopec.vyska);
+}
+
+```
