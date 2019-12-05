@@ -201,13 +201,13 @@ int max1(int *p,int len){
 
 ## Úloha 3.4: Polní cvičení
 
-- Vytvořte funkci pro práci s poli:
+Vytvořte funkci pro práci s poli:
 
-    1) void vypis_obracene(int *pole,int n) - pole procházejte pomocí ukazatele. Argument n udává delku pole.
-    2) int sum(int *pole,int n) – sečte n prvních prvků pole pole a vrátí součet
-    3) int *max(int *pole,int n) – projde n prvních prvků pole pole a vrátí pointer na nejvyšší hodnotu. V hlavním programu vypište nejvyšší hodnotu a její pozici v poli.
-    4) int *najdi(int co, int *kde,int n) – projde n prvních prvků pole kde a vrátí pointer na první výskyt hodnoty co. Vytvořte hlavní program, který od uživatele načte číslo a ve staticky inicializovaném poli nalezne všechny jeho výskyty a vypíše je.
-    5) (bonus) int fibonacci(int *pole,int n) – naplní pole prvními n členy Fibonacciho posloupnosti
+   1) void vypis_obracene(int *pole,int n) - pole procházejte pomocí ukazatele. Argument n udává delku pole.
+   2) int sum(int *pole,int n) – sečte n prvních prvků pole pole a vrátí součet
+   3) int *max(int *pole,int n) – projde n prvních prvků pole pole a vrátí pointer na nejvyšší hodnotu. V hlavním programu vypište nejvyšší hodnotu a její pozici v poli.
+   4) int *najdi(int co, int *kde,int n) – projde n prvních prvků pole kde a vrátí pointer na první výskyt hodnoty co. Vytvořte hlavní program, který od uživatele načte číslo a ve staticky inicializovaném poli nalezne všechny jeho výskyty a vypíše je.
+   5) (bonus) int fibonacci(int *pole,int n) – naplní pole prvními n členy Fibonacciho posloupnosti
     
 ### pole lze staticky inicializovat například takto:
 ```c
