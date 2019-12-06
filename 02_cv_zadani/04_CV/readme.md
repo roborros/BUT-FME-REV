@@ -1,6 +1,10 @@
 # REV - Čtvrté cvičení
 - GPIO (Obecný vstup/výstup)
-![Test Image 1](IOEduKit.png)
+
+<p align="center">
+  <img width="600" height="200" src="/IOEduKit">
+</p>
+
 ## Příklad 4.1
 
 Postup:
