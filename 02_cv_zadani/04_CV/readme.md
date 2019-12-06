@@ -1,6 +1,6 @@
 # REV - Čtvrté cvičení
 - GPIO (Obecný vstup/výstup)
-![Test Image 1](3DTest.png)
+![Test Image 1](IOEduKit.png)
 ## Příklad 4.1
 
 Postup:
