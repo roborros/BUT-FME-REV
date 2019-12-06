@@ -2,7 +2,7 @@
 - GPIO (Obecný vstup/výstup)
 
 <p align="center">
-  <img width="600" height="200" src="//IOEduKit.png">
+  <img width="600" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/IOEduKit.png">
 </p>
 
 ## Příklad 4.1
