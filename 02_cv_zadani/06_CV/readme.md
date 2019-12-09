@@ -217,3 +217,27 @@ int main(void) {
     }// end of main loop
 }
 ```
+### Zadání:
+
+ 1) Nahrejte a rozchodte ukazky 1 a 2.
+
+ 2) Vytvorte sadu funkci, ktera vytvori vrstvu pro znakovy vstup/vystup. Osetrete cekani na plny buffer a pripadne overrun 
+ chyby. 
+ 
+ ```c
+int UART_GetChar();             // nacte jeden znak
+void UART_PutChar(int c);       // vypise jeden znak
+int UART_CharAvailable();       // vrati nenulovou hodnotu prave kdyz je alespon jeden znak k dispozici pro cteni
+void UART_PutStr(char * str);   // vypise retezec az do nuloveho znaku
+ ```
+3) Vytvorte funkci int UART_Init(), do ktere presunte inicializacni kod. Spolecne s funkcemi z c) vytvorte knihovnu “UartIO.c” a k ni prislusny hlavickovy soubor “UartIO.h”
+
+4) Vytvořte program, který bude načítat znaky z UARTU a ukládat je do pole tak dlouho, než načte znak '.'. Poté znaky pošle v opačném pořadí po UARTu zpět. Využijte funkce z předchozí úlohy.
+
+5) Upravte program d) tak, aby znaky načítal a vysílal pomocí přerušení.
+
+Inspirujte se Ukázkou 3, dílčí informace pro přerušení naleznete v datasheetu.
+v přerušení nepoužívejte busy waiting; tzn. buď upravte funkce v UartIO tak, aby místo čekání vracely chybovou návratovou hodnotu, nebo je nepoužívejte
+nezapomeňte na modifikátor volatile
+
+6) Vytvořte funkce getch() a putch(), které budou realizovat standardní vstup a výstup přes UART. Funkce zaradte do knihovny UartIO.c. Vytvořte testovací program, který bude na terminál periodicky vypisovat (pomocí funkce printf()) čas od posledního restartu (v sekundách či jiných zvolených jednotkách).
