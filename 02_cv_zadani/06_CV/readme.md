@@ -1,4 +1,4 @@
-# REV - První cvičení
+# REV - Šesté cvičení
 - UART + STDIO
 
 ## Ukázka 1:
@@ -236,8 +236,10 @@ void UART_PutStr(char * str);   // vypise retezec az do nuloveho znaku
 
 5) Upravte program d) tak, aby znaky načítal a vysílal pomocí přerušení.
 
+```
 Inspirujte se Ukázkou 3, dílčí informace pro přerušení naleznete v datasheetu.
 v přerušení nepoužívejte busy waiting; tzn. buď upravte funkce v UartIO tak, aby místo čekání vracely chybovou návratovou hodnotu, nebo je nepoužívejte
 nezapomeňte na modifikátor volatile
+```
 
 6) Vytvořte funkce getch() a putch(), které budou realizovat standardní vstup a výstup přes UART. Funkce zaradte do knihovny UartIO.c. Vytvořte testovací program, který bude na terminál periodicky vypisovat (pomocí funkce printf()) čas od posledního restartu (v sekundách či jiných zvolených jednotkách).
