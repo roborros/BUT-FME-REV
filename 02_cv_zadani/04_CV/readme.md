@@ -42,34 +42,64 @@ Postup:
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
 
-volatile unsigned int TRISD __at(0xf95);
-volatile unsigned int TRISC __at(0xf94);
+volatile unsigned int TRISD     __at(0xf95);  
+volatile unsigned int TRISC     __at(0xf94);
 
-volatile unsigned int LATD __at(0xf8c);
-volatile unsigned int PORTC __at(0xf82);
+volatile unsigned int LATD      __at(0xf8c);
+volatile unsigned int PORTC     __at(0xf82);
 
 int main(void) {
     
-    TRISD &= ~(1 << 2);
-    TRISC &= 0b1;
+    TRISD &= ~(1 << 2);     // nastaveni RD2 jako výstup
+    TRISC &= 0b1;           // nastavení RC0 jako vstup
     
     while(1){
         
-        if (PORTC & 0b1){
-            LATD ^= (1 << 2);
+        if (PORTC & 0b1){               //  kontrola stisknutí BTN1
+            LATD ^= (1 << 2);           //  převrácení LED1 pomocí XOR
         }
-        for(long i=1; i<100000; i++);
+        for(long i=1; i<100000; i++);   //  čekání...  
     }
-    return 0;
+    return 0;                           // nikdy se neprovede
 }
 ```
 ## Úloha:
    1) Přidejte stejnou funkcionalitu LED3 blika jen po stisku BTN3
    
+## Příklad 4.2
+Naštěstí výrobce má k dispozici soubory, kde jsou již makra pro práci s registry zavedena. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru xc.h. 
+
+```c
+// REV GPIO
+#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+#pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
+
+#include <xc.h>
+
+int main(void) {
+    
+    TRISDbits.TRISD2 = 0;
+    TRISCbits.TRISC0 = 1;
+    
+    while(1){
+        
+        if (PORTCbits.RC0){             //  kontrola stisknutí BTN1
+            LATDbits.LATD2 ^= 1;        //  převrácení LED1 pomocí XOR
+        }
+        for(long i=1; i<100000; i++);   //  čekání...  
+    }
+    return 0;                           // nikdy se neprovede
+}
+```
+
+Povšimněte si především přístupu k jednotlivým bitům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
    
 ### Upravte program tak, aby zobrazoval různé sekvence:
 
-   1) Had: Hada predstavuje dvojice sousednich sviticich LED. Had se posouva tak dlouho, nez dorazi na konec radku, pak se otoci a plazi se zpet. Sekvence tedy bude vypadat takto: 00011 → 00110 → 01100 → 11000 → 01100 atd.
+   1) Had: Hada predstavuje dvojice sousednich sviticich LED. Had se posouva tak dlouho, než dorazi na konec radku, pak se otoci a plazi se zpet. Sekvence tedy bude vypadat takto: 00011 → 00110 → 01100 → 11000 → 01100 atd.
    2) Knight rider: jednotlive LED se postupne poporade rozsveci a pak v opacnem poradi zhasinaji. Na 3 led by sekvence vypadala takto: 000 → 001 → 011 → 111 → 011 → 001
    3) Counter strike alias binarni citani, sekvence vypada nasledovne: 0000 → 0001 → 0010 → 0011 → 0100 → …
 
