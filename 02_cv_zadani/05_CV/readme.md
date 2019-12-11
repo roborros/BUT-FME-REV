@@ -113,7 +113,7 @@ void main(void) {
     while(1){
         __delay_ms(100);            // cekani 10ms s knihovni funkci
     }
-}}
+}
 ```
 
 ## Rozšiřující úlohy:
