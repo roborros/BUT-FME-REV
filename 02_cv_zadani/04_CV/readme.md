@@ -67,7 +67,7 @@ int main(void) {
    1) Přidejte stejnou funkcionalitu LED3 blika jen po stisku BTN3
    
 ## Příklad 4.2
-Naštěstí má výrobve k dispozici soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru xc.h. 
+Naštěstí má výrobve k dispozici soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru xc.h. Názvy korespondují s názvy SFRs v datasheetu.
 
 ```c
 // REV GPIO
