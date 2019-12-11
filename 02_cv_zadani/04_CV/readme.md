@@ -98,8 +98,11 @@ int main(void) {
 }
 ```
 
+```
+Tipy:
 Povšimněte si především přístupu k jednotlivým bitům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
-   
+```
+
 ### Upravte program tak, aby zobrazoval různé sekvence:
     
    1) V poslední ukázce jsou definovana makra LED1 a BTN1. Zkuste si jejich použití místo plného názvu
