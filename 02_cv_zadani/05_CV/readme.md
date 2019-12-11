@@ -1,17 +1,6 @@
 # REV - Páte cvičení
 - čítače, přerušení
 
-## Příklad 4.1
-
-   1) zkopírujte si ukázku 1
-   2) seznamte se se zdrojovým kódem a zprovozněte kód
-   3) upravte program dle zadání a)
-   4) zkopírujte si ukázku 2
-   5) seznamte se se zdrojovým kódem a zprovozněte kód, vyzkoušejte varianty dle ukázky 2a a ukázky 2b
-   6) upravte program dle zadání b) - e)
-
-
-
 Ukázka 1:
     
 ```c 
@@ -113,7 +102,7 @@ void main(void) {
 
 1) rozšiřte Ukázku 1 tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant, ošetřete debouncing.
 
-2) rozšiřte Ukázku 2 ve stejném duchu jako v úloze a), tj. pouze místo busy-waiting použijete přerušení. Tj. upravte program tak, aby do registru TMR1 vkládal jednu ze dvou konstant, které upraví periodu čekání.
+2) rozšiřte Ukázku 2 ve stejném duchu jako v úloze tj. pouze použijete přerušení. Tj. upravte program tak, aby do registru TMR1 vkládal jednu ze dvou konstant, které upraví periodu čekání.
 
 3) rozšiřte Ukázku 2 tak, že použijete i druhý časovač (dle datasheetu použijte Timer5) s rozdílnou délkou čítaní a rozblikejte druhou LED, která bude blikat s různou periodou. Stisknutím tlačítka periody blikání prohoďte (tou formou, že vyměníte hodnotu vkládanou do TMR1 a TMR5).
 
@@ -125,4 +114,3 @@ void main(void) {
     BUT2 – dekrementuje n,
     BUT3 – bitové invertuje n,
     BUT4 – nastaví n na 0
-
