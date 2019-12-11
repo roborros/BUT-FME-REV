@@ -14,12 +14,7 @@
 
 Ukázka 1:
     
-```c
-/*
- * File:   02.01-timer_basic/main.c
- * Author: res, mat
- */
- 
+```c 
 /* fuses */
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDTEN bit))
 #pragma config FOSC = INTIO7    // Oscillator Selection bits 
@@ -69,19 +64,13 @@ int main(int argc, char** argv) {
 Ukázka 2:
     
 ```c
-/*
- * File:   02.02-timers_interrupt/main.c
- * Author: res, mat
- */
- 
- 
-/* fuses */
+// REV INTERRUPT
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config MCLRE = EXTMCLR  // reset function
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
+#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
- 
+
 #include <xc.h>
 
 #define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
@@ -89,46 +78,42 @@ Ukázka 2:
 #define DELAY (0xFFFF - 1000)       // hodnota timeru
 
 
-void __interrupt(high_priority) T1_ISR_HANDLE(void){
+void __interrupt() T1_ISR_HANDLER(void){
     
-    volatile static int i =0;
-    if (TMR1IF && TMR1IE ){
-        if (i >= 500) {
+    volatile static int i =0;       // staticka promena se zachovava (volatile zakazuje optimalizaci)
+    
+    if (TMR1IF && TMR1IE ){         // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)
+        if (i >= 500) {             
             LED ^= 1;
             i = 0;
         }  
     i++;
-    TMR1 = DELAY;
-    TMR1IF = 0;
+    TMR1 = DELAY;                   // nastaveni registru timeru (preruseni vzvolava preteceni registru)
+    TMR1IF = 0;                     // smazani IF jinak nedojde k dalsimu zavolani (bezpecnostni prvek, preruseni je zamaskovano)
     }
 }
 
 
 void init(void){
     
-    /* vyber pinu jako vystupy */
-    TRISCbits.TRISC3 = 0;
-    TRISCbits.TRISC5 = 0;
-    TRISBbits.TRISB3 = 0;
-    TRISDbits.TRISD2 = 0;
-
-    T1CONbits.TMR1CS = 0b00;
-    T1CONbits.T1CKPS = 0b11;
-    GIE = 1;
-    PEIE = 1;
-    TMR1IE = 1;
-    TMR1IF = 0;
-    TMR1ON = 1;
+    TRISDbits.TRISD2 = 0;           // RD2 jako vystup
+    
+    T1CONbits.TMR1CS = 0b00;        // zdroj casovace 1
+    T1CONbits.T1CKPS = 0b11;        // nastaveni delicky                                             
+    TMR1IE = 1;                     // povoleni preruseni pro TMR1
+    TMR1IF = 0;                     // smazani priznaku (pro jistotu)
+    PEIE = 1;                       // povoleni preruseni od periferii
+    TMR1ON = 1;                     // spusteni TMR1
+    GIE = 1;                        // globalni povoleni preruseni
 }
 
 void main(void) {
-    init(); // provedeni inicializace
+    init();                         // provedeni inicializace
     
-    /* hlavni smycka */
     while(1){
-
+        __delay_ms(100);            // cekani 10ms s knihovni funkci
     }
-}
+}}
 ```
 
 ## Rozšiřující úlohy:
