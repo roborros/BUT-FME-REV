@@ -56,9 +56,9 @@ int main(void) {
     while(1){
         
         if (PORTC & 0b1){               //  kontrola stisknutí BTN1
-            LATD ^= (1 << 2);           //  p?evrácení LED1 pomocí XOR
+            LATD ^= (1 << 2);           //  prevrácení LED1 pomocí XOR
         }
-        for(long i=1; i<100000; i++);   //  ?ekání...  
+        for(long i=1; i<100000; i++);   //  cekání...  
     }
     return 0;                           // nikdy se neprovede
 }
