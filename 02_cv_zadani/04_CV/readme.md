@@ -1,5 +1,5 @@
 # REV - Čtvrté cvičení
-- GPIO (Roypis pin; na EduKitu)
+- GPIO (Rozpis pin; na EduKitu)
 
 <p align="center">
   <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/IOEduKit.png">
