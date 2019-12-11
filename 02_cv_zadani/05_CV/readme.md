@@ -4,49 +4,37 @@
 Ukázka 1:
     
 ```c 
-/* fuses */
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDTEN bit))
-#pragma config FOSC = INTIO7    // Oscillator Selection bits 
-#pragma config MCLRE = EXTMCLR  // reset function
-#pragma config FCMEN = ON
- 
-// device include
-#include <xc.h>              //-- pro prekladac XC8
- 
-/* local defines */
-#define DELAY 0x8000
- 
-/*
- *  main()
- */
-int main(int argc, char** argv) {
- 
-    /* init - oscillator */
-    OSCCON = (OSCCON & 0b10001111) | 0b01110000;    // internal oscillator at full speed (16 MHz)
- 
-    /* init - tristate */
-    ANSELA = 0;
-    TRISC = 0b00000001; // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    TRISD = 0b10000011; // LEDs: 2..6 out
-    ANSELD = 0;
- 
-    /* init - timer1 */
-    T1CONbits.T1CKPS = 0b11;    // TMR1 prescaler
-    T1CONbits.TMR1ON = 1;       // TMR1 on
- 
-    /* main program */
- 
-    // put ones to LATC+LATD ~all LEDs
-    LATC = 0xff;
-    LATD = 0xff;
- 
-    /* main loop */
+// REV INTERRUPT
+#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = OFF     // 4X PLL Enable (Oscillator OFF)
+#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+
+#include <xc.h>
+
+#define _XTAL_FREQ 8E6             // definice fosc pro knihovnu
+#define LED LATDbits.LATD2          // ledka
+#define DELAY 0x8000       // hodnota timeru
+
+void init(void){
+    
+    TRISDbits.TRISD2 = 0;           // RD2 jako vystup
+    
+    T1CONbits.TMR1CS = 0b00;        // zdroj casovace 1
+    T1CONbits.T1CKPS = 0b11;        // nastaveni delicky                                             
+    TMR1ON = 1;                     // spusteni TMR1
+}
+
+void main(void) {
+    init();                         // provedeni inicializace
+    
     while(1){
-        while (TMR1 < DELAY); // waiting loop
-        LATD2 = ~LATD2;
-        TMR1 = 0;
-    } // end of main loop
+        if(TMR1 >= 0x8000){         // kontrola registru casovace
+            LED ^= 1;               // prevraceni pinu RD2
+            TMR1 = 0;               // vznulovani registru casovace
+        }
+    }
 }
 ```
 
