@@ -79,6 +79,9 @@ Naštěstí má výrobce k dispozici soubory, kde jsou již makra pro práci s r
 
 #include <xc.h>
 
+#define LED1 LATDbits.LATD2
+#define BTN1 PORTCbits.RC0
+
 int main(void) {
     
     TRISDbits.TRISD2 = 0;
