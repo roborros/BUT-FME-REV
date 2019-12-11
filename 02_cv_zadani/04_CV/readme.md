@@ -8,7 +8,7 @@
 - GPIO (Obecný vstup/výstup)
 
 <p align="center">
-  <img width="500" height="650" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
+  <img width="850" height="1024" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
 </p>
 
 ## Pro práci s GPIO slouží tyto registry:
