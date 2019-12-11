@@ -30,78 +30,32 @@ Postup:
     7) pomoci “Make and Program device” naprogramujte zarizeni
     
 ```c
-/*
- * File:   01.01-pic_basics-LEDs/main.c
- * Author: mat, res
- */
- 
-/* fuses */
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDTEN bit))
-#pragma config FOSC = INTIO7    // Oscillator Selection bits 
-#pragma config MCLRE = EXTMCLR  // reset function
-#pragma config FCMEN = ON
- 
-// device include
-#include <xc.h>              //-- pro prekladac XC8
- 
- 
-#define _XTAL_FREQ 16000000 // clock procesoru pro funkce delay
-// mozno pouzivat: 
-// _delay( n );        - pocka n cyklu procesoru
-// __delay_ms( n );    - pocka n milisekund
- 
- 
- 
-#define LED0 LATD2
-#define LED1 LATD3
-#define LED2 LATC4
-#define LED3 LATD4
-#define LED4 LATD5
-#define LED5 LATD6
- 
-#define BTN0 PORTCbits.RC0
-#define BTN1 PORTAbits.RA4
-#define BTN2 PORTAbits.RA3
-#define BTN3 PORTAbits.RA2
- 
-/*********************************/
-// function main()
-/*********************************/
+// REV GPIO
+#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+#pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
+
+volatile unsigned int TRISD __at(0xf95);
+volatile unsigned int TRISC __at(0xf94);
+
+volatile unsigned int LATD __at(0xf8c);
+volatile unsigned int PORTC __at(0xf82);
+
 int main(void) {
-    char count = 0;
-    int i;
- 
-    //configure oscillator
-    OSCCON = (OSCCON & 0b10001111) | 0b01110000;    //internal oscillator at full speed (16 MHz)
- 
-    //configure TRIS + ANSEL
-    TRISA = 0b00011100; // RA4 BTN2, RA3 BTN3, RA2 BTN4
-    ANSELA = 0;
-    TRISC = 0b00000001; // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    TRISD = 0b10000011; // LEDs: 2..6 out
-    ANSELD = 0;
- 
-    //infinite main loop
+    
+    TRISD &= ~(1 << 2);
+    TRISC &= 0b1;
+    
     while(1){
-        count++;
- 
-        LATD2 = count & 1;
-        asm("nop");
-        LATD3 = count & 2 ? 1 : 0;
-        asm("nop");
- 
-        LATC4 = ~PORTCbits.RC0;
-        asm("nop");
-        LATD4 = ~PORTAbits.RA4;
-        asm("nop");
-        LATD5 = ~PORTAbits.RA3;
-        asm("nop");
-        LATD6 = ~PORTAbits.RA2;
- 
-        //wait
-        __delay_ms(200); 
+        
+        if (PORTC & 0b1){
+            LATD ^= (1 << 2);
+        }
+        for(long i=1; i<100000; i++);
     }
+    return 0;
 }
 ```
 ## Další ulohy:
