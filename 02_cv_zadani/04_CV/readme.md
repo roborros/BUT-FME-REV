@@ -40,7 +40,7 @@ Postup:
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
 #pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
-#pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
+#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
 volatile unsigned int TRISD     __at(0xf95);  
 volatile unsigned int TRISC     __at(0xf94);
@@ -56,9 +56,9 @@ int main(void) {
     while(1){
         
         if (PORTC & 0b1){               //  kontrola stisknutí BTN1
-            LATD ^= (1 << 2);           //  převrácení LED1 pomocí XOR
+            LATD ^= (1 << 2);           //  p?evrácení LED1 pomocí XOR
         }
-        for(long i=1; i<100000; i++);   //  čekání...  
+        for(long i=1; i<100000; i++);   //  ?ekání...  
     }
     return 0;                           // nikdy se neprovede
 }
@@ -75,7 +75,7 @@ Naštěstí má výrobce k dispozici soubory, kde jsou již makra pro práci s r
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
 #pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
-#pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
+#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
 #include <xc.h>
 
@@ -86,10 +86,10 @@ int main(void) {
     
     while(1){
         
-        if (PORTCbits.RC0){             //  kontrola stisknutí BTN1
-            LATDbits.LATD2 ^= 1;        //  převrácení LED1 pomocí XOR
+        if (PORTCbits.RC0){             //  kontrola stisknuti BTN1
+            LATDbits.LATD2 ^= 1;        //  prevráceni LED1 pomoci XOR
         }
-        for(long i=1; i<100000; i++);   //  čekání...  
+        for(long i=1; i<100000; i++);   //  cekani...  
     }
     return 0;                           // nikdy se neprovede
 }
