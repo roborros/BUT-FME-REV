@@ -5,6 +5,12 @@
   <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/IOEduKit.png">
 </p>
 
+- GPIO (Obecný vstup/výstup)
+
+<p align="center">
+  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
+</p>
+
 ## Pro práci s GPIO slouží tyto registry:
 
 1) TRISx  // Slouží k nastavení vstup 1 /výstup 0
