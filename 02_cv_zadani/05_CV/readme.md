@@ -75,24 +75,17 @@ Ukázka 2:
 
 #define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 1000)       // hodnota timeru
+#define DELAY (0xFFFF - 50000)      // hodnota timeru
 
 
 void __interrupt() T1_ISR_HANDLER(void){
-    
-    volatile static int i =0;       // staticka promena se zachovava (volatile zakazuje optimalizaci)
-    
-    if (TMR1IF && TMR1IE ){         // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)
-        if (i >= 500) {             
-            LED ^= 1;
-            i = 0;
-        }  
-    i++;
+     
+    if (TMR1IF && TMR1IE ){         // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)             
+        LED ^= 1;
     TMR1 = DELAY;                   // nastaveni registru timeru (preruseni vzvolava preteceni registru)
     TMR1IF = 0;                     // smazani IF jinak nedojde k dalsimu zavolani (bezpecnostni prvek, preruseni je zamaskovano)
     }
 }
-
 
 void init(void){
     
@@ -111,7 +104,7 @@ void main(void) {
     init();                         // provedeni inicializace
     
     while(1){
-        __delay_ms(100);            // cekani 10ms s knihovni funkci
+        __delay_ms(100);            // cekani 100ms s knihovni funkci
     }
 }
 ```
