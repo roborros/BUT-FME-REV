@@ -1,5 +1,5 @@
 # REV - Čtvrté cvičení
-- GPIO (Obecný vstup/výstup)
+- GPIO (Roypis pin; na EduKitu)
 
 <p align="center">
   <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/IOEduKit.png">
@@ -11,12 +11,17 @@
   <img width="700" height="810" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
 </p>
 
+## Prace s registry SFR:
+K ovládání pinů slouží specialní registry SFR. Zápisem, nebo čtením těchto registrů můžeme  ovladat/zjistit stav periferie. V C pro překladač XC8 můžeme použít adresu v paměti na které se příslušný registr nachazí. používá se zípis volatile int "mujnazev" __at("adresa"). Slovicko volatile je pokyn pro překladač, který vyloženě zakazuje optimalizace teto proměnné (bude dále diskutováno v dalších cvičeních). S proměnou se pak pracuje jako ovykle lze ji nastavovat i číst. Záleží na konkrétních vlastnostech příslušného registru. U GPIO slouží např. registr LATx pro zápis na pin, naopak registr PORTx ke čtení stavu pinu.  
+
+
 ## Pro práci s GPIO slouží tyto registry:
 
 1) TRISx  // Slouží k nastavení vstup 1 /výstup 0
 2) LATx   // výstupní registr
 3) PORTx  // vstupní registr
 4) ANSELx // ovládání analogových funkcí ( ADC, nebo komparátor)
+
 ## Příklad 4.1
 
 Postup:
