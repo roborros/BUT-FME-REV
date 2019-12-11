@@ -12,7 +12,7 @@
 </p>
 
 ## Prace s registry SFR:
-K ovládání pinů slouží specialní registry SFR. Zápisem, nebo čtením těchto registrů můžeme  ovladat/zjistit stav periferie. V C pro překladač XC8 můžeme použít adresu v paměti na které se příslušný registr nachazí. používá se zípis volatile int "mujnazev" __at("adresa"). Slovicko volatile je pokyn pro překladač, který vyloženě zakazuje optimalizace teto proměnné (bude dále diskutováno v dalších cvičeních). S proměnou se pak pracuje jako ovykle lze ji nastavovat i číst. Záleží na konkrétních vlastnostech příslušného registru. U GPIO slouží např. registr LATx pro zápis na pin, naopak registr PORTx ke čtení stavu pinu.  
+K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy je třeba vypnout analogové funkce pomocí ANSELx). Zápisem, nebo čtením těchto registrů můžeme ovladat/zjistit stav periferie. V C pro překladač XC8 můžeme použít adresu v paměti na které se příslušný registr nachazí. Používá se zípis volatile int "mujnazev" __at("adresa"). Slovicko volatile je pokyn pro překladač, který vyloženě zakazuje optimalizace teto proměnné (bude dále diskutováno v dalších cvičeních). S proměnou se pak pracuje jako ovykle lze ji nastavovat i číst. Záleží na konkrétních vlastnostech příslušného registru. U GPIO slouží např. registr LATx pro zápis na pin, naopak registr PORTx ke čtení stavu pinu.  
 
 
 ## Pro práci s GPIO slouží tyto registry:
@@ -63,8 +63,10 @@ int main(void) {
     return 0;
 }
 ```
-## Další ulohy:
-
+## Úloha:
+   1) Přidejte stejnou funkcionalitu LED3 blika jen po stisku BTN3
+   
+   
 ### Upravte program tak, aby zobrazoval různé sekvence:
 
    1) Had: Hada predstavuje dvojice sousednich sviticich LED. Had se posouva tak dlouho, nez dorazi na konec radku, pak se otoci a plazi se zpet. Sekvence tedy bude vypadat takto: 00011 → 00110 → 01100 → 11000 → 01100 atd.
