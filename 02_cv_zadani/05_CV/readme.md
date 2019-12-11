@@ -13,9 +13,9 @@ Ukázka 1:
 
 #include <xc.h>
 
-#define _XTAL_FREQ 8E6             // definice fosc pro knihovnu
+#define _XTAL_FREQ 8E6              // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY 0x8000       // hodnota timeru
+#define DELAY 0x8000                // hodnota timeru
 
 void init(void){
     
