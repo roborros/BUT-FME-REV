@@ -1,4 +1,4 @@
-# REV - Aplikace embedded systémů v mechatronice
+# REV - Sylabus
 
 * 01
 * 02
