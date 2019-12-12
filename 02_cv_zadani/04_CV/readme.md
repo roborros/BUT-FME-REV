@@ -17,7 +17,7 @@ K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy 
 - Mapa SFR pro PIC18f46k22 str.78:
 
 <p align="center">
-  <img width="800" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
+  <img width="800" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/LATx.png">
 </p>
 
 ## Pro práci s GPIO slouží tyto registry:
