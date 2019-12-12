@@ -5,7 +5,7 @@
   <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/IOEduKit.png">
 </p>
 
-- Mapa SFR pro PIC18f46k22:
+- Mapa SFR pro PIC18f46k22 str.78:
 
 <p align="center">
   <img width="700" height="810" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
