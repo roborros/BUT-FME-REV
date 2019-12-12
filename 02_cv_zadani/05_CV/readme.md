@@ -118,18 +118,18 @@ Ukázka 3:
 #define LED LATDbits.LATD2          // ledka
 #define DELAY (0xFFFF - 1000)       // hodnota timeru
 
-volatile char flag = 0;
+volatile unsigned char flag = 0;             // globalni promenna 
 
-void __interrupt(high_priority) T1_ISR_HANDLER(void){
+void __interrupt() T1_ISR_HANDLER(void){
     
-    volatile static int i = 0;
-    if (TMR1IF && TMR1IE ){
+    volatile unsigned static int i = 0;      // staticka promenna nelze pouzit mimo ISR
+    if (TMR1IF && TMR1IE ){         // kontrala priznaku a povoleni
         if (i >= 500) {
-            flag = 1;
+            flag = 1;               // nastaveni vlajky
             i = 0;
         }  
     i++;
-    TMR1 = DELAY;
+    TMR1 = DELAY;                   // nastaveni registru TMR1
     TMR1IF = 0;
     }
 }
