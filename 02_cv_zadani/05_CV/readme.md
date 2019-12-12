@@ -102,3 +102,64 @@ void main(void) {
     BUT2 – dekrementuje n,
     BUT3 – bitové invertuje n,
     BUT4 – nastaví n na 0
+
+Ukázka 3:
+    
+```c 
+// REV INTERRUPT
+#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+#include <xc.h>
+
+#define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
+#define LED LATDbits.LATD2          // ledka
+#define DELAY (0xFFFF - 1000)       // hodnota timeru
+
+volatile char flag = 0;
+
+void __interrupt(high_priority) T1_ISR_HANDLER(void){
+    
+    volatile static int i = 0;
+    if (TMR1IF && TMR1IE ){
+        if (i >= 500) {
+            flag = 1;
+            i = 0;
+        }  
+    i++;
+    TMR1 = DELAY;
+    TMR1IF = 0;
+    }
+}
+
+void init(void){
+    
+    /* vyber pinu jako vystupy */
+    TRISCbits.TRISC3 = 0;
+    TRISCbits.TRISC5 = 0;
+    TRISBbits.TRISB3 = 0;
+    TRISDbits.TRISD2 = 0;
+
+    T1CONbits.TMR1CS = 0b00;
+    T1CONbits.T1CKPS = 0b11;
+    GIE = 1;
+    PEIE = 1;
+    TMR1IE = 1;
+    TMR1IF = 0;
+    TMR1ON = 1;
+}
+
+void main(void) {
+    init(); // provedeni inicializace
+    
+    /* hlavni smycka */
+    while(1){
+        if (flag) {
+            LED ^= 1;
+            flag = 0;
+        }
+    }
+}
+```
