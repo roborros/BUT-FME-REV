@@ -103,7 +103,7 @@ void main(void) {
     - BUT3 – bitové invertuje n,
     - BUT4 – nastaví n na 0
 
-## Příklad 5.2:
+## Příklad 5.3:
     
 ```c 
 // REV INTERRUPT
