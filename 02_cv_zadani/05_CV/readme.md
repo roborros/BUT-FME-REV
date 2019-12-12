@@ -1,7 +1,7 @@
 # REV - Páte cvičení
 - čítače, přerušení
 
-Ukázka 1:
+## Příklad 5.1:
     
 ```c 
 // REV INTERRUPT
@@ -38,7 +38,7 @@ void main(void) {
 }
 ```
 
-Ukázka 2:
+## Příklad 5.2:
     
 ```c
 // REV INTERRUPT
@@ -98,12 +98,12 @@ void main(void) {
 
 5) Vytvořte obecnou obsluhu pomoci přerušení pro všechna 4 tlačítka: pomoci jednoho časovače (tj. použijete jedno přerušení) periodicky detekujte stav na jednotlivých tlačítkách, a prováděje debouncing. V hlavním programu ovládejte celou sadu LED, zobrazujte na ní binární číslo n a reagujte na stisknutí jednotlivých tlačítek následovně:
 
-    BUT1 – inkrementuje n,
-    BUT2 – dekrementuje n,
-    BUT3 – bitové invertuje n,
-    BUT4 – nastaví n na 0
+    - BUT1 – inkrementuje n,
+    - BUT2 – dekrementuje n,
+    - BUT3 – bitové invertuje n,
+    - BUT4 – nastaví n na 0
 
-Ukázka 3:
+## Příklad 5.2:
     
 ```c 
 // REV INTERRUPT
