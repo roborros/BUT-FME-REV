@@ -20,101 +20,73 @@
 
 Programová inicializace ADC:
 ```c
-    ANSELA = 0b00100000;  //AN4
-    ANSELE = 0b1;  //AN5
+    ANSELA = 0b00100000;            //AN4
+    ANSELE = 0b1;                   //AN5
  
-    ADCON0bits.CHS = 4; //select AN4
-    //ADCON0bits.CHS = 5; //select AN5
- 
-    ADCON2bits.ADFM = 0;    //left justified
-    ADCON2bits.ADCS = 0b110;    //Fosc/64
- 
-    ADCON0bits.ADON = 1;    //ADC turn on
-    _delay(200);
+    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADCS = 0b110;        //Fosc/64
+    ADCON2bits.ACQT = 0b110;        //16
+    ADCON0bits.ADON = 1;            //ADC zapnout
 ```
 
 Čtení z ADC:
 ```c
        GODONE = 1;
-        while (GODONE);
- 
-        //data = (ADRESH << 8) + ADRESL;
-        data = ADRESH;  //jen 8 bitu
+       while (GODONE);
+       data = (ADRESH << 8) + ADRESL;
 ```
 
 ## Ukázka:
 
 ```c
-/* 
- * File:   main_ADC.c
- * Author: mat
- *
- */
- 
+// REV ADC
+#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
+#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+
 #include <xc.h>
+
+void init(void){
+  
+    ANSELA = 0b00100000;            //AN4
+    ANSELE = 0b1;                   //AN5
  
-#pragma config WDTEN = OFF
-#pragma config FOSC = INTIO7
-#pragma config MCLRE = EXTMCLR
-#pragma config FCMEN = ON
- 
- 
-#define LED0 LATD2
-#define LED1 LATD3
-#define LED2 LATC4
-#define LED3 LATD4
-#define LED4 LATD5
-#define LED5 LATD6
- 
-#define BTN0 PORTC0
-#define BTN1 PORTA4
-#define BTN2 PORTA3
-#define BTN3 PORTA2
- 
-void driveLED(char in){
-        LATD2 = in & 1; asm("nop"); //LED0
-        LATD3 = in & 2 ? 1 : 0; asm("nop"); //LED1
-        LATC4 = in & 4 ? 1 : 0; asm("nop"); //LED2
-        LATD4 = in & 8 ? 1 : 0; asm("nop"); //LED3
-        LATD5 = in & 16 ? 1 : 0; asm("nop"); //LED4
-        LATD6 = in & 32 ? 1 : 0; asm("nop"); //LED5
+    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADCS = 0b110;        //Fosc/64
+    ADCON2bits.ACQT = 0b110;        //16
+    ADCON0bits.ADON = 1;            //ADC zapnout
+    
+    TRISCbits.TRISC6 = 0;           // uart TX vystup
+    TRISDbits.TRISD2 = 0;           // led1 vystup
+    
+    SPBRG1 = 51;                    // (32_000_000 / (64 * 9600)) - 1
+    // final enable
+    RCSTAbits.SPEN = 1;             // enable UART peripheral
+    TXSTAbits.TXEN = 1;             // enable TX
 }
- 
-void main(void) {
- 
-    OSCCON = (OSCCON & 0b10001111) | 0b01110000;    // internal oscillator at full speed (16 MHz)
- 
-    TRISA = 0b00111100;
- 
-    TRISC = 0b00000001; // RC0 BTN1, RC4 LED
-    ANSELC = 0;
- 
-    TRISD = 0b10000011; // LEDs: 2..6 out
-    ANSELD = 0;
- 
-    TRISE = 1;
-    ANSELE = 0b1;
- 
-    //ADC config
-    ANSELA = 0b00100000;
-    ANSELE = 0b1;
- 
-    ADCON0bits.CHS = 4; //select AN4
-    //ADCON0bits.CHS = 5; //select AN5
-    ADCON0bits.ADON = 1;    //ADC turn on
-    ADCON2bits.ADFM = 0;    //left justified
-    ADCON2bits.ADCS = 0b110;    //Fosc/64
- 
-    while (1){
- 
-        GODONE = 1;
-        while (GODONE);
- 
-        if (ADRESH > 128) driveLED(~1);
-        else driveLED(~2);
- 
-        //_delay(200);
+
+void main(void)
+{
+    init();
+    
+    unsigned int  pot1;
+    
+    while(1){
+
+        ADCON0bits.CHS = 5;                 // kanal AN5
+        GODONE = 1;                         // spustit aproximaci
+        while(GODONE);                      // cekam nez je hotovo
+        pot1 = (ADRESH << 8) | ADRESL;      // cteni vysledku
+        
+        if (pot1 > 512){
+            LATD2 = 1;
+        }
+        else {
+            LATD2 = 0;
+        }
     }
+    
 }
 ```
 
