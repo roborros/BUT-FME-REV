@@ -31,12 +31,12 @@ Programová inicializace ADC:
 
 Čtení z ADC:
 ```c
-       GODONE = 1;
-       while (GODONE);
-       data = (ADRESH << 8) + ADRESL;
+    GODONE = 1;
+    while (GODONE);
+    data = (ADRESH << 8) + ADRESL;
 ```
 
-## Ukázka:
+## Přiklad 7.1:
 
 ```c
 // REV ADC
