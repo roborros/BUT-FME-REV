@@ -5,7 +5,7 @@
 
 PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které mají 16-bit. Timer je periferie, kterou ovládáme pomocí SFR. Programátorský model je jednoduchá TIMER je binární čítač, který načítá vstupní pulzy. Výsledek pak drží v příslušném registru. Periferie je při svém provozu nezavislá na CPU. Čítač se používá k časovaní. Můžemeho použít k relativně přesnému měření času na pozadí běhu programu, nebo také k vyvolání přerušení.
 
-# SFR:
+### SFR:
 * TxCON - Konfigurační registr čítače (Výběr zdroje pulzů, děličky)
 * TMR1ON - Spuštění
 * TMR1 - Aktuální hodnota čítače (lze přepsat z programu)
@@ -48,7 +48,7 @@ void main(void) {
 ## Příklad 5.2:
 Přerušení je opravdu důležitý koncept v embedded systémech. Přerušení dovoluje procesoru přerušit současný program, vykonat jiný (kratký) a vratit se zpět. Tato přerušení mohou vyvolávat různé události. Může ho vyvolat TIMER, příchod dat na sběrnici, stisk tlačítka a jiné. Přerušení se zapisuje v XC8 podobně jako funkce. Má však několik specifik. V první řadě je to vždy void...void funkce. Přerušení vyvolává jiný mechanismus a tuto funkci nemůže používat programátor jako běžnou funkci. Zapis v xc8 je např. void __interrupt() muj_ISR(void). Za muj_ISR si můžete dosadit název. PIC18F46K22 nemá tzv. interrupt vector. Zavádí pouze dvě priority přerušení low a high. Mohu tedy v programu napsat 2xISR(). V přerušení potom testuji příznaky IF.
 
-## Důležité nastavení SFR:
+### Důležité nastavení SFR:
 * GIE - zapnutí přerušení globálně (Global Interrupt Enable)
 * PEIE - zapnutí přerušení od periferii (Peripheral Interrupt Enable)
 * TMR1IE - Zapnuti přerušení TMR1 (TiMeR1 Interrupt Enable) 
