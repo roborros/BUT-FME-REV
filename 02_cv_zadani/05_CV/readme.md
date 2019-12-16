@@ -2,7 +2,9 @@
 - čítače, přerušení
 
 ## Příklad 5.1:
-    
+
+PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které mají 16-bit. Timer je periferie, kterou ovládáme pomocí SFR. Programátorský model je jednoduchá TIMER je binární čítač, který načítá vstupní pulzy. Výsledek pak drží v příslušném registru. Periferie je při svém provozu nezavislá na CPU. Čítač se používá k časovaní. Můžemeho použít k relativně přesnému měření času na pozadí běhu programu, nebo také k vyvolání přerušení.
+
 ```c 
 // REV TIMER
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
@@ -39,6 +41,7 @@ void main(void) {
 ```
 
 ## Příklad 5.2:
+Přerušení je opravdu důležitý koncept v embedded systémech. Přerušení dovoluje procesoru přerušit současný program, vykonat jiný (kratký) a vratit se zpět. Tato přerušení mohou vyvolávat různé události. Může ho vyvolat TIMER, příchod dat na sběrnici, stisk tlačítka a jiné. Přerušení se zapisuje v XC8 podobně jako funkce. Má však několik specifik. V první řadě je to vždy void...void funkce. Přerušení vyvolává jiný mechanismus a tuto funkci nemůže používat programátor jako běžnou funkci. Zapis v xc8 je např. void __interrupt() muj_ISR(void). Za muj_ISR si můžete dosadit název.
     
 ```c
 // REV INTERRUPT
