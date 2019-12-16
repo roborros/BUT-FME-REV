@@ -5,6 +5,11 @@
 
 PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které mají 16-bit. Timer je periferie, kterou ovládáme pomocí SFR. Programátorský model je jednoduchá TIMER je binární čítač, který načítá vstupní pulzy. Výsledek pak drží v příslušném registru. Periferie je při svém provozu nezavislá na CPU. Čítač se používá k časovaní. Můžemeho použít k relativně přesnému měření času na pozadí běhu programu, nebo také k vyvolání přerušení.
 
+# SFR:
+* TxCON - Konfigurační registr čítače (Výběr zdroje pulzů, děličky)
+* TMR1ON - Spuštění
+* TMR1 - Aktuální hodnota čítače (lze přepsat z programu)
+
 ```c 
 // REV TIMER
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
