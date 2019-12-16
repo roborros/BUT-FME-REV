@@ -107,9 +107,9 @@ int main(void) {
     /*baudrate*/
     SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 11
     
-    RCSTAbits.SPEN = 1;      // zapnuti UART
-    TXSTAbits.TXEN = 1;      // zapnuti TX
-    RCSTAbits.CREN = 1;      // zapnuti RX 
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    RCSTA1bits.CREN = 1;      // zapnuti RX 
     
     
     while(1){
@@ -119,7 +119,7 @@ int main(void) {
 }
 
 void putch(unsigned char data){
-    while(!TXIF);
+    while(!TX1IF);
     TXREG1 = data;
 }
 ```
