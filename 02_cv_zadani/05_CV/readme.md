@@ -180,4 +180,4 @@ void main(void) {
 1) Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--ma jen 8 bitu a obsahuje postscaler, a period register)
 2) Použíjte obě priority PIC18 funkce se odlišují  __interrupt(low_priority); __interrupt(high_priority)
 3) Je treba nastavit IPRx registry pro low_priority pro TMR2IF
-4) Vyšší priorita je schopna přerušit nižší vyzkoušejte třeba umístěním while(BTN1), tedy něco co bychom normálně dělat něměli!!
+4) Vyšší priorita je schopna přerušit nižší! Vyzkoušejte třeba umístěním while(BTN1), tedy něco co bychom normálně dělat něměli!!
