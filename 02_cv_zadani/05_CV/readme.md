@@ -109,7 +109,7 @@ void main(void) {
 ## Příklad 5.3:
     
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
+  <img width="600" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
 </p>
     
 ```c 
