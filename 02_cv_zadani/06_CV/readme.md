@@ -20,7 +20,7 @@ int main(void) {
     TRISCbits.TRISC7 = 1;   // rx pin jako vstup
     
     /*baudrate*/
-    SPBRG = 51;              // (32_000_000 / (64 * 9600)) - 1
+    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
     RCSTA1bits.SPEN = 1;      // zapnuti UART
     TXSTA1bits.TXEN = 1;      // zapnuti TX
     RCSTA1bits.CREN = 1;      // zapnuti RX 
@@ -65,7 +65,7 @@ int main(void) {
     TRISCbits.TRISC7 = 1;   // rx pin jako vstup
    
     /*baudrate*/
-    SPBRG = 51;              // (32_000_000 / (64 * 9600)) - 1
+    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
     
     RCSTA1bits.SPEN = 1;      // zapnuti UART
     TXSTA1bits.TXEN = 1;      // zapnuti TX
@@ -96,9 +96,9 @@ int main(void) {
 
 void __interrupt() RC_ISR_HANDLER(){
     
-    if(RCIF && RCIE){
+    if(RC1IF && RC1IE){
         TXREG1 = RCREG1;
-        RCIF = 0;
+        RC1IF = 0;
     }
 }
 
@@ -115,13 +115,13 @@ int main(void) {
     /*baudrate*/
     SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 11
     
-    RCSTAbits.SPEN = 1;      // zapnuti UART
-    TXSTAbits.TXEN = 1;      // zapnuti TX
-    RCSTAbits.CREN = 1;      // zapnuti RX 
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    RCSTA1bits.CREN = 1;      // zapnuti RX 
     
-    RCIE = 1;                // zap  preruseni od RCREG
+    RC1IE = 1;                // zap  preruseni od RCREG
     PEIE = 1;                // preruseni od periferii
-    RCIF = 0;                // nastavim priznak (pro jistotu)
+    RC1IF = 0;                // nastavim priznak (pro jistotu)
     GIE = 1;                 // globalni preruseni
     
     while(1){
@@ -131,7 +131,7 @@ int main(void) {
 }
 
 void putch(unsigned char data){
-    while(!TXIF);
+    while(!TX1IF);
     TXREG1 = data;
 }
 ```
