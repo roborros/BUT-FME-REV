@@ -4,7 +4,7 @@
 ## Příklad 5.1:
     
 ```c 
-// REV INTERRUPT
+// REV TIMER
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = OFF     // 4X PLL Enable (Oscillator OFF)
 #pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
