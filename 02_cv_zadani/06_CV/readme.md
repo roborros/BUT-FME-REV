@@ -50,9 +50,9 @@ int main(void) {
 
 void __interrupt() RC_ISR_HANDLER(){
     
-    if(RCIF && RCIE){
-        TXREG = RCREG;
-        RCIF = 0;
+    if(RC1IF && RC1IE){
+        TXREG1 = RCREG1;
+        RC1IF = 0;
     }
 }
 
@@ -67,13 +67,13 @@ int main(void) {
     /*baudrate*/
     SPBRG = 51;              // (32_000_000 / (64 * 9600)) - 1
     
-    RCSTAbits.SPEN = 1;      // zapnuti UART
-    TXSTAbits.TXEN = 1;      // zapnuti TX
-    RCSTAbits.CREN = 1;      // zapnuti RX 
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    RCSTA1bits.CREN = 1;      // zapnuti RX 
     
-    RCIE = 1;                // zap  preruseni od RCREG
+    RC1IE = 1;                // zap  preruseni od RCREG
     PEIE = 1;                // preruseni od periferii
-    RCIF = 0;                // nastavim priznak (pro jistotu)
+    RC1IF = 0;                // nastavim priznak (pro jistotu)
     GIE = 1;                 // globalni preruseni
     
     while(1){
