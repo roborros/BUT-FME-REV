@@ -21,14 +21,14 @@ int main(void) {
     
     /*baudrate*/
     SPBRG = 51;              // (32_000_000 / (64 * 9600)) - 1
-    RCSTAbits.SPEN = 1;      // zapnuti UART
-    TXSTAbits.TXEN = 1;      // zapnuti TX
-    RCSTAbits.CREN = 1;      // zapnuti RX 
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    RCSTA1bits.CREN = 1;      // zapnuti RX 
 
     while(1){
-        if (PIR1bits.RCIF){
+        if (PIR1bits.RC1IF){
             LATD2 ^= 1;     // LED 
-            TXREG = RCREG;      // precist a poslad zpet
+            TXREG1 = RCREG1;      // precist a poslad zpet
         }
     }
 }
