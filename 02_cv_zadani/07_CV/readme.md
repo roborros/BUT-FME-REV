@@ -5,7 +5,7 @@
 
 ### Konfigurace:
 
-    - žádaným vstupům (piny) je třeba přiřadit analogovou funkci (registry ANSEL0 a ANSEL1)
+    - žádaným vstupům (piny) je třeba přiřadit analogovou funkci (registry ANSELx)
     - nastavení vstupního rozsahu, tj. volba napěťové reference (pole VCFG v registru ADCON1)
     - nastavení vstupů pro zvolený kanál (AN4 a AN5 v našem případě)
     - zapnutí ADC modulu (ADCON0bits.ADON)
