@@ -62,8 +62,8 @@ void __interrupt() T1_ISR_HANDLER(void){
      
     if (TMR1IF && TMR1IE ){         // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)             
         LED ^= 1;
-    TMR1 = DELAY;                   // nastaveni registru timeru (preruseni vzvolava preteceni registru)
-    TMR1IF = 0;                     // smazani IF jinak nedojde k dalsimu zavolani (bezpecnostni prvek, preruseni je zamaskovano)
+        TMR1 = DELAY;               // nastaveni registru timeru (preruseni vzvolava preteceni registru)
+        TMR1IF = 0;                 // smazani IF jinak nedojde k dalsimu zavolani (bezpecnostni prvek)
     }
 }
 
@@ -109,7 +109,7 @@ void main(void) {
 ## Příklad 5.3:
     
 <p align="center">
-  <img width="400" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
+  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
 </p>
     
 ```c 
