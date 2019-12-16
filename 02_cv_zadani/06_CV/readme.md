@@ -26,7 +26,7 @@ int main(void) {
     RCSTA1bits.CREN = 1;      // zapnuti RX 
 
     while(1){
-        if (PIR1bits.RC1IF){
+        if (RC1IF){
             LATD2 ^= 1;     // LED 
             TXREG1 = RCREG1;      // precist a poslad zpet
         }
