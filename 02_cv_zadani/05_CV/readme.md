@@ -118,7 +118,9 @@ void main(void) {
     - BUT4 – nastaví n na 0
 
 ## Příklad 5.3:
-    
+Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako volatile. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé SFR např. PORTx mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile char flag. Slouží k jednoduchému řízení. Je zde zavedene i volatile static uint i. 
+jako statické označujeme proměnné, které lze používat pouze vně bloku, v tomto případě jen programu přerušení. Chová se však jako globální proměnná. Zachovává si hodnotu. 
+
 <p align="center">
   <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
 </p>
