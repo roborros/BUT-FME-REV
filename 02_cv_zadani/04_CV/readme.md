@@ -56,7 +56,7 @@ volatile unsigned int PORTC     __at(0xf82);
 int main(void) {
     
     TRISD &= ~(1 << 2);     // nastaveni RD2 jako výstup
-    TRISC &= 0b1;           // nastavení RC0 jako vstup
+    TRISC |= 0b1;           // nastavení RC0 jako vstup
     
     while(1){
         
