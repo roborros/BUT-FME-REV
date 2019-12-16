@@ -1,14 +1,16 @@
-# REV - Aplikace embedded systémù v mechatronice
-Studijní materiály pro pøedmìt REV - Aplikace embedded systémù v mechatronice
+# REV - Aplikace embedded systÃ©mÅ¯ v mechatronice
+StudijnÃ­ materiÃ¡ly pro pÅ™edmÄ›t REV - Aplikace embedded systÃ©mÅ¯ v mechatronice
 
 * Skripta
 * Prezentace
-* Cvièení (zadání úloh)
-* Cvièení (øešení úloh)
-* Další materiály
+* CviÄenÃ­ (zadÃ¡nÃ­ Ãºloh)
+* CviÄenÃ­ (Å™eÅ¡enÃ­ Ãºloh)
+* DalÅ¡Ã­ materiÃ¡ly
 
 
-Námìty na úpravy posílejte na mailMBa nebo mailMBr, nebo lépe zadávejte jako issue nebo rovnou pull request.
+NÃ¡mÄ›ty na Ãºpravy posÃ­lejte na mailMBa nebo mailMBr, nebo lÃ©pe zadÃ¡vejte jako issue nebo rovnou pull request.
 
-
-
+ # BodovÃ© hodnoceni:
+ * ZÃ¡vÄ›reÄnÃ½ projekt  35b
+ * DomÃ¡cÃ­ Ãºlohy 3x5 = 15b
+ * ZÃ¡poÄtovÃ© testy 2x 15 + 1x20 = 50b
