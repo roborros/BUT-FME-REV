@@ -13,4 +13,4 @@ Náměty na úpravy posílejte na mailMBa nebo mailMBr, nebo lépe zadávejte ja
  # Bodové hodnoceni:
  * Závěrečný projekt  35b
  * Domácí úlohy 3x5 = 15b
- * Zápočtové testy 2x 15 + 1x20 = 50b
+ * Zápočtové testy 2x15 + 1x20 = 50b
