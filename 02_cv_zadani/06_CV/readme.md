@@ -94,14 +94,6 @@ int main(void) {
 
 #define _XTAL_FREQ 32E6
 
-void __interrupt() RC_ISR_HANDLER(){
-    
-    if(RC1IF && RC1IE){
-        TXREG1 = RCREG1;
-        RC1IF = 0;
-    }
-}
-
 void putch(unsigned char data);
 
 /*--------main--------*/
@@ -115,14 +107,10 @@ int main(void) {
     /*baudrate*/
     SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 11
     
-    RCSTA1bits.SPEN = 1;      // zapnuti UART
-    TXSTA1bits.TXEN = 1;      // zapnuti TX
-    RCSTA1bits.CREN = 1;      // zapnuti RX 
+    RCSTAbits.SPEN = 1;      // zapnuti UART
+    TXSTAbits.TXEN = 1;      // zapnuti TX
+    RCSTAbits.CREN = 1;      // zapnuti RX 
     
-    RC1IE = 1;                // zap  preruseni od RCREG
-    PEIE = 1;                // preruseni od periferii
-    RC1IF = 0;                // nastavim priznak (pro jistotu)
-    GIE = 1;                 // globalni preruseni
     
     while(1){
         __delay_ms(500);
@@ -131,7 +119,7 @@ int main(void) {
 }
 
 void putch(unsigned char data){
-    while(!TX1IF);
+    while(!TXIF);
     TXREG1 = data;
 }
 ```
