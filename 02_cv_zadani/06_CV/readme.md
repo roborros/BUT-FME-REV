@@ -1,6 +1,10 @@
 # REV - Šesté cvičení
 - UART + STDIO
 
+<p align="center">
+  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
+</p>
+
 ## Příklad 6.1:
 - příjem a odeslání znaku
 ```c
