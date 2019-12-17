@@ -144,9 +144,10 @@ void UART_PutStr(char * str);   // vypise retezec az do nuloveho znaku
 
 4) Vytvořte program, který bude načítat znaky z UARTU a ukládat je do pole tak dlouho, než načte znak '.'. Poté znaky pošle v opačném pořadí po UARTu zpět. Využijte funkce z předchozí úlohy.
 
-5) Upravte program d) tak, aby znaky načítal a vysílal pomocí přerušení.
+5) Upravte program tak, aby znaky načítal a vysílal pomocí přerušení.
 
 ```
+Tip:
 v přerušení nepoužívejte busy waiting; tzn. buď upravte funkce v UartIO tak, aby místo čekání vracely chybovou návratovou hodnotu, nebo je nepoužívejte
 nezapomeňte na modifikátor volatile
 ```
