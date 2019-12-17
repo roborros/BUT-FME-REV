@@ -2,7 +2,7 @@
 - UART + STDIO
 
 <p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV/UartScheme.png">
+  <img width="450" height="240" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV/UartScheme.png">
 </p>
 
 ## Příklad 6.1:
