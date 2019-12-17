@@ -90,7 +90,7 @@ void main(void)
 }
 ```
 
-### Zadaní:
+### Zadání:
 
  1) Načítejte hodnoty z potenciometru (vstup AN4) a postupně rozsvicujte jednotlivé LED0-LED5 (bargraph). Použij funkci driveLED.
 
