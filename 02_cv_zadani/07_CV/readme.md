@@ -94,7 +94,8 @@ void main(void)
 
  1) Načítejte hodnoty z potenciometru (vstup AN4) a postupně rozsvicujte jednotlivé LED0-LED5 (bargraph). Použij funkci driveLED.
 
- 2) Vypisujte na UART načítanou 10bitovou hodnotu v celočíselném formátu (cca 1x za sekundu).
+ 2) Vypisujte na UART hodnotu v celočíselném formátu (cca 1x za sekundu), poté hodnotu přepočítanou na napětí a dvě desetiná místa.
 
- 3) Vypisujte POT1 a POT2 na displej. 
+ 3) Vypisujte POT1 a POT2 na displej.
+ 
 
