@@ -105,37 +105,55 @@ int main(void) {
 #pragma config WDTEN = OFF      // Watchdog Timer OFF
 
 #include <xc.h>             //-- pro prekladac XC8
-#include <stdio.h>          //   pro printf
 
 #define _XTAL_FREQ 32E6
 
-void putch(unsigned char data);
+typedef struct
+{
+    char data;
+    char full;
+} mailbox;
 
-/*--------main--------*/
-int main(void) {
-    
+mailbox g_mail = {0,0};
+
+void __interrupt() ISR(void)
+{
+    if(RC1IF & RC1IE)
+    {
+        g_mail.data = RC1REG;
+        g_mail.full = 1;
+        RC1IF = 0;
+    }
+}
+
+void main(void)
+{ 
     ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
     TRISD = 0x00;           // PORTD jako vystup
     TRISCbits.TRISC6 = 0;   // TX pin jako vystup
     TRISCbits.TRISC7 = 1;   // rx pin jako vstup
    
     /*baudrate*/
-    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 11
+    SPBRG1 = 51;            // (32_000_000 / (64 * 9600)) - 1
     
-    RCSTA1bits.SPEN = 1;      // zapnuti UART
-    TXSTA1bits.TXEN = 1;      // zapnuti TX
-    RCSTA1bits.CREN = 1;      // zapnuti RX 
+    RCSTA1bits.SPEN = 1;    // zapnuti UART
+    TXSTA1bits.TXEN = 1;    // zapnuti TX
+    RCSTA1bits.CREN = 1;    // zapnuti RX 
     
+    RC1IE = 1;              // zap  preruseni od RCREG
+    PEIE = 1;               // preruseni od periferii
+    RC1IF = 0;              // nastavim priznak (pro jistotu)
+    GIE = 1;                // globalni preruseni
     
-    while(1){
-        __delay_ms(500);
-        printf("ahoj");
+    while(1)
+    {
+        if(g_mail.full)
+        {
+            while(!TX1IF);
+            TXREG = g_mail.data;
+            g_mail.full = 0;
+        }
     }
-}
-
-void putch(unsigned char data){
-    while(!TX1IF);
-    TXREG1 = data;
 }
 ```
 ### Zadání:
