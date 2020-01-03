@@ -94,7 +94,7 @@ int main(void) {
 - mailbox 
 
 <p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
+  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV/mailbox.png">
 </p>
 
 ```c
