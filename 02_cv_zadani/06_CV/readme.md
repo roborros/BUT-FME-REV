@@ -54,7 +54,6 @@ int main(void) {
 #pragma config WDTEN = OFF      // Watchdog Timer OFF
 
 #include <xc.h>                 // pro prekladac XC8
-#include <stdio.h>              // pro printf
 
 #define _XTAL_FREQ 32E6
 
@@ -92,6 +91,12 @@ int main(void) {
 }
 ```
 ## Příklad 6.3:
+- mailbox 
+
+<p align="center">
+  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
+</p>
+
 ```c
 // uart
 #pragma config FOSC = HSMP      // Externi oscilator
