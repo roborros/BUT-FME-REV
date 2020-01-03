@@ -156,7 +156,7 @@ void main(void)
     }
 }
 ```
-## Příklad 6.3:
+## Příklad 6.4:
 - STDIO
 
 ```c
