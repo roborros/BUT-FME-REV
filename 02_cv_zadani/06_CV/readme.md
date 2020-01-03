@@ -156,6 +156,51 @@ void main(void)
     }
 }
 ```
+## Příklad 6.3:
+- STDIO
+
+```c
+// uart
+#pragma config FOSC = HSMP      // Externi oscilator
+#pragma config PLLCFG = ON      // 4X PLL 
+#pragma config FCMEN = ON       // Fail-Safe Clock 
+#pragma config WDTEN = OFF      // Watchdog Timer OFF
+
+#include <xc.h>             //-- pro prekladac XC8
+#include <stdio.h>          //   pro printf
+
+#define _XTAL_FREQ 32E6
+
+void putch(unsigned char data);
+
+/*--------main--------*/
+int main(void) {
+    
+    ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
+    TRISD = 0x00;           // PORTD jako vystup
+    TRISCbits.TRISC6 = 0;   // TX pin jako vystup
+    TRISCbits.TRISC7 = 1;   // rx pin jako vstup
+   
+    /*baudrate*/
+    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
+    
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    RCSTA1bits.CREN = 1;      // zapnuti RX 
+    
+    
+    while(1){
+        __delay_ms(500);
+        printf("ahoj");
+    }
+}
+
+void putch(unsigned char data){
+    while(!TX1IF);
+    TXREG1 = data;
+}
+```
+
 ### Zadání:
 
  1) Nahrejte a rozchodte ukazky 1 a 2.
