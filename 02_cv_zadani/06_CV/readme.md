@@ -114,7 +114,7 @@ typedef struct
     char full;
 } mailbox;
 
-mailbox g_mail = {0,0};
+volatile mailbox g_mail = {0,0};
 
 void __interrupt() ISR(void)
 {
