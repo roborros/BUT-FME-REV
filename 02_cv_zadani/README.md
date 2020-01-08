@@ -8,8 +8,9 @@
 * 06--UART
 * 07--ADC
 * 08--PWM
+* 09--Stavové automaty FSM
+* 10--Matematika Fixed Step
 
 
 Náměty na úpravy posílejte na mailMBa nebo mailMBr, nebo lépe zadávejte jako issue nebo rovnou pull request.
-
 
