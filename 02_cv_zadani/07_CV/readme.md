@@ -96,6 +96,6 @@ void main(void)
 
  2) Vypisujte na UART hodnotu v celočíselném formátu (cca 1x za sekundu).
 
- 3) Vypisujte POT1 a POT2 na displej.
+ 3) Vypisujte POT1 a POT2 na displej (použijte knihovnu pro LCD).
  
 
