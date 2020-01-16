@@ -10,7 +10,7 @@
 - po naprogramování procesoru nastavte program Termite a sledujte zprávy, které PIC zasílá do PC (comport může nabývat různých hodnot)
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/Termite.png">
 </p>
 
 ## Příklad 1.1
