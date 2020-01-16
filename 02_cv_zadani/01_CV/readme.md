@@ -120,3 +120,9 @@ int main(void) {
 <p align="center">
   <img width="800" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/Debugging.png">
 </p>
+
+- zahajeni debuggingu
+- krokování
+- breakpointy
+- disassembly
+- sledování registrů a proměnných
