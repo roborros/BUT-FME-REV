@@ -1,6 +1,13 @@
 # REV - První cvičení
 - Seznamme se s vývojovým prostředím MPLAB. Stahněte ukázkový projekt, zkompilujte jej a nahrajte do MCU.
 - Prostředí pracuje pouze s hlavním projektem, ten je zvýrazněn a lze jej přepínat.
+- .c soubory naleznete v záložce source files. Připomeňme si, že funkce main() může existovat v projektu pouze jednou. Soubory lze do překladu zahrnout/vyřadit pomocí exclude/include file.
+
+<p align="center">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
+</p>
+
+- po naprogramování procesoru nastavte program Termite a sledujte zprávy, které PIC zasílá do PC (comport může nabývat různých hodnot)
 
 <p align="center">
   <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
