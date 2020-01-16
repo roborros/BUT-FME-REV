@@ -1,5 +1,6 @@
 # REV - První cvičení
 - Seznamme se s vývojovým prostředím MPLAB. Stahněte ukázkový projekt, zkompilujte jej a nahrajte do MCU.
+- Prostředí pracuje pouze s hlavním projektem, ten je zvýrazněn a lze jej přepínat.
 ## Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count a binárně bliká třemi LEDkami. 
 ```c
