@@ -1,6 +1,8 @@
 # REV - Druhé cvičení
-- Dnes se naučíme používat funkce a hlavičkové soubory.
+- Funkce() hlavičkové soubory
+
 ## Úloha 2.1
+
 ### Vytvořte funkci: 
   1) int smysl_zivota(void) – vrátí číslo 42
   2) int mean(int a, int b, int c) – vrátí průměr hodnot a, b a c
@@ -8,12 +10,7 @@
   4) void nasobilka(int x, int n) – vytiskne n prvních násobků čísla x
   5) int next() – první a druhé volání funkce vrátí 1, každý další člen Fibonacciho posloupnosti (využijte statickou lokální proměnnou)
 
-  6) vytvořte sadu funkcí, kde všechny funkce načítají tři parametry typu double a interpretuje je jako strany trojúhelníka:
-    tr_ok() – vrací 1 pokud jsou strany platné
-    tr_obvod() – vrací obvod trojúhelníka, pokud není platný vrací -1;
-    tr_plocha() – vrací plochu trojúhelníka, pokud není platný vrací -1;
-
-Funkcionalitu ověřte na vhodném testovacím programu. 
+Funkcionalitu ověřte na vhodném testovacím programu. Pracujte s kopii projektu REV_basic
 
 ## Úloha 2.2
 
