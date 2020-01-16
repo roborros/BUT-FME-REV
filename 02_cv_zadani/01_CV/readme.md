@@ -16,18 +16,18 @@
 ## Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count a binárně bliká třemi LEDkami. 
 ```c
+// REV-Basic 2018
+#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
+#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <xc.h>
  
 #include "rev-basic.h"
-#include "simdelay.h"
- 
-#pragma config WDTEN = OFF
-#pragma config FOSC = INTIO7
-#pragma config MCLRE = EXTMCLR
-#pragma config FCMEN = ON
  
 void main(void) {
     char count = 0;
@@ -36,7 +36,7 @@ void main(void) {
  
     REV_init();
  
-    while(1){
+    for(;;){
         count++;
  
         REV_led(1,count & 1);
@@ -45,14 +45,14 @@ void main(void) {
  
         printf("count: %d (0x%x) (%c)\n",count,count,a);
  
-        DelayMs(100);
+        __delay_ms(100);
     }
 }
 ```
 
 ## Úloha 1.2
 
-* Další důležitou strukturou jsou cykly. Příklad využití cyklu while: 
+* Příklad využití cyklu while: 
 ```c
 // plny nazev promenne
 int cislo = 10;
