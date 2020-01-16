@@ -1,5 +1,5 @@
 # REV - První cvičení
-- Seznamme se s vývojovým prostředím MPLAB. Stahněte ukázkový projekt, zkompilujte jej a nahrajte do MCU.
+- Seznamme se s vývojovým prostředím MPLAB. Stahněte ukázkový projekt REV_basic, zkompilujte jej a nahrajte do MCU.
 - Prostředí pracuje pouze s hlavním projektem, ten je zvýrazněn a lze jej přepínat.
 - .c soubory naleznete v záložce source files. Připomeňme si, že funkce main() může existovat v projektu pouze jednou. Soubory lze do překladu zahrnout/vyřadit pomocí exclude/include file.
 
