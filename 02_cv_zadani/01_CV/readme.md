@@ -3,7 +3,7 @@
 - Prostředí pracuje pouze s hlavním projektem, ten je zvýrazněn a lze jej přepínat.
 
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
 </p>
 
 ## Příklad 1.1
