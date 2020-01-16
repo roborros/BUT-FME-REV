@@ -126,3 +126,4 @@ int main(void) {
 - breakpointy
 - disassembly
 - sledování registrů a proměnných
+- optimalizace
