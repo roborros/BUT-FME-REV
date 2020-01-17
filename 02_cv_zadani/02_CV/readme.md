@@ -43,28 +43,25 @@ Rekurzivní volání funkce není ve výchozím nastavení XC8 podporováno. Pro
  
 #include "rev-basic.h"
  
-long factorial(int n);
+long sum(int n);
 
 void main(void) {
-    char count = 0;
-    int i;
-    char a = 'x';
- 
+
     REV_init();
  
     for(;;){
-        int n = 6;
-        printf("Factorial %d je: %ld\n", n, factorial(n));
+        int n = 31;
+        printf("Suma %d je: %ld\n", n, sum(n));
 
         __delay_ms(500);
     }
 }
 
-long factorial(int n) {
-    if (n>=1)
-        return n*factorial(n-1);
+long sum(int n) {
+    if (n!=0)
+        return n + sum(n-1);
     else
-        return 1;
+        return n;
 }
 ```
 ### Úkol
