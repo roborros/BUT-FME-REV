@@ -25,3 +25,45 @@ Nezapomeňte:
     pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Rebuild all”
 ```
 2) Upravte funkce tr_ok(), tr_plocha() a tr_obvod() tak, aby si modul tr.c “zapamatoval” celkový počet volání funkcí knihovny tr.c. Využijte globální proměnnou, definovanou v modulu tr.c.
+
+## Rekurze:
+Rekurzivní volání funkce není defaultně v XC8 podporováno. Problém souvisí s implementací zásobníku tzv. STACK. Pro zprovozněnní následujícího kódu je třeba povolit softwerovou implementaci zásobníku v nastavení kompilátoru. 
+
+```c
+// REV-Funkce
+#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
+#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <xc.h>
+ 
+#include "rev-basic.h"
+ 
+long multiplyNumbers(int n);
+
+void main(void) {
+    char count = 0;
+    int i;
+    char a = 'x';
+ 
+    REV_init();
+ 
+    for(;;){
+        int n = 6;
+        printf("Factorial %d je: %ld\n", n, multiplyNumbers(n));
+
+        __delay_ms(500);
+    }
+}
+
+long multiplyNumbers(int n) {
+    if (n>=1)
+        return n*multiplyNumbers(n-1);
+    else
+        return 1;
+}
+```
