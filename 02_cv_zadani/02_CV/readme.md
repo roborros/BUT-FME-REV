@@ -43,7 +43,7 @@ Rekurzivní volání funkce není defaultně v XC8 podporováno. Problém souvis
  
 #include "rev-basic.h"
  
-long multiplyNumbers(int n);
+long factorial(int n);
 
 void main(void) {
     char count = 0;
@@ -54,15 +54,15 @@ void main(void) {
  
     for(;;){
         int n = 6;
-        printf("Factorial %d je: %ld\n", n, multiplyNumbers(n));
+        printf("Factorial %d je: %ld\n", n, factorial(n));
 
         __delay_ms(500);
     }
 }
 
-long multiplyNumbers(int n) {
+long factorial(int n) {
     if (n>=1)
-        return n*multiplyNumbers(n-1);
+        return n*factorial(n-1);
     else
         return 1;
 }
