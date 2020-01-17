@@ -27,7 +27,7 @@ Nezapomeňte:
 2) Upravte funkce tr_ok(), tr_plocha() a tr_obvod() tak, aby si modul tr.c “zapamatoval” celkový počet volání funkcí knihovny tr.c. Využijte globální proměnnou, definovanou v modulu tr.c.
 
 ## Rekurze:
-Rekurzivní volání funkce není defaultně v XC8 podporováno. Problém souvisí s implementací zásobníku tzv. STACK. Pro zprovozněnní následujícího kódu je třeba povolit softwerovou implementaci zásobníku v nastavení kompilátoru. 
+Rekurzivní volání funkce není ve výchozím nastavení XC8 podporováno. Problém souvisí s implementací zásobníku tzv. STACK. Pro zprovoznění následujícího kódu, je třeba povolit softwerovou implementaci zásobníku v nastavení kompilátoru. 
 
 ```c
 // REV-Funkce
