@@ -6,7 +6,7 @@
 ### Vytvořte funkci: 
   1) int smysl_zivota(void) – vrátí číslo 42
   2) int mean(int a, int b, int c) – vrátí průměr hodnot a, b a c
-  3) int fakt(int n), která vypočítá hodnotu faktoriálu z čísla n; využijte rekurze
+  3) int fakt(int n), která vypočítá hodnotu faktoriálu z čísla n;
   4) void nasobilka(int x, int n) – vytiskne n prvních násobků čísla x
   5) int next() – první a druhé volání funkce vrátí 1, každý další člen Fibonacciho posloupnosti (využijte statickou lokální proměnnou)
 
