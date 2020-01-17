@@ -67,3 +67,5 @@ long factorial(int n) {
         return 1;
 }
 ```
+### úkol
+  1) Upravte program pro výpočet součtu přirozených čísel namísto faktoriálu (rekurzivně).
