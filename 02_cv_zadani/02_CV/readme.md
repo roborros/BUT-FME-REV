@@ -29,6 +29,8 @@ Nezapomeňte:
 ## Rekurze:
 Rekurzivní volání funkce není ve výchozím nastavení XC8 podporováno. Problém souvisí s implementací zásobníku tzv. STACK. Pro zprovoznění následujícího kódu, je třeba povolit softwerovou implementaci zásobníku v nastavení kompilátoru. 
 
+Je na místě zapamatovat si, že rekurze často vede k velmi elegantní implementaci poměrně složitých problémů, ale je také více náročna na zdroje. V emebded systémech to není nejlepší cesta. Implementace pomocí cyklů, bude také vždy rychlejší.
+
 ```c
 // REV-Funkce
 #pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
@@ -65,4 +67,4 @@ long sum(int n) {
 }
 ```
 ### Úkol
-  1) Upravte program pro výpočet součtu přirozených čísel namísto faktoriálu (rekurzivně).
+  1) Upravte program tak, že vypočítate faktorial n!. (Použijte zase rekurzi)
