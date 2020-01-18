@@ -14,7 +14,7 @@ Funkcionalitu ověřte na vhodném testovacím programu. Pracujte s kopii projek
 
 ## Úloha 2.2
 
-1) Z předchozí úlohy 6) vytvořte knihovnu fun.c a příslušný hlavičkový soubor fun.h.
+1) Z předchozí úlohy vytvořte knihovnu fun.c a příslušný hlavičkový soubor fun.h.
 
   V hlavním souboru main.c načtěte hlavičkový soubor fun.h
 
