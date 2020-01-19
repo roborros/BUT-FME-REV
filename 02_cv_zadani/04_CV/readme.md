@@ -12,7 +12,7 @@
 </p>
 
 ## Prace s registry SFR:
-K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy je třeba vypnout analogové funkce pomocí ANSELx). Zápisem, nebo čtením těchto registrů můžeme ovladat/zjistit stav periferie. V C pro překladač XC8 můžeme použít adresu v paměti na které se příslušný registr nachazí. Používá se zípis volatile int "mujnazev" __at("adresa"). Slovicko volatile je pokyn pro překladač, který vyloženě zakazuje optimalizace teto proměnné (bude dále diskutováno v dalších cvičeních). S proměnou se pak pracuje jako ovykle lze ji nastavovat i číst. Záleží na konkrétních vlastnostech příslušného registru. U GPIO slouží např. registr LATx pro zápis na pin, naopak registr PORTx ke čtení stavu pinu.  
+K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy je třeba vypnout analogové funkce pomocí ANSELx). Zápisem, nebo čtením těchto registrů můžeme ovladat/zjistit stav periferie. V C pro překladač XC8 můžeme použít adresu v paměti na které se příslušný registr nachazí. Používá se zápis volatile int "mujnazev" __at("adresa"). Slovicko volatile je pokyn pro překladač, který vyloženě zakazuje optimalizace teto proměnné (bude dále diskutováno v dalších cvičeních). S proměnou se pak pracuje jako ovykle lze ji nastavovat i číst. Záleží na konkrétních vlastnostech příslušného registru. U GPIO slouží např. registr LATx pro zápis na pin, naopak registr PORTx ke čtení stavu pinu.  
 
 - Registry LATx (bity odpovídají jednotlivým pinům):
 
