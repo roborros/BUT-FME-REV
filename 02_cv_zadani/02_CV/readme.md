@@ -51,7 +51,7 @@ void main(void) {
     REV_init();
  
     for(;;){
-        int n = 31;
+        int n = 10;
         printf("Suma %d je: %ld\n", n, sum(n));
 
         __delay_ms(500);
