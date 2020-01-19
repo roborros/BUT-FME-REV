@@ -25,7 +25,15 @@ Nezapomeňte:
     pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Rebuild all”
 ```
 
-## Rekurze:
+## Úloha 2.3
+
+### Vytvořte funkci: 
+  1) vytvořte funkci long decToBin(int), která převede desítkové číslo na binarní (tedy 11dec je 1011b).
+  2) vytvořte funkci, která ověří, že je číslo prvočíslem.
+  3) vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
+
+
+## Úloha 2.4: Rekurze:
 Rekurzivní volání funkce není ve výchozím nastavení XC8 podporováno. Problém souvisí s implementací zásobníku tzv. STACK. Pro zprovoznění následujícího kódu, je třeba povolit softwerovou implementaci zásobníku v nastavení kompilátoru. 
 
 Je na místě zapamatovat si, že rekurze často vede k velmi elegantní implementaci poměrně složitých problémů, ale je také více náročna na zdroje. V emebdded systémech to není nejlepší cesta. Implementace pomocí cyklů, bude také často rychlejší.
