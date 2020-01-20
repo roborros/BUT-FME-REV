@@ -73,7 +73,7 @@ void __interrupt() T1_ISR_HANDLER(void){
      
     if (TMR1IF && TMR1IE ){         // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)             
         LED ^= 1;
-        TMR1 = DELAY;               // nastaveni registru timeru (preruseni vzvolava preteceni registru)
+        TMR1 = DELAY;               // nastaveni registru timeru (preruseni vyvolava preteceni registru)
         TMR1IF = 0;                 // smazani IF jinak nedojde k dalsimu zavolani (bezpecnostni prvek)
     }
 }
