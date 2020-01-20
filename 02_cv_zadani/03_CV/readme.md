@@ -81,6 +81,10 @@ int *max1(int *a, int* b){
 }
 ```
  ### Program demonstruje základní rysy práce s ukazateli-pointery. Povšimněte si:
+ 
+```
+Poznámka: pozor na nastavení programu termit, především na automativké přidání znaku.
+```
 
    1) ukazatel se definuje jako proměnná, pouze se syntaktickou hvezdičkou navíc: int *p_i;
    2) operátorem reference & se získá adresa proměnné: p_i = &a;
