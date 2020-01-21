@@ -191,7 +191,7 @@ int main(void) {
     
     while(1){
         __delay_ms(500);
-        printf("ahoj");
+        printf("ahoj\n");
     }
 }
 
