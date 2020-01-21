@@ -26,7 +26,7 @@ int main(void) {
     
     ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
     TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 0;   // TX pin jako vystup
+    TRISCbits.TRISC6 = 1;   // TX pin jako vystup
     TRISCbits.TRISC7 = 1;   // RX pin jako vstup
     
     /*baudrate*/
@@ -70,7 +70,7 @@ int main(void) {
     
     ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
     TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 0;   // TX pin jako vystup
+    TRISCbits.TRISC6 = 1;   // TX pin jako vystup
     TRISCbits.TRISC7 = 1;   // rx pin jako vstup
    
     /*baudrate*/
@@ -130,7 +130,7 @@ void main(void)
 { 
     ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
     TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 0;   // TX pin jako vystup
+    TRISCbits.TRISC6 = 1;   // TX pin jako vystup
     TRISCbits.TRISC7 = 1;   // rx pin jako vstup
    
     /*baudrate*/
@@ -178,7 +178,7 @@ int main(void) {
     
     ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
     TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 0;   // TX pin jako vystup
+    TRISCbits.TRISC6 = 1;   // TX pin jako vystup
     TRISCbits.TRISC7 = 1;   // rx pin jako vstup
    
     /*baudrate*/
