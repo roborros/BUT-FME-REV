@@ -1,66 +1,13 @@
 
+
 #include <xc.h>
 #include "rev-basic.h"
-
 #include "lcd.h"
-
-
-
 
 void REV_init(void){
     char dummy_char;
     int dummy_int;
     
-
-    OSCCON = (unsigned char)((OSCCON & 0b10001111) | 0b01110000);    // internal oscillator at full speed (16 MHz)
-    
-//    // IO
-//    TRISA = 0b11111111; // all inputs
-//    ANSELA = 0b00000011;// ADC0 and ADC1 are analog inputs
-//    
-//    
-//    TRISB = 0b11111111; // five buttons in + unused + PGC, PGD
-//    LATB = 0xff;        // pull-up by default
-//    ANSELB = 0;         // no ADC inputs
-//    
-//    TRISC = 0b10000001; // RC4 LED
-//    ANSELC = 0;
-//    
-//    TRISD = 0b10000011; // LEDs: 2..6 out
-//    LATD = 0b00000000;
-//    ANSELD = 0;
-//    
-//    TRISAbits.RA5 = 1;
-//    
-//    ADON = 1;
-//    ADCON1 = 0;
-//    ADCON2 = ADCON2 | 0b00110101;     // holding cap is connected 16 cycles before sampling, freq = osc/16
-//    
-//    ADCON2bits.ADFM = 1;
-//    ADCON2bits.ADCS = 0b101;
-//    ADCON0bits.ADON = 1;    // set ADC ON
-//    
-//    //TRISE = 0b00000011; // EXTRA = in, RE2 is out (LCD backlight control))
-//    //LATE = 0b00000100;
-//    //ANSELE = 0;
-//    
-//    // UART 1 (USB)
-//    //SPBRG = ((16000000 / 9600) / 64 ) - 1;
-//    SPBRG = 25;
-//    TXSTA1 = 0b00100000;
-//    RCSTA1 = 0b10010000;
-//    
-//    // dummy reads
-//    dummy_int = REV_pot(1);
-//    //dummy_char = getche();
-//    //dummy_char = getch();
-//    
-    
-    
-    
-    // INIT
-    
-    // LEDs
     TRISDbits.RD2 = 0;
     TRISDbits.RD3 = 0;
     TRISCbits.RC4 = 0;
@@ -71,6 +18,7 @@ void REV_init(void){
     ANSELDbits.ANSD2 = 0;
     ANSELDbits.ANSD3 = 0;
     ANSELCbits.ANSC4 = 0;
+    ANSELCbits.ANSC7 = 0;
     ANSELDbits.ANSD4 = 0;
     ANSELDbits.ANSD5 = 0;
     ANSELDbits.ANSD6 = 0;
@@ -87,6 +35,8 @@ void REV_init(void){
     TRISAbits.RA4 = 1;
     TRISAbits.RA3 = 1;
     TRISAbits.RA2 = 1;
+    
+    TRISCbits.RC7 = 1;
 
 
     ANSELAbits.ANSA3 = 0;
@@ -108,40 +58,20 @@ void REV_init(void){
     ADCON0bits.ADON = 1;    // set ADC ON
     
     //UART
-    TRISCbits.RC6 = 0; // TX
-    TRISCbits.RC7 = 1; // RX
+    /*baudrate*/
+    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 11
     
-    
-    TXSTA1 = 0b00100000;
-    RCSTA1 = 0b10010000;
-    BAUDCON1bits.BRG16 = 1;
-    TXSTA1bits.BRGH = 1;
-                   
-            
-    
-    SPBRG = 34;  //SPBRG = ((16000000 / 115200) / 4 ) - 1;
-    
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    RCSTA1bits.CREN = 1;      // zapnuti RX 
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
     
     // LCD
     LCD_Init();
     
-    
-    // dummy calls to avoid "function not called" warnings
-    dummy_char = REV_btn(1);
-    REV_led(1,1);
-    putch('a');
-    dummy_int = REV_pot(1);
-    
 }
 
-
 int REV_pot(unsigned char adc_id){
-    int result;
-    
-//    CHS4 = CHS3 = CHS2 = CHS1 = 0;
-//    CHS0 = adc_id + 3;
-    
-    
+ 
     switch(adc_id){
         case 1: 
             ADCON0bits.CHS = 0b00100;
@@ -156,13 +86,10 @@ int REV_pot(unsigned char adc_id){
     GODONE = 1;
     while (GODONE);
     
-    result = (ADRESH << 8) | ADRESL;
-    
-    return result;
+    return ((ADRESH << 8) | ADRESL); 
 }
 
 char REV_btn(char id){
-    // BTN1-4 : C0 A4 A3 A2
     
     char btn_state;
     
@@ -183,8 +110,7 @@ char REV_btn(char id){
             break;
     }
     
-    __delay_ms(2);
-    
+    __delay_ms(5);
     
     switch(id){
         case 1:
@@ -203,9 +129,7 @@ char REV_btn(char id){
             break;
     }
     
-    return btn_state;
-    
-    
+    return btn_state;  
 }
 
 void REV_led(char id, char state){
@@ -245,7 +169,7 @@ void REV_led(char id, char state){
 
 void putch (char c){
     // blocking
-    while(!TRMT1);
+    while(!TX1IF);
     // put char
     TXREG1 = c;
 }
