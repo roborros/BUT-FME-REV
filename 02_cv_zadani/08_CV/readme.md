@@ -42,12 +42,12 @@ Programová inicializace PWM LEDkami:
 #define LED6    LATDbits.LATD6
  
 void driveLED(char in){
-        LATD2 = in & 1; asm("nop"); //LED0
-        LATD3 = in & 2 ? 1 : 0; asm("nop"); //LED1
-        LATC4 = in & 4 ? 1 : 0; asm("nop"); //LED2
-        LATD4 = in & 8 ? 1 : 0; asm("nop"); //LED3
-        LATD5 = in & 16 ? 1 : 0; asm("nop"); //LED4
-        LATD6 = in & 32 ? 1 : 0; asm("nop"); //LED5
+        LATD2 = in & 1; asm("nop"); //LED1
+        LATD3 = in & 2 ? 1 : 0; asm("nop"); //LED2
+        LATC4 = in & 4 ? 1 : 0; asm("nop"); //LED3
+        LATD4 = in & 8 ? 1 : 0; asm("nop"); //LED4
+        LATD5 = in & 16 ? 1 : 0; asm("nop"); //LED5
+        LATD6 = in & 32 ? 1 : 0; asm("nop"); //LED6
 }
  
 void main(void) {
