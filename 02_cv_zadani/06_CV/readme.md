@@ -203,9 +203,9 @@ void putch(unsigned char data){
 
 ### Zadání:
 
- 1) Nahrejte a rozchodte ukazky 1 a 2.
+ 1) Nahrejte a rozchodte ukazky 6.1 až 6.4.
 
- 2) Vytvorte sadu funkci, ktera vytvori vrstvu pro znakovy vstup/vystup. Osetrete cekani na plny buffer a pripadne overrun 
+ 2) Vytvořte sadu funkcí, která vytvoří vrstvu pro znakový vstup/vystup. Ošetřete čekání na plný buffer a případné overrun 
  chyby. 
  
  ```c
@@ -214,7 +214,7 @@ void UART_PutChar(int c);       // vypise jeden znak
 int UART_CharAvailable();       // vrati nenulovou hodnotu prave kdyz je alespon jeden znak k dispozici pro cteni
 void UART_PutStr(char * str);   // vypise retezec az do nuloveho znaku
  ```
-3) Vytvorte funkci int UART_Init(), do ktere presunte inicializacni kod. Spolecne s funkcemi z c) vytvorte knihovnu “UartIO.c” a k ni prislusny hlavickovy soubor “UartIO.h”
+3) Vytvořte funkci int UART_Init(), do které přesunte inicializační kód. Společně s funkcemi z 2. vytvořte knihovnu “UartIO.c” a k ní příslušný hlavičkový soubor “UartIO.h”
 
 4) Vytvořte program, který bude načítat znaky z UARTU a ukládat je do pole tak dlouho, než načte znak '.'. Poté znaky pošle v opačném pořadí po UARTu zpět. Využijte funkce z předchozí úlohy.
 
