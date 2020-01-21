@@ -1,5 +1,4 @@
 
-
 #include <xc.h>
 #include "rev-basic.h"
 #include "lcd.h"
@@ -36,7 +35,8 @@ void REV_init(void){
     TRISAbits.RA3 = 1;
     TRISAbits.RA2 = 1;
     
-    TRISCbits.RC7 = 1;
+    TRISCbits.TRISC6 = 1;   // TX pin jako vystup
+    TRISCbits.TRISC7 = 1;   // RX pin jako vstup
 
 
     ANSELAbits.ANSA3 = 0;
