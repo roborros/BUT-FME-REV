@@ -20,8 +20,8 @@
 
 Programová inicializace ADC:
 ```c
-    ANSELA = 0b00100000;            //AN4
-    ANSELE = 0b1;                   //AN5
+    ANSELA = 0b00100000;            //AN4 (RA5)
+    ANSELE = 0b1;                   //AN5 (RE0)
  
     ADCON2bits.ADFM = 1;            //left justified
     ADCON2bits.ADCS = 0b110;        //Fosc/64
