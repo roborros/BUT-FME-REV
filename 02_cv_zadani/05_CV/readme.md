@@ -50,7 +50,7 @@ Přerušení je opravdu důležitý koncept v embedded systémech. Přerušení 
 
 ```
 Poznamka:
-K vyvolání přerušení, tedy změna interrupt flag TMRxIF dijde v návaznosti na přetečení čítače, tedy pro 16bit je to mezi        hodnotou 65535 65536.
+K vyvolání přerušení, tedy změna interrupt flag TMRxIF dijde v návaznosti na přetečení čítače, tedy pro 16bit je to mezi hodnotou 65535 65536.
 ```
 
 ### Důležité nastavení SFR:
