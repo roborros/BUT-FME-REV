@@ -50,7 +50,7 @@ Přerušení je opravdu důležitý koncept v embedded systémech. Přerušení 
 
 ```
 Poznamka:
-K vyvolání přerušen9 dojde v návaznosti na přetečení čítače, tedy pro 16bit je to mezi hodnotou 65535 65536.
+K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pro 16bit je to mezi hodnotou 65535 65536.
 ```
 
 ### Důležité nastavení SFR:
