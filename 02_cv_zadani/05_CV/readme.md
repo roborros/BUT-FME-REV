@@ -48,6 +48,11 @@ void main(void) {
 ## Příklad 5.2:
 Přerušení je opravdu důležitý koncept v embedded systémech. Přerušení dovoluje procesoru přerušit současný program, vykonat jiný (kratký) a vratit se zpět. Tato přerušení mohou vyvolávat různé události. Může ho vyvolat TIMER, příchod dat na sběrnici, stisk tlačítka a jiné. Přerušení se zapisuje v XC8 podobně jako funkce. Má však několik specifik. V první řadě je to vždy void...void funkce. Přerušení vyvolává jiný mechanismus a tuto funkci nemůže používat programátor jako běžnou funkci. Zapis v xc8 je např. void __interrupt() muj_ISR(void). Za muj_ISR si můžete dosadit název. PIC18F46K22 nemá tzv. interrupt vector. Zavádí pouze dvě priority přerušení low a high. Mohu tedy v programu napsat 2xISR(). V přerušení potom testuji příznaky IF.
 
+```
+Poznamka:
+    K vyvolání přerušení, tedy změna interrupt flag TMRxIF dijde v návaznosti na přetečení čítače, tedy pro 16bit je to mezi hodnotou 65535 65536.
+```
+
 ### Důležité nastavení SFR:
 * GIE - zapnutí přerušení globálně (Global Interrupt Enable)
 * PEIE - zapnutí přerušení od periferii (Peripheral Interrupt Enable)
