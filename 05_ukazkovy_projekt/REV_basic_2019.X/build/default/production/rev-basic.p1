@@ -1,7 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"16046 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"8737
+"8737 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
 [s S408 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S408 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
 "8747
@@ -137,36 +135,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S642 . . . . . . . . . ]
 "13656
 [v _ADCON0bits `VS642 ~T0 @X0 0 e@4034 ]
-"10835
-[v _TXSTA1 `Vuc ~T0 @X0 0 e@4012 ]
-"10379
-[v _RCSTA1 `Vuc ~T0 @X0 0 e@4011 ]
-"12427
-[s S584 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S584 . ABDEN WUE . BRG16 CKTXP DTRXP RCIDL ABDOVF ]
-"12437
-[s S585 :4 `uc 1 :1 `uc 1 ]
-[n S585 . . SCKP ]
-"12441
-[s S586 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S586 . ABDEN1 WUE1 . BRG161 SCKP1 DTRXP1 RCIDL1 ABDOVF1 ]
-"12451
-[s S587 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S587 . . TXCKP RXDTP RCMT ]
-"12457
-[s S588 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S588 . . TXCKP1 RXDTP1 RCMT1 ]
-"12463
-[s S589 :5 `uc 1 :1 `uc 1 ]
-[n S589 . . RXCKP ]
-"12467
-[s S590 :1 `uc 1 :1 `uc 1 ]
-[n S590 . . W4E ]
-"12426
-[u S583 `S584 1 `S585 1 `S586 1 `S587 1 `S588 1 `S589 1 `S590 1 ]
-[n S583 . . . . . . . . ]
-"12472
-[v _BAUDCON1bits `VS583 ~T0 @X0 0 e@4024 ]
+"11366
+[v _SPBRG1 `Vuc ~T0 @X0 0 e@4015 ]
 "10850
 [s S498 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S498 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
@@ -181,19 +151,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S497 . . . . ]
 "10876
 [v _TXSTA1bits `VS497 ~T0 @X0 0 e@4012 ]
-"11371
-[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"10394
+[s S477 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S477 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"10404
+[s S478 :3 `uc 1 :1 `uc 1 ]
+[n S478 . . ADEN ]
+"10408
+[s S479 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S479 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
+"10418
+[s S480 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S480 . RCD8 . RC8_9 ]
+"10423
+[s S481 :6 `uc 1 :1 `uc 1 ]
+[n S481 . . RC9 ]
+"10427
+[s S482 :5 `uc 1 :1 `uc 1 ]
+[n S482 . . SRENA ]
+"10393
+[u S476 `S477 1 `S478 1 `S479 1 `S480 1 `S481 1 `S482 1 ]
+[n S476 . . . . . . . ]
+"10432
+[v _RCSTA1bits `VS476 ~T0 @X0 0 e@4011 ]
 "11 lcd.h
 [v _LCD_Init `(v ~T0 @X0 0 ef ]
-"12 rev-basic.h
-[v _REV_btn `(uc ~T0 @X0 0 ef1`uc ]
-"11
-[v _REV_led `(v ~T0 @X0 0 ef2`uc`uc ]
-"14
-[v _putch `(v ~T0 @X0 0 ef1`uc ]
-"10
-[v _REV_pot `(i ~T0 @X0 0 ef1`uc ]
-"18506 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h
+"18506 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
 [v _GODONE `Vb ~T0 @X0 0 e@32273 ]
 "13763
 [v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
@@ -270,10 +253,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "6365
 [v _PORTAbits `VS326 ~T0 @X0 0 e@3968 ]
 [v F5818 `(v ~T0 @X0 1 tf1`ul ]
-"183 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18.h
+"187 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h
 [v __delay `JF5818 ~T0 @X0 0 e ]
 [p i __delay ]
-"18818 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h
+"18818 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
 [v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
 "18821
 [v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
@@ -285,8 +268,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATD5 `Vb ~T0 @X0 0 e@31845 ]
 "18830
 [v _LATD6 `Vb ~T0 @X0 0 e@31846 ]
-"20552
-[v _TRMT1 `Vb ~T0 @X0 0 e@32097 ]
+"20585
+[v _TX1IF `Vb ~T0 @X0 0 e@31988 ]
 "11210
 [v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
 "19457
@@ -297,7 +280,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f46k22.h: 52: extern volatile unsigned char ANSELA __at(0xF38);
-"54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h
+"54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
 [; ;pic18f46k22.h: 54: asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
 [; ;pic18f46k22.h: 57: typedef union {
@@ -6848,14 +6831,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 18: __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 [; ;pic18.h: 19: __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 [; ;pic18.h: 50: extern void __nop(void);
-[; ;pic18.h: 154: __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
-[; ;pic18.h: 155: __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
-[; ;pic18.h: 156: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
-[; ;pic18.h: 174: unsigned char __t1rd16on(void);
-[; ;pic18.h: 175: unsigned char __t3rd16on(void);
-[; ;pic18.h: 183: extern __nonreentrant void _delay(unsigned long);
-[; ;pic18.h: 185: extern __nonreentrant void _delaywdt(unsigned long);
-[; ;pic18.h: 187: extern __nonreentrant void _delay3(unsigned char);
+[; ;pic18.h: 158: __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
+[; ;pic18.h: 159: __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
+[; ;pic18.h: 160: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
+[; ;pic18.h: 178: unsigned char __t1rd16on(void);
+[; ;pic18.h: 179: unsigned char __t3rd16on(void);
+[; ;pic18.h: 187: extern __nonreentrant void _delay(unsigned long);
+[; ;pic18.h: 189: extern __nonreentrant void _delaywdt(unsigned long);
+[; ;pic18.h: 191: extern __nonreentrant void _delay3(unsigned char);
 [; ;rev-basic.h: 8: void REV_init(void);
 [; ;rev-basic.h: 10: int REV_pot(unsigned char adc_id);
 [; ;rev-basic.h: 11: void REV_led(char id, char state);
@@ -6867,453 +6850,433 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 12: void LCD_ShowString(char line, char a[]);
 [; ;lcd.h: 13: void LCD_Send(unsigned char data);
 [; ;lcd.h: 14: void LCD_Clear(void);
-"10 rev-basic.c
+[; ;lcd.h: 15: void LCD_Reset(void);
+"6 rev-basic.c
 [v _REV_init `(v ~T0 @X0 1 ef ]
 {
-[; ;rev-basic.c: 10: void REV_init(void){
+[; ;rev-basic.c: 6: void REV_init(void){
 [e :U _REV_init ]
 [f ]
-"11
+"7
 [v _dummy_char `uc ~T0 @X0 1 a ]
-"12
+"8
 [v _dummy_int `i ~T0 @X0 1 a ]
-[; ;rev-basic.c: 11: char dummy_char;
-[; ;rev-basic.c: 12: int dummy_int;
-[; ;rev-basic.c: 15: OSCCON = (unsigned char)((OSCCON & 0b10001111) | 0b01110000);
-"15
-[e = _OSCCON -> | & -> _OSCCON `i -> 143 `i -> 112 `i `uc ]
-[; ;rev-basic.c: 64: TRISDbits.RD2 = 0;
-"64
+[; ;rev-basic.c: 7: char dummy_char;
+[; ;rev-basic.c: 8: int dummy_int;
+[; ;rev-basic.c: 10: TRISDbits.RD2 = 0;
+"10
 [e = . . _TRISDbits 1 2 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 65: TRISDbits.RD3 = 0;
-"65
+[; ;rev-basic.c: 11: TRISDbits.RD3 = 0;
+"11
 [e = . . _TRISDbits 1 3 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 66: TRISCbits.RC4 = 0;
-"66
+[; ;rev-basic.c: 12: TRISCbits.RC4 = 0;
+"12
 [e = . . _TRISCbits 1 4 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 67: TRISDbits.RD4 = 0;
-"67
+[; ;rev-basic.c: 13: TRISDbits.RD4 = 0;
+"13
 [e = . . _TRISDbits 1 4 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 68: TRISDbits.RD5 = 0;
-"68
+[; ;rev-basic.c: 14: TRISDbits.RD5 = 0;
+"14
 [e = . . _TRISDbits 1 5 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 69: TRISDbits.RD6 = 0;
-"69
+[; ;rev-basic.c: 15: TRISDbits.RD6 = 0;
+"15
 [e = . . _TRISDbits 1 6 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 71: ANSELDbits.ANSD2 = 0;
-"71
+[; ;rev-basic.c: 17: ANSELDbits.ANSD2 = 0;
+"17
 [e = . . _ANSELDbits 0 2 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 72: ANSELDbits.ANSD3 = 0;
-"72
+[; ;rev-basic.c: 18: ANSELDbits.ANSD3 = 0;
+"18
 [e = . . _ANSELDbits 0 3 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 73: ANSELCbits.ANSC4 = 0;
-"73
+[; ;rev-basic.c: 19: ANSELCbits.ANSC4 = 0;
+"19
 [e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 74: ANSELDbits.ANSD4 = 0;
-"74
+[; ;rev-basic.c: 20: ANSELCbits.ANSC7 = 0;
+"20
+[e = . . _ANSELCbits 0 6 -> -> 0 `i `uc ]
+[; ;rev-basic.c: 21: ANSELDbits.ANSD4 = 0;
+"21
 [e = . . _ANSELDbits 0 4 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 75: ANSELDbits.ANSD5 = 0;
-"75
+[; ;rev-basic.c: 22: ANSELDbits.ANSD5 = 0;
+"22
 [e = . . _ANSELDbits 0 5 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 76: ANSELDbits.ANSD6 = 0;
-"76
+[; ;rev-basic.c: 23: ANSELDbits.ANSD6 = 0;
+"23
 [e = . . _ANSELDbits 0 6 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 78: LATDbits.LATD2 = 1;
-"78
+[; ;rev-basic.c: 25: LATDbits.LATD2 = 1;
+"25
 [e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 79: LATDbits.LATD3 = 1;
-"79
+[; ;rev-basic.c: 26: LATDbits.LATD3 = 1;
+"26
 [e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 80: LATCbits.LATC4 = 1;
-"80
+[; ;rev-basic.c: 27: LATCbits.LATC4 = 1;
+"27
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 81: LATDbits.LATD4 = 1;
-"81
+[; ;rev-basic.c: 28: LATDbits.LATD4 = 1;
+"28
 [e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 82: LATDbits.LATD6 = 1;
-"82
+[; ;rev-basic.c: 29: LATDbits.LATD6 = 1;
+"29
 [e = . . _LATDbits 0 6 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 83: LATDbits.LATD5 = 1;
-"83
+[; ;rev-basic.c: 30: LATDbits.LATD5 = 1;
+"30
 [e = . . _LATDbits 0 5 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 86: TRISCbits.RC0 = 1;
-"86
+[; ;rev-basic.c: 33: TRISCbits.RC0 = 1;
+"33
 [e = . . _TRISCbits 1 0 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 87: TRISAbits.RA4 = 1;
-"87
+[; ;rev-basic.c: 34: TRISAbits.RA4 = 1;
+"34
 [e = . . _TRISAbits 1 4 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 88: TRISAbits.RA3 = 1;
-"88
+[; ;rev-basic.c: 35: TRISAbits.RA3 = 1;
+"35
 [e = . . _TRISAbits 1 3 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 89: TRISAbits.RA2 = 1;
-"89
+[; ;rev-basic.c: 36: TRISAbits.RA2 = 1;
+"36
 [e = . . _TRISAbits 1 2 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 92: ANSELAbits.ANSA3 = 0;
-"92
+[; ;rev-basic.c: 38: TRISCbits.TRISC6 = 1;
+"38
+[e = . . _TRISCbits 0 6 -> -> 1 `i `uc ]
+[; ;rev-basic.c: 39: TRISCbits.TRISC7 = 1;
+"39
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+[; ;rev-basic.c: 42: ANSELAbits.ANSA3 = 0;
+"42
 [e = . . _ANSELAbits 0 3 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 93: ANSELAbits.ANSA2 = 0;
-"93
+[; ;rev-basic.c: 43: ANSELAbits.ANSA2 = 0;
+"43
 [e = . . _ANSELAbits 0 2 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 96: TRISAbits.RA5 = 1;
-"96
+[; ;rev-basic.c: 46: TRISAbits.RA5 = 1;
+"46
 [e = . . _TRISAbits 1 5 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 97: TRISEbits.RE0 = 1;
-"97
+[; ;rev-basic.c: 47: TRISEbits.RE0 = 1;
+"47
 [e = . . _TRISEbits 1 0 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 99: TRISAbits.RA5 = 1;
-"99
+[; ;rev-basic.c: 49: TRISAbits.RA5 = 1;
+"49
 [e = . . _TRISAbits 1 5 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 100: TRISEbits.RE0 = 1;
-"100
+[; ;rev-basic.c: 50: TRISEbits.RE0 = 1;
+"50
 [e = . . _TRISEbits 1 0 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 102: ADON = 1;
-"102
+[; ;rev-basic.c: 52: ADON = 1;
+"52
 [e = _ADON -> -> 1 `i `b ]
-[; ;rev-basic.c: 103: ADCON1 = 0;
-"103
+[; ;rev-basic.c: 53: ADCON1 = 0;
+"53
 [e = _ADCON1 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 104: ADCON2 = (unsigned char)(ADCON2 | 0b00110101);
-"104
+[; ;rev-basic.c: 54: ADCON2 = (unsigned char)(ADCON2 | 0b00110101);
+"54
 [e = _ADCON2 -> | -> _ADCON2 `i -> 53 `i `uc ]
-[; ;rev-basic.c: 106: ADCON2bits.ADFM = 1;
-"106
+[; ;rev-basic.c: 56: ADCON2bits.ADFM = 1;
+"56
 [e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 107: ADCON2bits.ADCS = 0b101;
-"107
+[; ;rev-basic.c: 57: ADCON2bits.ADCS = 0b101;
+"57
 [e = . . _ADCON2bits 0 0 -> -> 5 `i `uc ]
-[; ;rev-basic.c: 108: ADCON0bits.ADON = 1;
-"108
+[; ;rev-basic.c: 58: ADCON0bits.ADON = 1;
+"58
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 111: TRISCbits.RC6 = 0;
-"111
-[e = . . _TRISCbits 1 6 -> -> 0 `i `uc ]
-[; ;rev-basic.c: 112: TRISCbits.RC7 = 1;
-"112
-[e = . . _TRISCbits 1 7 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 115: TXSTA1 = 0b00100000;
-"115
-[e = _TXSTA1 -> -> 32 `i `uc ]
-[; ;rev-basic.c: 116: RCSTA1 = 0b10010000;
-"116
-[e = _RCSTA1 -> -> 144 `i `uc ]
-[; ;rev-basic.c: 117: BAUDCON1bits.BRG16 = 1;
-"117
-[e = . . _BAUDCON1bits 0 3 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 118: TXSTA1bits.BRGH = 1;
-"118
-[e = . . _TXSTA1bits 0 2 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 122: SPBRG = 34;
-"122
-[e = _SPBRG -> -> 34 `i `uc ]
-[; ;rev-basic.c: 126: LCD_Init();
-"126
+[; ;rev-basic.c: 62: SPBRG1 = 51;
+"62
+[e = _SPBRG1 -> -> 51 `i `uc ]
+[; ;rev-basic.c: 64: TXSTA1bits.TXEN = 1;
+"64
+[e = . . _TXSTA1bits 0 5 -> -> 1 `i `uc ]
+[; ;rev-basic.c: 65: RCSTA1bits.CREN = 1;
+"65
+[e = . . _RCSTA1bits 0 4 -> -> 1 `i `uc ]
+[; ;rev-basic.c: 66: RCSTA1bits.SPEN = 1;
+"66
+[e = . . _RCSTA1bits 0 7 -> -> 1 `i `uc ]
+[; ;rev-basic.c: 69: LCD_Init();
+"69
 [e ( _LCD_Init ..  ]
-[; ;rev-basic.c: 130: dummy_char = REV_btn(1);
-"130
-[e = _dummy_char ( _REV_btn (1 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 131: REV_led(1,1);
-"131
-[e ( _REV_led (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;rev-basic.c: 132: putch('a');
-"132
-[e ( _putch (1 -> -> 97 `ui `uc ]
-[; ;rev-basic.c: 133: dummy_int = REV_pot(1);
-"133
-[e = _dummy_int ( _REV_pot (1 -> -> 1 `i `uc ]
-[; ;rev-basic.c: 135: }
-"135
+[; ;rev-basic.c: 71: }
+"71
 [e :UE 849 ]
 }
-"138
+"73
 [v _REV_pot `(i ~T0 @X0 1 ef1`uc ]
 {
-[; ;rev-basic.c: 138: int REV_pot(unsigned char adc_id){
+[; ;rev-basic.c: 73: int REV_pot(unsigned char adc_id){
 [e :U _REV_pot ]
 [v _adc_id `uc ~T0 @X0 1 r1 ]
 [f ]
-"139
-[v _result `i ~T0 @X0 1 a ]
-[; ;rev-basic.c: 139: int result;
-[; ;rev-basic.c: 145: switch(adc_id){
-"145
+[; ;rev-basic.c: 75: switch(adc_id){
+"75
 [e $U 852  ]
 {
-[; ;rev-basic.c: 146: case 1:
-"146
+[; ;rev-basic.c: 76: case 1:
+"76
 [e :U 853 ]
-[; ;rev-basic.c: 147: ADCON0bits.CHS = 0b00100;
-"147
+[; ;rev-basic.c: 77: ADCON0bits.CHS = 0b00100;
+"77
 [e = . . _ADCON0bits 1 2 -> -> 4 `i `uc ]
-[; ;rev-basic.c: 148: break;
-"148
+[; ;rev-basic.c: 78: break;
+"78
 [e $U 851  ]
-[; ;rev-basic.c: 149: case 2:
-"149
+[; ;rev-basic.c: 79: case 2:
+"79
 [e :U 854 ]
-[; ;rev-basic.c: 150: ADCON0bits.CHS = 0b00101;
-"150
+[; ;rev-basic.c: 80: ADCON0bits.CHS = 0b00101;
+"80
 [e = . . _ADCON0bits 1 2 -> -> 5 `i `uc ]
-[; ;rev-basic.c: 151: break;
-"151
+[; ;rev-basic.c: 81: break;
+"81
 [e $U 851  ]
-[; ;rev-basic.c: 152: default:
-"152
+[; ;rev-basic.c: 82: default:
+"82
 [e :U 855 ]
-[; ;rev-basic.c: 153: return 0;
-"153
+[; ;rev-basic.c: 83: return 0;
+"83
 [e ) -> 0 `i ]
 [e $UE 850  ]
-"154
+"84
 }
-[; ;rev-basic.c: 154: }
+[; ;rev-basic.c: 84: }
 [e $U 851  ]
-"145
+"75
 [e :U 852 ]
 [e [\ _adc_id , $ -> -> 1 `i `uc 853
  , $ -> -> 2 `i `uc 854
  855 ]
-"154
+"84
 [e :U 851 ]
-[; ;rev-basic.c: 156: GODONE = 1;
-"156
+[; ;rev-basic.c: 86: GODONE = 1;
+"86
 [e = _GODONE -> -> 1 `i `b ]
-[; ;rev-basic.c: 157: while (GODONE);
-"157
+[; ;rev-basic.c: 87: while (GODONE);
+"87
 [e $U 856  ]
 [e :U 857 ]
 [e :U 856 ]
 [e $ _GODONE 857  ]
 [e :U 858 ]
-[; ;rev-basic.c: 159: result = (ADRESH << 8) | ADRESL;
-"159
-[e = _result | << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
-[; ;rev-basic.c: 161: return result;
-"161
-[e ) _result ]
+[; ;rev-basic.c: 89: return ((ADRESH << 8) | ADRESL);
+"89
+[e ) | << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
 [e $UE 850  ]
-[; ;rev-basic.c: 162: }
-"162
+[; ;rev-basic.c: 90: }
+"90
 [e :UE 850 ]
 }
-"164
+"92
 [v _REV_btn `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;rev-basic.c: 164: char REV_btn(char id){
+[; ;rev-basic.c: 92: char REV_btn(char id){
 [e :U _REV_btn ]
 [v _id `uc ~T0 @X0 1 r1 ]
 [f ]
-"167
+"94
 [v _btn_state `uc ~T0 @X0 1 a ]
-[; ;rev-basic.c: 167: char btn_state;
-[; ;rev-basic.c: 169: switch(id){
-"169
+[; ;rev-basic.c: 94: char btn_state;
+[; ;rev-basic.c: 96: switch(id){
+"96
 [e $U 861  ]
 {
-[; ;rev-basic.c: 170: case 1:
-"170
+[; ;rev-basic.c: 97: case 1:
+"97
 [e :U 862 ]
-[; ;rev-basic.c: 171: btn_state = PORTCbits.RC0;
-"171
+[; ;rev-basic.c: 98: btn_state = PORTCbits.RC0;
+"98
 [e = _btn_state . . _PORTCbits 0 0 ]
-[; ;rev-basic.c: 172: break;
-"172
+[; ;rev-basic.c: 99: break;
+"99
 [e $U 860  ]
-[; ;rev-basic.c: 173: case 2:
-"173
+[; ;rev-basic.c: 100: case 2:
+"100
 [e :U 863 ]
-[; ;rev-basic.c: 174: btn_state = PORTAbits.RA4;
-"174
+[; ;rev-basic.c: 101: btn_state = PORTAbits.RA4;
+"101
 [e = _btn_state . . _PORTAbits 0 4 ]
-[; ;rev-basic.c: 175: break;
-"175
+[; ;rev-basic.c: 102: break;
+"102
 [e $U 860  ]
-[; ;rev-basic.c: 176: case 3:
-"176
+[; ;rev-basic.c: 103: case 3:
+"103
 [e :U 864 ]
-[; ;rev-basic.c: 177: btn_state = PORTAbits.RA3;
-"177
+[; ;rev-basic.c: 104: btn_state = PORTAbits.RA3;
+"104
 [e = _btn_state . . _PORTAbits 0 3 ]
-[; ;rev-basic.c: 178: break;
-"178
+[; ;rev-basic.c: 105: break;
+"105
 [e $U 860  ]
-[; ;rev-basic.c: 179: case 4:
-"179
+[; ;rev-basic.c: 106: case 4:
+"106
 [e :U 865 ]
-[; ;rev-basic.c: 180: btn_state = PORTAbits.RA2;
-"180
+[; ;rev-basic.c: 107: btn_state = PORTAbits.RA2;
+"107
 [e = _btn_state . . _PORTAbits 0 2 ]
-[; ;rev-basic.c: 181: break;
-"181
+[; ;rev-basic.c: 108: break;
+"108
 [e $U 860  ]
-[; ;rev-basic.c: 182: default:
-"182
+[; ;rev-basic.c: 109: default:
+"109
 [e :U 866 ]
-[; ;rev-basic.c: 183: break;
-"183
+[; ;rev-basic.c: 110: break;
+"110
 [e $U 860  ]
-"184
+"111
 }
-[; ;rev-basic.c: 184: }
+[; ;rev-basic.c: 111: }
 [e $U 860  ]
-"169
+"96
 [e :U 861 ]
 [e [\ _id , $ -> -> 1 `i `uc 862
  , $ -> -> 2 `i `uc 863
  , $ -> -> 3 `i `uc 864
  , $ -> -> 4 `i `uc 865
  866 ]
-"184
+"111
 [e :U 860 ]
-[; ;rev-basic.c: 186: _delay((unsigned long)((2)*(16000000/4000.0)));
-"186
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;rev-basic.c: 189: switch(id){
-"189
+[; ;rev-basic.c: 113: _delay((unsigned long)((5)*(16000000/4000.0)));
+"113
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;rev-basic.c: 115: switch(id){
+"115
 [e $U 868  ]
 {
-[; ;rev-basic.c: 190: case 1:
-"190
+[; ;rev-basic.c: 116: case 1:
+"116
 [e :U 869 ]
-[; ;rev-basic.c: 191: btn_state &= PORTCbits.RC0;
-"191
+[; ;rev-basic.c: 117: btn_state &= PORTCbits.RC0;
+"117
 [e =& _btn_state . . _PORTCbits 0 0 ]
-[; ;rev-basic.c: 192: break;
-"192
+[; ;rev-basic.c: 118: break;
+"118
 [e $U 867  ]
-[; ;rev-basic.c: 193: case 2:
-"193
+[; ;rev-basic.c: 119: case 2:
+"119
 [e :U 870 ]
-[; ;rev-basic.c: 194: btn_state &= PORTAbits.RA4;
-"194
+[; ;rev-basic.c: 120: btn_state &= PORTAbits.RA4;
+"120
 [e =& _btn_state . . _PORTAbits 0 4 ]
-[; ;rev-basic.c: 195: break;
-"195
+[; ;rev-basic.c: 121: break;
+"121
 [e $U 867  ]
-[; ;rev-basic.c: 196: case 3:
-"196
+[; ;rev-basic.c: 122: case 3:
+"122
 [e :U 871 ]
-[; ;rev-basic.c: 197: btn_state &= PORTAbits.RA3;
-"197
+[; ;rev-basic.c: 123: btn_state &= PORTAbits.RA3;
+"123
 [e =& _btn_state . . _PORTAbits 0 3 ]
-[; ;rev-basic.c: 198: break;
-"198
+[; ;rev-basic.c: 124: break;
+"124
 [e $U 867  ]
-[; ;rev-basic.c: 199: case 4:
-"199
+[; ;rev-basic.c: 125: case 4:
+"125
 [e :U 872 ]
-[; ;rev-basic.c: 200: btn_state &= PORTAbits.RA2;
-"200
+[; ;rev-basic.c: 126: btn_state &= PORTAbits.RA2;
+"126
 [e =& _btn_state . . _PORTAbits 0 2 ]
-[; ;rev-basic.c: 201: break;
-"201
+[; ;rev-basic.c: 127: break;
+"127
 [e $U 867  ]
-[; ;rev-basic.c: 202: default:
-"202
+[; ;rev-basic.c: 128: default:
+"128
 [e :U 873 ]
-[; ;rev-basic.c: 203: break;
-"203
+[; ;rev-basic.c: 129: break;
+"129
 [e $U 867  ]
-"204
+"130
 }
-[; ;rev-basic.c: 204: }
+[; ;rev-basic.c: 130: }
 [e $U 867  ]
-"189
+"115
 [e :U 868 ]
 [e [\ _id , $ -> -> 1 `i `uc 869
  , $ -> -> 2 `i `uc 870
  , $ -> -> 3 `i `uc 871
  , $ -> -> 4 `i `uc 872
  873 ]
-"204
+"130
 [e :U 867 ]
-[; ;rev-basic.c: 206: return btn_state;
-"206
+[; ;rev-basic.c: 132: return btn_state;
+"132
 [e ) _btn_state ]
 [e $UE 859  ]
-[; ;rev-basic.c: 209: }
-"209
+[; ;rev-basic.c: 133: }
+"133
 [e :UE 859 ]
 }
-"211
+"135
 [v _REV_led `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;rev-basic.c: 211: void REV_led(char id, char state){
+[; ;rev-basic.c: 135: void REV_led(char id, char state){
 [e :U _REV_led ]
 [v _id `uc ~T0 @X0 1 r1 ]
 [v _state `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;rev-basic.c: 220: state = (unsigned char)(state == 0 ? 1 : 0);
-"220
+[; ;rev-basic.c: 144: state = (unsigned char)(state == 0 ? 1 : 0);
+"144
 [e = _state -> ? == -> _state `i -> 0 `i : -> 1 `i -> 0 `i `uc ]
-[; ;rev-basic.c: 221: switch(id){
-"221
+[; ;rev-basic.c: 145: switch(id){
+"145
 [e $U 876  ]
 {
-[; ;rev-basic.c: 222: case 1:
-"222
+[; ;rev-basic.c: 146: case 1:
+"146
 [e :U 877 ]
-[; ;rev-basic.c: 223: LATD2 = state;
-"223
+[; ;rev-basic.c: 147: LATD2 = state;
+"147
 [e = _LATD2 -> _state `b ]
-[; ;rev-basic.c: 224: break;
-"224
+[; ;rev-basic.c: 148: break;
+"148
 [e $U 875  ]
-[; ;rev-basic.c: 225: case 2:
-"225
+[; ;rev-basic.c: 149: case 2:
+"149
 [e :U 878 ]
-[; ;rev-basic.c: 226: LATD3 = state;
-"226
+[; ;rev-basic.c: 150: LATD3 = state;
+"150
 [e = _LATD3 -> _state `b ]
-[; ;rev-basic.c: 227: break;
-"227
+[; ;rev-basic.c: 151: break;
+"151
 [e $U 875  ]
-[; ;rev-basic.c: 228: case 3:
-"228
+[; ;rev-basic.c: 152: case 3:
+"152
 [e :U 879 ]
-[; ;rev-basic.c: 229: LATC4 = state;
-"229
+[; ;rev-basic.c: 153: LATC4 = state;
+"153
 [e = _LATC4 -> _state `b ]
-[; ;rev-basic.c: 230: break;
-"230
+[; ;rev-basic.c: 154: break;
+"154
 [e $U 875  ]
-[; ;rev-basic.c: 231: case 4:
-"231
+[; ;rev-basic.c: 155: case 4:
+"155
 [e :U 880 ]
-[; ;rev-basic.c: 232: LATD4 = state;
-"232
+[; ;rev-basic.c: 156: LATD4 = state;
+"156
 [e = _LATD4 -> _state `b ]
-[; ;rev-basic.c: 233: break;
-"233
+[; ;rev-basic.c: 157: break;
+"157
 [e $U 875  ]
-[; ;rev-basic.c: 234: case 5:
-"234
+[; ;rev-basic.c: 158: case 5:
+"158
 [e :U 881 ]
-[; ;rev-basic.c: 235: LATD5 = state;
-"235
+[; ;rev-basic.c: 159: LATD5 = state;
+"159
 [e = _LATD5 -> _state `b ]
-[; ;rev-basic.c: 236: break;
-"236
+[; ;rev-basic.c: 160: break;
+"160
 [e $U 875  ]
-[; ;rev-basic.c: 237: case 6:
-"237
+[; ;rev-basic.c: 161: case 6:
+"161
 [e :U 882 ]
-[; ;rev-basic.c: 238: LATD6 = state;
-"238
+[; ;rev-basic.c: 162: LATD6 = state;
+"162
 [e = _LATD6 -> _state `b ]
-[; ;rev-basic.c: 239: break;
-"239
+[; ;rev-basic.c: 163: break;
+"163
 [e $U 875  ]
-[; ;rev-basic.c: 240: default:
-"240
+[; ;rev-basic.c: 164: default:
+"164
 [e :U 883 ]
-[; ;rev-basic.c: 241: break;
-"241
+[; ;rev-basic.c: 165: break;
+"165
 [e $U 875  ]
-"242
+"166
 }
-[; ;rev-basic.c: 242: }
+[; ;rev-basic.c: 166: }
 [e $U 875  ]
-"221
+"145
 [e :U 876 ]
 [e [\ _id , $ -> -> 1 `i `uc 877
  , $ -> -> 2 `i `uc 878
@@ -7322,65 +7285,65 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 5 `i `uc 881
  , $ -> -> 6 `i `uc 882
  883 ]
-"242
+"166
 [e :U 875 ]
-[; ;rev-basic.c: 243: }
-"243
+[; ;rev-basic.c: 167: }
+"167
 [e :UE 874 ]
 }
-"246
+"170
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;rev-basic.c: 246: void putch (char c){
+[; ;rev-basic.c: 170: void putch (char c){
 [e :U _putch ]
 [v _c `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;rev-basic.c: 248: while(!TRMT1);
-"248
+[; ;rev-basic.c: 172: while(!TX1IF);
+"172
 [e $U 885  ]
 [e :U 886 ]
 [e :U 885 ]
-[e $ ! _TRMT1 886  ]
+[e $ ! _TX1IF 886  ]
 [e :U 887 ]
-[; ;rev-basic.c: 250: TXREG1 = c;
-"250
+[; ;rev-basic.c: 174: TXREG1 = c;
+"174
 [e = _TXREG1 _c ]
-[; ;rev-basic.c: 251: }
-"251
+[; ;rev-basic.c: 175: }
+"175
 [e :UE 884 ]
 }
-"253
+"177
 [v _getche `(uc ~T0 @X0 1 ef ]
 {
-[; ;rev-basic.c: 253: char getche (void){
+[; ;rev-basic.c: 177: char getche (void){
 [e :U _getche ]
 [f ]
-[; ;rev-basic.c: 255: while(!RC1IF);
-"255
+[; ;rev-basic.c: 179: while(!RC1IF);
+"179
 [e $U 889  ]
 [e :U 890 ]
 [e :U 889 ]
 [e $ ! _RC1IF 890  ]
 [e :U 891 ]
-[; ;rev-basic.c: 257: return RCREG1;
-"257
+[; ;rev-basic.c: 181: return RCREG1;
+"181
 [e ) _RCREG1 ]
 [e $UE 888  ]
-[; ;rev-basic.c: 258: }
-"258
+[; ;rev-basic.c: 182: }
+"182
 [e :UE 888 ]
 }
-"260
+"184
 [v _getch `(uc ~T0 @X0 1 ef ]
 {
-[; ;rev-basic.c: 260: char getch (void){
+[; ;rev-basic.c: 184: char getch (void){
 [e :U _getch ]
 [f ]
-[; ;rev-basic.c: 261: return getche();
-"261
+[; ;rev-basic.c: 185: return getche();
+"185
 [e ) ( _getche ..  ]
 [e $UE 892  ]
-[; ;rev-basic.c: 262: }
-"262
+[; ;rev-basic.c: 186: }
+"186
 [e :UE 892 ]
 }

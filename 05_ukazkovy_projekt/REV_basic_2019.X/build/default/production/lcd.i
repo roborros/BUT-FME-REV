@@ -1,17 +1,17 @@
 
 # 1 "lcd.c"
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\xc.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\xc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 52 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h"
+# 52 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h"
 extern volatile unsigned char ANSELA __at(0xF38);
 
 asm("ANSELA equ 0F38h");
@@ -9576,7 +9576,7 @@ extern volatile __bit nW2 __at(0x7B6A);
 
 extern volatile __bit nWRITE2 __at(0x7B6A);
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -9585,17 +9585,17 @@ __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer suppor
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
-# 154
+# 158
 __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
 __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
 __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
 
-# 174
+# 178
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 
 
-# 182
+# 186
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 #pragma intrinsic(_delaywdt)
@@ -9603,10 +9603,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\__size_t.h"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\__size_t.h"
 typedef unsigned size_t;
 
-# 7 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdarg.h"
+# 7 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -9615,17 +9615,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 43 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdio.h"
+# 43 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h"
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 29 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\errno.h"
+# 29 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\errno.h"
 extern int errno;
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\conio.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\conio.h"
 extern void init_uart(void);
 
 extern char getch(void);
@@ -9639,7 +9639,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 88 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdio.h"
+# 88 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -9671,6 +9671,7 @@ void LCD_Init(void);
 void LCD_ShowString(char line, char a[]);
 void LCD_Send(unsigned char data);
 void LCD_Clear(void);
+void LCD_Reset(void);
 
 # 6 "lcd.c"
 void LCD_Init(void){
@@ -9693,6 +9694,9 @@ _delay((unsigned long)((5)*(32E6/4000.0)));
 SSP2CON2bits.SEN = 1;
 while (SSP2CON2bits.SEN);
 SSP2IF = 0;
+
+
+
 
 LCD_Send(0x7C);
 LCD_Send(0x80);
@@ -9721,8 +9725,6 @@ while (SSP2CON2bits.PEN);
 
 _delay((unsigned long)((5)*(32E6/4000.0)));
 }
-
-
 
 void LCD_ShowString(char lineNum, char textData[])
 {
@@ -9754,7 +9756,6 @@ SSP2CON2bits.PEN = 1;
 while (SSP2CON2bits.PEN);
 }
 
-
 void LCD_Send(unsigned char data){
 
 SSP2BUF = data;
@@ -9765,8 +9766,20 @@ SSP2IF = 0;
 }
 
 void LCD_Clear(void){
+SSP2CON2bits.SEN = 1;
+while (SSP2CON2bits.SEN);
+SSP2IF = 0;
+
+LCD_Send(0x7C);
+LCD_Send(0x80);
+LCD_Send(0x01);
+
+SSP2CON2bits.PEN = 1;
+while (SSP2CON2bits.PEN);
+}
+
+void LCD_Reset(void){
 LATAbits.LATA0 = 0;
 _delay((unsigned long)((100)*(32E6/4000000.0)));
 LATAbits.LATA0 = 1;
-
 }

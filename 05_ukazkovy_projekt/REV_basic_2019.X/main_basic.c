@@ -28,6 +28,6 @@ void main(void) {
  
         printf("count: %d (0x%x) (%c)\n",count,count,a);
  
-        __delay_ms(100);
+        __delay_ms(500);
     }
 }

@@ -46,7 +46,7 @@ void main(void) {
         LCD_ShowString(2,text);
         
         if (PORTAbits.RA3){
-            LCD_Clear();
+            LCD_Clear();            
         }
         
         count++;

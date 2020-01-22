@@ -2,23 +2,23 @@
 # 1 "main_advanced.c"
 
 
-# 2
+# 3
+#pragma config FOSC = HSMP
+#pragma config PLLCFG = ON
+#pragma config PRICLKEN = ON
 #pragma config WDTEN = OFF
-#pragma config FOSC = INTIO7
-#pragma config MCLRE = EXTMCLR
-#pragma config FCMEN = ON
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\xc.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\xc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 52 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h"
+# 52 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h"
 extern volatile unsigned char ANSELA __at(0xF38);
 
 asm("ANSELA equ 0F38h");
@@ -9583,7 +9583,7 @@ extern volatile __bit nW2 __at(0x7B6A);
 
 extern volatile __bit nWRITE2 __at(0x7B6A);
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -9592,17 +9592,17 @@ __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer suppor
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
-# 154
+# 158
 __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
 __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
 __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
 
-# 174
+# 178
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 
 
-# 182
+# 186
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 #pragma intrinsic(_delaywdt)
@@ -9610,10 +9610,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\__size_t.h"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\__size_t.h"
 typedef unsigned size_t;
 
-# 7 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdarg.h"
+# 7 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -9622,17 +9622,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 43 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdio.h"
+# 43 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h"
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 29 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\errno.h"
+# 29 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\errno.h"
 extern int errno;
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\conio.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\conio.h"
 extern void init_uart(void);
 
 extern char getch(void);
@@ -9646,7 +9646,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 88 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdio.h"
+# 88 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -9673,6 +9673,95 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
+# 13 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef __int24 int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 52
+typedef unsigned char uint8_t;
+
+# 58
+typedef unsigned int uint16_t;
+
+# 65
+typedef __uint24 uint24_t;
+
+# 72
+typedef unsigned long int uint32_t;
+
+# 88
+typedef signed char int_least8_t;
+
+# 96
+typedef signed int int_least16_t;
+
+# 109
+typedef __int24 int_least24_t;
+
+# 118
+typedef signed long int int_least32_t;
+
+# 136
+typedef unsigned char uint_least8_t;
+
+# 143
+typedef unsigned int uint_least16_t;
+
+# 154
+typedef __uint24 uint_least24_t;
+
+# 162
+typedef unsigned long int uint_least32_t;
+
+# 181
+typedef signed char int_fast8_t;
+
+# 188
+typedef signed int int_fast16_t;
+
+# 200
+typedef __int24 int_fast24_t;
+
+# 208
+typedef signed long int int_fast32_t;
+
+# 224
+typedef unsigned char uint_fast8_t;
+
+# 230
+typedef unsigned int uint_fast16_t;
+
+# 240
+typedef __uint24 uint_fast24_t;
+
+# 247
+typedef unsigned long int uint_fast32_t;
+
+# 268
+typedef int32_t intmax_t;
+
+# 282
+typedef uint32_t uintmax_t;
+
+# 289
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 15 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdbool.h"
+typedef unsigned char bool;
+
 # 8 "rev-basic.h"
 void REV_init(void);
 
@@ -9689,16 +9778,17 @@ void LCD_Init(void);
 void LCD_ShowString(char line, char a[]);
 void LCD_Send(unsigned char data);
 void LCD_Clear(void);
+void LCD_Reset(void);
 
-# 19 "main_advanced.c"
+# 16 "main_advanced.c"
 void main(void) {
+
 REV_init();
-
-
-int count = 0;
-char a = 'x';
+bool flag = 1;
+char count = 0;
 char text[17];
-int pot1,pot2;
+int32_t pot1;
+int16_t pot2;
 
 
 sprintf(text,"Mechlab je bozi!");
@@ -9708,18 +9798,10 @@ sprintf(text,"                ");
 
 while(1){
 
-
-if (count == 1){
-REV_led(1,1);
-LATBbits.LATB0 = 1;
-printf("Pot1: %d %d (%c)\n",((unsigned char)(((pot1)>>8)&0xFF)),((unsigned char)((pot1)&0xFF)),a);
-
-}else if(count == 2){
-REV_led(1,0);
-}else if(count == 5){
-LATBbits.LATB0 = 0;
-}else if(count == 100){
+if (count == 100 && flag){
 count = 0;
+pot1 = (3300*pot1)>>10;
+printf("Pot1: %d [mV]\n", pot1);
 }
 
 REV_led(2,REV_btn(1));
@@ -9728,24 +9810,14 @@ REV_led(3,REV_btn(2));
 pot1 = REV_pot(1);
 pot2 = REV_pot(2);
 
-sprintf(text,"Pot: %d  %d", pot1,pot2);
+sprintf(text,"Pot2: %d",pot2);
 LCD_ShowString(2,text);
 
-if (REV_btn(3)){
+if (PORTAbits.RA3){
 LCD_Clear();
 }
 
-if (REV_btn(4)){
-sprintf(text,"Mechlab je bozi!");
-LCD_ShowString(1,text);
-sprintf(text,"                ");
-}
-
-
-
-_delay((unsigned long)((10000 - 8000 - 1800)*(16000000/4000000.0)));
 count++;
-
 }
 
 }

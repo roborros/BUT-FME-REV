@@ -24,23 +24,26 @@ void LCD_Init(void){
     while (SSP2CON2bits.SEN);
     SSP2IF = 0;
     
-    LCD_Send(0x7C);
+    // LCD addr:  0111110 (0x3E)
+    // LCD write: 01111100 (0x7C)
+    
+    LCD_Send(0x7C); // device addr write
+    LCD_Send(0x80); // Control byte
+    LCD_Send(0x38); // function set
     LCD_Send(0x80);
-    LCD_Send(0x38);
+    LCD_Send(0x39); // function set
     LCD_Send(0x80);
-    LCD_Send(0x39);
+    LCD_Send(0x17); // internal OSC freq
     LCD_Send(0x80);
-    LCD_Send(0x17);
+    LCD_Send(0x7A); // contrast set
     LCD_Send(0x80);
-    LCD_Send(0x7A);
+    LCD_Send(0x5E); // Power/ICON control/Contrast set
     LCD_Send(0x80);
-    LCD_Send(0x5E);
+    LCD_Send(0x6B); // Follower conrol
     LCD_Send(0x80);
-    LCD_Send(0x6B);
+    LCD_Send(0x0C); // Display ON/OFF
     LCD_Send(0x80);
-    LCD_Send(0x0C);
-    LCD_Send(0x80);
-    LCD_Send(0x01);
+    LCD_Send(0x01); // Clear display
     LCD_Send(0x80);
     LCD_Send(0x06);
     LCD_Send(0x80);
@@ -51,8 +54,6 @@ void LCD_Init(void){
     
     __delay_ms(5);
 }
-
-
 
 void LCD_ShowString(char lineNum, char textData[])
 {
@@ -84,7 +85,6 @@ void LCD_ShowString(char lineNum, char textData[])
     while (SSP2CON2bits.PEN);
 }
 
-
 void LCD_Send(unsigned char data){
     
     SSP2BUF = data;
@@ -95,8 +95,20 @@ void LCD_Send(unsigned char data){
 }
 
 void LCD_Clear(void){
+    SSP2CON2bits.SEN = 1;
+    while (SSP2CON2bits.SEN);
+    SSP2IF = 0;
+    
+    LCD_Send(0x7C); // device addr write
+    LCD_Send(0x80); // Control byte
+    LCD_Send(0x01); // Clear display
+    
+    SSP2CON2bits.PEN = 1;
+    while (SSP2CON2bits.PEN);      
+}
+
+void LCD_Reset(void){
     LATAbits.LATA0 = 0;
     __delay_us(100);
     LATAbits.LATA0 = 1;
-    
 }

@@ -2,48 +2,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "8 rev-basic.h
 [v _REV_init `(v ~T0 @X0 0 ef ]
-"194 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdio.h
+"194 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "12 lcd.h
 [v _LCD_ShowString `(v ~T0 @X0 0 ef2`uc`*uc ]
+"195 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "11 rev-basic.h
 [v _REV_led `(v ~T0 @X0 0 ef2`uc`uc ]
-"7678 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h
-[s S378 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S378 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
-"7688
-[s S379 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S379 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
-"7677
-[u S377 `S378 1 `S379 1 ]
-[n S377 . . . ]
-"7699
-[v _LATBbits `VS377 ~T0 @X0 0 e@3978 ]
-"195 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"12 rev-basic.h
+"12
 [v _REV_btn `(uc ~T0 @X0 0 ef1`uc ]
 "10
 [v _REV_pot `(i ~T0 @X0 0 ef1`uc ]
+"6286 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
+[s S327 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S327 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"6296
+[s S328 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S328 . AN0 AN1 AN2 AN3 . AN4 ]
+"6304
+[s S329 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S329 . C12IN0M C12IN1M C2INP C1INP C1OUT C2OUT ]
+"6312
+[s S330 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S330 . C12IN0N C12IN1N VREFM VREFP T0CKI SS ]
+"6320
+[s S331 :5 `uc 1 :1 `uc 1 ]
+[n S331 . . NOT_SS ]
+"6324
+[s S332 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S332 . . VREFN . SRQ nSS ]
+"6331
+[s S333 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S333 . . CVREF . LVDIN ]
+"6337
+[s S334 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S334 . . DACOUT . HLVDIN ]
+"6343
+[s S335 :5 `uc 1 :1 `uc 1 ]
+[n S335 . . SS1 ]
+"6347
+[s S336 :5 `uc 1 :1 `uc 1 ]
+[n S336 . . NOT_SS1 ]
+"6351
+[s S337 :5 `uc 1 :1 `uc 1 ]
+[n S337 . . nSS1 ]
+"6355
+[s S338 :5 `uc 1 :1 `uc 1 ]
+[n S338 . . SRNQ ]
+"6359
+[s S339 :1 `uc 1 :6 `uc 1 :1 `uc 1 ]
+[n S339 . ULPWUIN . RJPU ]
+"6285
+[u S326 `S327 1 `S328 1 `S329 1 `S330 1 `S331 1 `S332 1 `S333 1 `S334 1 `S335 1 `S336 1 `S337 1 `S338 1 `S339 1 ]
+[n S326 . . . . . . . . . . . . . . ]
+"6365
+[v _PORTAbits `VS326 ~T0 @X0 0 e@3968 ]
 "14 lcd.h
 [v _LCD_Clear `(v ~T0 @X0 0 ef ]
-[v F5818 `(v ~T0 @X0 1 tf1`ul ]
-"183 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18.h
-[v __delay `JF5818 ~T0 @X0 0 e ]
-[p i __delay ]
-"2 main_advanced.c
-[p x WDTEN=OFF ]
-"3
-[p x FOSC=INTIO7 ]
+"3 main_advanced.c
+[p x FOSC=HSMP ]
 "4
-[p x MCLRE=EXTMCLR ]
+[p x PLLCFG=ON ]
 "5
-[p x FCMEN=ON ]
+[p x PRICLKEN=ON ]
+"6
+[p x WDTEN=OFF ]
 [; ;xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f46k22.h: 52: extern volatile unsigned char ANSELA __at(0xF38);
-"54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h
+"54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
 [; ;pic18f46k22.h: 54: asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
 [; ;pic18f46k22.h: 57: typedef union {
@@ -6594,14 +6623,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 18: __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 [; ;pic18.h: 19: __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 [; ;pic18.h: 50: extern void __nop(void);
-[; ;pic18.h: 154: __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
-[; ;pic18.h: 155: __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
-[; ;pic18.h: 156: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
-[; ;pic18.h: 174: unsigned char __t1rd16on(void);
-[; ;pic18.h: 175: unsigned char __t3rd16on(void);
-[; ;pic18.h: 183: extern __nonreentrant void _delay(unsigned long);
-[; ;pic18.h: 185: extern __nonreentrant void _delaywdt(unsigned long);
-[; ;pic18.h: 187: extern __nonreentrant void _delay3(unsigned char);
+[; ;pic18.h: 158: __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
+[; ;pic18.h: 159: __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
+[; ;pic18.h: 160: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
+[; ;pic18.h: 178: unsigned char __t1rd16on(void);
+[; ;pic18.h: 179: unsigned char __t3rd16on(void);
+[; ;pic18.h: 187: extern __nonreentrant void _delay(unsigned long);
+[; ;pic18.h: 189: extern __nonreentrant void _delaywdt(unsigned long);
+[; ;pic18.h: 191: extern __nonreentrant void _delay3(unsigned char);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -6632,6 +6661,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef __int24 int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 52: typedef unsigned char uint8_t;
+[; ;stdint.h: 58: typedef unsigned int uint16_t;
+[; ;stdint.h: 65: typedef __uint24 uint24_t;
+[; ;stdint.h: 72: typedef unsigned long int uint32_t;
+[; ;stdint.h: 88: typedef signed char int_least8_t;
+[; ;stdint.h: 96: typedef signed int int_least16_t;
+[; ;stdint.h: 109: typedef __int24 int_least24_t;
+[; ;stdint.h: 118: typedef signed long int int_least32_t;
+[; ;stdint.h: 136: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 143: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 154: typedef __uint24 uint_least24_t;
+[; ;stdint.h: 162: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 181: typedef signed char int_fast8_t;
+[; ;stdint.h: 188: typedef signed int int_fast16_t;
+[; ;stdint.h: 200: typedef __int24 int_fast24_t;
+[; ;stdint.h: 208: typedef signed long int int_fast32_t;
+[; ;stdint.h: 224: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 230: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 240: typedef __uint24 uint_fast24_t;
+[; ;stdint.h: 247: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 268: typedef int32_t intmax_t;
+[; ;stdint.h: 282: typedef uint32_t uintmax_t;
+[; ;stdint.h: 289: typedef int16_t intptr_t;
+[; ;stdint.h: 294: typedef uint16_t uintptr_t;
+[; ;stdbool.h: 15: typedef unsigned char bool;
 [; ;rev-basic.h: 8: void REV_init(void);
 [; ;rev-basic.h: 10: int REV_pot(unsigned char adc_id);
 [; ;rev-basic.h: 11: void REV_led(char id, char state);
@@ -6643,162 +6701,110 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 12: void LCD_ShowString(char line, char a[]);
 [; ;lcd.h: 13: void LCD_Send(unsigned char data);
 [; ;lcd.h: 14: void LCD_Clear(void);
+[; ;lcd.h: 15: void LCD_Reset(void);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"19 main_advanced.c
+"16 main_advanced.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main_advanced.c: 19: void main(void) {
+[; ;main_advanced.c: 16: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main_advanced.c: 20: REV_init();
-"20
+[; ;main_advanced.c: 18: REV_init();
+"18
 [e ( _REV_init ..  ]
-"23
-[v _count `i ~T0 @X0 1 a ]
-[; ;main_advanced.c: 23: int count = 0;
-[e = _count -> 0 `i ]
-"24
-[v _a `uc ~T0 @X0 1 a ]
-[; ;main_advanced.c: 24: char a = 'x';
-[e = _a -> -> 120 `ui `uc ]
-"25
+"19
+[v _flag `uc ~T0 @X0 1 a ]
+[; ;main_advanced.c: 19: bool flag = 1;
+[e = _flag -> -> 1 `i `uc ]
+"20
+[v _count `uc ~T0 @X0 1 a ]
+[; ;main_advanced.c: 20: char count = 0;
+[e = _count -> -> 0 `i `uc ]
+"21
 [v _text `uc ~T0 @X0 -> 17 `i a ]
-"26
-[v _pot1 `i ~T0 @X0 1 a ]
+"22
+[v _pot1 `l ~T0 @X0 1 a ]
+"23
 [v _pot2 `i ~T0 @X0 1 a ]
-[; ;main_advanced.c: 25: char text[17];
-[; ;main_advanced.c: 26: int pot1,pot2;
-[; ;main_advanced.c: 29: sprintf(text,"Mechlab je bozi!");
-"29
+[; ;main_advanced.c: 21: char text[17];
+[; ;main_advanced.c: 22: int32_t pot1;
+[; ;main_advanced.c: 23: int16_t pot2;
+[; ;main_advanced.c: 26: sprintf(text,"Mechlab je bozi!");
+"26
 [e ( _sprintf (1 , &U _text :s 1C ]
-[; ;main_advanced.c: 30: LCD_ShowString(1,text);
-"30
+[; ;main_advanced.c: 27: LCD_ShowString(1,text);
+"27
 [e ( _LCD_ShowString (2 , -> -> 1 `i `uc &U _text ]
-[; ;main_advanced.c: 31: sprintf(text,"                ");
-"31
+[; ;main_advanced.c: 28: sprintf(text,"                ");
+"28
 [e ( _sprintf (1 , &U _text :s 2C ]
-[; ;main_advanced.c: 34: while(1){
-"34
+[; ;main_advanced.c: 31: while(1){
+"31
 [e :U 852 ]
 {
-[; ;main_advanced.c: 37: if (count == 1){
+[; ;main_advanced.c: 33: if (count == 100 && flag){
+"33
+[e $ ! && == -> _count `i -> 100 `i != -> _flag `i -> -> -> 0 `i `uc `i 854  ]
+{
+[; ;main_advanced.c: 34: count = 0;
+"34
+[e = _count -> -> 0 `i `uc ]
+[; ;main_advanced.c: 35: pot1 = (3300*pot1)>>10;
+"35
+[e = _pot1 >> * -> -> 3300 `i `l _pot1 -> 10 `i ]
+[; ;main_advanced.c: 36: printf("Pot1: %d [mV]\n", pot1);
+"36
+[e ( _printf , (. :s 3C _pot1 ]
 "37
-[e $ ! == _count -> 1 `i 854  ]
-{
-[; ;main_advanced.c: 38: REV_led(1,1);
-"38
-[e ( _REV_led (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main_advanced.c: 39: LATBbits.LATB0 = 1;
-"39
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;main_advanced.c: 40: printf("Pot1: %d %d (%c)\n",((unsigned char)(((pot1)>>8)&0xFF)),((unsigned char)((pot1)&0xFF)),a);
-"40
-[e ( _printf , , , (. :s 3C -> -> & >> _pot1 -> 8 `i -> 255 `i `uc `i -> -> & _pot1 -> 255 `i `uc `i -> _a `i ]
-"42
 }
-[; ;main_advanced.c: 42: }else if(count == 2){
-[e $U 855  ]
 [e :U 854 ]
-[e $ ! == _count -> 2 `i 856  ]
-{
-[; ;main_advanced.c: 43: REV_led(1,0);
-"43
-[e ( _REV_led (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"44
-}
-[; ;main_advanced.c: 44: }else if(count == 5){
-[e $U 857  ]
-[e :U 856 ]
-[e $ ! == _count -> 5 `i 858  ]
-{
-[; ;main_advanced.c: 45: LATBbits.LATB0 = 0;
-"45
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"46
-}
-[; ;main_advanced.c: 46: }else if(count == 100){
-[e $U 859  ]
-[e :U 858 ]
-[e $ ! == _count -> 100 `i 860  ]
-{
-[; ;main_advanced.c: 47: count = 0;
-"47
-[e = _count -> 0 `i ]
-"48
-}
-[e :U 860 ]
-"50
-[e :U 859 ]
-[e :U 857 ]
-[e :U 855 ]
-[; ;main_advanced.c: 48: }
-[; ;main_advanced.c: 50: REV_led(2,REV_btn(1));
+[; ;main_advanced.c: 37: }
+[; ;main_advanced.c: 39: REV_led(2,REV_btn(1));
+"39
 [e ( _REV_led (2 , -> -> 2 `i `uc ( _REV_btn (1 -> -> 1 `i `uc ]
-[; ;main_advanced.c: 51: REV_led(3,REV_btn(2));
-"51
+[; ;main_advanced.c: 40: REV_led(3,REV_btn(2));
+"40
 [e ( _REV_led (2 , -> -> 3 `i `uc ( _REV_btn (1 -> -> 2 `i `uc ]
-[; ;main_advanced.c: 53: pot1 = REV_pot(1);
-"53
-[e = _pot1 ( _REV_pot (1 -> -> 1 `i `uc ]
-[; ;main_advanced.c: 54: pot2 = REV_pot(2);
-"54
+[; ;main_advanced.c: 42: pot1 = REV_pot(1);
+"42
+[e = _pot1 -> ( _REV_pot (1 -> -> 1 `i `uc `l ]
+[; ;main_advanced.c: 43: pot2 = REV_pot(2);
+"43
 [e = _pot2 ( _REV_pot (1 -> -> 2 `i `uc ]
-[; ;main_advanced.c: 56: sprintf(text,"Pot: %d  %d", pot1,pot2);
-"56
-[e ( _sprintf (1 , , (. , &U _text :s 4C _pot1 _pot2 ]
-[; ;main_advanced.c: 57: LCD_ShowString(2,text);
-"57
+[; ;main_advanced.c: 45: sprintf(text,"Pot2: %d",pot2);
+"45
+[e ( _sprintf (1 , (. , &U _text :s 4C _pot2 ]
+[; ;main_advanced.c: 46: LCD_ShowString(2,text);
+"46
 [e ( _LCD_ShowString (2 , -> -> 2 `i `uc &U _text ]
-[; ;main_advanced.c: 59: if (REV_btn(3)){
-"59
-[e $ ! != -> ( _REV_btn (1 -> -> 3 `i `uc `i -> -> -> 0 `i `uc `i 861  ]
+[; ;main_advanced.c: 48: if (PORTAbits.RA3){
+"48
+[e $ ! != -> . . _PORTAbits 0 3 `i -> -> -> 0 `i `Vuc `i 855  ]
 {
-[; ;main_advanced.c: 60: LCD_Clear();
-"60
+[; ;main_advanced.c: 49: LCD_Clear();
+"49
 [e ( _LCD_Clear ..  ]
-"61
+"50
 }
-[e :U 861 ]
-[; ;main_advanced.c: 61: }
-[; ;main_advanced.c: 63: if (REV_btn(4)){
-"63
-[e $ ! != -> ( _REV_btn (1 -> -> 4 `i `uc `i -> -> -> 0 `i `uc `i 862  ]
-{
-[; ;main_advanced.c: 64: sprintf(text,"Mechlab je bozi!");
-"64
-[e ( _sprintf (1 , &U _text :s 5C ]
-[; ;main_advanced.c: 65: LCD_ShowString(1,text);
-"65
-[e ( _LCD_ShowString (2 , -> -> 1 `i `uc &U _text ]
-[; ;main_advanced.c: 66: sprintf(text,"                ");
-"66
-[e ( _sprintf (1 , &U _text :s 6C ]
-"67
-}
-[e :U 862 ]
-[; ;main_advanced.c: 67: }
-[; ;main_advanced.c: 71: _delay((unsigned long)((10000 - 8000 - 1800)*(16000000/4000000.0)));
-"71
-[e ( __delay (1 -> * -> - - -> 10000 `i -> 8000 `i -> 1800 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main_advanced.c: 72: count++;
-"72
-[e ++ _count -> 1 `i ]
-"74
+[e :U 855 ]
+[; ;main_advanced.c: 50: }
+[; ;main_advanced.c: 52: count++;
+"52
+[e ++ _count -> -> 1 `i `uc ]
+"53
 }
 [e :U 851 ]
-"34
+"31
 [e $U 852  ]
 [e :U 853 ]
-[; ;main_advanced.c: 74: }
-[; ;main_advanced.c: 76: }
-"76
+[; ;main_advanced.c: 53: }
+[; ;main_advanced.c: 55: }
+"55
 [e :UE 850 ]
 }
 [p f _sprintf 8388736 ]
-[p f _printf 8913024 ]
-[a 4C 80 111 116 58 32 37 100 32 32 37 100 0 ]
+[p f _printf 8388736 ]
+[a 4C 80 111 116 50 58 32 37 100 0 ]
 [a 1C 77 101 99 104 108 97 98 32 106 101 32 98 111 122 105 33 0 ]
-[a 5C 77 101 99 104 108 97 98 32 106 101 32 98 111 122 105 33 0 ]
 [a 2C 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
-[a 6C 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
-[a 3C 80 111 116 49 58 32 37 100 32 37 100 32 40 37 99 41 10 0 ]
+[a 3C 80 111 116 49 58 32 37 100 32 91 109 86 93 10 0 ]

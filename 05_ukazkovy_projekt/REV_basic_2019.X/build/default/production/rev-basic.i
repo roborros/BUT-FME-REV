@@ -1,17 +1,17 @@
 
 # 1 "rev-basic.c"
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\xc.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\xc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c90\xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 52 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f46k22.h"
+# 52 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h"
 extern volatile unsigned char ANSELA __at(0xF38);
 
 asm("ANSELA equ 0F38h");
@@ -9576,7 +9576,7 @@ extern volatile __bit nW2 __at(0x7B6A);
 
 extern volatile __bit nWRITE2 __at(0x7B6A);
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -9585,17 +9585,17 @@ __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer suppor
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
-# 154
+# 158
 __attribute__((__unsupported__("The " "Read_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) unsigned char Read_b_eep(unsigned int badd);
 __attribute__((__unsupported__("The " "Busy_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Busy_eep(void);
 __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
 
-# 174
+# 178
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 
 
-# 182
+# 186
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 #pragma intrinsic(_delaywdt)
@@ -9619,16 +9619,13 @@ void LCD_Init(void);
 void LCD_ShowString(char line, char a[]);
 void LCD_Send(unsigned char data);
 void LCD_Clear(void);
+void LCD_Reset(void);
 
-# 10 "rev-basic.c"
+# 6 "rev-basic.c"
 void REV_init(void){
 char dummy_char;
 int dummy_int;
 
-
-OSCCON = (unsigned char)((OSCCON & 0b10001111) | 0b01110000);
-
-# 64
 TRISDbits.RD2 = 0;
 TRISDbits.RD3 = 0;
 TRISCbits.RC4 = 0;
@@ -9639,6 +9636,7 @@ TRISDbits.RD6 = 0;
 ANSELDbits.ANSD2 = 0;
 ANSELDbits.ANSD3 = 0;
 ANSELCbits.ANSC4 = 0;
+ANSELCbits.ANSC7 = 0;
 ANSELDbits.ANSD4 = 0;
 ANSELDbits.ANSD5 = 0;
 ANSELDbits.ANSD6 = 0;
@@ -9655,6 +9653,9 @@ TRISCbits.RC0 = 1;
 TRISAbits.RA4 = 1;
 TRISAbits.RA3 = 1;
 TRISAbits.RA2 = 1;
+
+TRISCbits.TRISC6 = 1;
+TRISCbits.TRISC7 = 1;
 
 
 ANSELAbits.ANSA3 = 0;
@@ -9676,37 +9677,20 @@ ADCON2bits.ADCS = 0b101;
 ADCON0bits.ADON = 1;
 
 
-TRISCbits.RC6 = 0;
-TRISCbits.RC7 = 1;
 
+SPBRG1 = 51;
 
-TXSTA1 = 0b00100000;
-RCSTA1 = 0b10010000;
-BAUDCON1bits.BRG16 = 1;
-TXSTA1bits.BRGH = 1;
-
-
-
-SPBRG = 34;
-
+TXSTA1bits.TXEN = 1;
+RCSTA1bits.CREN = 1;
+RCSTA1bits.SPEN = 1;
 
 
 LCD_Init();
 
-
-
-dummy_char = REV_btn(1);
-REV_led(1,1);
-putch('a');
-dummy_int = REV_pot(1);
-
 }
 
-
 int REV_pot(unsigned char adc_id){
-int result;
 
-# 145
 switch(adc_id){
 case 1:
 ADCON0bits.CHS = 0b00100;
@@ -9721,13 +9705,10 @@ return 0;
 GODONE = 1;
 while (GODONE);
 
-result = (ADRESH << 8) | ADRESL;
-
-return result;
+return ((ADRESH << 8) | ADRESL);
 }
 
 char REV_btn(char id){
-
 
 char btn_state;
 
@@ -9748,8 +9729,7 @@ default:
 break;
 }
 
-_delay((unsigned long)((2)*(16000000/4000.0)));
-
+_delay((unsigned long)((5)*(16000000/4000.0)));
 
 switch(id){
 case 1:
@@ -9769,13 +9749,11 @@ break;
 }
 
 return btn_state;
-
-
 }
 
 void REV_led(char id, char state){
 
-# 220
+# 144
 state = (unsigned char)(state == 0 ? 1 : 0);
 switch(id){
 case 1:
@@ -9804,7 +9782,7 @@ break;
 
 void putch (char c){
 
-while(!TRMT1);
+while(!TX1IF);
 
 TXREG1 = c;
 }
