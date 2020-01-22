@@ -53,11 +53,11 @@ void driveLED(char in){
 void main(void) {
  
     //init - PWM
-    PSTR1CON = 0b00001;                    //P1A PWM
+    PSTR1CON = 0b00001;                 //P1A PWM
     CCPTMRS0bits.C1TSEL = 0b00;         //timer2 will be used
     PR2 = 200;                          //period
     CCP1CON = 0b00001101;               //enable PWM
-    CCPR1L =200;                       //duty cycle
+    CCPR1L =150;                        //duty cycle
  
     //init - timer2
     T2CON = 0b00111101;
