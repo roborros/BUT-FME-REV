@@ -9,7 +9,7 @@ Vzpomeňte si:
     3)protože ukazatel je datový typ, funkce jej mohou přijímat jako argument nebo jej vracet jako návratovou hodnotu
     
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
+  <img width="200" height="360" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/03_CV/PointerMemory.png">
 </p>
     
 ```c
