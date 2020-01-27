@@ -28,9 +28,9 @@ Nezapomeňte:
 ## Úloha 2.3
 
 ### Vytvořte funkci: 
-  1) vytvořte funkci long decToBin(int), která převede desítkové číslo na binarní (tedy 11dec je 1011b).
-  2) vytvořte funkci, která ověří, že je číslo prvočíslem.
-  3) vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
+  1) vytvořte funkci, která ověří, že je číslo prvočíslem.
+  2) vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
+  3) vytvořte funkci long decToBin(int), která převede desítkové číslo na binarní (tedy 11dec je 1011b).
 
 
 ## Úloha 2.4: Rekurze:
