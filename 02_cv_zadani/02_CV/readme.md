@@ -21,7 +21,7 @@ Funkcionalitu ověřte na vhodném testovacím programu. Pracujte s kopii projek
 Jak zhruba na to: ve vývojovém prostředí si vytvořte soubor fun.c, a přesuňte do něj definice funkcí. Dále si vytvořte soubor            fun.h, do kterého přesuňte deklarace. Do hlavního souboru pak vložte patřičný #include.
 ```
 Nezapomeňte:
-    soubory tr.c a tr.h musí být součástí projektu ve vývojovém prostředí
+    soubory fun.c a fun.h musí být součástí projektu ve vývojovém prostředí
     pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Rebuild all”
 ```
 
