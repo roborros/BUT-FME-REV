@@ -4,6 +4,15 @@
 ## Příklad 5.1:
 
 PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které mají 16-bit. Timer je periferie, kterou ovládáme pomocí SFR. Programátorský model je jednoduchý, TIMER je binární čítač, který načítá vstupní pulzy. Výsledek pak drží v příslušném registru. Periferie je při svém provozu nezavislá na CPU. Čítač se používá k časovaní. Můžemeho použít k relativně přesnému měření času na pozadí běhu programu, nebo také k vyvolání přerušení.
+## Výpočet:
+
+<p align="center">
+  <img width="377" height="84" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/Period.png">
+</p>
+
+<p align="center">
+  <img width="377" height="84" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/CounterValue.png">
+</p>
 
 ### SFR:
 * TxCON - Konfigurační registr čítače (Výběr zdroje pulzů, děličky)
