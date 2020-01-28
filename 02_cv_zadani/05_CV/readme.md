@@ -11,7 +11,7 @@ PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které m
 </p>
 
 <p align="center">
-  <img width="377" height="84" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/CounterValue.png">
+  <img width="600" height="86" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/CounterValue.png">
 </p>
 
 ### SFR:
