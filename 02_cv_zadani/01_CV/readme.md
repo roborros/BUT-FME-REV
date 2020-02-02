@@ -5,7 +5,9 @@
 
 ## odkazy:
 [MPLAB](https://www.microchip.com/mplab/mplab-x-ide)
+
 [XC8](https://www.microchip.com/mplab/compilers)
+
 [Termite](https://www.compuphase.com/software_termite.htm)
 
 <p align="center">
