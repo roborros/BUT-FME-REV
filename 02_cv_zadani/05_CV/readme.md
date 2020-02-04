@@ -10,10 +10,6 @@ PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které m
   <img width="188" height="42" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/Period.png">
 </p>
 
-<p align="center">
-  <img width="300" height="43" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/CounterValue.png">
-</p>
-
 ### SFR:
 * TxCON - Konfigurační registr čítače (Výběr zdroje pulzů, děličky)
 * TMR1ON - Spuštění
@@ -67,7 +63,11 @@ K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pr
 * PEIE - zapnutí přerušení od periferii (Peripheral Interrupt Enable)
 * TMR1IE - Zapnuti přerušení TMR1 (TiMeR1 Interrupt Enable) 
 * TMR1IF - Změna 0->1 vyvolá přerušení. Je nutní příznak smazat během přerušení. (Interrupt Flag)
-    
+
+<p align="center">
+  <img width="300" height="43" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/CounterValue.png">
+</p>
+
 ```c
 // REV INTERRUPT
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
