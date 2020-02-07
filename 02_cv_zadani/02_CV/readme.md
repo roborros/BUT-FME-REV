@@ -102,10 +102,14 @@ void main(void) {
     REV_init();
  
     for(;;){
-        int n = 10;
-        printf("Suma %d je: %ld\n", n, sum(n));
+        char cislo;
+        printf("Vloz cislo:");
+        cislo = getche() - '0';
+        printf("\n");
+        
+        printf("Suma %d je: %ld\n", (int)cislo, sum((int)cislo));
 
-        __delay_ms(500);
+        __delay_ms(1000);
     }
 }
 
