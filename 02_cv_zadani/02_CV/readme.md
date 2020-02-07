@@ -79,7 +79,7 @@ Rekurzivní volání funkce není ve výchozím nastavení XC8 podporováno. Pro
 Je na místě zapamatovat si, že rekurze často vede k velmi elegantní implementaci poměrně složitých problémů, ale je také více náročna na zdroje. V emebdded systémech to není nejlepší cesta. Implementace pomocí cyklů, bude také často rychlejší.
 
 ## odkazy:
-[MPLAB](https://www.microchip.com/mplab/mplab-x-ide)
+[VIDEO](https://www.microchip.com/mplab/mplab-x-ide)
 
 ```c
 // REV-Funkce
