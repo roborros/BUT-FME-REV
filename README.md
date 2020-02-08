@@ -14,3 +14,8 @@ Náměty na úpravy posílejte na mailMBa nebo mailMBr, nebo lépe zadávejte ja
  * Závěrečný projekt  35b
  * Domácí úlohy 3x5 = 15b
  * Zápočtové testy 2x15 + 1x20 = 50b
+
+## odkazy:
+[Datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf)
+
+[Původní kurz](http://src.athaj.cz/teaching/rev/index)
