@@ -62,7 +62,7 @@ Jak zhruba na to: ve vývojovém prostředí si vytvořte soubor fun.c, a přesu
 ```
 Nezapomeňte:
     soubory fun.c a fun.h musí být součástí projektu ve vývojovém prostředí
-    pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Rebuild all”
+    pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Clean and build project”
 ```
 
 ## Úloha 2.3
