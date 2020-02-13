@@ -35,3 +35,15 @@ long dec_to_bin(int n) {
     return binar;
 }
 ```
+
+
+## 4.void nasobilka(int x, int n) – vytiskne n prvních násobků čísla x
+
+```c
+void nasobilka(int x,int n){
+	int i;
+	for(i=1; i<=n; i++){
+		printf("%d x %d = %d\n", i, x, (i*x));
+	}
+}
+```
