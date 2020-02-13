@@ -47,3 +47,18 @@ void nasobilka(int x,int n){
 	}
 }
 ```
+
+## 5.nt next() – první a druhé volání funkce vrátí 1, každý další člen Fibonacciho posloupnosti 
+
+```c
+int next(void){
+	
+	static int f1=0, f2=1;
+	int dalsi;
+	
+	dalsi = f1 + f2;
+	f1 = f2;
+	f2 = dalsi;
+	return f1;
+}
+```
