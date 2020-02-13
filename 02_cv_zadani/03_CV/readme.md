@@ -243,56 +243,54 @@ Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 
 - Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem na pointer: 
 
 ```c
+// REV-Funkce
+#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
+#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+//includes
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <xc.h>
  
-#define DELKA_JMENA 30
- 
-// definice typu "t_kopec"
-typedef struct {
-        char jmeno[DELKA_JMENA + 1];
-        int vyska;        
-}t_kopec;
- 
-// deklarace fce, ktera prijima parametr typu "t_kopec"
-void vypis_kopec(t_kopec kopec);
- 
-// funkce main
-int main(void){
- 
-    // definice s inicializaci
-    t_kopec palacak = {"Palackeho vrch",340};
-    t_kopec *aktualni;
- 
-    // definice bez inicialize
-    t_kopec kozi;
- 
-    // pristup k prvkum struktury
-    strncpy(kozi.jmeno,"Kozi hora",DELKA_JMENA);  // nelze kozi.jmeno = "Kozi hora"
-    kozi.vyska = 286;
- 
-    printf("Zname tyto kopce:\n");
- 
-    // vypis pomoci funkce, ktere predame jednotlive struktury jako parametr
-    vypis_kopec(palacak);    
-    vypis_kopec(kozi);
- 
-    // pouzijeme ukazatel
-    aktualni = &palacak;
- 
-    // zmenime hodnotu
-    aktualni->vyska = aktualni->vyska + 2;
- 
-    // a znovu vypiseme
-    vypis_kopec(palacak);    
- 
-    getch();
+#include "rev-basic.h"
+
+typedef struct{
+    char    jmeno[25];
+    int     vek;
+    int     vyska;
+} clovek;
+
+int zmer(clovek* kdo);
+
+int main() {
+    // rev init
+    REV_init();
+    while(1){
+        clovek Petr = {"Petr Novak", 25, 178};
+        clovek Michal;
+
+        clovek* p_Petr = &Petr;
+
+        Michal.vek = 16;
+        Michal.vyska = 193;
+
+        strcpy(Michal.jmeno, "Michal Novak");
+
+        printf("Petr ma %d let\n",  Petr.vek);
+        printf("Michal se jmenuje %s\n",  Michal.jmeno);
+
+        printf("Petr meri %d cm\n",  p_Petr->vyska);
+
+        printf("Michal ma %d let\n", zmer(&Michal));
+
+        getche();
+    }
     return 0;
 }
- 
-// definice fce, ktera prijima parametr typu "t_kopec"
-void vypis_kopec(t_kopec kopec){
-    printf ("  Kopec jmenem \"%s\" je vysoky %d m\n", kopec.jmeno, kopec.vyska);
-}
 
+int zmer(clovek *kdo){
+	return kdo->vek;
+}
 ```
