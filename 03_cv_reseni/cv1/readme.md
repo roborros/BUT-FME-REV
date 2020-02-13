@@ -1,4 +1,4 @@
-## 1.program vypise fibonaciho posloupnost do 50 (0 1 1 2 3 5 8 13 21 34 55)
+## 1.program vypise fibonaciho posloupnost 
 
 ```c
 	int i, f1=0, f2=1, dalsi;
