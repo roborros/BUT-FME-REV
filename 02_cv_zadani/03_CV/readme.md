@@ -130,39 +130,40 @@ void vypis_pole(int *p,int len);
 void main(void){
     
     REV_init();
- 
-    // definice pole o delce dane symbolickou konstantou
-    // delka musi byt vzdy konstanta!
-    int cisla[DELKA];   
- 
-    /*
-    // totez by bylo mozne takto:
-    int cisla[5];
-    */
- 
-    int i, a;
- 
-    // nacitani v cyklu
-    for(i = 0; i < DELKA; i++){
-          printf("Vloz %d. cislo:", i + 1);
- 
-          // funkci getch() se zadava ukazatel na prvek pole
-          cisla[i] = getch() - '0';
- 
+    while(1){
+        // definice pole o delce dane symbolickou konstantou
+        // delka musi byt vzdy konstanta!
+        int cisla[DELKA];   
+
+        /*
+        // totez by bylo mozne takto:
+        int cisla[5];
+        */
+
+        int i, a;
+
+        // nacitani v cyklu
+        for(i = 0; i < DELKA; i++){
+              printf("Vloz %d. cislo:\n", i + 1);
+
+              // funkci getch() se zadava ukazatel na prvek pole
+              cisla[i] = getch() - '0';
+
+        }
+
+        // vypis pole - pres index
+        for(i = 0; i < DELKA; i++){
+              printf("%d. cislo bylo %d\n",i + 1, cisla[i]);
+        }
+
+        // volani funkci - predava pole=konstantni pointer a delka
+        vypis_pole(cisla,DELKA);   // nevraci nic
+        a = max1(cisla,DELKA);      // vraci int
+
+        printf("Nejvetsi bylo cislo %d\n",a);
+
+        getch();
     }
- 
-    // vypis pole - pres index
-    for(i = 0; i < DELKA; i++){
-          printf("%d. cislo bylo %d\n",i + 1, cisla[i]);
-    }
- 
-    // volani funkci - predava pole=konstantni pointer a delka
-    vypis_pole(cisla,DELKA);   // nevraci nic
-    a = max1(cisla,DELKA);      // vraci int
- 
-    printf("Nejvetsi bylo cislo %d\n",a);
- 
-    getch();
  
 }
  
@@ -183,7 +184,9 @@ int max1(int *p,int len){
     max = p[0];
  
     for(i = 1; i < len; i++){
-          max = max > p[i] ? max : p[i];
+        if(max < p[i]){
+          max = p[i];
+        }
     }
     return max;
 }
