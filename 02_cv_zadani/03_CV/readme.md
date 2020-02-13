@@ -4,9 +4,9 @@
 
 Vzpomeňte si:
 
-    1)každá proměnná je místo v paměti, opatřené názvem, velikost místa v paměti je daná datovým typem
-    2)ukazatel (přesněji ukazatel na DATOVY TYP) je taky promněnná, opatřená názvem, ukládá adresu v paměti
-    3)protože ukazatel je datový typ, funkce jej mohou přijímat jako argument nebo jej vracet jako návratovou hodnotu
+   1)každá proměnná je místo v paměti, opatřené názvem, velikost místa v paměti je daná datovým typem
+   2)ukazatel (přesněji ukazatel na DATOVY TYP) je taky promněnná, opatřená názvem, ukládá adresu v paměti
+   3)protože ukazatel je datový typ, funkce jej mohou přijímat jako argument nebo jej vracet jako návratovou hodnotu
     
 <p align="center">
   <img width="200" height="360" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/03_CV/PointerMemory.png">
