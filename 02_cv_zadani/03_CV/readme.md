@@ -243,7 +243,7 @@ Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 
 - Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem na pointer: 
 
 ```c
-// REV-Funkce
+// REV
 #pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
 #pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
