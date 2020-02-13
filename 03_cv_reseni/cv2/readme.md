@@ -1,4 +1,4 @@
-## vytvořte funkci, která ověří, že je číslo prvočíslem.
+## 1.vytvořte funkci, která ověří, že je číslo prvočíslem.
 
 ```c
 char is_a_prime(int n){
@@ -12,7 +12,7 @@ char is_a_prime(int n){
 }
 ```
 
-## vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
+## 2.vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
 
 ```c
 uint16_t addLowHeight(uint8_t h, uint8_t l){
@@ -20,7 +20,7 @@ uint16_t addLowHeight(uint8_t h, uint8_t l){
 }
 ```
 
-## vytvořte funkci long decToBin(int), která převede desítkové číslo na binarní (tedy 11dec je 1011b).
+## 3.vytvořte funkci long decToBin(int), která převede desítkové číslo na binarní (tedy 11dec je 1011b).
 
 ```c
 long dec_to_bin(int n) {
