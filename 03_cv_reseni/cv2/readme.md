@@ -1,14 +1,14 @@
 ## vytvořte funkci, která ověří, že je číslo prvočíslem.
 
 ```c
-bool is_a_prime(int n){
+char is_a_prime(int n){
 	int i;
 	for(i=2; i<=(n/2); i++){
 		if(n%i == 0){
-			return false;
+			return 0;
 		}
 	}
-	return true;
+	return 1;
 }
 ```
 
