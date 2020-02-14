@@ -96,9 +96,6 @@ int *max1(int *a, int* b){
 ### Úloha 3.2: Cvičení s ukazateli
 
 1) Vytvořte funkci prohod(int *a, int *b), která prohodí obsahy proměnných a a b.
-```
-Poznámka: pozor na nastavení programu termit, především na automatické přidání znaku.
-```
 
 ```
 Poznámka: s výhodou můžete využít tělo programu z předchozího příkladu.
@@ -237,6 +234,10 @@ char retez[80] = "Ahoj!";
 Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 0). To znamená, že uložení řetězce “ahoj” vyžaduje pole o minimální délce pět znaků.
 
 1) Vytvořte program, který bude načítat znaky z terminálu pomocí funkce getch() až do načtení konce řádku ('\n'). Znaky ukládejte do řetězce, který poté vypište.
+
+```
+Poznámka: pozor na nastavení programu termit, především na automatické přidání znaku.
+```
 
 2) Program rozšiřte o funkci int delka(char *ret), který vrátí délku řetězce ve znacích. Využijte procházení pole pomocí indexů.
 
