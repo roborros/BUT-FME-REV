@@ -48,7 +48,7 @@ void main(){
         //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
 
         printf("Cislo A = %d = %d\n", a, *p_i); // * je operator dereference
-        printf("Cislo A je na adrese: %p\n",&a);
+        printf("Cislo A je na adrese: %p = %p\n", &a, p_i);
 
         krat2(&a);     // stejne jako: krat2(p_i);
 
@@ -62,7 +62,7 @@ void main(){
         *p_i = getch() - '0';
 
         printf("Cislo B = %d = %d\n",b, *p_i); // * je operator dereference
-        printf("Cislo B je na adrese: %p\n",&b);
+        printf("Cislo B je na adrese: %p = %p\n",&b, p_i);
 
         p_i = max1(&a,&b);
 
