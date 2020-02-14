@@ -15,7 +15,7 @@ char is_a_prime(int n){
 ## 2.vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
 
 ```c
-uint16_t addLowHeight(uint8_t h, uint8_t l){
+uint16_t addLowHigh(uint8_t h, uint8_t l){
 	return (h << 8) | l;
 }
 ```
