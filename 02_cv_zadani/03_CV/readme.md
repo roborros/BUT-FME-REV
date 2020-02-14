@@ -296,6 +296,6 @@ int main() {
 }
 
 int zmer(clovek *kdo){
-	return kdo->vek;
+	return kdo->vyska;
 }
 ```
