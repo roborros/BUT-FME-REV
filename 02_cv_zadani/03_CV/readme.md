@@ -47,7 +47,7 @@ void main(){
         *p_i = getch() - '0';
         //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
 
-        printf("Cislo A = %d = %d\n",a, *p_i); // * je operator dereference
+        printf("Cislo A = %d = %d\n", a, *p_i); // * je operator dereference
         printf("Cislo A je na adrese: %p\n",&a);
 
         krat2(&a);     // stejne jako: krat2(p_i);
