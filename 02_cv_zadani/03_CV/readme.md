@@ -87,10 +87,6 @@ int *max1(int *a, int* b){
 }
 ```
  ### Program demonstruje základní rysy práce s ukazateli-pointery. Povšimněte si:
- 
-```
-Poznámka: pozor na nastavení programu termit, především na automatické přidání znaku.
-```
 
    1) ukazatel se definuje jako proměnná, pouze se syntaktickou hvezdičkou navíc: int *p_i;
    2) operátorem reference & se získá adresa proměnné: p_i = &a;
@@ -100,6 +96,10 @@ Poznámka: pozor na nastavení programu termit, především na automatické př
 ### Úloha 3.2: Cvičení s ukazateli
 
 1) Vytvořte funkci prohod(int *a, int *b), která prohodí obsahy proměnných a a b.
+```
+Poznámka: pozor na nastavení programu termit, především na automatické přidání znaku.
+```
+
 ```
 Poznámka: s výhodou můžete využít tělo programu z předchozího příkladu.
 ```
