@@ -215,8 +215,8 @@ Vytvořte funkci pro práci s poli:
 
    1) void vypis_obracene(int *pole,int n) - pole procházejte pomocí ukazatele. Argument n udává delku pole.
    2) int sum(int *pole,int n) – sečte n prvních prvků pole pole a vrátí součet
-   3) int *max(int *pole,int n) – projde n prvních prvků pole pole a vrátí pointer na nejvyšší hodnotu. V hlavním programu vypište nejvyšší hodnotu a její pozici v poli.
-   4) int *reverse(int *pole, int n) – obrati pole
+   3) int *max(int *pole,int n) – projde n prvních prvků pole a vrátí pointer na nejvyšší hodnotu. V hlavním programu vypište nejvyšší hodnotu a její pozici v poli.
+   4) void reverse(int *pole, int n) – obrati pole
    
 ### pole lze staticky inicializovat například takto:
 
