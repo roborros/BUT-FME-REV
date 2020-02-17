@@ -37,8 +37,8 @@ void main(){
     REV_init();
     
     while(1){
-        int a, b;      // definice promenne typu int
-        int *p_i;      // definice promenne typu ukazatel na int
+        int a, b;      // deklarace promenne typu int
+        int *p_i;      // deklarace promenne typu ukazatel na int
 
         p_i = &a;      // operator reference, p_i ukazuje na a
 
