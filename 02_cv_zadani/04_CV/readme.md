@@ -113,12 +113,12 @@ Povšimněte si především přístupu k jednotlivým bitům přes tečkovou no
 
 ```c
 void driveLED(char in){
-        LATD2 = in & 1; asm("nop"); //LED0
-        LATD3 = in & 2 ? 1 : 0; asm("nop"); //LED1
-        LATC4 = in & 4 ? 1 : 0; asm("nop"); //LED2
-        LATD4 = in & 8 ? 1 : 0; asm("nop"); //LED3
-        LATD5 = in & 16 ? 1 : 0; asm("nop"); //LED4
-        LATD6 = in & 32 ? 1 : 0; asm("nop"); //LED5
+        LATD2 = in & 1;             //LED0
+        LATD3 = in & 2 ? 1 : 0;     //LED1
+        LATC4 = in & 4 ? 1 : 0;     //LED2
+        LATD4 = in & 8 ? 1 : 0;     //LED3
+        LATD5 = in & 16 ? 1 : 0;    //LED4
+        LATD6 = in & 32 ? 1 : 0;    //LED5
 }
 ```
 
