@@ -104,7 +104,7 @@ Povšimněte si především přístupu k jednotlivým bitům přes tečkovou no
 
 ### Upravte program tak, aby zobrazoval různé sekvence:
     
-   1) V poslední ukázce jsou definovana makra LED1 a BTN1. Zkuste si jejich použití místo plného názvu
+   1) Zaveďte makra LED1 a BTN1. Zkuste si jejich použití místo plného názvu
    2) Had: Hada predstavuje dvojice sousednich sviticich LED. Had se posouva tak dlouho, než dorazi na konec radku, pak se otoci a plazi se zpet. Sekvence tedy bude vypadat takto: 00011 → 00110 → 01100 → 11000 → 01100 atd.
    3) Knight rider: jednotlive LED se postupne poporade rozsveci a pak v opacnem poradi zhasinaji. Na 3 led by sekvence vypadala takto: 000 → 001 → 011 → 111 → 011 → 001
    4) Counter strike alias binarni citani, sekvence vypada nasledovne: 0000 → 0001 → 0010 → 0011 → 0100 → …
