@@ -1,64 +1,75 @@
-## 1.vytvořte funkci, která ověří, že je číslo prvočíslem.
+## 1. Vytvořte funkci prohod(int *a, int *b), která prohodí obsahy proměnných a a b.
 
 ```c
-char is_a_prime(int n){
-	int i;
-	for(i=2; i<=(n/2); i++){
-		if(n%i == 0){
-			return 0;
-		}
-	}
-	return 1;
+void prohod(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 ```
 
-## 2.vytvořte funkci, která převede dvě 8bit čísla na jedno 16bit. (spojí horní a dolní bajt)
+## 2. Vytvořte funkci pricti(int *a, int prirustek), která k hodnotě proměnné a připočte přírůstek.
 
 ```c
-uint16_t addLowHigh(uint8_t h, uint8_t l){
-	return (h << 8) | l;
+void pricti(int *a, int prirustek) {
+    *a = *a + prirustek;
 }
 ```
 
-## 3.vytvořte funkci long decToBin(int), která převede desítkové číslo na binarní (tedy 11dec je 1011b).
+## 3. void vypis_obracene(int *pole,int n) - pole procházejte pomocí ukazatele. Argument n udává delku pole.
 
 ```c
-long dec_to_bin(int n) {
-    long binar = 0;
-    int z, i = 1;
-    while (n != 0) {
-        z = n % 2;
-        n /= 2;
-        binar += z * i;
-        i *= 10;
+void vypis_obracene(int *pole,int n) {
+    int i;
+    for(i = n-1; i >= 0; i--){
+          printf("%d. cislo bylo %d\n",i + 1, *(pole + i) );
     }
-    return binar;
 }
 ```
 
 
-## 4.void nasobilka(int x, int n) – vytiskne n prvních násobků čísla x
+## 4. int sum(int *pole,int n) – sečte n prvních prvků pole pole a vrátí součet
 
 ```c
-void nasobilka(int x,int n){
-	int i;
-	for(i=1; i<=n; i++){
-		printf("%d x %d = %d\n", i, x, (i*x));
-	}
+int sum(int *pole, int n) {
+    int soucet = 0;
+    for (int i = 0; i < n; i++) {
+        soucet = soucet + pole[i];
+    }
+    return soucet;
 }
 ```
 
-## 5.int next() – první a druhé volání funkce vrátí 1, každý další člen Fibonacciho posloupnosti 
+## 5. int *max(int *pole,int n) – projde n prvních prvků pole a vrátí pointer na nejvyšší hodnotu. V hlavním programu vypište nejvyšší hodnotu a její pozici v poli. 
 
 ```c
-int next(void){
-	
-	static int f1=0, f2=1;
-	int dalsi;
-	
-	dalsi = f1 + f2;
-	f1 = f2;
-	f2 = dalsi;
-	return f1;
+int *max(int *pole, int n) {
+    int max, i;
+    
+    max = pole[0];
+    int *p;
+ 
+    for(i = 1; i < n; i++){
+        if(max < pole[i]){
+          max = pole[i];
+          p = &pole[i];
+        }
+    }
+    return p;
+}
+```
+
+## 6. void reverse(int *pole, int n) – obrátí pole
+
+```c
+void reverse(int *pole, int n) {
+    int temp;    
+    
+    for (int i = 0; i < n/2; i++){
+        temp = pole[i];
+        pole[i] = pole[n - i - 1];
+        pole[n - i - 1] = temp;
+    }    
 }
 ```
