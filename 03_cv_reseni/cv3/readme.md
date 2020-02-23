@@ -78,19 +78,19 @@ void reverse(int *pole, int n) {
 
 ```c
 char buff[80];
-        int n = 0;
+int n = 0;
                             
-        printf("Zadejte retezec: ");
+printf("Zadejte retezec: ");
         
-        while(1){             
-            buff[n] = getch();
-            if (buff[n] == '\n'){
-                buff[n+1] = '\0';
-                break;
-            }else{
-                n++;
-            }           
-        }
+while(1){             
+  buff[n] = getch();
+  if (buff[n] == '\n'){
+    buff[n+1] = '\0';
+    break;
+  }else{
+    n++;
+  }           
+}
 ```
 
 ## 8. Program rozšiřte o funkci int delka(char *ret), který vrátí délku řetězce ve znacích. Využijte procházení pole pomocí indexů.
