@@ -73,3 +73,51 @@ void reverse(int *pole, int n) {
     }    
 }
 ```
+
+## 7. Vytvořte program, který bude načítat znaky z terminálu pomocí funkce getch() až do načtení konce řádku ('\n'). Znaky ukládejte do řetězce, který poté vypište.
+
+```c
+char buff[80];
+        int n = 0;
+                            
+        printf("Zadejte retezec: ");
+        
+        while(1){             
+            buff[n] = getch();
+            if (buff[n] == '\n'){
+                buff[n+1] = '\0';
+                break;
+            }else{
+                n++;
+            }           
+        }
+```
+
+## 8. Program rozšiřte o funkci int delka(char *ret), který vrátí délku řetězce ve znacích. Využijte procházení pole pomocí indexů.
+
+```c
+int delka(char *ret) {
+    int i = 0;
+    while(1){
+        if (ret[i] == '\0') {
+            break;
+        } else {
+            i++;
+        }
+    }
+    return i;
+}
+```
+
+## 9. Program rozšiřte o funkci int naopak(char *ret), který vypíše řetězec naopak. Využijte procházení pole pomocí ukazatelů.
+
+```c
+void naopak(char *ret) {
+    int n;
+    n = delka(ret);
+    for(int i = n-2; i >= 0; i--){
+        printf("%c", *(ret + i));
+    }
+    printf("\n");
+}
+```
