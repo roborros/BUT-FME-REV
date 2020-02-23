@@ -127,7 +127,7 @@ void driveLED(char in){
 
    1) Upravte program tak, aby jedno stisknuti tlacitka BUT1 zmenilo rychlost blikani cele rady LED. Definujte tri rychlosti, prepinejte mezi nimi cyklicky. Nezapomente na debouncing!
    2) Tlacitko BUT2 bude funkovat jako Pause/Resume
-   3) Tlacitko BUT3 bude fungovat jako prepinac jednotlivych rezimu (viz ulohy a) - c))
+   3) Tlacitko BUT3 bude fungovat jako prepinac jednotlivych rezimu (viz ulohy 2) - 4))
    4) BONUS: tlacitko BUT4 bude fungovat jako prepinac intenzity svitu LED (pouzijte princip PWM)
 
 ## Doma:
