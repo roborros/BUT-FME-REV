@@ -197,7 +197,7 @@ void main(void) {
     }
 }
 ```
-## Doma:
+## Další:
 1) Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--ma jen 8 bitu a obsahuje postscaler, a period register)
 2) Použíjte obě priority PIC18 funkce se odlišují  __interrupt(low_priority); __interrupt(high_priority)
 3) Je treba nastavit IPRx registry pro low_priority pro TMR2IF
