@@ -44,7 +44,7 @@ void main(void) {
     while(1){
         if(TMR1 >= DELAY){         // kontrola registru casovace
             LED ^= 1;               // prevraceni pinu RD2
-            TMR1 = 0;               // vznulovani registru casovace
+            TMR1 = 0;               // vynulovani registru casovace
         }
     }
 }
