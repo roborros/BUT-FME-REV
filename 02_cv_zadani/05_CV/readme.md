@@ -170,10 +170,7 @@ void __interrupt() T1_ISR_HANDLER(void){
 
 void init(void){
     
-    /* vyber pinu jako vystupy */
-    TRISCbits.TRISC3 = 0;
-    TRISCbits.TRISC5 = 0;
-    TRISBbits.TRISB3 = 0;
+    /* vyber pinu jako vystupy */    
     TRISDbits.TRISD2 = 0;
 
     T1CONbits.TMR1CS = 0b00;
