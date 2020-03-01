@@ -42,7 +42,7 @@ void main(void) {
     init();                         // provedeni inicializace
     
     while(1){
-        if(TMR1 >= 0x8000){         // kontrola registru casovace
+        if(TMR1 >= DELAY){         // kontrola registru casovace
             LED ^= 1;               // prevraceni pinu RD2
             TMR1 = 0;               // vznulovani registru casovace
         }
