@@ -25,5 +25,5 @@ Vytvořte program na RevKitu , který realizuje časovač. Hodnotu zobrazujte na
   
   11, Použíjte switch-case pro jednotlivé režimy
   
-  12, Pokud časovač běží blika celá řada ledek s periodou 1s
+  12, Pokud časovač běží, blika celá řada ledek s periodou 1s
   
