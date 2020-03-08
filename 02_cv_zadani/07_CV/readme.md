@@ -3,6 +3,10 @@
 
 ## Postup práce s ADC
 
+<p align="center">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
+</p>
+
 ### Konfigurace:
 
     - žádaným vstupům (piny) je třeba přiřadit analogovou funkci (registry ANSELx)
