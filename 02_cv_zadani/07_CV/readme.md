@@ -4,7 +4,7 @@
 ## Postup práce s ADC
 
 <p align="center">
-  <img width="728" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADCscheme.png">
+  <img width="728" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADCscheme.png">
 </p>
 
 ### Konfigurace:
