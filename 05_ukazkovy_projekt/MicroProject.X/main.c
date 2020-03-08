@@ -19,12 +19,6 @@
 volatile uint8_t g_timer_flag=0;
 volatile uint8_t g_state=1;
 
-typedef struct{
-    char state;
-    char counter;
-}button;
-
-
 
 void __interrupt() ISR(void){
     volatile static uint8_t start,
