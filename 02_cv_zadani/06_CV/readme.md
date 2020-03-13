@@ -61,8 +61,7 @@ int main(void) {
 void __interrupt() RC_ISR_HANDLER(){
     
     if(RC1IF && RC1IE){
-        TXREG1 = RCREG1;
-        RC1IF = 0;
+        TXREG1 = RCREG1;        
     }
 }
 
@@ -82,8 +81,7 @@ int main(void) {
     RCSTA1bits.CREN = 1;      // zapnuti RX 
     
     RC1IE = 1;                // zap  preruseni od RCREG
-    PEIE = 1;                // preruseni od periferii
-    RC1IF = 0;                // nastavim priznak (pro jistotu)
+    PEIE = 1;                // preruseni od periferii    
     GIE = 1;                 // globalni preruseni
     
     while(1){
@@ -122,8 +120,7 @@ void __interrupt() ISR(void)
     if(RC1IF & RC1IE)
     {
         g_mail.data = RC1REG;
-        g_mail.full = 1;
-        RC1IF = 0;
+        g_mail.full = 1;        
     }
 }
 
@@ -142,8 +139,7 @@ void main(void)
     RCSTA1bits.CREN = 1;    // zapnuti RX 
     
     RC1IE = 1;              // zap  preruseni od RCREG
-    PEIE = 1;               // preruseni od periferii
-    RC1IF = 0;              // nastavim priznak (pro jistotu)
+    PEIE = 1;               // preruseni od periferii    
     GIE = 1;                // globalni preruseni
     
     while(1)
