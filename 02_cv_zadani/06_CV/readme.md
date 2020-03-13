@@ -32,6 +32,7 @@ int main(void) {
     /*baudrate*/
     SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
     RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
     TXSTA1bits.TXEN = 1;      // zapnuti TX
     RCSTA1bits.CREN = 1;      // zapnuti RX 
 
