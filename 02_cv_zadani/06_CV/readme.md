@@ -2,7 +2,7 @@
 - UART + STDIO
 [Link na video-návod](https://www.youtube.com/watch?v=h85Gad3aX6E&feature=youtu.be)
 
-##POZOR je zadán úkol!!
+## POZOR je zadán úkol!!
 
 UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sběrnic. Na EduKitu je spojena s převodníkem FTDI, který zajišťuje převod na USB. To, že je sběrnice asynchronní znamená, že není přitomno propojení k synchronizaci např společný clock signál. Periferie odesílá jeden bajt, který je uveden start a ukončen stop bitem. Jak je patrné na následujícím obrázku jedná se o dvojici linek, které odesílají TX a příjmají RX zprávu. Při konfiguraci je třeba nastavit rychlost přenosu v Baudech. Jedná se o jednotku modulační rychlosti viz. wiki...
 ## Registry UART:
