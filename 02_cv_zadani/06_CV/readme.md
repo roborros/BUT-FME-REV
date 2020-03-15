@@ -76,6 +76,7 @@ int main(void) {
     /*baudrate*/
     SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
     
+    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
     RCSTA1bits.SPEN = 1;      // zapnuti UART
     TXSTA1bits.TXEN = 1;      // zapnuti TX
     RCSTA1bits.CREN = 1;      // zapnuti RX 
@@ -134,6 +135,7 @@ void main(void)
     /*baudrate*/
     SPBRG1 = 51;            // (32_000_000 / (64 * 9600)) - 1
     
+    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
     RCSTA1bits.SPEN = 1;    // zapnuti UART
     TXSTA1bits.TXEN = 1;    // zapnuti TX
     RCSTA1bits.CREN = 1;    // zapnuti RX 
@@ -181,6 +183,7 @@ int main(void) {
     /*baudrate*/
     SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
     
+    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
     RCSTA1bits.SPEN = 1;      // zapnuti UART
     TXSTA1bits.TXEN = 1;      // zapnuti TX
     RCSTA1bits.CREN = 1;      // zapnuti RX 
