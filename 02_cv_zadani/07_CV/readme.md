@@ -103,7 +103,7 @@ void main(void)
 }
 ```
 
-## Přiklad 7.1:
+## Přiklad 7.2 (je treba LCD knihovna):
 
 ```c
 // REV ADC
