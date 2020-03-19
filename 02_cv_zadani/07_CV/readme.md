@@ -56,7 +56,7 @@ Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
 
 void init(void){
   
-    ANSELA = 0b00100000;            //AN4
+    ANSELA |= (1 << 5);            //AN4
     ANSELE = 0b1;                   //AN5
  
     ADCON2bits.ADFM = 1;            //left justified
