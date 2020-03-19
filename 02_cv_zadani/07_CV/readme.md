@@ -152,6 +152,67 @@ void main(void) {
 }
 
 ```
+## Přiklad 7.3 vyvolani preruseni na dokoncenou konverzi:
+
+```c
+#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
+#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+
+#include <xc.h>
+#include <stdio.h>
+#include <stdint.h>
+
+#include "lcd.h"
+
+#define _XTAL_FREQ 32E6
+
+volatile uint16_t g_pot1;
+
+void __interrupt() ADC_ISR(){
+    if(ADIE && ADIF){
+        g_pot1 = (uint16_t)((ADRESH << 8) | ADRESL);  // cteni vysledku
+        ADIF = 0;
+    }
+
+}
+
+void main(void) {
+    
+    LCD_Init();
+    
+    ANSELA |= (1 << 5);             //AN4
+    ANSELE = 0b1;                   //AN5
+ 
+    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADCS = 0b110;        //Fosc/64
+    ADCON2bits.ACQT = 0b110;        //16
+    ADCON0bits.ADON = 1;            //ADC zapnout
+    ADCON0bits.CHS = 5;             // kanal AN5
+    
+    // nastaveni pro preruseni na dokoncenou konverzi
+    ADIF = 0;       // pro jistotu nuluji priznak IRQ Interrupt ReQuest pro preruseni
+    PEIE = 1;       // periferie Interrupt
+    ADIE = 1;       // ADC Interrupt
+    GIE  = 1;       // globalni povoleni Interrupt
+    
+    char text[17] = "";             // retezec zatim prazdny
+    
+    while(1){
+        
+        GODONE = 1;         // spustit aproximaci
+        __delay_ms(40);
+        
+        sprintf(text, "ADC = %d             ", g_pot1);
+        LCD_ShowString(1, text);
+
+    }
+    
+    return;
+}
+
+```
 
 ### Zadání:
 
