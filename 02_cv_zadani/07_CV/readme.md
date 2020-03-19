@@ -1,6 +1,10 @@
 # REV - Sedmé cvičení
 - ADC
 
+<p align="center">
+  <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADCscheme.png">
+</p>
+
 ## Blokové schema ADC
 
 <p align="center">
