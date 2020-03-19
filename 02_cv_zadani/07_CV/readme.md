@@ -23,6 +23,9 @@
     - čtení výsledku konverze (registr ADRESH nebo ADRESL)
 
 Programová inicializace ADC:
+
+Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
+
 ```c
     ANSELA = 0b00100000;            //AN4 (RA5)
     ANSELE = 0b1;                   //AN5 (RE0)
