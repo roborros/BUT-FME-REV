@@ -2,7 +2,7 @@
 - ADC
 
 <p align="center">
-  <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
+  <img width="350" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
 </p>
 
 ## Blokové schema ADC
