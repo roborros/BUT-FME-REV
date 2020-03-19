@@ -1,13 +1,13 @@
 # REV - Sedmé cvičení
 - ADC
 
-## Zapojení potenciometrů na RevKitu
+## Zapojení potenciometrů na RevKitu:
 
 <p align="center">
   <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
 </p>
 
-## Blokové schema ADC
+## Blokové schema ADC:
 
 <p align="center">
   <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADCscheme.png">
@@ -28,7 +28,7 @@
     - čekání na dokončení konverze (kontrolou ADCON0bits.DONE)
     - čtení výsledku konverze (registr ADRESH nebo ADRESL)
 
-Programová inicializace ADC:
+## Programová inicializace ADC:
 
 Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
 
@@ -42,7 +42,7 @@ Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
     ADCON0bits.ADON = 1;            //ADC zapnout
 ```
 
-Čtení z ADC:
+## Čtení z ADC:
 ```c
     GODONE = 1;
     while (GODONE);
