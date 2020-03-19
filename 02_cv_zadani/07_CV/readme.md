@@ -46,7 +46,7 @@ Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
 ```c
     GODONE = 1;
     while (GODONE);
-    data = (ADRESH << 8) + ADRESL;
+    data = (ADRESH << 8) | ADRESL;
 ```
 
 ## Přiklad 7.1:
