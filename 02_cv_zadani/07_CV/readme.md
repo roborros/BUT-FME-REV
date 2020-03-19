@@ -27,7 +27,7 @@ Programová inicializace ADC:
 Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
 
 ```c
-    ANSELA = 0b00100000;            //AN4 (RA5)
+    ANSELA |= (1 << 5);             //AN4 (RA5)
     ANSELE = 0b1;                   //AN5 (RE0)
  
     ADCON2bits.ADFM = 1;            //left justified
@@ -56,7 +56,7 @@ Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
 
 void init(void){
   
-    ANSELA |= (1 << 5);            //AN4
+    ANSELA |= (1 << 5);             //AN4
     ANSELE = 0b1;                   //AN5
  
     ADCON2bits.ADFM = 1;            //left justified
