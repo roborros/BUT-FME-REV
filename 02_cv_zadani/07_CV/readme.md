@@ -65,7 +65,7 @@ void init(void){
     ANSELA |= (1 << 5);             //AN4
     ANSELE = 0b1;                   //AN5
  
-    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADFM = 1;            //right justified
     ADCON2bits.ADCS = 0b110;        //Fosc/64
     ADCON2bits.ACQT = 0b110;        //16
     ADCON0bits.ADON = 1;            //ADC zapnout
@@ -127,7 +127,7 @@ void main(void) {
     ANSELA |= (1 << 5);             //AN4
     ANSELE = 0b1;                   //AN5
  
-    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADFM = 1;            //right justified
     ADCON2bits.ADCS = 0b110;        //Fosc/64
     ADCON2bits.ACQT = 0b110;        //16
     ADCON0bits.ADON = 1;            //ADC zapnout
@@ -185,7 +185,7 @@ void main(void) {
     ANSELA |= (1 << 5);             //AN4
     ANSELE = 0b1;                   //AN5
  
-    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADFM = 1;            //right justified
     ADCON2bits.ADCS = 0b110;        //Fosc/64
     ADCON2bits.ACQT = 0b110;        //16
     ADCON0bits.ADON = 1;            //ADC zapnout
