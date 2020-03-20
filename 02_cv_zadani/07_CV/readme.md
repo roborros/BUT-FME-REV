@@ -36,7 +36,7 @@ Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
     ANSELA |= (1 << 5);             //AN4 (RA5)
     ANSELE = 0b1;                   //AN5 (RE0)
  
-    ADCON2bits.ADFM = 1;            //left justified
+    ADCON2bits.ADFM = 1;            //right justified
     ADCON2bits.ADCS = 0b110;        //Fosc/64
     ADCON2bits.ACQT = 0b110;        //16
     ADCON0bits.ADON = 1;            //ADC zapnout
