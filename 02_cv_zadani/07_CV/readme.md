@@ -69,14 +69,8 @@ void init(void){
     ADCON2bits.ADCS = 0b110;        //Fosc/64
     ADCON2bits.ACQT = 0b110;        //16
     ADCON0bits.ADON = 1;            //ADC zapnout
-    
-    TRISCbits.TRISC6 = 0;           // uart TX vystup
+        
     TRISDbits.TRISD2 = 0;           // led1 vystup
-    
-    SPBRG1 = 51;                    // (32_000_000 / (64 * 9600)) - 1
-    // final enable
-    RCSTAbits.SPEN = 1;             // enable UART peripheral
-    TXSTAbits.TXEN = 1;             // enable TX
 }
 
 void main(void)
