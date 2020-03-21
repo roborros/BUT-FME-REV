@@ -50,7 +50,7 @@ Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
 ```
 
 ## Přiklad 7.1:
-
+Rozsviťe LED1 v případě, že je potenciometr POT1 v horní polovině svého rozsahu a zhasněte ji, je-li potenciometr v dolní polovině svého rozsahu.
 ```c
 // REV ADC
 #pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
@@ -98,7 +98,7 @@ void main(void)
 ```
 
 ## Přiklad 7.2 (je treba LCD knihovna):
-
+Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej.
 ```c
 // REV ADC
 #pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
@@ -147,7 +147,7 @@ void main(void) {
 
 ```
 ## Přiklad 7.3 vyvolani preruseni na dokoncenou konverzi:
-
+Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej. Využijte přerušení vyvolané ADC.
 ```c
 #pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
