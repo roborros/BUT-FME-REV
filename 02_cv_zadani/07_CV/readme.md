@@ -1,6 +1,6 @@
 # REV - Sedmé cvičení
 - ADC
-
+[Link na video-návod](https://youtu.be/NsYfhunumVw)
 ## Zapojení potenciometrů na RevKitu:
 
 <p align="center">
