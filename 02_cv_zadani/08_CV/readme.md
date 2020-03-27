@@ -1,8 +1,7 @@
 # REV - Osmé cvičení
 - PWM
 
-## Příklad 1
-Programová inicializace PWM LEDkami:
+## Programová inicializace PWM:
 
 ```c
     //init - PWM
