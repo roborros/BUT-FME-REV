@@ -1,4 +1,4 @@
-## 1. Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--ma jen 8 bitu a obsahuje postscaler, a period register)
+## 1. Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--m8 jen 8 bitů a obsahuje postscaler, a period register)
 
 ```c
 // REV INTERRUPT
@@ -63,7 +63,7 @@ void main(void) {
 }
 ```
 
-## 2. Použíjte obě priority PIC18 funkce se odlišují __interrupt(low_priority); __interrupt(high_priority). Je treba nastavit IPRx registry pro low_priority pro TMR2IF. Vyšší priorita je schopna přerušit nižší! Vyzkoušejte třeba umístěním while(BTN1), tedy něco co bychom normálně dělat něměli!!
+## 2. Použíjte obě priority PIC18 funkce se odlišují __interrupt(low_priority); __interrupt(high_priority). Je třeba nastavit IPRx registry pro low_priority pro TMR2IF. Vyšší priorita je schopna přerušit nižší! Vyzkoušejte třeba umístěním while(BTN1), tedy něco, co bychom normálně dělat něměli!!
 
 ```c
 // REV INTERRUPT
