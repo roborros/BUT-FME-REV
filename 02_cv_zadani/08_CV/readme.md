@@ -16,7 +16,7 @@ Programová inicializace PWM LEDkami:
     T2CON = 0b00111101;
 ```
 
-## Ukázka:
+## Ukázka 2:
  
 ```c
 #include <xc.h>
