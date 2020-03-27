@@ -1,5 +1,10 @@
 # REV - Osmé cvičení
 - PWM
+PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních aplikací z výkonové elektroniky používá k regulaci výkonu tranzistory ve spínacím režimu. Duležitým pojmem je perioda PWM a střída. V regulaci elektrických pohonů se setkáváme nejčastěji s periodou PWM 10-20 kHz. 
+
+<p align="center">
+  <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
+</p>
 
 ## Programová inicializace PWM:
 
