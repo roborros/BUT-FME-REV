@@ -21,7 +21,7 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
     TRISDbits.RD5 = 0;              // vypnu pin P1B
     TRISCbits.RC2 = 0;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // Timer 2 
-    PR2 = 200;                      // cca 10kHz
+    PR2 = 199;                      // f = 10kHz
     CCP1CONbits.P1M = 0b00;         // PWM single
     CCP1CONbits.CCP1M = 0b1100;     // PWM single
     CCPR1L = 0;                     // strida 0%
@@ -65,7 +65,7 @@ void main(void) {
     PSTR1CON |= 0b11;               // steering na P1B a P1A
     
     CCPTMRS0bits.C1TSEL = 0b00;     // Timer 2 
-    PR2 = 200;                      // cca 10kHz
+    PR2 = 199;                      // f = 10kHz
     CCP1CONbits.P1M = 0b00;         // PWM single
     CCP1CONbits.CCP1M = 0b1100;     // PWM single
     CCPR1L = 0;                     // strida 0%    
