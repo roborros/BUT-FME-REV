@@ -124,8 +124,8 @@ void main(void) {
     LATD6 = 1;
     
     //init - PWM
-    TRISDbits.RD5 = 0;              // vypnu pin P1B
-    TRISCbits.RC2 = 0;              // vypnu pin P1A
+    TRISDbits.RD5 = 1;              // vypnu pin P1B
+    TRISCbits.RC2 = 1;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
     PR2 = 200;                      // cca 10kHz
     CCP1CONbits.P1M = 0b00;         // PWM single
@@ -136,6 +136,8 @@ void main(void) {
     while(!TMR2IF){};               // cekam az jednou pretece
     PSTR1CON |= 0b01;               // stream na P1B a P1A
     
+    TRISDbits.RD5 = 0;              // zapnu pin P1B
+    TRISCbits.RC2 = 0;              // zapnu pin P1A
  
     while (1){
         if (BTN1){
