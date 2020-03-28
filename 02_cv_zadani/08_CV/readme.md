@@ -99,23 +99,11 @@ void main(void) {
 
  
 void main(void) {
- 
-    //init - PWM
-    PSTR1CON = 0b00001;                 //P1A PWM
-    CCPTMRS0bits.C1TSEL = 0b00;         //timer2 will be used
-    PR2 = 200;                          //period
-    CCP1CON = 0b00001101;               //enable PWM
-    CCPR1L =150;                        //duty cycle
- 
-    //init - timer2
-    T2CON = 0b00111101;
- 
-    TRISA = 0b00111100;
- 
-    TRISC = 0b00000001;                 // RC0 BTN1, RC4 LED
+    
+//GPIO
+    TRISD = 0b10000011;     // LEDs: 2..6 out
+    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
     ANSELC = 0;
- 
-    TRISD = 0b10000011; // LEDs: 2..6 out
     ANSELD = 0;
     
     // Zhasnu ledky
@@ -125,6 +113,19 @@ void main(void) {
     LATD4 = 1;
     LATD5 = 1;
     LATD6 = 1;
+    
+    //init - PWM
+    TRISDbits.RD5 = 0;              // vypnu pin P1B
+    TRISCbits.RC2 = 0;              // vypnu pin P1A
+    CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
+    PR2 = 200;                      // cca 10kHz
+    CCP1CONbits.P1M = 0b00;         //PWM single
+    CCP1CONbits.CCP1M = 0b1100;     //PWM single
+    CCPR1L = 150;                     // strida 0%
+    TMR2IF = 0;                     // nastavi se az pretece timer
+    TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
+    while(!TMR2IF){};               // cekam az jednou pretece
+    PSTR1CON |= 0b01;               // stream na P1B a P1A
  
     while (1){
         if (BTN1){
