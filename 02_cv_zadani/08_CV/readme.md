@@ -9,21 +9,22 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
 ## Programová inicializace PWM:
 
 ```c
-   //init - PWM
-    TRISDbits.RD5 = 1;              // vypnu pin P1B
+    //init - PWM
+    TRISDbits.RD5 = 0;              // vypnu pin P1B
+    TRISCbits.RC2 = 0;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
     PR2 = 200;                      // cca 10kHz
-    CCP1CONbits.CCP1M |= (0b11 << 2); //PWM mod
+    CCP1CONbits.P1M = 0b00;         //PWM single
+    CCP1CONbits.CCP1M = 0b1100;     //PWM single
     CCPR1L = 0;                     // strida 0%
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
-    PSTR1CON |= 0b10;               // stream na P1B
-    TRISDbits.RD5 = 0;              // zapnu pin P1B
+    PSTR1CON |= 0b11;               // stream na P1B a P1A
 ```
 
 ## Ukázka 1:
- Nastavení jasu LED pomocí PWM a potenciometru
+ Nastavení jasu LED pomocí PWM a potenciometru (motor odpojen=neni tam jumper)
  
 ```c
 // REV PWM
@@ -53,16 +54,17 @@ void main(void) {
     LATD6 = 1;
     
     //init - PWM
-    TRISDbits.RD5 = 1;              // vypnu pin P1B
+    TRISDbits.RD5 = 0;              // vypnu pin P1B
+    TRISCbits.RC2 = 0;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
     PR2 = 200;                      // cca 10kHz
-    CCP1CONbits.CCP1M |= (0b11 << 2); //PWM mod
+    CCP1CONbits.P1M = 0b00;         //PWM single
+    CCP1CONbits.CCP1M = 0b1100;     //PWM single
     CCPR1L = 0;                     // strida 0%
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
-    PSTR1CON |= 0b10;               // stream na P1B
-    TRISDbits.RD5 = 0;              // zapnu pin P1B
+    PSTR1CON |= 0b11;               // stream na P1B a P1A
     
     
     
