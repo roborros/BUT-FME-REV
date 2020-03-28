@@ -28,7 +28,7 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
 ```
 
 ## Ukázka 1:
- Nastavení jasu LED pomocí PWM a potenciometru (motor odpojen=neni tam jumper)
+ Nastavení jasu LED pomocí PWM a potenciometru (motor odpojen=neni tam jumper; po přidáni jumperu lze regulovat rychlost motoru)
  
 ```c
 // REV PWM
