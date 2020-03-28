@@ -135,6 +135,8 @@ void main(void) {
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
     PSTR1CON |= 0b01;               // stream na P1B a P1A
+    
+    TRISCbits.RC2 = 1;              // zapnu pin P1A
  
     while (1){
         if (BTN1){
