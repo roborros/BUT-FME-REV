@@ -18,8 +18,8 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
 
 ```c
     //init - PWM
-    TRISDbits.RD5 = 0;              // vypnu pin P1B
-    TRISCbits.RC2 = 0;              // vypnu pin P1A
+    TRISDbits.RD5 = 1;              // vypnu pin P1B
+    TRISCbits.RC2 = 1;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // Timer 2 
     PR2 = 199;                      // f = 10kHz
     CCP1CONbits.P1M = 0b00;         // PWM single
@@ -29,6 +29,9 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
     PSTR1CON |= 0b11;               // stream na P1B a P1A
+    
+    TRISDbits.RD5 = 1;              // zapnu pin P1B
+    TRISCbits.RC2 = 1;              // zapnu pin P1A
 ```
 
 ## Ukázka 1:
