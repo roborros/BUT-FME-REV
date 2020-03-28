@@ -49,9 +49,7 @@ void main(void) {
     
     //GPIO
     TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    ANSELD = 0;
+    TRISCbits.RC4 = 0;      // LED 3    
     
     // Zhasnu ledky
     LATD2 = 1;
@@ -62,25 +60,28 @@ void main(void) {
     LATD6 = 1;
     
     //init - PWM
-    TRISDbits.RD5 = 0;              // vypnu pin P1B
-    TRISCbits.RC2 = 0;              // vypnu pin P1A
+    TRISDbits.RD5 = 1;              // nastavim jako vstup pin P1B
+    TRISCbits.RC2 = 1;              // nastavim jako vstup pin P1A
+    PSTR1CON |= 0b11;               // steering na P1B a P1A
+    
     CCPTMRS0bits.C1TSEL = 0b00;     // Timer 2 
     PR2 = 200;                      // cca 10kHz
     CCP1CONbits.P1M = 0b00;         // PWM single
     CCP1CONbits.CCP1M = 0b1100;     // PWM single
-    CCPR1L = 0;                     // strida 0%
+    CCPR1L = 0;                     // strida 0%    
+    T2CONbits.T2CKPS = 0b00;        // 1:1 Prescaler
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
-    PSTR1CON |= 0b11;               // stream na P1B a P1A
-    
-    
-    
+        
+    TRISDbits.RD5 = 0;              // nastavim jako vystup pin P1B
+    TRISCbits.RC2 = 0;              // nastavim jako vystup pin P1A
+            
     // ADC pro potenciometr
-    ANSELE = 0b1;                   //AN5
+    ANSELE = 0b1;                   //RE0/AN5
     ADCON2bits.ADFM = 0;            //left justified
     ADCON2bits.ADCS = 0b110;        //Fosc/64
-    ADCON2bits.ACQT = 0b110;        //16
+    ADCON2bits.ACQT = 0b110;        //16 Tad
     ADCON0bits.ADON = 1;            //ADC zapnout
     ADCON0bits.CHS = 5;             // kanal AN5
     
