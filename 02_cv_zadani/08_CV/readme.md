@@ -4,7 +4,7 @@
   <img width="610" height="210" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV/PIC18PWMdiagram.png">
 </p>
 
-PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních aplikací z výkonové elektroniky používá k regulaci výkonu tranzistory ve spínacím režimu. Duležitým pojmem je perioda PWM a střída (duty cycle). V regulaci elektrických pohonů se setkáváme nejčastěji s periodou PWM 10-20 kHz. 
+PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních aplikací z výkonové elektroniky používá k regulaci výkonu tranzistory ve spínacím režimu. Duležitým pojmem je perioda PWM a střída (duty cycle). V regulaci elektrických pohonů se setkáváme nejčastěji s frekvenci PWM 10-20 kHz. 
 
 <p align="center">
   <img width="360" height="210" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV/PWM.png">
