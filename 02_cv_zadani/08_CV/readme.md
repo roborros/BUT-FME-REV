@@ -7,7 +7,7 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
 </p>
 
 <p align="center">
-  <img width="270" height="70" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV/CodeCogsEqn.png">
+  <img width="140" height="35" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV/CodeCogsEqn.png">
 </p>
 
 ## Programová inicializace PWM:
