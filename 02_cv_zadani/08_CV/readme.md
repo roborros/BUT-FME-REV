@@ -20,10 +20,10 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
     //init - PWM
     TRISDbits.RD5 = 0;              // vypnu pin P1B
     TRISCbits.RC2 = 0;              // vypnu pin P1A
-    CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
+    CCPTMRS0bits.C1TSEL = 0b00;     // Timer 2 
     PR2 = 200;                      // cca 10kHz
-    CCP1CONbits.P1M = 0b00;         //PWM single
-    CCP1CONbits.CCP1M = 0b1100;     //PWM single
+    CCP1CONbits.P1M = 0b00;         // PWM single
+    CCP1CONbits.CCP1M = 0b1100;     // PWM single
     CCPR1L = 0;                     // strida 0%
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
@@ -64,10 +64,10 @@ void main(void) {
     //init - PWM
     TRISDbits.RD5 = 0;              // vypnu pin P1B
     TRISCbits.RC2 = 0;              // vypnu pin P1A
-    CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
+    CCPTMRS0bits.C1TSEL = 0b00;     // Timer 2 
     PR2 = 200;                      // cca 10kHz
-    CCP1CONbits.P1M = 0b00;         //PWM single
-    CCP1CONbits.CCP1M = 0b1100;     //PWM single
+    CCP1CONbits.P1M = 0b00;         // PWM single
+    CCP1CONbits.CCP1M = 0b1100;     // PWM single
     CCPR1L = 0;                     // strida 0%
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
@@ -127,9 +127,9 @@ void main(void) {
     TRISCbits.RC2 = 0;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
     PR2 = 200;                      // cca 10kHz
-    CCP1CONbits.P1M = 0b00;         //PWM single
-    CCP1CONbits.CCP1M = 0b1100;     //PWM single
-    CCPR1L = 150;                     // strida 0%
+    CCP1CONbits.P1M = 0b00;         // PWM single
+    CCP1CONbits.CCP1M = 0b1100;     // PWM single
+    CCPR1L = 150;                   // strida 59%
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
