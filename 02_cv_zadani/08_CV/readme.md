@@ -150,8 +150,6 @@ void main(void) {
 
   1) Otestujte funkčnost kódu pro PWM
 
-  2) Nastavujte rychlost motoru pomocí změny střídy.
-
-  3) Ovládejte rychlost motoru potenciometrem.
-
+  2) Ovládejte rychlost a směr motoru pomocí potenciometru POT2. Pokud bude POT2 ve střední poloze, bude motor zastavený. Při otáčení potenciometrem do horní polohy bude motor postupně zrychlovat otáčení na jednu stranu. Při otočení potenciometru do spodní polohy bude motor postupně zrychlovat otáčení na opačnou stranu než v předchozím případě. 
+  
   4) Nakonfigurujte PWM1 jako Half-bridge P1A motor a P1B LED5 (Tak že P1B je invertovaná k P1A).
