@@ -31,8 +31,8 @@ PWM periferie je určená pro aplikace k regulaci výkonu. Většina moderních 
     while(!TMR2IF){};               // cekam az jednou pretece
     PSTR1CON |= 0b11;               // stream na P1B a P1A
     
-    TRISDbits.RD5 = 1;              // zapnu pin P1B
-    TRISCbits.RC2 = 1;              // zapnu pin P1A
+    TRISDbits.RD5 = 0;              // zapnu pin P1B
+    TRISCbits.RC2 = 0;              // zapnu pin P1A
 ```
 
 ## Ukázka 1:
