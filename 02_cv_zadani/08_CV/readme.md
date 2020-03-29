@@ -1,5 +1,6 @@
 # REV - Osmé cvičení
 - PWM
+[Link na video-návod](https://youtu.be/15aprTBgvXg)
 <p align="center">
   <img width="610" height="210" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV/PIC18PWMdiagram.png">
 </p>
