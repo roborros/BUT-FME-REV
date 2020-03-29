@@ -102,7 +102,7 @@ void main(void) {
 ```c
 // REV PWM
 #pragma config FOSC =   HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config PLLCFG = OFF      // 4X PLL Enable (Oscillator multiplied by 4)
 #pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
 #pragma config WDTEN =  OFF
  
@@ -131,7 +131,7 @@ void main(void) {
     TRISDbits.RD5 = 1;              // vypnu pin P1B
     TRISCbits.RC2 = 1;              // vypnu pin P1A
     CCPTMRS0bits.C1TSEL = 0b00;     // T2mer 2 
-    PR2 = 200;                      // cca 10kHz
+    PR2 = 199;                      // cca 10kHz
     CCP1CONbits.P1M = 0b00;         // PWM single
     CCP1CONbits.CCP1M = 0b1100;     // PWM single
     CCPR1L = 150;                   // strida 59%
