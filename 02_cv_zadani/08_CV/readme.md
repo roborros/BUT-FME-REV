@@ -138,7 +138,7 @@ void main(void) {
     TMR2IF = 0;                     // nastavi se az pretece timer
     TMR2ON = 1;                     // staci zapnout defaultne je nastaven jak chceme
     while(!TMR2IF){};               // cekam az jednou pretece
-    PSTR1CON |= 0b01;               // stream na P1B a P1A
+    PSTR1CON |= 0b01;               // steering na P1B a P1A
     
     TRISDbits.RD5 = 0;              // zapnu pin P1B
     TRISCbits.RC2 = 0;              // zapnu pin P1A
