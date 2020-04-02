@@ -4,7 +4,7 @@
 ## Zapojení potenciometrů na RevKitu:
 
 <p align="center">
-  <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
+  <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
 </p>
 
 ### Konfigurace:
