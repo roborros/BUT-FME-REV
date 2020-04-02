@@ -249,7 +249,7 @@ void main(void) {
 
 ## Vyp/Zap jednotlivých periferii:
 
-V PIC18 mohu vypnout jednotlivé periferie a šetřit a nechat tak běžet jen ty, které používám a šetřit tak energii. Provádí se to pomocí registrů PMD0-2. 
+V PIC18 mohu vypnout jednotlivé periferie a nechat tak běžet jen ty, které používám a šetřit tak energii. Provádí se to pomocí registrů PMD0-2. 
 
 <p align="center">
   <img width="660" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PMD.png">
