@@ -1,7 +1,7 @@
 # REV - Deváté cvičení
 - WDT a SLEEP
 
-## Zapojení potenciometrů na RevKitu:
+## Watchdog timer:
 
 <p align="center">
   <img width="1024" height="385" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
