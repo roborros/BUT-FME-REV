@@ -7,6 +7,8 @@
   <img width="1024" height="385" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
 </p>
 
+LFINTOSC = 31,25 kHz
+
 ### Konfigurace:
 
     - #pragma config WDTEN = ON
