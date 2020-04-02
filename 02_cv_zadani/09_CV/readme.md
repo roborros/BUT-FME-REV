@@ -82,6 +82,8 @@ void trap(void){
 }
 ```
 
+## Řízení spotřeby:
+
 ## Přiklad 9.2:
 Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej.
 ```c
