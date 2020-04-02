@@ -84,6 +84,12 @@ void trap(void){
 
 ## Řízení spotřeby:
 
+
+## Power mody:
+<p align="center">
+  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PowerModes.png">
+</p>
+
 ## Přiklad 9.2:
 Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej.
 ```c
