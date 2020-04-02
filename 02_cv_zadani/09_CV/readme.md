@@ -20,48 +20,63 @@
 ## Přiklad 9.1:
 Rozsviťe LED1 v případě, že je potenciometr POT1 v horní polovině svého rozsahu a zhasněte ji, je-li potenciometr v dolní polovině svého rozsahu.
 ```c
-// REV ADC
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
+// WDT
+#pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = OFF         // 4X PLL Enable (Oscillator multiplied by 4)
 #pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+
+// nastaveni WDT
+#pragma config WDTEN = ON           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
+#pragma config WDTPS = 256          // Watchdog Timer Postscale Select bits (1:256)
 
 #include <xc.h>
 
-void init(void){
-  
-    ANSELA |= (1 << 5);             //AN4
-    ANSELE = 0b1;                   //AN5
- 
-    ADCON2bits.ADFM = 1;            //right justified
-    ADCON2bits.ADCS = 0b110;        //Fosc/64
-    ADCON2bits.ACQT = 0b110;        //16
-    ADCON0bits.ADON = 1;            //ADC zapnout
-        
-    TRISDbits.TRISD2 = 0;           // led1 vystup
-}
+#define _XTAL_FREQ 8E6
+#define BTN1    PORTCbits.RC0
+#define LED1    LATDbits.LATD2
 
-void main(void)
-{
-    init();
-    
-    unsigned int  pot1;
-    
-    while(1){
+void trap(void);
 
-        ADCON0bits.CHS = 5;                 // kanal AN5
-        GODONE = 1;                         // spustit aproximaci
-        while(GODONE);                      // cekam nez je hotovo
-        pot1 = (ADRESH << 8) | ADRESL;      // cteni vysledku
-        
-        if (pot1 > 512){
-            LATD2 = 1;
-        }
-        else {
-            LATD2 = 0;
-        }
+void main(void) {
+    
+    //GPIO
+    TRISD = 0b10000011;     // LEDs: 2..6 out
+    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
+    ANSELC = 0;
+    ANSELD = 0;
+    
+    // Zhasnu ledky
+    LATD2 = 1;
+    LATD3 = 1;
+    LATC4 = 1;
+    LATD4 = 1;
+    LATD5 = 1;
+    LATD6 = 1;
+    
+    // reakce na WDT reset
+    if(!RCONbits.TO){
+        LATD6 = 0;
+        __delay_ms(250);
+        LATD6 = 1;
+        __delay_ms(250);
+        LATD6 = 0;
+        __delay_ms(250);
+        LATD6 = 1; 
     }
     
+    while(1){
+        if(BTN1){
+            trap();
+        }
+        __delay_ms(100);
+        LED1 ^= 1;
+        __asm("CLRWDT");
+    }
+    return;
+}
+
+void trap(void){
+    while(1);
 }
 ```
 
