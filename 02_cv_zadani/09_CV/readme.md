@@ -1,4 +1,4 @@
-# REV - devate cvi4en9
+# REV - Deváté cvičení
 - WDT a SLEEP
 
 ## Zapojení potenciometrů na RevKitu:
