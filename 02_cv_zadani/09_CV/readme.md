@@ -188,5 +188,5 @@ void main(void) {
 ## Vyp/Zap jednotlivých periferii:
 
 <p align="center">
-  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PMD.png">
+  <img width="1000" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PMD.png">
 </p>
