@@ -87,7 +87,7 @@ void trap(void){
 
 ## Power mody:
 <p align="center">
-  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PowerModes.png">
+  <img width="700" height="260" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PowerModes.png">
 </p>
 
 ## Přiklad 9.2:
