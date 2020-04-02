@@ -91,7 +91,7 @@ void trap(void){
 </p>
 
 ## Přiklad 9.2:
-Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej.
+IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
 ```c
 // WDT_SLEEP
 #pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
@@ -133,7 +133,7 @@ void main(void) {
 }
 ```
 ## Přiklad 9.3:
-Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej. Využijte přerušení vyvolané ADC.
+IDLEN = 1 je to idle mod. CPU je vypnuto, ale periferie běží dál. Je možné probudit interrupt flagem. V tomto případě používáme TMR1.
 ```c
 // REV TIMER
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
@@ -185,3 +185,4 @@ void main(void) {
         }
 }
 ```
+## Vyp/Zap jednotlivých periferii:
