@@ -1,55 +1,23 @@
-# REV - Sedmé cvičení
-- ADC
-[Link na video-návod](https://youtu.be/NsYfhunumVw)
+# REV - devate cvi4en9
+- WDT a SLEEP
+
 ## Zapojení potenciometrů na RevKitu:
 
 <p align="center">
   <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
 </p>
 
-## Blokové schema ADC:
-
-<p align="center">
-  <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADCscheme.png">
-</p>
-
 ### Konfigurace:
 
-    - žádaným vstupům (piny) je třeba přiřadit analogovou funkci (registry ANSELx)
-    - nastavení vstupního rozsahu, tj. volba napěťové reference (pole VCFG v registru ADCON1)
-    - nastavení vstupů pro zvolený kanál (AN4 a AN5 v našem případě)
-    - zapnutí ADC modulu (ADCON0bits.ADON)
+    - #pragma config WDTEN = ON
+    - #pragma config WDTPS = 256 (hodnota je dělička jako u timeru)
 
-### Čtení:
+### smazani WDT:
 
-    - spuštění vzorkování
-    - krátká prodleva
-    - spuštění konverze (kvantizace)
-    - čekání na dokončení konverze (kontrolou ADCON0bits.DONE)
-    - čtení výsledku konverze (registr ADRESH nebo ADRESL)
+    - PIC18 má instrukci 'CLRWDT', instrukce lze do C programu zadat příkazem __asm("CLRWDT");
 
-## Programová inicializace ADC:
 
-Teď přichází chvíle nastavit registr ANSELx pro příslušný pin na 1!
-
-```c
-    ANSELA |= (1 << 5);             //AN4 (RA5)
-    ANSELE = 0b1;                   //AN5 (RE0)
- 
-    ADCON2bits.ADFM = 1;            //right justified
-    ADCON2bits.ADCS = 0b110;        //Fosc/64
-    ADCON2bits.ACQT = 0b110;        //16
-    ADCON0bits.ADON = 1;            //ADC zapnout
-```
-
-## Čtení z ADC:
-```c
-    GODONE = 1;
-    while (GODONE);
-    data = (ADRESH << 8) | ADRESL;
-```
-
-## Přiklad 7.1:
+## Přiklad 9.1:
 Rozsviťe LED1 v případě, že je potenciometr POT1 v horní polovině svého rozsahu a zhasněte ji, je-li potenciometr v dolní polovině svého rozsahu.
 ```c
 // REV ADC
@@ -97,7 +65,7 @@ void main(void)
 }
 ```
 
-## Přiklad 7.2 (je treba LCD knihovna):
+## Přiklad 9.2:
 Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej.
 ```c
 // REV ADC
@@ -146,7 +114,7 @@ void main(void) {
 }
 
 ```
-## Přiklad 7.3 vyvolani preruseni na dokoncenou konverzi:
+## Přiklad 9.3:
 Vypište hodnotu z AD převhodníku pro potenciometr POT1 na LCD displej. Využijte přerušení vyvolané ADC.
 ```c
 #pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
