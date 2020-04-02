@@ -2,6 +2,7 @@
 - WDT a SLEEP
 
 ## Watchdog timer:
+Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jedná se o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
 
 <p align="center">
   <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
@@ -83,7 +84,7 @@ void trap(void){
 ```
 
 ## Řízení spotřeby:
-
+PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, že sleep opravdu zastaví CPU i periferie, zatímco IDLE jen CPU.  V IDLE modu mohu tedy probudit procesor například přerušením od periferie (ukážeme si TIMER). Ve SLEPP modu k tomu může sloužit třeba WDT, který tentokrát neresetuje, ale probudí zařízení. 
 
 ## Power mody:
 <p align="center">
@@ -185,6 +186,13 @@ void main(void) {
         }
 }
 ```
+
+## Přiklad 9.4:
+Ukázka SW resetu, což je instrukce procesoru. Mohu tak programově reagovat na kritické události.
+```c
+
+```
+
 ## Vyp/Zap jednotlivých periferii:
 
 V PIC18 mohu vypnout jednotlivé periferie a šetřit a nechat tak běžet jen ty, které používám a šetřit tak energii. Provádí se to pomocí registrů PMD0-2. 
