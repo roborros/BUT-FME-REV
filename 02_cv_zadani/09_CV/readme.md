@@ -4,7 +4,7 @@
 ## Watchdog timer:
 
 <p align="center">
-  <img width="1024" height="385" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
+  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
 </p>
 
 LFINTOSC = 31,25 kHz
