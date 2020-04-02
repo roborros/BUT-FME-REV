@@ -20,7 +20,7 @@ LFINTOSC = 31,25 kHz
 
 
 ## Přiklad 9.1:
-Rozsviťe LED1 v případě, že je potenciometr POT1 v horní polovině svého rozsahu a zhasněte ji, je-li potenciometr v dolní polovině svého rozsahu.
+Program demostruje využití WDT. Funkce trap() schválně obsahuje nekonečnou smyčku, kde přeteče WDT a resetuje MCU. BIT RCONbits.TO pak mohu používat k detekci, že nastal reset. V příkladu nám to oznámí zablikáním poslední LED.
 ```c
 // WDT
 #pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
