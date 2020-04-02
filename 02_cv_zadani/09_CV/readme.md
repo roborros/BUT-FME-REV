@@ -190,7 +190,61 @@ void main(void) {
 ## Přiklad 9.4:
 Ukázka SW resetu, což je instrukce procesoru. Mohu tak programově reagovat na kritické události.
 ```c
+// REV PWM
+#pragma config FOSC =       HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG =     OFF          // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config PRICLKEN =   ON          // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN =      OFF         // watchdog off
+ 
+#include <xc.h>
 
+#define _XTAL_FREQ 8E6
+
+void main(void) {
+    
+    //GPIO
+    TRISD = 0b10000011;     // LEDs: 2..6 out
+    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
+    ANSELC = 0;
+    ANSELD = 0;
+    
+    // Zhasnu ledky
+    LATD2 = 1;
+    LATD3 = 1;
+    LATC4 = 1;
+    LATD4 = 1;
+    LATD5 = 1;
+    LATD6 = 1;
+    
+    // reakce na reset
+    if(!RCONbits.RI){
+        LATD6 = 0;
+        __delay_ms(250);
+        LATD6 = 1;
+        __delay_ms(250);
+        LATD6 = 0;
+        __delay_ms(250);
+        LATD6 = 1; 
+    }
+
+    // ADC pro potenciometr
+    ANSELE = 0b1;                   //AN5
+    ADCON2bits.ADFM = 0;            //left justified
+    ADCON2bits.ADCS = 0b110;        //Fosc/64
+    ADCON2bits.ACQT = 0b110;        //16
+    ADCON0bits.ADON = 1;            //ADC zapnout
+    ADCON0bits.CHS = 5;             // kanal AN5
+    
+    while (1){
+        GODONE = 1;                 // spustim konverzi
+        while(GODONE){};            // cekam na konverzi
+        if(ADRESH > 250){
+            __asm("RESET");         // pokud vnastavim pot na vysoko
+        }
+        __delay_ms(500);
+        LATD2 ^= 1;
+   }
+}
 ```
 
 ## Vyp/Zap jednotlivých periferii:
