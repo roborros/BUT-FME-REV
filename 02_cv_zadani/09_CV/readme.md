@@ -255,4 +255,9 @@ V PIC18 mohu vypnout jednotlivé periferie a nechat tak běžet jen ty, které p
   <img width="660" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PMD.png">
 </p>
 
-## Zadani:
+### Zadání:
+
+  1) Nakonfigurujte deep sleep a probouzejte MCU cca jednou za 1s. Po probuzení odešlete hodnotu POT2 přes UART do PC. 
+
+  2) Nakonfugurujte komunikaci s PC. Pokud nepříjde déle než 1s specifická zpráva (kterou si zvolte), tak dojde k SW resetu. Po resetu zobrazte na displeji, že zpráva nedošla.
+  3) Provozujte kontroler v IDLE módu. Kontrolér hned po inicilizaci uspěte a komunikujte přes uart. Tedy příchod zprávy MCU probudí. Zpráva se odešle zpět (ECHO) a MCU zase usne.
