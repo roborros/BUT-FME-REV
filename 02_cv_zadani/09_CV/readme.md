@@ -163,9 +163,7 @@ void init(void){
     LATD5 = 1;
     LATD6 = 1;
     
-    //TIMER 1
-    TRISDbits.TRISD2 = 0;           // RD2 jako vystup
-    
+    //TIMER 1   
     T1CONbits.TMR1CS = 0b00;        // zdroj casovace 1
     T1CONbits.T1CKPS = 0b11;        // nastaveni delicky
     IDLEN = 1;                      // musim nechat clock pro periferie
