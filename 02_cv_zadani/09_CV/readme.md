@@ -84,7 +84,7 @@ void trap(void){
 ```
 
 ## Řízení spotřeby:
-PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, že sleep opravdu zastaví CPU i periferie, zatímco IDLE jen CPU.  V IDLE modu mohu tedy probudit procesor například přerušením od periferie (ukážeme si TIMER). Ve SLEPP modu k tomu může sloužit třeba WDT, který tentokrát neresetuje, ale probudí zařízení. 
+PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, že SLEEP opravdu zastaví CPU i periferie, zatímco IDLE jen CPU. V IDLE modu mohu tedy probudit procesor například přerušením od periferie (ukážeme si TIMER). Ve SLEEP modu k tomu může sloužit třeba WDT, který tentokrát neresetuje, ale probudí zařízení. 
 
 ## Power mody:
 <p align="center">
