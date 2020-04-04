@@ -112,7 +112,7 @@ void main(void) {
     
     //GPIO
     TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
+    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
     ANSELC = 0;
     ANSELD = 0;
     
@@ -151,7 +151,7 @@ void init(void){
     
     //GPIO
     TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
+    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
     ANSELC = 0;
     ANSELD = 0;
     
@@ -204,7 +204,7 @@ void main(void) {
     
     //GPIO
     TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b00000001;     // RC0 BTN1, RC4 LED
+    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
     ANSELC = 0;
     ANSELD = 0;
     
