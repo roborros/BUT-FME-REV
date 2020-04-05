@@ -1,5 +1,5 @@
 # REV - Deváté cvičení
-- WDT a SLEEP
+- WDT a SLEEP [Link na video-návod](https://youtu.be/cwu20SQlFE4)
 
 ## Watchdog timer:
 Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jde o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
