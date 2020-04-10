@@ -68,16 +68,13 @@ int main(void) {
     PEIE = 1;               // preruseni od periferii    
     GIE = 1;                // globalni preruseni
     
-    char muj_str[80];
-             
+                
     while(1){
         if (message_in.full){
             message_in.full = 0;  
             
-            TX1IE = 1;
+            TX1IE = 1;            
             
-            sprintf(muj_str, " Mechlab je bozi\n");
-            UART_PutStr(muj_str); 
         }            
     }
 }
