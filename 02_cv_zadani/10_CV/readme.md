@@ -8,7 +8,7 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 ## První úkol:
 
 <p align="center">
-  <img width="250" height="250" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/RevKruznice.png">
+  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/RevKruznice.png">
 </p>
 
 <p align="center">
