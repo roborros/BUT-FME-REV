@@ -200,7 +200,201 @@ int readADC(char channel)
 ## Přiklad 10.2:
 
 ```c
-// FSMP
+// FSM
+#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = OFF    // 4X PLL Enable (Oscillator used directly)
+#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+ 
+ 
+#include <xc.h>
+#include <stdio.h>
+ 
+#include "lcd.h"
+ 
+#define ISR_PERIOD 0xFFFF - 50000
+#define _XTAL_FREQ 8E6
+ 
+#define BTN1    PORTCbits.RC0
+#define BTN2    PORTAbits.RA4
+#define BTN3    PORTAbits.RA3
+#define BTN4    PORTAbits.RA2
+
+enum{
+    IDLE = 0,
+    STATE1,
+    STATE2,
+    STATE3,
+    STATE4,
+} STATES;
+
+void driveLED(char in);
+void putch(char msg);
+  
+volatile char gFlag = 0;
+ 
+void __interrupt() ISR(void){
+    if(TMR1IE & TMR1IF){
+        TMR1 = ISR_PERIOD;
+        gFlag = 1;
+        TMR1IF = 0;
+   }
+}
+ 
+// Functions prototypes
+void FSM(void);
+ 
+void init(void)
+{
+    // disable analog properties
+    ANSELA = 0x00;
+    ANSELC = 0x00;
+ 
+    // set pins as outputs
+    TRISDbits.TRISD2 = 0;
+    TRISDbits.TRISD3 = 0;
+    TRISCbits.TRISC4 = 0;
+    TRISDbits.TRISD4 = 0;
+    TRISDbits.TRISD5 = 0;
+    TRISDbits.TRISD6 = 0;
+    
+    // LEDs off
+    LATD2 = 1;
+    LATD3 = 1;
+    LATC4 = 1;
+    LATD4 = 1;
+    LATD5 = 1;
+    LATD6 = 1;
+    
+    
+    // set pins as inputs
+    TRISAbits.TRISA4 = 1;
+    TRISAbits.TRISA3 = 1;
+    TRISAbits.TRISA2 = 1;
+    TRISCbits.TRISC0 = 1;
+    
+    // uart
+    SPBRG1 = 12;              // (8_000_000 / (64 * 9600)) - 1
+    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
+    RCSTA1bits.SPEN = 1;      // zapnuti UART
+    TXSTA1bits.TXEN = 1;      // zapnuti TX
+    
+ 
+    // TIMER
+    T1CONbits.TMR1CS = 0b00;
+    T1CONbits.T1CKPS = 0b11;    // TMR1 prescaler
+   
+    //interrupts
+    PEIE = 1;                   // global interrupt enable// peripheral interrupt enable
+    GIE = 1;                    // global interrupt enable
+    TMR1IE = 1;                 // enable TMR1 interrupt
+    T1CONbits.TMR1ON = 1;       // timer ON
+ 
+}
+ 
+void main(void)
+{
+    init();
+    LCD_Init();
+ 
+    while(1)
+    {
+        if (gFlag)
+        {
+            FSM();
+            gFlag = 0;
+        }
+    }
+}
+ 
+void FSM(void)
+{
+    static char STATE = IDLE;
+    
+    switch (STATE)
+    {
+    case IDLE:
+        if (BTN1){
+            __delay_ms(5);
+            if(BTN1){
+                STATE = STATE1;
+                while(BTN1);
+            }
+        }
+        
+        LCD_ShowString(1, "State:INIT      ");
+        printf("Current state: IDLE\n");
+        driveLED(IDLE);
+        break;
+    case STATE1:
+        if (BTN1){
+            __delay_ms(5);
+            if(BTN1){
+                STATE = STATE2;
+                while(BTN1);
+            }
+        }
+        
+        LCD_ShowString(1, "State: STATE1      ");
+        printf("Current state: STATE1\n");
+        driveLED(STATE1);
+        break;
+    case STATE2:
+        if (BTN1){
+            __delay_ms(5);
+            if(BTN1){
+                STATE = STATE3;
+                while(BTN1);
+            }
+        }
+        
+        LCD_ShowString(1, "State: STATE2      ");
+        printf("Current state: STATE2\n");
+        driveLED(STATE2);
+        break;
+    case STATE3:
+        if (BTN1){
+            __delay_ms(5);
+            if(BTN1){
+                STATE = STATE4;
+                while(BTN1);
+            }
+        }
+        
+        LCD_ShowString(1, "State: STATE3      ");
+        printf("Current state: STATE3\n");
+        driveLED(STATE3);
+        break;
+    case STATE4:
+        if (BTN1){
+            __delay_ms(5);
+            if(BTN1){
+                STATE = STATE1;
+                while(BTN1);
+            }
+        }
+        
+        LCD_ShowString(1, "State: STATE4      ");
+        printf("Current state: STATE4\n");
+        driveLED(STATE4);
+        break;
+        }
+}
+
+void driveLED(char in){
+        in = ~in;
+        LATD2 = in & 1;             //LED0
+        LATD3 = in & 2 ? 1 : 0;     //LED1
+        LATC4 = in & 4 ? 1 : 0;     //LED2
+        LATD4 = in & 8 ? 1 : 0;     //LED3
+        LATD5 = in & 16 ? 1 : 0;    //LED4
+        LATD6 = in & 32 ? 1 : 0;    //LED5
+}
+
+void putch(char msg){
+    while(!TX1IF){};
+    TX1REG = msg;
+}
 
 ```
 ## Přiklad 10.3:
