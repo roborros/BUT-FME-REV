@@ -17,7 +17,7 @@ Všichni znáte jednotkovou kružnici. Představme si, že požadovýný úhel b
 </p>
 
 ### Kód pro matlab:
-Vygeneruje vám obrázky a také tabulku. Lze ho spustit i na Octave Online. V na konci v proměnné z mohu zobrazit výsledek pro nějáký vstup a porovnat ho s řešením na MCU.
+Vygeneruje vám obrázky a také tabulku. Lze ho spustit i na Octave Online. Na konci v proměnné "z" mohu zobrazit výsledek pro nějáký vstup a porovnat ho s řešením na MCU.
 ```matlab
 clc; clear all; close all;
  
