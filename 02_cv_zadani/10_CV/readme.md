@@ -6,6 +6,7 @@
 Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i přepočtům zavislostí, pro která funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
 
 ## První úkol:
+Všichni znáte jednotkovou kružnici. Představme si, že požadovýný úhel budeme volit potenciometrem a to mezi 0..255. Získat pak budeme chtít hodnotu sinus, kterou ale také přepočítáme na -127..127. Níže je graf s takto vygenerovanou sinusovkou. Pro naši tabulku zvolíme krok 15 (je dobre si pamatovat, že číslo 255 lze beze zbytku dělit třeba: ..5,15,17..). Naše tabulka bude mít 18 hodnot.
 
 <p align="center">
   <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/RevKruznice.png">
@@ -60,9 +61,8 @@ z =  sin(((100*2*pi)/255))*127
 {255, 0},
 z =  79.619
 ```
-### smazani WDT:
-
-    - PIC18 má instrukci 'CLRWDT', instrukce lze do C programu zadat příkazem __asm("CLRWDT");
+### Použití tabulky na MCU:
+V prvé řadě je výhodné zavést datový typ point, což je struktura, která obsahuje bod(x,y). Tabulka je potom pole těchto bodů. Pro interpolaci potom musíme určit pro které body ji budeme provádět. Interpoloca je potom už přímočará. 
 
 
 ## Přiklad 10.1:
