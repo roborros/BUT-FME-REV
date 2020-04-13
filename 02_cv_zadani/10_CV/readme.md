@@ -434,5 +434,5 @@ void putch(char msg){
 ### Zadání:
 
   1) Rozšiřte úlohu jedna LookUp, že dolní řádek zobrazuje hodnotu cos().
-  3) Rozšiřte úlohu dva FSM tak, že první stav zobrazuje na LCD napětí na POT1, druhy na POT2, třetí realizuje časovač a ukazuje čas od začátku stavu v s, čtvrtý realizuje blikání všech led (frekvence blikáni laze viditelně nastavovat POT2).
+  2) Rozšiřte úlohu dva FSM tak, že první stav zobrazuje na LCD napětí na POT1, druhy na POT2, třetí realizuje časovač a ukazuje čas od začátku stavu v s, čtvrtý realizuje blikání všech led (frekvence blikáni laze viditelně nastavovat POT2).
   
