@@ -66,6 +66,9 @@ V prvé řadě je výhodné zavést datový typ point, což je struktura, která
 
 ### Návod na interpolaci:
 Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte funkci searchIndex(). Nalézt index je třeba proto, že ADC vám vrací libovolnou hodnotu 0..255, musíte tedy určit body v tabulce, kde budete interpolovat. Potom implementujte funkci interpolate(). Viz. obrázek.
+
+### Nepoužívejte floating point, kontrolér na to nemá hardware (matematický koprocesor tzv. FPU):
+
 <p align="center">
   <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/interpolation.png">
 </p>
