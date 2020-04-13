@@ -199,7 +199,7 @@ int readADC(char channel)
 
 ## FSM:
 <p align="center">
-  <img width="700" height="260" src="">
+  <img width="720" height="910" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/FSM.png">
 </p>
 
 ## Přiklad 10.2:
