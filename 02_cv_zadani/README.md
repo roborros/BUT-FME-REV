@@ -9,8 +9,8 @@
 * 07--ADC
 * 08--PWM
 * 09--WDT
-* 10--Stavové automaty FSM
-* 11--Matematika Fixed Step
+* 10--Stavové automaty FSM a LookUP table
+
 
 
 Náměty na úpravy posílejte na mailMBa nebo mailMBr, nebo lépe zadávejte jako issue nebo rovnou pull request.
