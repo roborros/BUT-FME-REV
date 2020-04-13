@@ -144,7 +144,7 @@ void main(void)
         indx = searchIndex(adc, LOOKUP, 18);
         value = interpolate(LOOKUP[indx], LOOKUP[indx+1], adc);
         
-        //LCD_Clear();
+
         sprintf(text1,"sin:%d-->%d   ", adc, value);
         LCD_ShowString(1,text1);
         __delay_ms(40);
