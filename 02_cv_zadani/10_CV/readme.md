@@ -12,6 +12,7 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 </p>
 
 ### Kód pro matlab:
+Vygeneruje vám obrázky a také tabulku. Lze ho spustit i na Octave Online.
 ```matlab
 clc; clear all; close all;
  
@@ -33,6 +34,29 @@ for index = 1:length(x)
 end
 
 z =  sin(((100*2*pi)/255))*127
+
+
+>>
+ans =  18
+{0, 0},
+{15, 46},
+{30, 86},
+{45, 114},
+{60, 126},
+{75, 122},
+{90, 101},
+{105, 67},
+{120, 23},
+{135, -23},
+{150, -67},
+{165, -101},
+{180, -122},
+{195, -126},
+{210, -114},
+{225, -86},
+{240, -46},
+{255, 0},
+z =  79.619
 ```
 ### smazani WDT:
 
