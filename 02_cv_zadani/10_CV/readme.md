@@ -160,14 +160,14 @@ void main(void)
 
 int searchIndex(int target, const point *table, int tableSize)
 {
-  // implementujte funkci return je zde jen pro preklad
-  return target
+  // implementujte funkci 
+  return target; // return je zde jen pro preklad ma vracet index
 }
 
 int interpolate(point p1, point p2, int x)
 {
-    //implementujte funkci return je zde jen pro preklad
-    return x;
+    //implementujte funkci
+    return x;  // return je zde jen pro preklad ma vracet hodnotu y
 }
 
 int readADC(char channel)
