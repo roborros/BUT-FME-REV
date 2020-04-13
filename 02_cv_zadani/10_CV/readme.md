@@ -65,6 +65,7 @@ z =  79.619
 V prvé řadě je výhodné zavést datový typ point, což je struktura, která obsahuje bod(x,y). Tabulka je potom pole těchto bodů. Pro interpolaci potom musíme určit pro které body ji budeme provádět. Interpoloca je potom už přímočará. 
 
 ### Návod na interpolaci:
+Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte funkci searchIndex(). Nalézt index je třeba proto, žeADC vám vrací libovolnou hodnotu 0..255, musíte tedy určit body v tabulce, kde budete interpolovat. Potom implementujte funkci interpolate(). Viz. obrázek.
 <p align="center">
   <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/interpolation.png">
 </p>
