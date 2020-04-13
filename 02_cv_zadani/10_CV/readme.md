@@ -140,7 +140,7 @@ void main(void)
     while(1)
     {
 
-        adc = (int)readADC(5);
+        adc = readADC(5);
         indx = searchIndex(adc, LOOKUP, 18);
         value = interpolate(LOOKUP[indx], LOOKUP[indx+1], adc);
         
@@ -180,7 +180,7 @@ int interpolate(point p1, point p2, int x)
 
 int readADC(char channel)
 {
-	char tmp = 10;
+    char tmp = 10;
     ADCON0bits.CHS = channel;
     while(--tmp){};
     GODONE = 1;
