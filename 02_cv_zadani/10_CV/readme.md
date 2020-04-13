@@ -65,7 +65,7 @@ z =  79.619
 V prvé řadě je výhodné zavést datový typ point, což je struktura, která obsahuje bod(x,y). Tabulka je potom pole těchto bodů. Pro interpolaci potom musíme určit pro které body ji budeme provádět. Interpoloca je potom už přímočará. 
 
 ### Návod na interpolaci:
-Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte funkci searchIndex(). Nalézt index je třeba proto, žeADC vám vrací libovolnou hodnotu 0..255, musíte tedy určit body v tabulce, kde budete interpolovat. Potom implementujte funkci interpolate(). Viz. obrázek.
+Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte funkci searchIndex(). Nalézt index je třeba proto, že ADC vám vrací libovolnou hodnotu 0..255, musíte tedy určit body v tabulce, kde budete interpolovat. Potom implementujte funkci interpolate(). Viz. obrázek.
 <p align="center">
   <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/interpolation.png">
 </p>
@@ -422,7 +422,8 @@ void putch(char msg){
 
 ### Zadání:
 
-  1) Rozšiřte úlohu jedna LookUp, že dolní řádek zobrazuje hodnotu cos().
-  2) Rozšiřte úlohu dva FSM tak, že první stav zobrazuje na LCD napětí na POT1, druhy na POT2, třetí realizuje časovač a ukazuje čas od začátku stavu v s, čtvrtý realizuje blikání všech led (frekvence blikáni laze viditelně nastavovat POT2).
-  3) Upravte FSM takto: K přepínání stále slouží talačítko BTN1, ale zároveň dojde k přechodu po 10s ve stavu. Musíte reagovat na BTN1 a tedy nejde použít blokující delay(). (Použíjte TIMER)
+  1) V úloze 10.1 naprogramujte funkce searchIndex a interpolate.
+  2) Rozšiřte úlohu jedna LookUp, že dolní řádek zobrazuje hodnotu cos().
+  3) Rozšiřte úlohu dva FSM tak, že první stav zobrazuje na LCD napětí na POT1, druhý na POT2, třetí realizuje časovač a ukazuje čas od začátku stavu v s, čtvrtý realizuje blikání všech led (frekvence blikáni lze viditelně nastavovat POT2).
+  4) Upravte FSM takto: K přepínání stále slouží talačítko BTN1, ale zároveň dojde k přechodu po 10s ve stavu. Musíte reagovat na BTN1 a tedy nejde použít blokující delay(). (Použíjte TIMER)
   
