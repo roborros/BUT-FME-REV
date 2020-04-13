@@ -195,14 +195,16 @@ int readADC(char channel)
 ```
 
 ## Stavové automaty:
-// to do 
+Stavové automaty jsou fundamentální koncept v embedded systémech. Jedná se o jistou formu abstrakce, kdy logiku systému uzavíráme do stavu. Stavový automat je potom ovládán přes určité události. To může být stisknuté tlačítko, příchod zprávy, vypršení času apod. Koncept nic neříká o tom, jak přesně má být automat naprogramován. Uvedeme základní a použivanou realizaci pomoci switch-case. Ten je vhodný pro jednoduché FSM, kde není příliš mnoho stavů. Toto řešení u větších úloh totiž vede k celekm nepřehlednému kódu. tzv. "spaghetti code".
 
-## FSM:
+
+## Přiklad 10.2:
+Implementujeme základní kostru programu se stavovým automatem na obrázku. Automat má 5 stavů, kdy jeden je IDLE. Je to stav, který se spustí na začátku programu. Dále jsou zde čtyři stavy STATEx. Mezi stavy se jdá v kruhu přecházet tlačítkem BTN1. Náš automat se volá pravidelně a je řízen přerušením přes TMR1. Stav automatu uchováváme ve statické proměnné state. 
+
+## FSM k úloze 10.2:
 <p align="center">
   <img width="240" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/FSM.png">
 </p>
-
-## Přiklad 10.2:
 
 ```c
 // FSM
