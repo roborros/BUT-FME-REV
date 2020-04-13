@@ -437,4 +437,5 @@ void putch(char msg){
 
   1) Rozšiřte úlohu jedna LookUp, že dolní řádek zobrazuje hodnotu cos().
   2) Rozšiřte úlohu dva FSM tak, že první stav zobrazuje na LCD napětí na POT1, druhy na POT2, třetí realizuje časovač a ukazuje čas od začátku stavu v s, čtvrtý realizuje blikání všech led (frekvence blikáni laze viditelně nastavovat POT2).
+  3) Upravte FSM takto: K přepínání stále slouží talačítko BTN1, ale zároveň dojde k přechodu po 10s ve stavu. Musíte reagovat na BTN1 a tedy nejde použít blokující delay(). (Použíjte TIMER)
   
