@@ -195,7 +195,7 @@ int readADC(char channel)
 ```
 
 ## Stavové automaty:
-Stavové automaty jsou fundamentální koncept v embedded systémech. Jedná se o jistou formu abstrakce, kdy logiku systému uzavíráme do stavu. Stavový automat je potom ovládán přes určité události. To může být stisknuté tlačítko, příchod zprávy, vypršení času apod. Koncept nic neříká o tom, jak přesně má být automat naprogramován. Uvedeme základní a použivanou realizaci pomoci switch-case. Ten je vhodný pro jednoduché FSM, kde není příliš mnoho stavů. Toto řešení u větších úloh totiž vede k celekm nepřehlednému kódu. tzv. "spaghetti code".
+Stavové automaty jsou fundamentální koncept v embedded systémech. Jedná se o jistou formu abstrakce, kdy logiku systému uzavíráme do stavu. Stavový automat je potom ovládán přes určité události. To může být stisknuté tlačítko, příchod zprávy, vypršení času apod. Koncept nic neříká o tom, jak přesně má být automat naprogramován. Uvedeme základní a použivanou realizaci pomoci switch-case. Ten je vhodný pro jednoduché FSM, kde není příliš mnoho stavů. Toto řešení u větších úloh totiž vede k celkem nepřehlednému kódu. tzv. "spaghetti code".
 
 
 ## Přiklad 10.2:
