@@ -160,27 +160,14 @@ void main(void)
 
 int searchIndex(int target, const point *table, int tableSize)
 {
-    int i;
-    int bestIndex = 0;
-    for (i=0; i<tableSize; i++) {
-        if (target > table[i].x) {
-            bestIndex = i;
-        } else {
-            return bestIndex;
-        }
-    }
-    return bestIndex;
+  // implementujte funkci return je zde jen pro preklad
+  return target
 }
 
 int interpolate(point p1, point p2, int x)
 {
-    int y;
-    long tmp;
-    tmp = (x - p1.x);
-    tmp *= (p2.y - p1.y);
-    tmp /= (p2.x - p1.x);
-    y = p1.y + tmp;
-    return y;
+    //implementujte funkci return je zde jen pro preklad
+    return x;
 }
 
 int readADC(char channel)
