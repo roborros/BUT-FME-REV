@@ -228,6 +228,12 @@ enum{
     STATE4,
 } STATES;
 
+void idle(void);
+void state1(void);
+void state2(void);
+void state3(void);
+void state4(void);
+
 void driveLED(char in);
 void putch(char msg);
   
@@ -321,10 +327,7 @@ void FSM(void)
                 while(BTN1);
             }
         }
-        
-        LCD_ShowString(1, "State:INIT      ");
-        printf("Current state: IDLE\n");
-        driveLED(IDLE);
+        idle();
         break;
     case STATE1:
         if (BTN1){
@@ -334,10 +337,7 @@ void FSM(void)
                 while(BTN1);
             }
         }
-        
-        LCD_ShowString(1, "State: STATE1      ");
-        printf("Current state: STATE1\n");
-        driveLED(STATE1);
+        state1();
         break;
     case STATE2:
         if (BTN1){
@@ -347,10 +347,7 @@ void FSM(void)
                 while(BTN1);
             }
         }
-        
-        LCD_ShowString(1, "State: STATE2      ");
-        printf("Current state: STATE2\n");
-        driveLED(STATE2);
+        state2();
         break;
     case STATE3:
         if (BTN1){
@@ -360,10 +357,7 @@ void FSM(void)
                 while(BTN1);
             }
         }
-        
-        LCD_ShowString(1, "State: STATE3      ");
-        printf("Current state: STATE3\n");
-        driveLED(STATE3);
+        state3();
         break;
     case STATE4:
         if (BTN1){
@@ -373,12 +367,46 @@ void FSM(void)
                 while(BTN1);
             }
         }
-        
-        LCD_ShowString(1, "State: STATE4      ");
-        printf("Current state: STATE4\n");
-        driveLED(STATE4);
+        state4();
         break;
         }
+}
+
+
+void idle(void){
+    
+    LCD_ShowString(1, "State:IDLE         ");
+    printf("Current state: IDLE\n");
+    driveLED(IDLE);
+    
+}
+void state1(void){
+    
+    LCD_ShowString(1, "State: STATE1      ");
+    printf("Current state: STATE1\n");
+    driveLED(STATE1);
+    
+}
+void state2(void){
+    
+    LCD_ShowString(1, "State: STATE2      ");
+    printf("Current state: STATE2\n");
+    driveLED(STATE2);
+    
+}
+void state3(void){
+    
+    LCD_ShowString(1, "State: STATE3      ");
+    printf("Current state: STATE3\n");
+    driveLED(STATE3);
+    
+}
+void state4(void){
+    
+    LCD_ShowString(1, "State: STATE4      ");
+    printf("Current state: STATE4\n");
+    driveLED(STATE4);
+    
 }
 
 void driveLED(char in){
@@ -397,13 +425,9 @@ void putch(char msg){
 }
 
 ```
-## Přiklad 10.3:
-
-```c
-// FSM
-
-```
 
 ### Zadání:
 
-  1) Rozšiřte úlohu jedna, že dolní řádek zobrazuje hodnotu cos().
+  1) Rozšiřte úlohu jedna LookUp, že dolní řádek zobrazuje hodnotu cos().
+  3) Rozšiřte úlohu dva FSM tak, že první stav zobrazuje na LCD napětí na POT1, druhy na POT2, třetí realizuje časovač a ukazuje čas od začátku stavu v s, čtvrtý realizuje blikání všech led (frekvence blikáni laze viditelně nastavovat POT2).
+  
