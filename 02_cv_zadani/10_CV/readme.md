@@ -28,16 +28,13 @@ hold on
 plot(x1,y1,'-b')
 grid on
 
-length(x)
 for index = 1:length(x)
     fprintf("{%d, %d},\n", x(1,index), y(1,index));
 end
 
 z =  sin(((100*2*pi)/255))*127
 
-
 >>
-ans =  18
 {0, 0},
 {15, 46},
 {30, 86},
