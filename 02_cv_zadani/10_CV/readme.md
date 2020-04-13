@@ -12,7 +12,7 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 </p>
 
 ### Kód pro matlab:
-Vygeneruje vám obrázky a také tabulku. Lze ho spustit i na Octave Online.
+Vygeneruje vám obrázky a také tabulku. Lze ho spustit i na Octave Online. V na konci v proměnné z mohu zobrazit výsledek pro nějáký vstup a porovnat ho s řešením na MCU.
 ```matlab
 clc; clear all; close all;
  
@@ -34,6 +34,7 @@ end
 
 z =  sin(((100*2*pi)/255))*127
 
+% vystup******************************************************
 >>
 {0, 0},
 {15, 46},
