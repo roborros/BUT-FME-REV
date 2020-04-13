@@ -2,20 +2,38 @@
 # REV - Desáté cvičení
 - LOOKUP a FSM
 
-## Watchdog timer:
-Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jde o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
+## LookUp tabulka:
+Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i přepočtům zavislostí, pro která funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
+
+## Vykreslení a generování tabulky:
 
 <p align="center">
   <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
 </p>
 
-LFINTOSC = 31,25 kHz
+### Kód pro matlab:
+```matlab
+clc; clear all; close all;
+ 
+x = (0:15:255);
+y = round(sin(((x*2*pi)/255))*127);
+ 
+x1 = linspace(0,255,1001);
+y1 = sin(((x1*2*pi)/255))*127;
 
-### Konfigurace:
+figure(1);
+plot(x,y,'+-r')
+hold on
+plot(x1,y1,'-b')
+grid on
 
-    - #pragma config WDTEN = ON
-    - #pragma config WDTPS = 256 (hodnota je dělička jako u timeru)
+length(x)
+for index = 1:length(x)
+    fprintf("{%d, %d},\n", x(1,index), y(1,index));
+end
 
+z =  sin(((100*2*pi)/255))*127
+```
 ### smazani WDT:
 
     - PIC18 má instrukci 'CLRWDT', instrukce lze do C programu zadat příkazem __asm("CLRWDT");
