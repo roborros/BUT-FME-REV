@@ -5,7 +5,11 @@
 ## LookUp tabulka:
 Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i přepočtům zavislostí, pro která funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
 
-## Vykreslení a generování tabulky:
+## První úkol:
+
+<p align="center">
+  <img width="250" height="250" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/RevKruznice.png">
+</p>
 
 <p align="center">
   <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/REVsinus.png">
