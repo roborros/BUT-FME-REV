@@ -8,7 +8,7 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 ## Vykreslení a generování tabulky:
 
 <p align="center">
-  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/REVsinus.png">
 </p>
 
 ### Kód pro matlab:
