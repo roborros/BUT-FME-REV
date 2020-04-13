@@ -190,21 +190,21 @@ int readADC(char channel)
 ```
 
 ## Stavové automaty:
-PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, že SLEEP opravdu zastaví CPU i periferie, zatímco IDLE jen CPU. V IDLE modu mohu tedy probudit procesor například přerušením od periferie (ukážeme si TIMER). Ve SLEEP modu k tomu může sloužit třeba WDT, který tentokrát neresetuje, ale probudí zařízení. 
+// to do 
 
 ## FSM:
 <p align="center">
-  <img width="700" height="260" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PowerModes.png">
+  <img width="700" height="260" src="">
 </p>
 
 ## Přiklad 10.2:
-IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
+
 ```c
 // FSMP
 
 ```
 ## Přiklad 10.3:
-IDLEN = 1 je to idle mod. CPU je vypnuto, ale periferie běží dál. Je možné probudit interrupt flagem. V tomto případě používáme TMR1.
+
 ```c
 // FSM
 
@@ -213,6 +213,3 @@ IDLEN = 1 je to idle mod. CPU je vypnuto, ale periferie běží dál. Je možné
 ### Zadání:
 
   1) Rozšiřte úlohu jedna, že dolní řádek zobrazuje hodnotu cos().
-
-  2) Nakonfugurujte komunikaci s PC. Pokud nepříjde déle než 30s specifická zpráva (kterou si zvolte), tak dojde k SW resetu. Po resetu zobrazte na displeji, že zpráva nedošla.
-  3) Provozujte kontroler v IDLE módu. Kontrolér hned po inicilizaci uspěte a komunikujte přes uart. Tedy příchod zprávy MCU probudí. Zpráva se odešle zpět (ECHO) a MCU zase usne.
