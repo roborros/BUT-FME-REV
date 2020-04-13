@@ -64,6 +64,10 @@ z =  79.619
 ### Použití tabulky na MCU:
 V prvé řadě je výhodné zavést datový typ point, což je struktura, která obsahuje bod(x,y). Tabulka je potom pole těchto bodů. Pro interpolaci potom musíme určit pro které body ji budeme provádět. Interpoloca je potom už přímočará. 
 
+### Návod na interpolaci:
+<p align="center">
+  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/interpolation.png">
+</p>
 
 ## Přiklad 10.1:
 Příklad demonstruje využití lookup tabulky na sin()
