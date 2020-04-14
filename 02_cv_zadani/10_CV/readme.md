@@ -217,13 +217,13 @@ Implementujeme základní kostru programu se stavovým automatem na obrázku. Au
 #define BTN3    PORTAbits.RA3
 #define BTN4    PORTAbits.RA2
 
-enum{
+typedef enum{
     IDLE = 0,
     STATE1,
     STATE2,
     STATE3,
     STATE4,
-} STATES;
+} SateMachine;
 
 void idle(void);
 void state1(void);
@@ -312,15 +312,15 @@ void main(void)
  
 void FSM(void)
 {
-    static char STATE = IDLE;
+    static SateMachine state = IDLE;
     
-    switch (STATE)
+    switch (state)
     {
     case IDLE:
         if (BTN1){
             __delay_ms(5);
             if(BTN1){
-                STATE = STATE1;
+                state = STATE1;
                 while(BTN1);
             }
         }
@@ -330,7 +330,7 @@ void FSM(void)
         if (BTN1){
             __delay_ms(5);
             if(BTN1){
-                STATE = STATE2;
+                state = STATE2;
                 while(BTN1);
             }
         }
@@ -340,7 +340,7 @@ void FSM(void)
         if (BTN1){
             __delay_ms(5);
             if(BTN1){
-                STATE = STATE3;
+                state = STATE3;
                 while(BTN1);
             }
         }
@@ -350,7 +350,7 @@ void FSM(void)
         if (BTN1){
             __delay_ms(5);
             if(BTN1){
-                STATE = STATE4;
+                state = STATE4;
                 while(BTN1);
             }
         }
@@ -360,7 +360,7 @@ void FSM(void)
         if (BTN1){
             __delay_ms(5);
             if(BTN1){
-                STATE = STATE1;
+                state = STATE1;
                 while(BTN1);
             }
         }
