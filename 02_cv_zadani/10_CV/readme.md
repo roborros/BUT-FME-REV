@@ -223,7 +223,7 @@ typedef enum{
     STATE2,
     STATE3,
     STATE4,
-} SateMachine;
+} StateMachine;
 
 void idle(void);
 void state1(void);
@@ -312,7 +312,7 @@ void main(void)
  
 void FSM(void)
 {
-    static SateMachine state = IDLE;
+    static StateMachine state = IDLE;
     
     switch (state)
     {
