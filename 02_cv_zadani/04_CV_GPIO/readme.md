@@ -2,13 +2,13 @@
 - GPIO (Rozpis pinů na EduKitu)
 
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/IOEduKit.png">
+  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/IOEduKit.png">
 </p>
 
 - Mapa SFR pro PIC18f46k22 str.78:
 
 <p align="center">
-  <img width="700" height="810" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/SFRegisters.png">
+  <img width="700" height="810" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/SFRegisters.png">
 </p>
 
 ## Prace s registry SFR:
@@ -17,7 +17,7 @@ K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy 
 - Registry LATx (bity odpovídají jednotlivým pinům):
 
 <p align="center">
-  <img width="800" height="210" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV/LATx.png">
+  <img width="800" height="210" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/LATx.png">
 </p>
 
 ## Pro práci s GPIO slouží tyto registry:
