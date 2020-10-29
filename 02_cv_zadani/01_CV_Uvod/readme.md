@@ -11,13 +11,13 @@
 [Termite](https://www.compuphase.com/software_termite.htm)
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/SetProjectAsMain.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/SetProjectAsMain.png">
 </p>
 
 - po naprogramování procesoru nastavte program Termite a sledujte zprávy, které PIC zasílá do PC (comport může nabývat různých hodnot)
 
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/Termite.png">
+  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Termite.png">
 </p>
 
 ## Příklad 1.1
@@ -126,7 +126,7 @@ int main(void) {
 ```
 
 <p align="center">
-  <img width="800" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV/Debugging.png">
+  <img width="800" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Debugging.png">
 </p>
 
 - zahajeni debuggingu
