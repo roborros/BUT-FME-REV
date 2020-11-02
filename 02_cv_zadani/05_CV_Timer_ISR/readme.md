@@ -7,7 +7,7 @@ PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které m
 ## Výpočet:
 
 <p align="center">
-  <img width="188" height="42" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/Period.png">
+  <img width="188" height="42" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/Period.png">
 </p>
 
 ### SFR:
@@ -65,7 +65,7 @@ K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pr
 * TMR1IF - Změna 0->1 vyvolá přerušení. Je nutní příznak smazat během přerušení. (Interrupt Flag)
 
 <p align="center">
-  <img width="300" height="43" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/CounterValue.png">
+  <img width="300" height="43" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/CounterValue.png">
 </p>
 
 ```c
@@ -136,7 +136,7 @@ Jednotlive ISR a hlavní program si mohou předávat informace pomocí globáln�
 jako statické označujeme proměnné, které lze používat pouze vně bloku, v tomto případě jen programu přerušení. Chová se však jako globální proměnná. Zachovává si hodnotu. 
 
 <p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV/main_isr_flag.png">
+  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/main_isr_flag.png">
 </p>
     
 ```c 
