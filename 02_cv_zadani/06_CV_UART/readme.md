@@ -11,7 +11,7 @@ UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sb
 - SPBRGx
 
 <p align="center">
-  <img width="307" height="120" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV/UartSchema.png">
+  <img width="307" height="120" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/UartSchema.png">
 </p>
 
 ## Příklad 6.1:
@@ -97,7 +97,7 @@ int main(void) {
 - mailbox 
 
 <p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV/mailbox.png">
+  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/mailbox.png">
 </p>
 
 ```c

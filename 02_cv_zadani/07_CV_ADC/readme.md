@@ -4,13 +4,13 @@
 ## Zapojení potenciometrů na RevKitu:
 
 <p align="center">
-  <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADC_Piny.png">
+  <img width="520" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV_ADC/ADC_Piny.png">
 </p>
 
 ## Blokové schema ADC:
 
 <p align="center">
-  <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV/ADCscheme.png">
+  <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV_ADC/ADCscheme.png">
 </p>
 
 ### Konfigurace:

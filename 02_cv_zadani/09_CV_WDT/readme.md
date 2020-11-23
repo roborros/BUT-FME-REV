@@ -5,7 +5,7 @@
 Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jde o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
 
 <p align="center">
-  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/WDT.png">
+  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV_WDT/WDT.png">
 </p>
 
 LFINTOSC = 31,25 kHz
@@ -88,7 +88,7 @@ PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, 
 
 ## Power mody:
 <p align="center">
-  <img width="700" height="260" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PowerModes.png">
+  <img width="700" height="260" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV_WDT/PowerModes.png">
 </p>
 
 ## Přiklad 9.2:
@@ -250,7 +250,7 @@ void main(void) {
 V PIC18 mohu vypnout jednotlivé periferie a nechat tak běžet jen ty, které používám a šetřit tak energii. Provádí se to pomocí registrů PMD0-2. 
 
 <p align="center">
-  <img width="660" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV/PMD.png">
+  <img width="660" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV_WDT/PMD.png">
 </p>
 
 ### Zadání:
