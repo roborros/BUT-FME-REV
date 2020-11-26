@@ -9,11 +9,11 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 Všichni znáte jednotkovou kružnici. Představme si, že požadovýný úhel budeme volit potenciometrem a to mezi 0..255. Získat pak budeme chtít hodnotu sinus, kterou ale také přepočítáme na -127..127. Níže je graf s takto vygenerovanou sinusovkou. Pro naši tabulku zvolíme krok 15 (je dobre si pamatovat, že číslo 255 lze beze zbytku dělit třeba: ..5,15,17..). Naše tabulka bude mít 18 hodnot.
 
 <p align="center">
-  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/RevKruznice.png">
+  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_FSM/RevKruznice.png">
 </p>
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/REVsinus.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_FSM/REVsinus.png">
 </p>
 
 ### Kód pro matlab:
@@ -70,7 +70,7 @@ Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte f
 ### Nepoužívejte floating point, kontrolér na to nemá hardware (tzv. FPU):
 
 <p align="center">
-  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/interpolation.png">
+  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_FSM/interpolation.png">
 </p>
 
 ## Přiklad 10.1:
@@ -193,7 +193,7 @@ Implementujeme základní kostru programu se stavovým automatem na obrázku. Au
 
 ## FSM k úloze 10.2:
 <p align="center">
-  <img width="240" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV/FSM.png">
+  <img width="240" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_FSM/FSM.png">
 </p>
 
 ```c
