@@ -27,7 +27,7 @@ PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které m
 
 #define _XTAL_FREQ 8E6              // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY 0x8000                // hodnota timeru
+#define DELAY 25000                // hodnota timeru pro 0.1 s
 
 void init(void){
     
@@ -80,7 +80,7 @@ K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pr
 
 #define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 50000)      // hodnota timeru
+#define DELAY (0xFFFF - 50000)      // hodnota timeru pro 0.05 s
 
 
 void __interrupt() T1_ISR_HANDLER(void){
@@ -150,7 +150,7 @@ jako statické označujeme proměnné, které lze používat pouze vně bloku, v
 
 #define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 1000)       // hodnota timeru
+#define DELAY (0xFFFF - 1000)       // hodnota timeru pro 1 ms
 
 volatile unsigned char flag = 0;             // globalni promenna 
 
