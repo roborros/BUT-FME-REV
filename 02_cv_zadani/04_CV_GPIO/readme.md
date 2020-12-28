@@ -1,4 +1,6 @@
 # REV - Čtvrté cvičení
+- GPIO
+[Link na video-návod](https://youtu.be/gWOVH6w8qZA)
 - GPIO (Rozpis pinů na EduKitu)
 
 <p align="center">
