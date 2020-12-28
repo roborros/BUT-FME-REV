@@ -1,6 +1,6 @@
 # REV - Šesté cvičení
 - UART + STDIO
-[Link na video-návod](https://www.youtube.com/watch?v=h85Gad3aX6E&feature=youtu.be)
+[Link na video-návod](https://youtu.be/_rkvzKf5naM)
 
 ## POZOR je zadán úkol!!
 
