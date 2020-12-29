@@ -61,7 +61,7 @@ for(i = 1; i < LIMIT; i++ ){
    1) program vypíše řetězec “Ahoj svete!” třináctkrát za sebou. Každý řetězec bude na novém řádku a uvozen pořadovým číslem – využijte cyklus!
    2) pro každé pořadové číslo program zjistí, zda je číslo dělitelné pěti a vypíše poznámku do závorky.
    3) program vypíše jen sudá čísla do 30
-   4) program vypise fibonaciho posloupnost do 50 (0 1 1 2 3 5 8 13 21 34 55)
+   4) program vypise fibonaciho posloupnost do 55 (0 1 1 2 3 5 8 13 21 34 55)
    5) program vyhodnotí jestli je číslo dělitelné 3, nebo 7, ale ne zároveň
 
 # Debugging 
