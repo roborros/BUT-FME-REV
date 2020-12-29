@@ -45,7 +45,7 @@ while(cislo > 0){
 }
 ```
 
-* Příklad využití cyklu for: 
+* Příklad využití cyklu for a uživatelského makra: 
 ```c
 #define LIMIT 10
  
