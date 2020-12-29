@@ -19,7 +19,7 @@ K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy 
 - Registry LATx (bity odpovídají jednotlivým pinům):
 
 <p align="center">
-  <img width="800" height="210" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/LATx.png">
+  <img width="533" height="140" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/LATx.png">
 </p>
 
 ## Pro práci s GPIO slouží tyto registry:
