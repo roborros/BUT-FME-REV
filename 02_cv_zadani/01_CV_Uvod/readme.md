@@ -75,8 +75,8 @@ for(i = 1; i < LIMIT; i++ ){
 
 int main(void) {
     
-    char i;
-    char c;
+	char i;
+	char c;
    
 	for (i=-2; i<3;i++){
 
@@ -95,7 +95,6 @@ int main(void) {
     	
     return 0;	//  nikdy se neprovede
 }
-
 ```
 
 <p align="center">
