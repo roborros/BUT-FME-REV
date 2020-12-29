@@ -5,7 +5,7 @@
 [IDE](https://sourceforge.net/projects/orwelldevcpp/)
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Prostredi.png">
+  <img width="650" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Prostredi.png">
 </p>
 - pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Najdete tlačítka i na horní lište IDE
 
