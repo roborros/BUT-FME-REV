@@ -95,6 +95,7 @@ int main(void) {
     	
     return 0;	//  nikdy se neprovede
 }
+
 ```
 
 <p align="center">
