@@ -47,11 +47,11 @@ Postup:
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
-volatile unsigned int TRISD     __at(0xf95);  
-volatile unsigned int TRISC     __at(0xf94);
+volatile unsigned char TRISD     __at(0xf95);  
+volatile unsigned char TRISC     __at(0xf94);
 
-volatile unsigned int LATD      __at(0xf8c);
-volatile unsigned int PORTC     __at(0xf82);
+volatile unsigned char LATD      __at(0xf8c);
+volatile unsigned char PORTC     __at(0xf82);
 
 int main(void) {
     
