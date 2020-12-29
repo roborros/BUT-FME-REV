@@ -93,7 +93,7 @@ int main(void) {
 		c++;
 	}
     	
-    return 0;	//  nikdy se neprovede
+    return 0;	
 }
 ```
 
