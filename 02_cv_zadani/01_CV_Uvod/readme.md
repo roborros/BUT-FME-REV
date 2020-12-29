@@ -1,5 +1,5 @@
 # REV - První cvičení
-- Seznamme se s vývojovým prostředím DEV C++. Stahněte ukázkový projekt REV_basic, zkompilujte jej a nahrajte do MCU.
+- Seznamme se s vývojovým prostředím DEV C++. Zkuste ukázkový projekt.
 
 ## odkazy:
 [IDE](https://sourceforge.net/projects/orwelldevcpp/)
