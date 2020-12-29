@@ -66,6 +66,7 @@ for(i = 1; i < LIMIT; i++ ){
 
 # Debugging 
 - projděte si základní debugging s cvičícím
+- je nutné přepnout kompilátor na Debug
 - použíjte jednoduchý kód:
 ```c
 // REV - debug
