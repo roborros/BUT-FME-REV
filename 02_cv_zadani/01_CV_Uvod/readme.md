@@ -75,8 +75,8 @@ for(i = 1; i < LIMIT; i++ ){
 
 int main(void) {
     
-    	char i;
-    	char c;
+    char i;
+    char c;
    
 	for (i=-2; i<3;i++){
 
