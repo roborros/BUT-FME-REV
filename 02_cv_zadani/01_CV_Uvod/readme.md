@@ -66,7 +66,8 @@ for(i = 1; i < LIMIT; i++ ){
 
 # Debugging 
 - projděte si základní debugging s cvičícím
-- je nutné přepnout kompilátor na Debug
+- je nutné přepnout kompilátor na Debug pak (F5)
+- program zastavuje breakpoint
 - použíjte jednoduchý kód:
 ```c
 // REV - debug
