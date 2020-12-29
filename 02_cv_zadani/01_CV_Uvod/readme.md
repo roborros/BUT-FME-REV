@@ -1,14 +1,8 @@
 # REV - První cvičení
 - Seznamme se s vývojovým prostředím MPLAB. Stahněte ukázkový projekt REV_basic, zkompilujte jej a nahrajte do MCU.
-- Prostředí pracuje pouze s hlavním projektem, ten je zvýrazněn a lze jej přepínat.
-- .c soubory naleznete v záložce source files. Připomeňme si, že funkce main() může existovat v projektu pouze jednou. Soubory lze do překladu zahrnout/vyřadit pomocí exclude/include file.
 
 ## odkazy:
-[MPLAB](https://www.microchip.com/mplab/mplab-x-ide)
-
-[XC8](https://www.microchip.com/mplab/compilers)
-
-[Termite](https://www.compuphase.com/software_termite.htm)
+[IDE](https://sourceforge.net/projects/orwelldevcpp/)
 
 <p align="center">
   <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/SetProjectAsMain.png">
@@ -134,4 +128,3 @@ int main(void) {
 - breakpointy
 - disassembly
 - sledování registrů a proměnných
-- optimalizace
