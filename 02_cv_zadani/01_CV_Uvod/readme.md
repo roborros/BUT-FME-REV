@@ -75,17 +75,17 @@ for(i = 1; i < LIMIT; i++ ){
 
 int main(void) {
     
-    char i;
-    char c;
-    
-    for (i=-2; i<3;i++){
+    	char i;
+    	char c;
+   
+	for (i=-2; i<3;i++){
 
-        if (i>=2) {                          
-            c = 1;                       
-        }
-        else if (i<0) {
-            c = 0;
-        } 
+		if (i>=2) {                          
+		    c = 1;                       
+		}
+		else if (i<0) {
+		    c = 0;
+		} 
 	}
 	
 	while(c<=10){
