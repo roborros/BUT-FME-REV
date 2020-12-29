@@ -23,7 +23,7 @@ void main(void) {
   
     for(;;){
         count++;
-
+		    i++;
         printf("count: %d (0x%x) (%c)\n",count,count,a);
         
         if (count == 0) break;
