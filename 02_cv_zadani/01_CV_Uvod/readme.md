@@ -5,48 +5,29 @@
 [IDE](https://sourceforge.net/projects/orwelldevcpp/)
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/SetProjectAsMain.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Prostredi.png">
 </p>
-
-- po naprogramování procesoru nastavte program Termite a sledujte zprávy, které PIC zasílá do PC (comport může nabývat různých hodnot)
-
-<p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Termite.png">
-</p>
+- pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Najdete tlačítka i na horní lište IDE
 
 ## Příklad 1.1
-* Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count a binárně bliká třemi LEDkami. 
+* Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count 
 ```c
-// REV-Basic 2018
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+// REV-Basic
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <xc.h>
- 
-#include "rev-basic.h"
- 
+
 void main(void) {
     char count = 0;
     int i;
     char a = 'x';
- 
-    REV_init();
- 
+  
     for(;;){
         count++;
- 
-        REV_led(1,count & 1);
-        REV_led(2,count & 2);
-        REV_led(3,count & 4);
- 
+
         printf("count: %d (0x%x) (%c)\n",count,count,a);
+        
+        if (count == 0) break;
  
-        __delay_ms(100);
     }
 }
 ```
@@ -123,7 +104,7 @@ int main(void) {
   <img width="800" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Debugging.png">
 </p>
 
-- zahajeni debuggingu
+- zaklady debuggingu
 - krokování
 - breakpointy
 - disassembly
