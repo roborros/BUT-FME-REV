@@ -1,7 +1,7 @@
 # REV - První cvičení
 - Seznamme se s vývojovým prostředím DEV C++. Zkuste ukázkový projekt.
 
-## odkazy:
+## Odkazy:
 [IDE](https://sourceforge.net/projects/orwelldevcpp/)
 
 <p align="center">
