@@ -1,5 +1,6 @@
 # REV - Páte cvičení
 - čítače, přerušení
+[Link na video-návod](https://youtu.be/_rkvzKf5naM)
 
 ## Příklad 5.1:
 
