@@ -1,5 +1,5 @@
 # REV - První cvičení
-- Seznamme se s vývojovým prostředím DEV C++. Zkuste ukázkový projekt.
+- Seznamme se s vývojovým prostředím DEV C++.
 
 ## Odkazy:
 [IDE](https://sourceforge.net/projects/orwelldevcpp/)
@@ -102,9 +102,3 @@ int main(void) {
 <p align="center">
   <img width="700" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Debug.png">
 </p>
-
-- zaklady debuggingu
-- krokování
-- breakpointy
-- disassembly
-- sledování registrů a proměnných
