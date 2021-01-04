@@ -45,7 +45,6 @@ int16_t sum(int16_t a, int16_t b)
   4) void nasobilka(int x, int n) – vytiskne n prvních násobků čísla x
   5) int next() – první a druhé volání funkce vrátí 1, každý další člen Fibonacciho posloupnosti (využijte statickou lokální proměnnou)
 
-Funkcionalitu ověřte na vhodném testovacím programu. Pracujte s kopii projektu REV_basic
 
 ## Úloha 2.2
 
@@ -57,7 +56,6 @@ Jak zhruba na to: ve vývojovém prostředí si vytvořte soubor fun.c, a přesu
 ```
 Nezapomeňte:
     soubory fun.c a fun.h musí být součástí projektu ve vývojovém prostředí
-    pokud prostředí správně nereaguje na změny kódu, zkuste použít volbu “Clean and build project”
 ```
 
 ## Úloha 2.3
