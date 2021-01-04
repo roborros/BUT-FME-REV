@@ -1,40 +1,35 @@
 # REV - Druhé cvičení
 - Funkce()
 ```c
-// REV-Basic 2018
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+// REV-funkce
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <xc.h>
- 
-#include "rev-basic.h"
- 
+
+// deklarace
 void tisk(void);
 int16_t sum(int16_t a, int16_t b);
 
-
 void main(void) {
     
-    REV_init();
     
     int16_t a=10, b=20;
     
-    while(1){
+    char i=10;
+    while(i--){
+    	
         tisk();
-        __delay_ms(1000);
+		printf("Iterace: %d\n", i);
         printf("Sum je: %d\n", sum(a, b)); 
     }
 }
 
+// definice
 void tisk(void){
     printf("Tisk Z funkce\n");
 }
 
+// definice
 int16_t sum(int16_t a, int16_t b)
 {
     return a + b;
