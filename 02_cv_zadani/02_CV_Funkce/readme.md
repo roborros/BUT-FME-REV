@@ -19,7 +19,7 @@ void main(void) {
     while(i--){
     	
         tisk();
-		printf("Iterace: %d\n", i);
+	printf("Iterace: %d\n", i);
         printf("Sum je: %d\n", sum(a, b)); 
     }
 }
