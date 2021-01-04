@@ -67,12 +67,7 @@ Nezapomeňte:
 
 
 ## Úloha 2.4: Rekurze:
-Rekurzivní volání funkce není ve výchozím nastavení XC8 podporováno. Problém souvisí s implementací zásobníku tzv. STACK. Pro zprovoznění následujícího kódu, je třeba povolit softwerovou implementaci zásobníku v nastavení kompilátoru. 
-
 Je na místě zapamatovat si, že rekurze často vede k velmi elegantní implementaci poměrně složitých problémů, ale je také více náročna na zdroje. V emebdded systémech to není nejlepší cesta. Implementace pomocí cyklů, bude také často rychlejší.
-
-## odkazy:
-[VIDEO](https://www.youtube.com/watch?v=gs6YYRIwYAs)
 
 ```c
 // REV-Funkce
