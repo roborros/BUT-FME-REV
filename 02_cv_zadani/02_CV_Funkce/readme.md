@@ -69,9 +69,6 @@ Nezapomeňte:
 ## Úloha 2.4: Rekurze:
 Je na místě zapamatovat si, že rekurze často vede k velmi elegantní implementaci poměrně složitých problémů, ale je také více náročna na zdroje. V emebdded systémech to není nejlepší cesta. Implementace pomocí cyklů, bude také často rychlejší.
 
-```math
-SE = \frac{\sigma}{\sqrt{n}}
-```
 
 ```c
 // REV-Funkce
