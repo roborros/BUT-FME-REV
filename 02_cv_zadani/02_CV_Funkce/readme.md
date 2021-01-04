@@ -52,7 +52,8 @@ int16_t sum(int16_t a, int16_t b)
 
   V hlavním souboru main.c načtěte hlavičkový soubor fun.h
 
-Jak zhruba na to: ve vývojovém prostředí si vytvořte soubor fun.c, a přesuňte do něj definice funkcí. Dále si vytvořte soubor            fun.h, do kterého přesuňte deklarace. Do hlavního souboru pak vložte patřičný #include.
+Jak zhruba na to: 
+ve vývojovém prostředí si vytvořte soubor fun.c, a přesuňte do něj definice funkcí. Dále si vytvořte soubor            fun.h, do kterého přesuňte deklarace. Do hlavního souboru pak vložte patřičný #include.
 ```
 Nezapomeňte:
     soubory fun.c a fun.h musí být součástí projektu ve vývojovém prostředí
