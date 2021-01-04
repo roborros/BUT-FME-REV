@@ -71,37 +71,25 @@ Je na místě zapamatovat si, že rekurze často vede k velmi elegantní impleme
 
 ```c
 // REV-Funkce
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <xc.h>
- 
-#include "rev-basic.h"
- 
-long sum(int n);
+
+int sum(int n);
 
 void main(void) {
 
-    REV_init();
- 
-    for(;;){
-        char cislo;
-        printf("Vloz cislo:");
-        cislo = getche() - '0';
-        printf("\n");
-        
-        printf("Suma %d je: %ld\n", (int)cislo, sum((int)cislo));
 
-        __delay_ms(1000);
-    }
+    char cislo;
+    printf("Vloz cislo:");
+    cislo = getche() - '0';
+    printf("\n");
+        
+    printf("Suma %d je: %ld\n", (int)cislo, sum((int)cislo));
+
 }
 
-long sum(int n) {
+int sum(int n) {
     if (n!=0)
         return n + sum(n-1);
     else
