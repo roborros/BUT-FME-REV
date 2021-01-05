@@ -1,20 +1,22 @@
 # REV - První cvičení
-- Seznamme se s vývojovým prostředím DEV C++.
+- Seznamte se s vývojovým prostředím DEV C++. Prostředí obsahuje vše co začátečník v C potřebuje a je velmi jednoduché. Nepotřebuje žádnou dodatečnou instalaci kompilátoru atd. První seznámení s prostředím projdete s cvičícím.
 
-## Odkazy:
+## Odkaz na stažení DEV C++:
 [IDE](https://sourceforge.net/projects/orwelldevcpp/)
 
 <p align="center">
   <img width="700" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Prostredi.png">
 </p>
+
 - pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Najdete tlačítka i na horní lište IDE
 
 ## Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count 
+
 ```c
 // REV-Basic
 
-#include <stdio.h>
+#include <stdio.h>		// načtení standardní knihovny
 
 void main(void) {
     char count = 0;
@@ -24,7 +26,7 @@ void main(void) {
     for(;;){
         count++;
 	i++;
-        printf("count: %d (0x%x) (%c)\n",count,count,a);
+        printf("count: %d (0x%x) (%c)\n",count,count,a);		// funkce s stdio.h
         
         if (count == 0) break;
  
