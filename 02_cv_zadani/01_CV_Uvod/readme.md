@@ -8,7 +8,7 @@
   <img width="700" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Prostredi.png">
 </p>
 
-- pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Najdete tlačítka i na horní lište IDE
+- pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Tlačítka jsou i na horní liště.
 
 ## Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count. Zamyslete se, nad rozsahy proměnných v C a nad tím, že mají znaménko. 
