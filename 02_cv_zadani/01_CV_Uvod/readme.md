@@ -19,13 +19,13 @@
 #include <stdio.h>		// načtení standardní knihovny
 
 void main(void) {
+	
     char count = 0;
-    int i;
     char a = 'x';
   
     for(;;){
+    	
         count++;
-	i++;
         printf("count: %d (0x%x) (%c)\n",count,count,a);		// funkce s stdio.h
         
         if (count == 0) break;
