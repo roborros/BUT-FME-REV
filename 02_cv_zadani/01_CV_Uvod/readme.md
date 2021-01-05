@@ -70,6 +70,7 @@ for(i = 1; i < LIMIT; i++ ){
 - projděte si základní debugging s cvičícím
 - je nutné přepnout kompilátor na Debug pak (F5)
 - program zastavuje breakpoint
+- lze sledovat proměnné watches
 - použíjte jednoduchý kód:
 ```c
 // REV - debug
