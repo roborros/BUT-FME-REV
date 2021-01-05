@@ -11,7 +11,7 @@
 - pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Najdete tlačítka i na horní lište IDE
 
 ## Příklad 1.1
-* Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count 
+* Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count. Zamyslete se, nad rozsahy proměnných v C a nad tím, že mají znaménko. 
 
 ```c
 // REV-Basic
