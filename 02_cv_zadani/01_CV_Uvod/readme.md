@@ -34,7 +34,7 @@ void main(void) {
 }
 ```
 
-## Úloha 1.2
+## Dále:
 
 * Příklad využití cyklu while: 
 ```c
