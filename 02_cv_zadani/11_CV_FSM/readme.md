@@ -1,5 +1,5 @@
 
-# REV - Desáté cvičení
+# REV - Jedenácté cvičení
 - LOOKUP a FSM [Link na video-návod](https://youtu.be/OhnFlo8hJc0)
 
 ## LookUp tabulka:
