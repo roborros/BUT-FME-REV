@@ -1,5 +1,5 @@
 # REV - Deváté cvičení
-- WDT a SLEEP [Link na video-návod](https://youtu.be/cwu20SQlFE4)
+- SPI a DAC [Link na video-návod](https://youtu.be/cwu20SQlFE4)
 
 ## Watchdog timer:
 Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jde o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
@@ -23,63 +23,83 @@ LFINTOSC = 31,25 kHz
 ## Přiklad 9.1:
 Program demostruje využití WDT. Funkce trap() schválně obsahuje nekonečnou smyčku, kde přeteče WDT a resetuje MCU. BIT RCONbits.TO pak mohu používat k detekci, že nastal reset. V příkladu nám to oznámí zablikáním poslední LED.
 ```c
-// WDT
+// DAC
 #pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = OFF         // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-
-// nastaveni WDT
-#pragma config WDTEN = ON           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
-#pragma config WDTPS = 256          // Watchdog Timer Postscale Select bits (1:256)
+#pragma config PLLCFG = ON         // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config WDTEN = OFF           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
 
 #include <xc.h>
 
-#define _XTAL_FREQ 8E6
-#define BTN1    PORTCbits.RC0
-#define LED1    LATDbits.LATD2
+#define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
+#define DAC_SS LATB3            // DAC slave select pin
+#define DAC_CH1 0b1001          // kanal A
+#define DAC_CH2 0b0001          // kanal B
+#define LED LATDbits.LATD2      // ledka
 
-void trap(void);
+int data0;
+int data1=1;
+
+void init(void){
+    
+    /* vyber pinu jako vystupy */
+    TRISCbits.TRISC3 = 0;
+    TRISCbits.TRISC5 = 0;
+    TRISBbits.TRISB3 = 0;
+    TRISDbits.TRISD2 = 0;
+ 
+    LATBbits.LATB3 = 1;         // DAC SS off
+    
+    SSP1CON1bits.SSPM = 0b0010; // SPI clock
+    SSP1CON1bits.SSPEN = 1;     // SPI zapnuto
+}
+void SPIWrite(char chanel ,char data);
 
 void main(void) {
+    init(); // provedeni inicializace
+    LED = 0;
+    unsigned int i = 0;
+    unsigned int j = 0;
     
-    //GPIO
-    TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    ANSELD = 0;
+    // <editor-fold defaultstate="collapsed" desc="SINTABLE">
+    const unsigned char tabulka[128] = 
+    {
+        0x80,0x86,0x8c,0x92,0x98,0x9e,0xa5,0xaa,0xb0,0xb6,0xbc,0xc1,0xc6,0xcb,0xd0,0xd5,
+        0xda,0xde,0xe2,0xe6,0xea,0xed,0xf0,0xf3,0xf5,0xf8,0xfa,0xfb,0xfd,0xfe,0xfe,0xff,
+        0xff,0xff,0xfe,0xfe,0xfd,0xfb,0xfa,0xf8,0xf5,0xf3,0xf0,0xed,0xea,0xe6,0xe2,0xde,
+        0xda,0xd5,0xd0,0xcb,0xc6,0xc1,0xbc,0xb6,0xb0,0xaa,0xa5,0x9e,0x98,0x92,0x8c,0x86,
+        0x80,0x79,0x73,0x6d,0x67,0x61,0x5a,0x55,0x4f,0x49,0x43,0x3e,0x39,0x34,0x2f,0x2a,
+        0x25,0x21,0x1d,0x19,0x15,0x12,0xf,0xc,0xa,0x7,0x5,0x4,0x2,0x1,0x1,0x0,
+        0x0,0x0,0x1,0x1,0x2,0x4,0x5,0x7,0xa,0xc,0xf,0x12,0x15,0x19,0x1d,0x21,
+        0x25,0x2a,0x2f,0x34,0x39,0x3e,0x43,0x49,0x4f,0x55,0x5a,0x61,0x67,0x6d,0x73,0x79,
+    };
+    // </editor-fold>
     
-    // Zhasnu ledky
-    LATD2 = 1;
-    LATD3 = 1;
-    LATC4 = 1;
-    LATD4 = 1;
-    LATD5 = 1;
-    LATD6 = 1;
-    
-    // reakce na WDT reset
-    if(!RCONbits.TO){
-        LATD6 = 0;
-        __delay_ms(250);
-        LATD6 = 1;
-        __delay_ms(250);
-        LATD6 = 0;
-        __delay_ms(250);
-        LATD6 = 1; 
-    }
-    
+    /* hlavni smycka */
     while(1){
-        if(BTN1){
-            trap();
-        }
-        __delay_ms(100);
-        LED1 ^= 1;
-        __asm("CLRWDT");
-    }
-    return;
-}
 
-void trap(void){
-    while(1);
+            SPIWrite(DAC_CH1,i++);  
+            SPIWrite(DAC_CH2,tabulka[j++]);
+            if(j == 128) j=0;
+        }
+}
+/* funkce zapisu SPI funkce zapisuje dva bajty za sebou */
+void SPIWrite(char channel, char data){
+    
+    unsigned char msb, lsb, flush;
+    msb = (channel<<4) | (data>>4);     // prvni bajt
+    lsb = (data<<4);                    // druhy bajt
+    DAC_SS = 0;                         // slave select
+    PIR1bits.SSPIF = 0;                 // vynulovani priznaku SPI
+    SSPBUF = msb;                       // zapis do bufferu
+    while(PIR1bits.SSPIF == 0)NOP();    // pockat nez SPI posle prvni bajt
+    
+    PIR1bits.SSPIF = 0;                 // vynulovani priznaku SPI
+    SSPBUF = lsb;                       // zapis do bufferu
+    while(PIR1bits.SSPIF == 0)NOP();    // pockat nez SPI posle druhy bajt
+    
+    DAC_SS = 1;                         // vypnout slave select
+    flush = SSPBUF;                     // vycteni bufferu
+    
 }
 ```
 
@@ -94,43 +114,83 @@ PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, 
 ## Přiklad 9.2:
 IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
 ```c
-// WDT_SLEEP
+// DAC
 #pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = OFF         // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-
-// nastaveni WDT
-#pragma config WDTEN = ON           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
-#pragma config WDTPS = 256          // Watchdog Timer Postscale Select bits (1:256)
+#pragma config PLLCFG = ON         // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config WDTEN = OFF           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
 
 #include <xc.h>
 
-#define BTN1    PORTCbits.RC0
-#define LED1    LATDbits.LATD2
+#define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
+#define DAC_SS LATB3            // DAC slave select pin
+#define DAC_CH1 0b1001          // kanal A
+#define DAC_CH2 0b0001          // kanal B
+#define LED LATDbits.LATD2      // ledka
+
+int data0;
+int data1=1;
+
+void init(void){
+    
+    /* vyber pinu jako vystupy */
+    TRISCbits.TRISC3 = 0;
+    TRISCbits.TRISC5 = 0;
+    TRISBbits.TRISB3 = 0;
+    TRISDbits.TRISD2 = 0;
+ 
+    LATBbits.LATB3 = 1;         // DAC SS off
+    
+    SSP1CON1bits.SSPM = 0b0010; // SPI clock
+    SSP1CON1bits.SSPEN = 1;     // SPI zapnuto
+}
+void SPIWrite(char chanel ,char data);
 
 void main(void) {
+    init(); // provedeni inicializace
+    LED = 0;
+    unsigned int i = 0;
+    unsigned int j = 0;
     
-    //GPIO
-    TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    ANSELD = 0;
+    // <editor-fold defaultstate="collapsed" desc="SINTABLE">
+    const unsigned char tabulka[128] = 
+    {
+        0x80,0x86,0x8c,0x92,0x98,0x9e,0xa5,0xaa,0xb0,0xb6,0xbc,0xc1,0xc6,0xcb,0xd0,0xd5,
+        0xda,0xde,0xe2,0xe6,0xea,0xed,0xf0,0xf3,0xf5,0xf8,0xfa,0xfb,0xfd,0xfe,0xfe,0xff,
+        0xff,0xff,0xfe,0xfe,0xfd,0xfb,0xfa,0xf8,0xf5,0xf3,0xf0,0xed,0xea,0xe6,0xe2,0xde,
+        0xda,0xd5,0xd0,0xcb,0xc6,0xc1,0xbc,0xb6,0xb0,0xaa,0xa5,0x9e,0x98,0x92,0x8c,0x86,
+        0x80,0x79,0x73,0x6d,0x67,0x61,0x5a,0x55,0x4f,0x49,0x43,0x3e,0x39,0x34,0x2f,0x2a,
+        0x25,0x21,0x1d,0x19,0x15,0x12,0xf,0xc,0xa,0x7,0x5,0x4,0x2,0x1,0x1,0x0,
+        0x0,0x0,0x1,0x1,0x2,0x4,0x5,0x7,0xa,0xc,0xf,0x12,0x15,0x19,0x1d,0x21,
+        0x25,0x2a,0x2f,0x34,0x39,0x3e,0x43,0x49,0x4f,0x55,0x5a,0x61,0x67,0x6d,0x73,0x79,
+    };
+    // </editor-fold>
     
-    // Zhasnu ledky
-    LATD2 = 1;
-    LATD3 = 1;
-    LATC4 = 1;
-    LATD4 = 1;
-    LATD5 = 1;
-    LATD6 = 1;
-    
-    IDLEN = 0;
-    
+    /* hlavni smycka */
     while(1){
-        LED1 ^= 1;
-        __asm("SLEEP");
-    }
-    return;
+
+            SPIWrite(DAC_CH1,i++);  
+            SPIWrite(DAC_CH2,tabulka[j++]);
+            if(j == 128) j=0;
+        }
+}
+/* funkce zapisu SPI funkce zapisuje dva bajty za sebou */
+void SPIWrite(char channel, char data){
+    
+    unsigned char msb, lsb, flush;
+    msb = (channel<<4) | (data>>4);     // prvni bajt
+    lsb = (data<<4);                    // druhy bajt
+    DAC_SS = 0;                         // slave select
+    PIR1bits.SSPIF = 0;                 // vynulovani priznaku SPI
+    SSPBUF = msb;                       // zapis do bufferu
+    while(PIR1bits.SSPIF == 0)NOP();    // pockat nez SPI posle prvni bajt
+    
+    PIR1bits.SSPIF = 0;                 // vynulovani priznaku SPI
+    SSPBUF = lsb;                       // zapis do bufferu
+    while(PIR1bits.SSPIF == 0)NOP();    // pockat nez SPI posle druhy bajt
+    
+    DAC_SS = 1;                         // vypnout slave select
+    flush = SSPBUF;                     // vycteni bufferu
+    
 }
 ```
 ## Přiklad 9.3:
@@ -184,74 +244,6 @@ void main(void) {
         }
 }
 ```
-
-## Přiklad 9.4:
-Ukázka SW resetu, což je instrukce procesoru. Mohu tak programově reagovat na kritické události.
-```c
-// REV PWM
-#pragma config FOSC =       HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG =     OFF          // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config PRICLKEN =   ON          // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN =      OFF         // watchdog off
- 
-#include <xc.h>
-
-#define _XTAL_FREQ 8E6
-
-void main(void) {
-    
-    //GPIO
-    TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    ANSELD = 0;
-    
-    // Zhasnu ledky
-    LATD2 = 1;
-    LATD3 = 1;
-    LATC4 = 1;
-    LATD4 = 1;
-    LATD5 = 1;
-    LATD6 = 1;
-    
-    // reakce na reset
-    if(!RCONbits.RI){
-        LATD6 = 0;
-        __delay_ms(250);
-        LATD6 = 1;
-        __delay_ms(250);
-        LATD6 = 0;
-        __delay_ms(250);
-        LATD6 = 1; 
-    }
-
-    // ADC pro potenciometr
-    ANSELE = 0b1;                   //AN5
-    ADCON2bits.ADFM = 0;            //left justified
-    ADCON2bits.ADCS = 0b110;        //Fosc/64
-    ADCON2bits.ACQT = 0b110;        //16
-    ADCON0bits.ADON = 1;            //ADC zapnout
-    ADCON0bits.CHS = 5;             // kanal AN5
-    
-    while (1){
-        GODONE = 1;                 // spustim konverzi
-        while(GODONE){};            // cekam na konverzi
-        if(ADRESH > 250){
-            __asm("RESET");         // pokud vnastavim pot na vysoko
-        }
-        __delay_ms(500);
-        LATD2 ^= 1;
-   }
-}
-```
-
-## Vyp/Zap jednotlivých periferii:
-
-V PIC18 mohu vypnout jednotlivé periferie a nechat tak běžet jen ty, které používám a šetřit tak energii. Provádí se to pomocí registrů PMD0-2. 
-
-<p align="center">
-  <img width="660" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/09_CV_WDT/PMD.png">
-</p>
 
 ### Zadání:
 
