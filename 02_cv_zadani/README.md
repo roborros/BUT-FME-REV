@@ -9,7 +9,8 @@
 * 07--ADC
 * 08--PWM
 * 09--WDT
-* 10--Stavové automaty FSM a LookUP table
+* 10--SPI DAC
+* 11--Stavové automaty FSM a LookUP table
 
 Video komentář k projektu [link](https://youtu.be/4OCYCeq3aVA)
 
