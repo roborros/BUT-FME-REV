@@ -10,6 +10,7 @@ SPI je základní rozhraní MCU pro komunikaci s obvody např. ADC, DAC, extern�
 </p>
 
 V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důležité je pochopit různé mody SPI, které jsou 4. 
+
 ## MODY:
 <p align="center">
   <img width="250" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/mody.png">
@@ -27,7 +28,8 @@ V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důlež
 
 
 ## Přiklad 10.1:
-Program demostruje využití WDT. Funkce trap() schválně obsahuje nekonečnou smyčku, kde přeteče WDT a resetuje MCU. BIT RCONbits.TO pak mohu používat k detekci, že nastal reset. V příkladu nám to oznámí zablikáním poslední LED.
+Program demonstruje použití SPI k zápisu hodnoty na výstup DA převodníku. K měření běžně potřebujete osciloskop, ale my můžeme použít ADC a poslat si hodnotu přes UART do PC. Vše z toho již umíme. Dobré je doplnit si plugin DATA visualizer. Program generuje trojúhelník, protože inkrementuje i++ do maximální hodnoty a přeteče. Zesílení převodníku je nastaveno na 1x, tedy 0..2048mV.
+
 ```c
 // DAC
 #pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
