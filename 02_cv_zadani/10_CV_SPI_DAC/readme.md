@@ -102,6 +102,10 @@ void SPIWrite(char channel, char data){
 
 ```
 
+<p align="center">
+  <img width="800" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Visual.png">
+</p>
+
 ## Generování funkcí:
 
 <p align="center">
