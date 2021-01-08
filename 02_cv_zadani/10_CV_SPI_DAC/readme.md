@@ -2,7 +2,7 @@
 - SPI a DAC
 
 ## SPI:
-Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jde o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
+SPI je základní rozhraní MCU pro komunikaci s dalšími obvody např. ADC, DAC, externí paměti apod. Jedná se o poměrně jednoduché rozhraní, které je synchronni master/slave. Obsahuje 3 komunikační vodiče clock, dataout a datain. Navíc pro určení s kterým zařízením probíhá komunikace je zde další vodič pro každé zařízení. 
 
 Komunikace s MPC4802
 <p align="center">
