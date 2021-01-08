@@ -77,7 +77,7 @@ void main(void) {
         GODONE = 1;                             // spustit aproximaci
         while(GODONE);                          // cekam nez je hotovo
         TXREG = ADRESH;                         // poslu data
-        __delay_ms(33);
+        __delay_ms(10);
     }
 }
 /* funkce zapisu SPI funkce zapisuje dva bajty za sebou */
