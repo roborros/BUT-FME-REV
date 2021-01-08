@@ -12,7 +12,12 @@ SPI je základní rozhraní MCU pro komunikaci s dalšími obvody např. ADC, DA
 V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důležité je pochopit různé mody SPI, které jsou 4. 
 ## MODY:
 <p align="center">
-  <img width="250" height="220" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/mody.png">
+  <img width="250" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/mody.png">
+</p>
+
+## DAC MCP 4802:
+<p align="center">
+  <img width="250" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/mody.png">
 </p>
 
 ### Konfigurace:
