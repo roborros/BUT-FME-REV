@@ -102,7 +102,7 @@ void SPIWrite(char channel, char data){
 </p>
 
 ## Přiklad 10.2:
-IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
+
 ```c
 // DAC
 #pragma config FOSC =   HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
