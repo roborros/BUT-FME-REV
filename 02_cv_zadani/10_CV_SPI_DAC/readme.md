@@ -113,7 +113,7 @@ void SPIWrite(char channel, char data){
 </p>
 
 ## Přiklad 10.2:
-V tomto případě je třeba osciloskop
+- V tomto případě je třeba osciloskop
 
 ```c
 // DAC
