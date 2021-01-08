@@ -31,9 +31,6 @@ Program demostruje využití WDT. Funkce trap() schválně obsahuje nekonečnou 
 #define DAC_CH2 0b0001          // kanal B
 #define LED LATDbits.LATD2      // ledka
 
-int data0;
-int data1=1;
-
 void init(void){
     
     /* vyber pinu jako vystupy */
@@ -120,8 +117,6 @@ IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme W
 #define DAC_CH2 0b0001          // kanal B
 #define LED LATDbits.LATD2      // ledka
 
-int data0;
-int data1=1;
 
 void init(void){
     
