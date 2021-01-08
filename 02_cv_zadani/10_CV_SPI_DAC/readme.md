@@ -103,15 +103,15 @@ void SPIWrite(char channel, char data){
 }
 ```
 
-## Řízení spotřeby:
-PIC18 ma v podstatě dva power módy. Jedná se o IDLE a SLEEP. Rozdíl je ten, že SLEEP opravdu zastaví CPU i periferie, zatímco IDLE jen CPU. V IDLE modu mohu tedy probudit procesor například přerušením od periferie (ukážeme si TIMER). Ve SLEEP modu k tomu může sloužit třeba WDT, který tentokrát neresetuje, ale probudí zařízení. 
+## Generování funkcí:
 
-## Power mody:
 <p align="center">
-  <img width="700" height="260" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Dac.png">
+  <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
 </p>
 
-## Přiklad 9.2:
+
+
+## Přiklad 10.2:
 IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
 ```c
 // DAC
@@ -191,57 +191,6 @@ void SPIWrite(char channel, char data){
     DAC_SS = 1;                         // vypnout slave select
     flush = SSPBUF;                     // vycteni bufferu
     
-}
-```
-## Přiklad 9.3:
-IDLEN = 1 je to idle mod. CPU je vypnuto, ale periferie běží dál. Je možné probudit interrupt flagem. V tomto případě používáme TMR1.
-```c
-// REV TIMER
-#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = OFF     // 4X PLL Enable (Oscillator OFF)
-#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
-
-#include <xc.h>
-
-#define _XTAL_FREQ 8E6                  // definice fosc pro knihovnu
-#define LED LATDbits.LATD2              // ledka                  
-
-void init(void){
-    
-    //GPIO
-    TRISD = 0b10000011;     // LEDs: 2..6 out
-    TRISC = 0b11101111;     // RC0 BTN1, RC4 LED
-    ANSELC = 0;
-    ANSELD = 0;
-    
-    // Zhasnu ledky
-    LATD2 = 1;
-    LATD3 = 1;
-    LATC4 = 1;
-    LATD4 = 1;
-    LATD5 = 1;
-    LATD6 = 1;
-    
-    //TIMER 1   
-    T1CONbits.TMR1CS = 0b00;        // zdroj casovace 1
-    T1CONbits.T1CKPS = 0b11;        // nastaveni delicky
-    IDLEN = 1;                      // musim nechat clock pro periferie
-    PEIE = 1;                       // irq od periferii
-    TMR1IE = 1;                     // irq od TIMER1
-    TMR1ON = 1;                     // Zapnu TIMER1
-
-}
-
-void main(void) {
-    init();                         // provedeni inicializace
-    
-    while(1){
-        LED ^= 1;
-        TMR1 = 0xFFFF - 50000;               // nastavim citac
-        TMR1IF = 0;
-        __asm("SLEEP");
-        }
 }
 ```
 
