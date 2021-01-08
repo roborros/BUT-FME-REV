@@ -101,16 +101,16 @@ void SPIWrite(char channel, char data){
 ## Generování funkcí:
 
 <p align="center">
-  <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
+  <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Osci.PNG">
 </p>
 
 ## Přiklad 10.2:
 IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
 ```c
 // DAC
-#pragma config FOSC =   HSMP        // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON         // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config WDTEN = OFF           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
+#pragma config FOSC =   HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+#pragma config PLLCFG = ON            // 4X PLL Enable (Oscillator multiplied by 4)
+#pragma config WDTEN = OFF            // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
 
 #include <xc.h>
 
