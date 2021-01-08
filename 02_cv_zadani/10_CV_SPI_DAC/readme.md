@@ -101,7 +101,7 @@ void SPIWrite(char channel, char data){
 ## Generování funkcí:
 
 <p align="center">
-  <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Osci.PNG">
+  <img width="280" height="200" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Osci.PNG">
 </p>
 
 ## Přiklad 10.2:
