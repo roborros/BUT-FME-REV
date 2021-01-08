@@ -69,7 +69,7 @@ void SPIWrite(char chanel ,char data);
 void main(void) {
     init(); // provedeni inicializace
     ADCON0bits.CHS = 13;                 // kanal AN13
-    unsigned char i;
+    unsigned char i=0;
     
     /* hlavni smycka */
     while(1){
