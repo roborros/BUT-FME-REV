@@ -4,9 +4,9 @@
 ## SPI:
 SPI je základní rozhraní MCU pro komunikaci s dalšími obvody např. ADC, DAC, externí paměti apod. Jedná se o poměrně jednoduché rozhraní, které je synchronni master/slave. Obsahuje 3 komunikační vodiče clock, dataout a datain. K určení s kterým zařízením probíhá komunikace je zde další vodič pro každé zařízení. 
 
-## Komunikace s MPC4802
+## 
 <p align="center">
-  <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
+  <img width="500" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/SPIsync.png">
 </p>
 
 V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důležité je pochopit různé mody SPI, které jsou 4. 
