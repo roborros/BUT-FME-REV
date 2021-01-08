@@ -1,26 +1,21 @@
 # REV - Desáté cvičení
 - SPI a DAC
 
-## Watchdog timer:
+## SPI:
 Jedná se o specifickou periferii MCU, která slouží pro bezpečnost aplikací. Jde o čítač, který je napojen na vnitřní oscilátor s frekvencí 31,25kHz. Je mu předřazena ještě dělička /128. Výsledná perioda je tedy 4ms (přesněji 4,096). Uživatel zapíná WDT a jeho výstupní děličku pomocí konfiguračních bitů. WDT se pak musí nulovat v softwaru speciální instrukcí procesoru. Pokud dojde k přetečení, dojde k resetu MCU.
 
+Komunikace s MPC4802
 <p align="center">
   <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
 </p>
-
-LFINTOSC = 31,25 kHz
 
 ### Konfigurace:
 
     - #pragma config WDTEN = ON
     - #pragma config WDTPS = 256 (hodnota je dělička jako u timeru)
 
-### smazani WDT:
 
-    - PIC18 má instrukci 'CLRWDT', instrukce lze do C programu zadat příkazem __asm("CLRWDT");
-
-
-## Přiklad 9.1:
+## Přiklad 10.1:
 Program demostruje využití WDT. Funkce trap() schválně obsahuje nekonečnou smyčku, kde přeteče WDT a resetuje MCU. BIT RCONbits.TO pak mohu používat k detekci, že nastal reset. V příkladu nám to oznámí zablikáním poslední LED.
 ```c
 // DAC
@@ -108,8 +103,6 @@ void SPIWrite(char channel, char data){
 <p align="center">
   <img width="850" height="620" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
 </p>
-
-
 
 ## Přiklad 10.2:
 IDLEN = 0 je to deep sleep. CPU i periferie neběží. K probuzení použijeme WDT. Který po provedení "SLEEP" instrukce procesor probudí.
