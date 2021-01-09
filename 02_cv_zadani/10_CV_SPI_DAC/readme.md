@@ -23,7 +23,7 @@ V katalogu DAC převodníku najdeme informace ke komunikaci. Zjistíme, že komu
   <img width="450" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
 </p>
 
-### Konfigurace:
+### Konfigurace: 
 
     - nastávíme příslušné GPIO
     - SSP1CON1bits.SSPM = 0b0010;   // SPI clock
