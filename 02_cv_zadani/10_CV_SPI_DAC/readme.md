@@ -17,14 +17,19 @@ V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důlež
 </p>
 
 ## DAC MCP 4802:
+V katalogu DAC převodníku najdeme informace ke komunikaci. Zjistíme, že komunikace může být, v módu 0,0 nebo 1,1. První mód je defaultní pro náš MCU. Také zjistíme, že náš DAC obsahuje interní referenci 2048mV a také má přepínatelné zesílení 1x, nebo 2x. Zpráva se také skládá ze dvou najtů. Budeme tedy posílat dvě zprávy za sebou na jeden výběr CS signálu.
+
 <p align="center">
   <img width="450" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/DAC.png">
 </p>
 
 ### Konfigurace:
 
-    - #pragma config WDTEN = ON
-    - #pragma config WDTPS = 256 (hodnota je dělička jako u timeru)
+    - nastávíme příslušné GPIO
+    - SSP1CON1bits.SSPM = 0b0010;   // SPI clock
+    - SP1CON1bits.SSPEN = 1;        // SPI zapnuto
+    DAC převodník imí pracovat s módem 0,0 a to je základní nastavení CKP CKE po resetu...viz datasheet MCU
+
 
 
 ## Přiklad 10.1:
