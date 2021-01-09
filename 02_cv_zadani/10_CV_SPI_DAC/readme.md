@@ -91,7 +91,7 @@ void main(void) {
     
     /* hlavni smycka */
     while(1){
-        SPIWrite(DAC_CH1, i++);                 //  nastaveni DAC 
+        SPIWrite(DAC_CH1, i++);                 // nastaveni DAC 
         GODONE = 1;                             // spustit aproximaci
         while(GODONE);                          // cekam nez je hotovo
         TXREG = ADRESH;                         // poslu data
@@ -119,7 +119,7 @@ void SPIWrite(char channel, char data){
 }
 
 ```
-## Hodnotu na DAC přečteme pomocí ADC na volnách pinech REVkitu můžeme použít AN13 a AN12.
+## Hodnotu na DAC přečteme pomocí ADC na volných pinech REVkitu můžeme použít AN13 a AN12.
 <p align="center">
   <img width="600" height="250" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/foto.jpg">
 </p>
