@@ -125,7 +125,7 @@ void SPIWrite(char channel, char data){
 </p>
 
 ## Generování funkcí:
-V tomto příkladu uvidíte generování pily a sunusovky na osciloskopu. Bude Vám to tedy prezentovat cvičící. Všimněte si, že hodnoty sin() máme uložené v tabulce s klíčovým slovem const, bude tedy umístěna do flash, protože se již během programu nemění. Pokud bychom využili lineární interpolace, bylo by možné ukládat menší množství hodnot funkce sinus.
+V tomto příkladu uvidíte generování pily a sinusovky na osciloskopu. Bude Vám to tedy prezentovat cvičící. Všimněte si, že hodnoty sin() máme uložené v tabulce s klíčovým slovem const, bude tedy umístěna do flash, protože se již během programu nemění. Pokud bychom využili lineární interpolace, bylo by možné ukládat menší množství hodnot funkce sinus.
 
 <p align="center">
   <img width="420" height="300" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Osci.PNG">
