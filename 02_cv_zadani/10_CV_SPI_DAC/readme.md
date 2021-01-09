@@ -28,7 +28,7 @@ V katalogu DAC převodníku najdeme informace ke komunikaci. Zjistíme, že komu
     - nastávíme příslušné GPIO
     - SSP1CON1bits.SSPM = 0b0010;   // SPI clock
     - SP1CON1bits.SSPEN = 1;        // SPI zapnuto
-    DAC převodník imí pracovat s módem 0,0 a to je základní nastavení CKP CKE po resetu...viz datasheet MCU
+    DAC převodník umí pracovat s módem 0,0 a to je základní nastavení CKP CKE po resetu...viz datasheet MCU
 
 
 
