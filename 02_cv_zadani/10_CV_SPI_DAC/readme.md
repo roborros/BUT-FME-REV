@@ -121,7 +121,7 @@ void SPIWrite(char channel, char data){
 ```
 
 <p align="center">
-  <img width="300" height="100" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/foto.jpg">
+  <img width="600" height="250" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/foto.jpg">
 </p>
 
 <p align="center">
