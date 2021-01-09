@@ -119,11 +119,12 @@ void SPIWrite(char channel, char data){
 }
 
 ```
-
+## Hodnotu na DAC přečteme pomocí ADC na volnách pinech REVkitu můžeme použít AN13 a AN12.
 <p align="center">
   <img width="600" height="250" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/foto.jpg">
 </p>
 
+## Přečtenou hodnotu pošleme přes UART a zobrazíme v MPLABu.
 <p align="center">
   <img width="800" height="520" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Visual.png">
 </p>
