@@ -12,23 +12,14 @@ Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instala�
 - pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Tlačítka jsou i na horní liště.
 
 ```c
-// REV-Basic
+#include <stdio.h>
+#include <stdlib.h>
 
-#include <stdio.h>		// načtení standardní knihovny
 
-void main(void) {
+int main(void) {
 	
-    char count = 0;
-    char a = 'x';
-  
-    for(;;){
-    	
-        count++;
-        printf("count: %d (0x%x) (%c)\n",count,count,a);		// funkce s stdio.h
-        
-        if (count == 0) break;
- 
-    }
+	printf("Ahoj svete!\n\r");
+	return 0;
 }
 ```
 
@@ -36,7 +27,6 @@ void main(void) {
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count. Zamyslete se, nad rozsahy proměnných v C a nad tím, že mají znaménko. 
 
 ```c
-// REV-Basic
 
 #include <stdio.h>		// načtení standardní knihovny
 
