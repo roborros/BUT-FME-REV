@@ -1,8 +1,8 @@
 # REV - První cvičení
 - Seznamte se s vývojovým prostředím DEV C++. Prostředí obsahuje vše co začátečník v C potřebuje a je velmi jednoduché. Nepotřebuje žádnou dodatečnou instalaci kompilátoru atd. První seznámení s prostředím projdete s cvičícím.
 
-## Odkaz na stažení DEV C++:
-Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instalační setup. [IDE](https://sourceforge.net/projects/orwelldevcpp/). 
+## Odkaz na stažení DEV C++: [IDE](https://sourceforge.net/projects/orwelldevcpp/).
+Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instalační setup. Pokud je vše v pořádku pojde vám kompilovat a spustit zkušební kód, který vytiskne do konzole "Ahoj svete!". V prostředí můžete pracovat s jednotlivým scriptem, nebo projektem. Většinou je výhodné mít na vše projekt. Vytvořme si tedy projekt.
 
 
 <p align="center">
