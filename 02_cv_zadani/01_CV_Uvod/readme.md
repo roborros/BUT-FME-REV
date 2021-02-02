@@ -27,49 +27,71 @@ int main(void) {
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count. Zamyslete se, nad rozsahy proměnných v C a nad tím, že mají znaménko. 
 
 ```c
+#include <stdio.h>
+#include <stdlib.h>
 
-#include <stdio.h>		// načtení standardní knihovny
-
-void main(void) {
+int main(void) {
 	
-    char count = 0;
-    char a = 'x';
-  
-    for(;;){
+	
+	int a = 10;
+	int b;
+	b = 3;
+	
+	int c = a/b;
+	printf("c = %d\n", c);
+	
+	float d = (float)a/b;
+	printf("d = %f\n", d);
+	
+	printf("====================================================\n");
+	
+	char count;
+	int k = 10;
+	char znak = 'B';		// odpovida asci
+	
+	if(a==10){
+		printf("Plati\n");
+	}
+	else{
+		printf("Neplati]n");
+	}
+	
+	switch(znak){
+		case 'A':
+			printf("A\n");
+			break; //nezapomenout
+		case 'B':
+			printf("B\n");
+			break; //nezapomenout
+		defailt:
+			printf("To ne!!");
+	}
+	
+ 
+    for(count=0; count<13; count++){
     	
-        count++;
-        printf("count: %d (0x%x) (%c)\n",count,count,a);		// funkce s stdio.h
+        printf("count: %d (dec)\n",count);
         
-        if (count == 0) break;
- 
     }
+    printf("====================================================\n");
+    count = 10;
+    
+    while(count){  // blok se ukonci jakmile je FALSE tedy count = 0
+    	printf("count: %d (dec)\n",count);
+    	count--; // znamena count = count -1
+	}
+	printf("====================================================\n");
+	
+	do{
+		
+		printf("C = %d\n", count++); // proc se nevypise 10, zkuste ++count
+		
+	}while(count<10);
+	
+	return 0;
 }
 ```
 
-## Dále:
-
-* Příklad využití cyklu while: 
-```c
-// plny nazev promenne
-int cislo = 10;
- 
-while(cislo > 0){
-  printf("Akutalni hodnota: %d\n",cislo);
-  cislo--;
-}
-```
-
-* Příklad využití cyklu for a uživatelského makra: 
-```c
-#define LIMIT 10
- 
-// kratky nazev pro index
-int i;
- 
-for(i = 1; i < LIMIT; i++ ){
-  printf("Akutalni hodnota: %d\n", i);
-}
-```
 ### Upravte příklad 1.1 takto:
 
    1) program vypíše řetězec “Ahoj svete!” třináctkrát za sebou. Každý řetězec bude na novém řádku a uvozen pořadovým číslem – využijte cyklus!
