@@ -24,7 +24,7 @@ int main(void) {
 ```
 
 ## Příklad 1.1
-* Následující výpis ukazuje jednoduchý příklad v jazyce C. Program vypisuje hodnotu proměnné count. Zamyslete se, nad rozsahy proměnných v C a nad tím, že mají znaménko. 
+* Následující výpis ukazuje jednoduchý příklad v jazyce C. 
 
 ```c
 #include <stdio.h>
