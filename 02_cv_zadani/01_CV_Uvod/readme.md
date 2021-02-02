@@ -28,7 +28,6 @@ int main(void) {
 
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(void) {
 	
@@ -63,7 +62,7 @@ int main(void) {
 		case 'B':
 			printf("B\n");
 			break; //nezapomenout
-		defailt:
+		default:
 			printf("To ne!!");
 	}
 	
