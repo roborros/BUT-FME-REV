@@ -25,6 +25,7 @@ int main(void) {
 
 ## Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. 
+Pokud si zatím nejste v jazyce jistí vše pro dnešní cvičení najdete: [C tutorial](https://www.programiz.com/c-programming/c-input-output)
 
 ```c
 #include <stdio.h>
