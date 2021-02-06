@@ -15,28 +15,15 @@ Vzpomeňte si:
 </p>
     
 ```c
-// REV-Pointers
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <xc.h>
- 
-#include "rev-basic.h"
  
 //deklarace
 void krat2(int *a);
 int *max1(int *q, int *w);
  
- 
 //main
-void main(){
-    REV_init();
-    
-    while(1){
+void main(void){
+  
         int a, b;      // deklarace promenne typu int
         int *p_i;      // deklarace promenne typu ukazatel na int
 
@@ -68,10 +55,7 @@ void main(){
 
         printf("Max (A,B) = %d\n",*p_i); // * je operator dereference
 
-        printf("Vetsi bylo %c, tj. cislo na adrese %p\n",p_i == &a ? 'A' : 'B', p_i);
-
         getch();
-    }
 }
  
  
