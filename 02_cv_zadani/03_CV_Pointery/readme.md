@@ -89,18 +89,8 @@ Poznámka: s výhodou můžete využít tělo programu z předchozího příklad
 ## Příklad 3.3: Pole
 
 ```c
-// REV
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <xc.h>
 
-#include "rev-basic.h"
- 
 #define DELKA 5
  
 // deklarace funkci
@@ -110,8 +100,6 @@ void vypis_pole(int *p,int len);
 // funkce main
 void main(void){
     
-    REV_init();
-    while(1){
         // definice pole o delce dane symbolickou konstantou
         // delka musi byt vzdy konstanta!
         int cisla[DELKA];   
@@ -144,8 +132,7 @@ void main(void){
         printf("Nejvetsi bylo cislo %d\n",a);
 
         getch();
-    }
- 
+
 }
  
 // definice funkce vypis pole
