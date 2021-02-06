@@ -54,7 +54,15 @@ void main(void){
         p_i = max1(&a,&b);
 
         printf("Max (A,B) = %d\n",*p_i); // * je operator dereference
-
+        
+        void* p_v = &a; // void pointer ukazuje na bunku v pameti, ale nelze dereferencovat
+        
+        a = 771;
+        
+        printf("a: %d\n", a);
+        printf("Prvni: %d a druhy: %d bajt \n", *(char*)p_v, *(char*)(p_v+1));
+        
+    
         getch();
 }
  
