@@ -11,8 +11,3 @@
 * 09--WDT
 * 10--SPI DAC
 * 11--Stavové automaty FSM a LookUP table
-
-Video komentář k projektu [link](https://youtu.be/4OCYCeq3aVA)
-
-Náměty na úpravy posílejte na mailMBa nebo mailMBr, nebo lépe zadávejte jako issue nebo rovnou pull request.
-
