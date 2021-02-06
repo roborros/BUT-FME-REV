@@ -219,18 +219,8 @@ Poznámka: pozor na nastavení programu termit, především na automatické př
 - Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem: 
 
 ```c
-// REV
-#pragma config FOSC = HSMP          // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON          // 4X PLL Enable (Oscillator used directly)
-#pragma config PRICLKEN = ON        // Primary clock enable bit (Primary clock is always enabled)
-#pragma config WDTEN = OFF          // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
-//includes
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <xc.h>
- 
-#include "rev-basic.h"
+#include <string.h>	// obsahuje strcpy
 
 typedef struct{
     char    jmeno[25];
@@ -241,9 +231,7 @@ typedef struct{
 int zmer(clovek* kdo);
 
 int main() {
-    // rev init
-    REV_init();
-    while(1){
+
         clovek Petr = {"Petr Novak", 25, 178};
         clovek Michal;
 
@@ -262,7 +250,6 @@ int main() {
         printf("Michal ma %d let\n", zmer(&Michal));
 
         getche();
-    }
     return 0;
 }
 
