@@ -53,7 +53,7 @@ int main(void) {
 		printf("Plati\n");
 	}
 	else{
-		printf("Neplati]n");
+		printf("Neplati\n");
 	}
 	
 	switch(znak){
