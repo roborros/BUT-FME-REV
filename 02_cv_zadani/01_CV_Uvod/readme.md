@@ -72,17 +72,16 @@ int main(void) {
 	}
 	
  
-    for(count=0; count<13; count++){
-    	
-        printf("count: %d (dec)\n",count);
-        
-    }
-    printf("====================================================\n");
-    count = 10;
+        for(count=0; count<13; count++){    	
+            printf("count: %d (dec)\n",count);        
+        }
+	
+        printf("====================================================\n");
+        count = 10;
     
-    while(count){  // blok se ukonci jakmile je FALSE tedy count = 0
-    	printf("count: %d (dec)\n",count);
-    	count--; // znamena count = count -1
+        while(count){  // blok se ukonci jakmile je FALSE tedy count = 0
+    	   printf("count: %d (dec)\n",count);
+    	   count--; // znamena count = count -1
 	}
 	printf("====================================================\n");
 	
