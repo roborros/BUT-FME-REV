@@ -15,10 +15,15 @@ Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instala�
 #include <stdio.h>
 #include <stdlib.h>
 
-
+/*
+komentar
+na
+vice
+radku
+*/
 int main(void) {
 	
-	printf("Ahoj svete!\n\r");
+	printf("Ahoj svete!\n\r"); // komentar na radek
 	return 0;
 }
 ```
