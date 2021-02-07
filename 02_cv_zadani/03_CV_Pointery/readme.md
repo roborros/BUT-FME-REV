@@ -234,14 +234,17 @@ typedef struct{
     char    jmeno[25];
     int     vek;
     int     vyska;
+    void (*pozdrav)(void);
 } clovek;
 
 int zmer(clovek* kdo);
+void pozdrav(void);
 
 int main() {
 
         clovek Petr = {"Petr Novak", 25, 178};
         clovek Michal;
+        Michal.pozdrav = &pozdrav;
 
         clovek* p_Petr = &Petr;
 
@@ -256,6 +259,8 @@ int main() {
         printf("Petr meri %d cm\n",  p_Petr->vyska);
 
         printf("Michal ma %d let\n", zmer(&Michal));
+        
+        Michal.pozdrav();
 
         getche();
     return 0;
@@ -263,5 +268,9 @@ int main() {
 
 int zmer(clovek *kdo){
 	return kdo->vyska;
+}
+
+void pozdrav(void){
+	printf("Ahoj\n");
 }
 ```
