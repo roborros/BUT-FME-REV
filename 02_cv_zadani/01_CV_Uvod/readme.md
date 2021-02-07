@@ -13,7 +13,6 @@ Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instala�
 
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 
 /*
 komentar
