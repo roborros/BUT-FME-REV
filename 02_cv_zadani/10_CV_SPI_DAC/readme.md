@@ -42,12 +42,13 @@ Program demonstruje použití SPI k zápisu hodnoty na výstup DA převodníku. 
 #pragma config WDTEN = OFF           // Watchdog Timer Enable bits (WDT is always enabled. SWDTEN bit has no effect)
 
 #include <stdio.h>
+#include <stdint.h>
 #include <xc.h>
 
 #define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
 #define DAC_SS LATB3            // DAC slave select pin
-#define DAC_CH1 0b1011          // kanal A
-#define DAC_CH2 0b0011          // kanal B
+#define DAC_CH1 0b10110000      // kanal A
+#define DAC_CH2 0b00110000      // kanal B
 #define LED LATDbits.LATD2      // ledka
 
 void init(void){
@@ -82,7 +83,7 @@ void init(void){
 }
 
 
-void SPIWrite(char chanel ,char data);
+void SPIWrite(uint8_t channel ,uint8_t data);
 
 void main(void) {
     init(); // provedeni inicializace
@@ -99,11 +100,11 @@ void main(void) {
     }
 }
 /* funkce zapisu SPI funkce zapisuje dva bajty za sebou */
-void SPIWrite(char channel, char data){
+void SPIWrite(uint8_t channel ,uint8_t data){
     
-    unsigned char msb, lsb, flush;
-    msb = (channel<<4) | (data>>4);     // prvni bajt
-    lsb = (data<<4);                    // druhy bajt
+    uint8_t msb, lsb, flush;
+    msb = (channel | (data>>4));        // prvni bajt
+    lsb = (data<<4) & 0xFF;             // druhy bajt
     DAC_SS = 0;                         // slave select
     PIR1bits.SSPIF = 0;                 // vynulovani priznaku SPI
     SSPBUF = msb;                       // zapis do bufferu
