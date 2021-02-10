@@ -151,8 +151,8 @@ V tomto příkladu uvidíte generování pily a sinusovky na osciloskopu. Bude V
 
 #define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
 #define DAC_SS LATB3            // DAC slave select pin
-#define DAC_CH1 0b10110000      // kanal A
-#define DAC_CH2 0b00110000      // kanal B
+#define DAC_CH1 0b10010000      // kanal A
+#define DAC_CH2 0b00010000      // kanal B
 #define LED LATDbits.LATD2      // ledka
 
 
@@ -174,8 +174,8 @@ void SPIWrite(uint8_t channel ,uint8_t data);
 void main(void) {
     init(); // provedeni inicializace
     LED = 0;
-    unsigned int i = 0;
-    unsigned int j = 0;
+    uint8_t i = 0;
+    uint8_t  j = 0;
     
     // <editor-fold defaultstate="collapsed" desc="SINTABLE">
     const unsigned char tabulka[128] = 
