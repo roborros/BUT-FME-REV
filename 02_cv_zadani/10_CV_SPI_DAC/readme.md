@@ -169,11 +169,6 @@ V tomto příkladu uvidíte generování pily a sinusovky na osciloskopu. Bude V
     };
     // </editor-fold>
 
-uint8_t mybss;
-uint8_t mybss2;
-
-uint8_t mydata = 10;
-uint8_t mydata2 = 10;
 
 void init(void){
     
@@ -195,13 +190,7 @@ void main(void) {
     LED = 0;
     uint8_t i = 0;
     uint8_t  j = 0;
-    
-    mybss = 12;
-    mybss2= 12;
-    
-    mydata = 5;
-    mydata2 = 5;
-      
+         
     /* hlavni smycka */
     while(1){
 
