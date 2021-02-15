@@ -16,6 +16,8 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
 
+[Program Termite](https://www.compuphase.com/software_termite.htm)
+
 [Datasheet PIC18F46K22](http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf)
 
 [Datasheet XC8](http://ww1.microchip.com/downloads/en/devicedoc/50002053g.pdf)
