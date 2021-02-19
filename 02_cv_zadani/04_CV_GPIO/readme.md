@@ -1,4 +1,12 @@
 # REV - Čtvrté cvičení
+## Nainstalujte toolchain MPLAB+XC8:
+1) Napřed nainstalujte MPLAB (nejlépe defaultně do program files)
+2) Poté nainstalujte kompilátor XC8 (zaškrtněte ať se vám přidá do system path)
+3) 
+[MPLAB](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide)
+
+[XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
+
 - GPIO
 [Link na video-návod](https://youtu.be/gWOVH6w8qZA)
 - GPIO (Rozpis pinů na EduKitu)
