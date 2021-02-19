@@ -1,8 +1,9 @@
 # REV - Čtvrté cvičení
 ## Nainstalujte toolchain MPLAB+XC8:
 1) Napřed nainstalujte MPLAB (nejlépe defaultně do program files)
-2) Poté nainstalujte kompilátor XC8 (zaškrtněte ať se vám přidá do system path)
-3) 
+3) Poté nainstalujte kompilátor XC8 (zaškrtněte ať se vám přidá do system path)
+
+## Odkazy:
 [MPLAB](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide)
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
