@@ -74,22 +74,23 @@ void reverse(int *pole, int n) {
 }
 ```
 
-## 7. Vytvořte program, který bude načítat znaky z terminálu pomocí funkce getch() až do načtení konce řádku ('\n'). Znaky ukládejte do řetězce, který poté vypište.
+## 7. Vytvořte funkci, který bude načítat znaky z terminálu pomocí funkce getchar() až do načtení konce řádku ('\n'). Znaky ukládejte do řetězce, který poté vypište.
 
 ```c
-char buff[80];
-int n = 0;
-                            
-printf("Zadejte retezec: ");
-        
-while(1){             
-  buff[n] = getch();
-  if (buff[n] == '\n'){
-    buff[n+1] = '\0';
-    break;
-  }else{
-    n++;
-  }           
+void nacti(char pole[], char n){
+	
+	char i;
+	
+	for(i=0; i<n;i++){
+		pole[i] = getchar();
+		if(pole[i] == '\n'){
+			pole[i] = '\0';
+			return;
+		}
+	}
+	
+	pole[n-1] = '\0';
+	return;
 }
 ```
 
