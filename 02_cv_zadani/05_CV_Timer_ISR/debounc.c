@@ -59,10 +59,10 @@ void __interrupt(low_priority) ISR_HANDLER(void){
         if(buttons.btn2_acc == RAISING_EDGE){
            buttons.btn2_stat = 1; 
         }
-        if(buttons.btn3_acc == RAISING_EDGE){
+        if(buttons.btn3_acc == FALLING_EDGE){
            buttons.btn3_stat = 1; 
         }
-        if(buttons.btn4_acc == RAISING_EDGE){
+        if(buttons.btn4_acc == FALLING_EDGE){
            buttons.btn4_stat = 1; 
         }
         
