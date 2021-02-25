@@ -1,4 +1,4 @@
-// REV INTERRUPT
+// REV DEBOUNCING
 #pragma config FOSC = INTIO67   // Oscillator Selection bits (Internal oscillator block)
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
@@ -67,7 +67,7 @@ void __interrupt(low_priority) ISR_HANDLER(void){
         }
         
         LATB5 = 0;
-        TMR2IF = 0;                     // smazani IF jinak nedojde k dalsimu zavolani (bezpecnostni prvek, preruseni je zamaskovano)
+        TMR2IF = 0;                     // smazani IF
     }
 }
 
