@@ -33,7 +33,7 @@ typedef struct {
 }btn_filter_t;
 
 
-volatile btn_filter_t buttons = {0, 0};
+volatile btn_filter_t buttons = {0};
 
 void __interrupt(low_priority) ISR_HANDLER(void){
      
