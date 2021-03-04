@@ -69,15 +69,23 @@ void main(void) {
     init(); // provedeni inicializace
     
     filter_t filter; 
-    filter_init(&filter, 2);
+    filter_init(&filter, 3);
     
     ADCON0bits.CHS = 13;                 // kanal AN13
     unsigned char i=0;
+    
+    uint8_t comp = 128;
     
     int16_t adc_value = 0;
     /* hlavni smycka */
     while(1){
         SPIWrite(DAC_CH1, i++);                 // nastaveni DAC 
+        if(i > comp){
+            SPIWrite(DAC_CH2, 200);                 // nastaveni DAC 
+        }
+        else{
+            SPIWrite(DAC_CH2, 0);                 // nastaveni DAC 
+        }
         GODONE = 1;                             // spustit aproximaci
         while(GODONE);                          // cekam nez je hotovo
         adc_value = ((ADRESH<<8) | ADRESL);
