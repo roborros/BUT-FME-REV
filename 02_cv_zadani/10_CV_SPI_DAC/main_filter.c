@@ -16,7 +16,7 @@
 
 typedef struct {
     uint8_t alpha;
-    int16_t avg;
+    int32_t avg;
 }filter_t;
 
 void filter_init(filter_t * self, uint8_t alpha){
@@ -25,9 +25,9 @@ void filter_init(filter_t * self, uint8_t alpha){
 }
 
 int16_t filter_step(filter_t * self, int16_t in){
-
-    self->avg += ((in - self->avg)>>self->alpha);
-    return self->avg;
+    int32_t mes = (int32_t)(in)<<10;
+    self->avg += ((mes - self->avg)>>self->alpha);
+    return (int16_t)(self->avg>>10);
 }
 
 void init(void){
@@ -69,7 +69,7 @@ void main(void) {
     init(); // provedeni inicializace
     
     filter_t filter; 
-    filter_init(&filter, 3);
+    filter_init(&filter, 8);
     
     ADCON0bits.CHS = 13;                 // kanal AN13
     unsigned char i=0;
