@@ -1,29 +1,38 @@
-# REV - MiniProjekt(Timer)
-Vytvořte program na RevKitu , který realizuje časovač. Hodnotu zobrazujte na LCD displeji. 
+# REV - MiniProjekt(MechLAB Bandita)
+
+## Zadání
+Cílem projektu je vytvořit program hracího automatu na principu jednorukého bandity.
+
+### Funkcionalita:
+*	Přes UART se bude posílat číslo 1, 2 nebo 5 symbolizující vhozenou minci. Její hodnota odpovídá počtu pokusů.
+*	Počet pokusů/kreditů je zobrazen na LEDkách, 1 LEDka = 1 pokus. Pokud je pokusů více jak 6, tak svítí všechny LEDky.
+*	Mince lze hodit kdykoliv během hry a aktualizovaný počet kreditů se ihned zobrazí na LEDkách.
+*	Tlačítkem 4 se náhodně vygenerují 3 symboly, které se zobrazí na displej. Symboly mohou být @, #, &, %.
+*	Pokud dojde k vygenerování tří stejných symbolů, určí se výhra podle následujícího klíče. Vyhrané kredity se připočítají k celkovým kreditům.
+**	#  #  #	 = 5 kreditů
+**	@@@ 	= 3 kredity
+**	& & &	= 2 kredity
+**	% % %	= 1 kredit
+*	Pokud v prvním kole nepadla výhra, může se stisknutím tlačítka 1,2 nebo 3 vygenerovat na příslušné pozici nový symbol. Následně se znovu vyhodnotí výhra podle předchozího bodu.
+*	Případná výhra se zobrazí na displej.
+*	Jednotlivé části programu implementujte jako stavy stavového automatu, dle obrázku níže.
+*	V jednotlivých stavech vypisujte aktuální informace do terminálu.
+
 
 ## Postup:
 
-  1, Založte projekt pro PIC18f46k22
-  
-  2, Nastavte optimalizace na 2
-  
-  3, Nastavte potřebné konfigurační bity (FOSC=32MHz, vypnout WDT)
-  
-  4, Budeme potřebovat zahrnout stdio.h a stdint.h
-  
-  5, Vytvořte knihovnu pro RevKit BSL.h Board Support lib. (založte tam definice GPIO lEDky a Tlacitka)
-  
-  6, Vytvorte inicializační funkce pro GPIO a Timer1
-  
-  7, Nakonfigurujte Timer1 tak, že dochází k přerušení každých 10ms
-  
-  8, Přidejte do projekt knihovnu LCD
-  
-  9, Naprogramujte program, který na prvním řádku displeje zobrazí Timer: a na druhém uběhnutý čas ve formátu 00:00.00, tedy      minuty, sekundy a setiny.
-  
-  10, Ovládejte časovač tlačítky BTN1-start, BTN2-pause, BTN3 reset (tlačítka kkontrolujte v přerušení + debouncing)
-  
-  11, Použíjte switch-case pro jednotlivé režimy
-  
-  12, Pokud časovač běží, blika celá řada ledek s periodou 1s
+1,	Vytvořte si samostatnou knihovnu pro obsluhu periferie UART.
+**	Knihovna bude obsahovat inicializační funkci a funkce pro posílání dat do terminálu
+2,	Vytvořte si samostatnou knihovnu pro obsluhu periferie GPIO (LEDky).
+**	Knihovna bude obsahovat inicializační funkci a funkce LEDek.
+3,	Implementujte funkcionalitu „vhození mince“ přes UART a zobrazení počtu pokusů na LEDkách.
+4,	Předchozí funkcionalitu implementujte do vlastní knihovny uživatelských funkcí.
+5,	Vytvořte si vlastní funkci pro generování náhodných symbolů.
+6,	Vložte do programu LCD knihovnu a využijte ji k zobrazení symbolů z předchozího kroku.
+7,	Vytvořte si vlastní funkci pro vyhodnocování výhry.
+8,	Implementujte do programu práci s tlačítky s využitím debouncingu. Můžete využít metodu ukázanou na předchozím cvičení.
+9,	Implementujte stavový automat. Čekání ve stavu můžete vyřešit funkcí delay.
+10,	Na začátek programu doplňte návod k použití, který bude zobrazován v terminálu při startu.
+11,	Funkci delay nahraďte pomocí timeru a vlastní funkcí pro kontrolu času stráveného v daném stavu.
+
   
