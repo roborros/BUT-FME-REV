@@ -4,55 +4,7 @@
 
 #define _XTAL_FREQ 32E6
 
-void LCD_Init(void){
-    /*// Dispaly reset
-    LATAbits.LATA0 = 0;
-    __delay_ms(1);
-    LATAbits.LATA0 = 1;
-    
-    i2c_begin_transmission(I2C_ADDR);
-    i2c_write(0x80);  // Control byte
-    i2c_write(0x38);  // Function set
-    __delay_us(27);
-    
-    i2c_write(0x80);
-    i2c_write(0x39);  // Function set
-    __delay_us(27);
-    
-    i2c_write(0x80);
-    i2c_write(0x17);  // Internal OSC
-    __delay_us(27);
-    
-    i2c_write(0x80);
-    i2c_write(0x7A);  // Contrast
-    __delay_us(27);
-    
-    i2c_write(0x80);
-    i2c_write(0x5E);  // Power/ICON control/Contrast set
-    __delay_us(27);
-    
-    i2c_write(0x80);
-    i2c_write(0x6B);  // Follower control
-    __delay_us(27);
-    
-    i2c_write(0x80);
-    i2c_write(0x0C);  // Display ON/OFF
-    __delay_us(27);
-    
-    i2c_write(0x00);
-    i2c_write(0x01);  // Clear display
-    __delay_ms(2);
-    
-    LCD_Send(0x80);
-    LCD_Send(0x06);
-    __delay_us(27);
-    
-    LCD_Send(0x80);
-    LCD_Send(0x02);
-    __delay_us(27);
-    
-    i2c_end_transmission(); */
-    
+void LCD_Init(void){   
     ANSELDbits.ANSD0 = 0;
     ANSELDbits.ANSD1 = 0;
     
