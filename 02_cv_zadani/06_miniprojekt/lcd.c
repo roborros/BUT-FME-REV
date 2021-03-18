@@ -1,7 +1,6 @@
 #include "xc.h"
 #include <stdio.h>
 #include "lcd.h"
-#include "i2c.h"
 
 #define _XTAL_FREQ 32E6
 
