@@ -127,7 +127,7 @@ void SPIWrite(uint8_t channel ,uint8_t data){
 
 ## Přečtenou hodnotu pošleme přes UART a zobrazíme v MPLABu.
 <p align="center">
-  <img width="800" height="520" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Visual.png">
+  <img width="800" height="520" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/osciloscope.png">
 </p>
 
 ## Generování funkcí:
