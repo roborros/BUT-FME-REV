@@ -18,6 +18,7 @@ Cílem projektu je vytvořit program hracího automatu na principu jednorukého 
 *	Jednotlivé části programu implementujte jako stavy stavového automatu, dle obrázku níže.
 *	V jednotlivých stavech vypisujte aktuální informace do terminálu.
 
+<img src="slot_diagram.png" width="700">
 
 ## Postup:
 
