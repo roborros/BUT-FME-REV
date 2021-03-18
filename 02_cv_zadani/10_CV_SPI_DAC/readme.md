@@ -33,7 +33,7 @@ V katalogu DAC převodníku najdeme informace ke komunikaci. Zjistíme, že komu
 
 
 ## Přiklad 10.1:
-Program demonstruje použití SPI k zápisu hodnoty na výstup DA převodníku. K měření běžně potřebujete osciloskop, ale my můžeme použít ADC a poslat si hodnotu přes UART do PC. Vše z toho již umíme. Dobré je doplnit si plugin DATA visualizer. Program generuje trojúhelník, protože inkrementuje i++ do maximální hodnoty a přeteče. Zesílení převodníku je nastaveno na 1x, tedy 0..2048mV.
+Program demonstruje použití SPI k zápisu hodnoty na výstup DA převodníku. K měření běžně potřebujete osciloskop, ale my můžeme použít ADC a poslat si hodnotu přes UART do PC. Vše z toho již umíme. Použijeme seriový osciloskop pro zobrazení průběhu. Program generuje trojúhelník, protože inkrementuje i++ do maximální hodnoty a přeteče. Zesílení převodníku je nastaveno na 1x, tedy 0..2048mV.
 
 ```c
 // DAC
@@ -125,7 +125,7 @@ void SPIWrite(uint8_t channel ,uint8_t data){
   <img width="600" height="250" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/foto.jpg">
 </p>
 
-## Přečtenou hodnotu pošleme přes UART a zobrazíme v MPLABu.
+## Přečtenou hodnotu pošleme přes UART a zobrazíme v seriovém osciloskopu.
 [Serial scope](https://x-io.co.uk/serial-oscilloscope/)
 
 <p align="center">
