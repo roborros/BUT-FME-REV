@@ -21,9 +21,9 @@ Cílem projektu je vytvořit program hracího automatu na principu jednorukého 
 <img src="slot_diagram.png" width="700">
 
 ## Postup:
-
+1. Založte projekt a proveďte základní konfiguraci mikrokontroléru.
 1.	Vytvořte si samostatnou knihovnu pro obsluhu periferie UART.
-    *	Knihovna bude obsahovat inicializační funkci a funkce pro posílání dat do terminálu
+    *	Knihovna bude obsahovat inicializační funkci a funkci pro posílání formátovaných dat do terminálu.
 2.	Vytvořte si samostatnou knihovnu pro obsluhu periferie GPIO (LEDky).
     *	Knihovna bude obsahovat inicializační funkci a funkce LEDek.
 3.	Implementujte funkcionalitu „vhození mince“ přes UART a zobrazení počtu pokusů na LEDkách.
@@ -33,5 +33,5 @@ Cílem projektu je vytvořit program hracího automatu na principu jednorukého 
 7.	Vytvořte si vlastní funkci pro vyhodnocování výhry.
 8.	Implementujte do programu práci s tlačítky s využitím debouncingu. Můžete využít metodu ukázanou na předchozím cvičení.
 9.	Implementujte stavový automat. Čekání ve stavu můžete vyřešit funkcí delay.
-10.	Na začátek programu doplňte návod k použití, který bude zobrazován v terminálu při startu.
-11.	Funkci delay nahraďte pomocí timeru a vlastní funkcí pro kontrolu času stráveného v daném stavu.
+10. Na začátek programu doplňte návod k použití, který bude zobrazován v terminálu při startu.
+11. Funkci delay nahraďte pomocí timeru a vlastní funkcí pro kontrolu času stráveného v daném stavu.
