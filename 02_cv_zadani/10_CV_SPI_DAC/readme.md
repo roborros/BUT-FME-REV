@@ -227,4 +227,4 @@ void SPIWrite(uint8_t channel ,uint8_t data){
   1) Generujte trojúhelníkový signál namísto pily z příkladu 1. 
   2) Kopírujte na DAC hodnotu z potenciometrů. Máte dva potenciometry a dva kanály DAC.
   3) Přepínejte pila/trojúhleník/potenciometr tlačítkem.
-  4) Zkuste sinusovku i v DataVisualizeru.
+  4) Zkuste sinusovku i v Serial oscilloscopu.
