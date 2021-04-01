@@ -82,7 +82,7 @@ void init(void){
     RCSTA1bits.CREN = 1;        // zapnuti RX 
 }
 
-
+void putch(unsigned char data);
 void SPIWrite(uint8_t channel ,uint8_t data);
 
 void main(void) {
@@ -95,7 +95,8 @@ void main(void) {
         SPIWrite(DAC_CH1, i++);                 // nastaveni DAC 
         GODONE = 1;                             // spustit aproximaci
         while(GODONE);                          // cekam nez je hotovo
-        TXREG = ADRESH;                         // poslu data
+        printf("%d,\r",ADRESH);
+ 
         __delay_ms(10);
     }
 }
@@ -104,7 +105,7 @@ void SPIWrite(uint8_t channel ,uint8_t data){
     
     uint8_t msb, lsb, flush;
     msb = (channel | (data>>4));        // prvni bajt
-    lsb = (data<<4) & 0xFF;             // druhy bajt
+    lsb = (data<<4) & 0xF0;             // druhy bajt
     DAC_SS = 0;                         // slave select
     PIR1bits.SSPIF = 0;                 // vynulovani priznaku SPI
     SSPBUF = msb;                       // zapis do bufferu
@@ -117,6 +118,11 @@ void SPIWrite(uint8_t channel ,uint8_t data){
     DAC_SS = 1;                         // vypnout slave select
     flush = SSPBUF;                     // vycteni bufferu
     
+}
+
+void putch(unsigned char data){
+    while(!TX1IF);
+    TXREG1 = data;
 }
 
 ```
