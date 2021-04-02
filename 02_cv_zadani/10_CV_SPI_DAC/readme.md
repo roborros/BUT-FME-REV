@@ -13,7 +13,7 @@ V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důlež
 
 ## MODY:
 <p align="center">
-  <img width="250" height="150" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/mody.png">
+  <img width="250" height="150" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/10_CV_SPI_DAC/Mody.png">
 </p>
 
 ## DAC MCP 4802:
