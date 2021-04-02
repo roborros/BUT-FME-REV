@@ -47,8 +47,8 @@ Program demonstruje použití SPI k zápisu hodnoty na výstup DA převodníku. 
 
 #define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
 #define DAC_SS LATB3            // DAC slave select pin
-#define DAC_CH1 0b10110000      // kanal A
-#define DAC_CH2 0b00110000      // kanal B
+#define DAC_CH1 0b00110000      // kanal A
+#define DAC_CH2 0b10110000      // kanal B
 #define LED LATDbits.LATD2      // ledka
 
 void init(void){
@@ -160,8 +160,8 @@ V tomto příkladu uvidíte generování pily a sinusovky na osciloskopu. Bude V
 
 #define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
 #define DAC_SS LATB3            // DAC slave select pin
-#define DAC_CH1 0b10010000      // kanal A
-#define DAC_CH2 0b00010000      // kanal B
+#define DAC_CH1 0b00010000      // kanal A
+#define DAC_CH2 0b10010000      // kanal B
 #define LED LATDbits.LATD2      // ledka
 
     // <editor-fold defaultstate="collapsed" desc="SINTABLE">
