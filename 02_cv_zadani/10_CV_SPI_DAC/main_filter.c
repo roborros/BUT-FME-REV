@@ -9,8 +9,8 @@
 
 #define _XTAL_FREQ 32E6         // definice fosc pro knihovnu
 #define DAC_SS LATB3            // DAC slave select pin
-#define DAC_CH1 0b10110000      // kanal A
-#define DAC_CH2 0b00110000      // kanal B
+#define DAC_CH1 0b00110000      // kanal A
+#define DAC_CH2 0b10110000      // kanal B
 #define LED LATDbits.LATD2      // ledka
 
 
