@@ -44,6 +44,7 @@ void init(void){
     LATBbits.LATB3 = 1;         // DAC SS off
 
     SSP1CON1bits.SSPM = 0b0010; // SPI clock
+    SSP1STATbits.CKE = 1;
     SSP1CON1bits.SSPEN = 1;     // SPI zapnuto
     
     /* nastaveni ADC*/
