@@ -1,0 +1,468 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F46K22 ]
+[d frameptr 4065 ]
+"1 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+"9 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aodiv.c
+[v ___aodiv __aodiv `(o  1 e 8 0 ]
+"9 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aomod.c
+[v ___aomod __aomod `(o  1 e 8 0 ]
+"72 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+[v _pad pad `(i  1 s 2 pad ]
+"259
+[v _ctoa ctoa `(i  1 s 2 ctoa ]
+"287
+[v _dtoa dtoa `(i  1 s 2 dtoa ]
+"568
+[v _stoa stoa `(i  1 s 2 stoa ]
+"692
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+"1390
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"72 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\main.c
+[v _init init `(v  1 e 1 0 ]
+"93
+[v _main main `(v  1 e 1 0 ]
+"136
+[v _putch putch `(v  1 e 1 0 ]
+"3 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\ring_buff.c
+[v _ring_buff_init ring_buff_init `(v  1 e 1 0 ]
+"9
+[v _ring_buff_is_empty ring_buff_is_empty `(uc  1 e 1 0 ]
+"14
+[v _ring_buff_is_full ring_buff_is_full `(uc  1 e 1 0 ]
+"19
+[v _ring_buff_num_items ring_buff_num_items `(uc  1 e 1 0 ]
+"24
+[v _ring_buff_write ring_buff_write `(v  1 e 1 0 ]
+"34
+[v _ring_buff_write_arr ring_buff_write_arr `(v  1 e 1 0 ]
+"42
+[v _ring_buff_read ring_buff_read `(uc  1 e 1 0 ]
+"53
+[v _ring_buff_read_arr ring_buff_read_arr `(uc  1 e 1 0 ]
+"68
+[v _ring_buff_peek ring_buff_peek `(uc  1 e 1 0 ]
+"147 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k22.h
+[v _ANSELC ANSELC `VEuc  1 e 1 @3898 ]
+[s S24 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"8314
+[s S33 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S42 . 1 `S24 1 . 1 0 `S33 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES42  1 e 1 @3987 ]
+[s S66 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"8536
+[s S75 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S84 . 1 `S66 1 . 1 0 `S75 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES84  1 e 1 @3988 ]
+"8726
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+[s S107 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"10432
+[s S116 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S119 . 1 `uc 1 RX9D1 1 0 :1:0 
+`uc 1 OERR1 1 0 :1:1 
+`uc 1 FERR1 1 0 :1:2 
+`uc 1 ADDEN1 1 0 :1:3 
+`uc 1 CREN1 1 0 :1:4 
+`uc 1 SREN1 1 0 :1:5 
+`uc 1 RX91 1 0 :1:6 
+`uc 1 SPEN1 1 0 :1:7 
+]
+[s S128 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S132 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S135 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[u S138 . 1 `S107 1 . 1 0 `S116 1 . 1 0 `S119 1 . 1 0 `S128 1 . 1 0 `S132 1 . 1 0 `S135 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES138  1 e 1 @4011 ]
+[s S177 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"10876
+[s S186 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S195 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S199 . 1 `S177 1 . 1 0 `S186 1 . 1 0 `S195 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES199  1 e 1 @4012 ]
+"11210
+[v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
+"11366
+[v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
+"18779
+[v _LATB5 LATB5 `VEb  1 e 0 @31829 ]
+"20585
+[v _TX1IF TX1IF `VEb  1 e 0 @31988 ]
+"55 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+[v _flags flags `i  1 s 2 flags ]
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"66
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"69
+[v _nout nout `i  1 s 2 nout ]
+"93 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+"101
+[v main@ring_buffer ring_buffer `S226  1 a 66 59 ]
+"99
+[v main@buf_arr buf_arr `[50]uc  1 a 50 6 ]
+"98
+[v main@buf buf `uc  1 a 1 58 ]
+"97
+[v main@i i `uc  1 a 1 57 ]
+[v main@cnt cnt `uc  1 a 1 56 ]
+"134
+} 0
+"34 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\ring_buff.c
+[v _ring_buff_write_arr ring_buff_write_arr `(v  1 e 1 0 ]
+{
+"36
+[v ring_buff_write_arr@i i `uc  1 a 1 16 ]
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+"34
+[v ring_buff_write_arr@buffer buffer `C*.39S226  1 p 2 9 ]
+[v ring_buff_write_arr@data data `*.32Cuc  1 p 2 11 ]
+[v ring_buff_write_arr@size size `uc  1 p 1 13 ]
+"40
+} 0
+"24
+[v _ring_buff_write ring_buff_write `(v  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+[v ring_buff_write@buffer buffer `C*.39S226  1 p 2 5 ]
+[v ring_buff_write@data data `uc  1 p 1 7 ]
+"32
+} 0
+"14
+[v _ring_buff_is_full ring_buff_is_full `(uc  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+[v ring_buff_is_full@buffer buffer `C*.39S226  1 p 2 0 ]
+"16
+} 0
+"53
+[v _ring_buff_read_arr ring_buff_read_arr `(uc  1 e 1 0 ]
+{
+"59
+[v ring_buff_read_arr@data_ptr data_ptr `*.39uc  1 a 2 14 ]
+"60
+[v ring_buff_read_arr@cnt cnt `uc  1 a 1 16 ]
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+"53
+[v ring_buff_read_arr@buffer buffer `C*.39S226  1 p 2 9 ]
+[v ring_buff_read_arr@data data `*.39uc  1 p 2 11 ]
+[v ring_buff_read_arr@len len `uc  1 p 1 13 ]
+"66
+} 0
+"42
+[v _ring_buff_read ring_buff_read `(uc  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+[v ring_buff_read@buffer buffer `C*.39S226  1 p 2 4 ]
+[v ring_buff_read@data data `*.39uc  1 p 2 6 ]
+"51
+} 0
+"9
+[v _ring_buff_is_empty ring_buff_is_empty `(uc  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+[v ring_buff_is_empty@buffer buffer `C*.39S226  1 p 2 0 ]
+"11
+} 0
+"68
+[v _ring_buff_peek ring_buff_peek `(uc  1 e 1 0 ]
+{
+"73
+[v ring_buff_peek@data_index data_index `uc  1 a 1 10 ]
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+"68
+[v ring_buff_peek@buffer buffer `C*.39S226  1 p 2 4 ]
+[v ring_buff_peek@data data `*.39uc  1 p 2 6 ]
+[v ring_buff_peek@index index `uc  1 p 1 8 ]
+"76
+} 0
+"19
+[v _ring_buff_num_items ring_buff_num_items `(uc  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+[v ring_buff_num_items@buffer buffer `C*.39S226  1 p 2 0 ]
+"21
+} 0
+"3
+[v _ring_buff_init ring_buff_init `(v  1 e 1 0 ]
+{
+[s S226 ring_buffer_t 66 `[64]uc 1 buffer 64 0 `uc 1 tail_index 1 64 `uc 1 head_index 1 65 ]
+[v ring_buff_init@buffer buffer `C*.39S226  1 p 2 0 ]
+"6
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\printf.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"8
+[v printf@ap ap `[1]*.39v  1 a 2 2 ]
+"5
+[v printf@fmt fmt `*.32Cuc  1 p 2 91 ]
+"13
+} 0
+"1390 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1393
+[v vfprintf@cfmt cfmt `*.32uc  1 a 2 89 ]
+[s S881 _IO_FILE 0 ]
+"1390
+[v vfprintf@fp fp `*.2S881  1 p 2 83 ]
+[v vfprintf@fmt fmt `*.32Cuc  1 p 2 85 ]
+[v vfprintf@ap ap `*.39*.39v  1 p 2 87 ]
+"1404
+} 0
+"692
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+{
+"696
+[v vfpfcnvrt@ll ll `o  1 a 8 72 ]
+"694
+[v vfpfcnvrt@cp cp `*.39uc  1 a 2 80 ]
+[v vfpfcnvrt@c c `uc  1 a 1 82 ]
+[s S881 _IO_FILE 0 ]
+"692
+[v vfpfcnvrt@fp fp `*.2S881  1 p 2 64 ]
+[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 66 ]
+[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 68 ]
+"1387
+} 0
+"568
+[v _stoa stoa `(i  1 s 2 stoa ]
+{
+"570
+[v stoa@nuls nuls `[7]uc  1 a 7 15 ]
+"571
+[v stoa@l l `i  1 a 2 30 ]
+[v stoa@p p `i  1 a 2 28 ]
+"570
+[v stoa@cp cp `*.39uc  1 a 2 26 ]
+"571
+[v stoa@w w `i  1 a 2 24 ]
+[v stoa@i i `i  1 a 2 22 ]
+[s S881 _IO_FILE 0 ]
+"568
+[v stoa@fp fp `*.2S881  1 p 2 10 ]
+[v stoa@s s `*.39uc  1 p 2 12 ]
+"570
+[v stoa@F1146 F1146 `[7]uc  1 s 7 F1146 ]
+"611
+} 0
+"287
+[v _dtoa dtoa `(i  1 s 2 dtoa ]
+{
+"290
+[v dtoa@n n `o  1 a 8 54 ]
+"289
+[v dtoa@i i `i  1 a 2 62 ]
+[v dtoa@s s `i  1 a 2 52 ]
+[v dtoa@w w `i  1 a 2 50 ]
+[v dtoa@p p `i  1 a 2 48 ]
+[s S881 _IO_FILE 0 ]
+"287
+[v dtoa@fp fp `*.2S881  1 p 2 28 ]
+[v dtoa@d d `o  1 p 8 30 ]
+"328
+} 0
+"72
+[v _pad pad `(i  1 s 2 pad ]
+{
+"74
+[v pad@w w `i  1 a 2 26 ]
+[v pad@i i `i  1 a 2 24 ]
+[s S881 _IO_FILE 0 ]
+"72
+[v pad@fp fp `*.2S881  1 p 2 17 ]
+[v pad@buf buf `*.39uc  1 p 2 19 ]
+[v pad@p p `i  1 p 2 21 ]
+"95
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"7
+[v strlen@a a `*.39Cuc  1 a 2 2 ]
+"5
+[v strlen@s s `*.39Cuc  1 p 2 0 ]
+"12
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+"11
+[v fputs@i i `i  1 a 2 15 ]
+"10
+[v fputs@c c `uc  1 a 1 14 ]
+"8
+[v fputs@s s `*.39Cuc  1 p 2 10 ]
+[s S864 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputs@fp fp `*.2S864  1 p 2 12 ]
+"19
+} 0
+"1 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 18 ]
+"4
+} 0
+"9 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aomod.c
+[v ___aomod __aomod `(o  1 e 8 0 ]
+{
+"12
+[v ___aomod@sign sign `uc  1 a 1 17 ]
+[v ___aomod@counter counter `uc  1 a 1 16 ]
+"9
+[v ___aomod@dividend dividend `o  1 p 8 0 ]
+[v ___aomod@divisor divisor `o  1 p 8 8 ]
+"36
+} 0
+"9 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aodiv.c
+[v ___aodiv __aodiv `(o  1 e 8 0 ]
+{
+"12
+[v ___aodiv@quotient quotient `o  1 a 8 18 ]
+"13
+[v ___aodiv@sign sign `uc  1 a 1 17 ]
+[v ___aodiv@counter counter `uc  1 a 1 16 ]
+"9
+[v ___aodiv@dividend dividend `o  1 p 8 0 ]
+[v ___aodiv@divisor divisor `o  1 p 8 8 ]
+"43
+} 0
+"259 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+[v _ctoa ctoa `(i  1 s 2 ctoa ]
+{
+"261
+[v ctoa@w w `i  1 a 2 16 ]
+[v ctoa@l l `i  1 a 2 14 ]
+[s S881 _IO_FILE 0 ]
+"259
+[v ctoa@fp fp `*.2S881  1 p 2 10 ]
+[v ctoa@c c `uc  1 p 1 12 ]
+"283
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 1 ]
+[s S864 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputc@fp fp `*.2S864  1 p 2 3 ]
+"24
+} 0
+"136 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\main.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@data data `uc  1 a 1 wreg ]
+[v putch@data data `uc  1 a 1 wreg ]
+[v putch@data data `uc  1 a 1 0 ]
+"139
+} 0
+"72
+[v _init init `(v  1 e 1 0 ]
+{
+"89
+} 0

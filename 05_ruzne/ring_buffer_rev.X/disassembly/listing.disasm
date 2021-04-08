@@ -1,0 +1,2641 @@
+Disassembly Listing for ring_buffer_rev
+Generated From:
+C:/Users/MBa/MPLABXProjects/ring_buffer_rev.X/dist/default/production/ring_buffer_rev.X.production.elf
+6.4.2021 10:15:54
+
+---  C:/Users/MBa/MPLABXProjects/ring_buffer_rev.X/ring_buff.c  -----------------------------------------
+1:             #include "ring_buff.h"
+2:             
+3:             void ring_buff_init(ring_buffer_t *const buffer) {
+4:               buffer->tail_index = 0;
+173A  EE20     LFSR 2, 0x20
+173C  F020     NOP
+173E  5001     MOVF __pcstackCOMRAM, W, ACCESS
+1740  26D9     ADDWF FSR2, F, ACCESS
+1742  5002     MOVF c, W, ACCESS
+1744  22DA     ADDWFC FSR2H, F, ACCESS
+1746  0E00     MOVLW 0x0
+1748  6EDF     MOVWF INDF2, ACCESS
+5:               buffer->head_index = 0;
+174A  EE20     LFSR 2, 0x21
+174C  F021     NOP
+174E  5001     MOVF __pcstackCOMRAM, W, ACCESS
+1750  26D9     ADDWF FSR2, F, ACCESS
+1752  5002     MOVF c, W, ACCESS
+1754  22DA     ADDWFC FSR2H, F, ACCESS
+1756  0E00     MOVLW 0x0
+1758  6EDF     MOVWF INDF2, ACCESS
+6:             }
+175A  0012     RETURN 0
+7:             
+8:             
+9:             uint8_t ring_buff_is_empty(ring_buffer_t *const buffer) {
+10:              return (buffer->head_index == buffer->tail_index);
+16E4  EE20     LFSR 2, 0x20
+16E6  F020     NOP
+16E8  5001     MOVF __pcstackCOMRAM, W, ACCESS
+16EA  26D9     ADDWF FSR2, F, ACCESS
+16EC  5002     MOVF c, W, ACCESS
+16EE  22DA     ADDWFC FSR2H, F, ACCESS
+16F0  EE10     LFSR 1, 0x21
+16F2  F021     NOP
+16F4  5001     MOVF __pcstackCOMRAM, W, ACCESS
+16F6  26E1     ADDWF FSR1, F, ACCESS
+16F8  5002     MOVF c, W, ACCESS
+16FA  22E2     ADDWFC FSR1H, F, ACCESS
+16FC  50DE     MOVF POSTINC2, W, ACCESS
+16FE  18E6     XORWF POSTINC1, W, ACCESS
+1700  B4D8     BTFSC STATUS, 2, ACCESS
+1702  EF85     GOTO 0x170A
+1704  F00B     NOP
+1706  EF88     GOTO 0x1710
+1708  F00B     NOP
+170A  0E01     MOVLW 0x1
+170C  EF89     GOTO 0x1712
+170E  F00B     NOP
+1710  0E00     MOVLW 0x0
+11:            }
+1712  0012     RETURN 0
+12:            
+13:            
+14:            uint8_t ring_buff_is_full(ring_buffer_t *const buffer) {
+15:              return ((buffer->head_index - buffer->tail_index) & RING_BUFFER_MASK) == RING_BUFFER_MASK;
+1624  EE20     LFSR 2, 0x21
+1626  F021     NOP
+1628  5001     MOVF __pcstackCOMRAM, W, ACCESS
+162A  26D9     ADDWF FSR2, F, ACCESS
+162C  5002     MOVF c, W, ACCESS
+162E  22DA     ADDWFC FSR2H, F, ACCESS
+1630  50DF     MOVF INDF2, W, ACCESS
+1632  6E03     MOVWF a, ACCESS
+1634  6A04     CLRF fp, ACCESS
+1636  EE20     LFSR 2, 0x20
+1638  F020     NOP
+163A  5001     MOVF __pcstackCOMRAM, W, ACCESS
+163C  26D9     ADDWF FSR2, F, ACCESS
+163E  5002     MOVF c, W, ACCESS
+1640  22DA     ADDWFC FSR2H, F, ACCESS
+1642  50DF     MOVF INDF2, W, ACCESS
+1644  6E05     MOVWF buffer, ACCESS
+1646  5005     MOVF buffer, W, ACCESS
+1648  5E03     SUBWF a, F, ACCESS
+164A  0E00     MOVLW 0x0
+164C  5A04     SUBWFB fp, F, ACCESS
+164E  0E1F     MOVLW 0x1F
+1650  1603     ANDWF a, F, ACCESS
+1652  0E00     MOVLW 0x0
+1654  1604     ANDWF fp, F, ACCESS
+1656  0E1F     MOVLW 0x1F
+1658  1803     XORWF a, W, ACCESS
+165A  1004     IORWF fp, W, ACCESS
+165C  B4D8     BTFSC STATUS, 2, ACCESS
+165E  EF33     GOTO 0x1666
+1660  F00B     NOP
+1662  EF36     GOTO 0x166C
+1664  F00B     NOP
+1666  0E01     MOVLW 0x1
+1668  EF37     GOTO 0x166E
+166A  F00B     NOP
+166C  0E00     MOVLW 0x0
+16:            }
+166E  0012     RETURN 0
+17:            
+18:            
+19:            ring_buffer_size_t ring_buff_num_items(ring_buffer_t *const buffer) {
+20:              return ((buffer->head_index - buffer->tail_index) & RING_BUFFER_MASK);
+21:            }
+22:            
+23:            
+24:            void ring_buff_write(ring_buffer_t *const buffer, char data) {
+25:            
+26:              if(ring_buff_is_full(buffer)) {
+138A  C006     MOVFF buffer, __pcstackCOMRAM
+138C  F001     NOP
+138E  C007     MOVFF data, c
+1390  F002     NOP
+1392  EC12     CALL 0x1624, 0
+1394  F00B     NOP
+1396  0900     IORLW 0x0
+1398  B4D8     BTFSC STATUS, 2, ACCESS
+139A  EFD1     GOTO 0x13A2
+139C  F009     NOP
+139E  EFD3     GOTO 0x13A6
+13A0  F009     NOP
+13A2  EFE4     GOTO 0x13C8
+13A4  F009     NOP
+27:                buffer->tail_index = ((buffer->tail_index + 1) & RING_BUFFER_MASK);
+13A6  EE20     LFSR 2, 0x20
+13A8  F020     NOP
+13AA  5006     MOVF buffer, W, ACCESS
+13AC  26D9     ADDWF FSR2, F, ACCESS
+13AE  5007     MOVF data, W, ACCESS
+13B0  22DA     ADDWFC FSR2H, F, ACCESS
+13B2  EE10     LFSR 1, 0x20
+13B4  F020     NOP
+13B6  5006     MOVF buffer, W, ACCESS
+13B8  26E1     ADDWF FSR1, F, ACCESS
+13BA  5007     MOVF data, W, ACCESS
+13BC  22E2     ADDWFC FSR1H, F, ACCESS
+13BE  50E7     MOVF INDF1, W, ACCESS
+13C0  6E09     MOVWF 0x9, ACCESS
+13C2  2809     INCF 0x9, W, ACCESS
+13C4  0B1F     ANDLW 0x1F
+13C6  6EDF     MOVWF INDF2, ACCESS
+28:              }
+29:            
+30:              buffer->buffer[buffer->head_index] = data;
+13C8  EE20     LFSR 2, 0x21
+13CA  F021     NOP
+13CC  5006     MOVF buffer, W, ACCESS
+13CE  26D9     ADDWF FSR2, F, ACCESS
+13D0  5007     MOVF data, W, ACCESS
+13D2  22DA     ADDWFC FSR2H, F, ACCESS
+13D4  50DF     MOVF INDF2, W, ACCESS
+13D6  6E09     MOVWF 0x9, ACCESS
+13D8  5009     MOVF 0x9, W, ACCESS
+13DA  2406     ADDWF buffer, W, ACCESS
+13DC  6ED9     MOVWF FSR2, ACCESS
+13DE  0E00     MOVLW 0x0
+13E0  2007     ADDWFC data, W, ACCESS
+13E2  6EDA     MOVWF FSR2H, ACCESS
+13E4  C008     MOVFF data, INDF2
+13E6  FFDF     NOP
+31:              buffer->head_index = ((buffer->head_index + 1) & RING_BUFFER_MASK);
+13E8  EE20     LFSR 2, 0x21
+13EA  F021     NOP
+13EC  5006     MOVF buffer, W, ACCESS
+13EE  26D9     ADDWF FSR2, F, ACCESS
+13F0  5007     MOVF data, W, ACCESS
+13F2  22DA     ADDWFC FSR2H, F, ACCESS
+13F4  EE10     LFSR 1, 0x21
+13F6  F021     NOP
+13F8  5006     MOVF buffer, W, ACCESS
+13FA  26E1     ADDWF FSR1, F, ACCESS
+13FC  5007     MOVF data, W, ACCESS
+13FE  22E2     ADDWFC FSR1H, F, ACCESS
+1400  50E7     MOVF INDF1, W, ACCESS
+1402  6E09     MOVWF 0x9, ACCESS
+1404  2809     INCF 0x9, W, ACCESS
+1406  0B1F     ANDLW 0x1F
+1408  6EDF     MOVWF INDF2, ACCESS
+32:            }
+140A  0012     RETURN 0
+33:            
+34:            void ring_buff_write_arr(ring_buffer_t *const buffer, const char *data, ring_buffer_size_t size) {
+35:            
+36:              ring_buffer_size_t i;
+37:              for(i = 0; i < size; i++) {
+15CA  0E00     MOVLW 0x0
+15CC  6E15     MOVWF i, ACCESS
+15CE  EF08     GOTO 0x1610
+15D0  F00B     NOP
+38:                ring_buff_write(buffer, data[i]);
+15D2  C00A     MOVFF buffer, buffer
+15D4  F006     NOP
+15D6  C00B     MOVFF fp, data
+15D8  F007     NOP
+15DA  5015     MOVF i, W, ACCESS
+15DC  0D01     MULLW 0x1
+15DE  CFF3     MOVFF PROD, nuls
+15E0  F010     NOP
+15E2  CFF4     MOVFF PRODH, cnt
+15E4  F011     NOP
+15E6  5010     MOVF nuls, W, ACCESS
+15E8  240C     ADDWF data, W, ACCESS
+15EA  6E12     MOVWF 0x12, ACCESS
+15EC  5011     MOVF cnt, W, ACCESS
+15EE  200D     ADDWFC s, W, ACCESS
+15F0  6E13     MOVWF 0x13, ACCESS
+15F2  0E00     MOVLW 0x0
+15F4  200E     ADDWFC len, W, ACCESS
+15F6  6E14     MOVWF 0x14, ACCESS
+15F8  C012     MOVFF 0x12, TBLPTR
+15FA  FFF6     NOP
+15FC  C013     MOVFF 0x13, TBLPTRH
+15FE  FFF7     NOP
+1600  C014     MOVFF 0x14, TBLPTRU
+1602  FFF8     NOP
+1604  0008     TBLRD*
+1606  CFF5     MOVFF TABLAT, data
+1608  F008     NOP
+160A  ECC5     CALL 0x138A, 0
+160C  F009     NOP
+39:              }
+160E  2A15     INCF i, F, ACCESS
+1610  500F     MOVF size, W, ACCESS
+1612  5C15     SUBWF i, W, ACCESS
+1614  A0D8     BTFSS STATUS, 0, ACCESS
+1616  EF0F     GOTO 0x161E
+1618  F00B     NOP
+161A  EF11     GOTO 0x1622
+161C  F00B     NOP
+161E  EFE9     GOTO 0x15D2
+1620  F00A     NOP
+40:            }
+1622  0012     RETURN 0
+41:            
+42:            uint8_t ring_buff_read(ring_buffer_t *const buffer, char *data) {
+43:              if(ring_buff_is_empty(buffer)) {
+14FA  C005     MOVFF buffer, __pcstackCOMRAM
+14FC  F001     NOP
+14FE  C006     MOVFF buffer, c
+1500  F002     NOP
+1502  EC72     CALL 0x16E4, 0
+1504  F00B     NOP
+1506  0900     IORLW 0x0
+1508  B4D8     BTFSC STATUS, 2, ACCESS
+150A  EF89     GOTO 0x1512
+150C  F00A     NOP
+150E  EF8B     GOTO 0x1516
+1510  F00A     NOP
+1512  EF8E     GOTO 0x151C
+1514  F00A     NOP
+44:            
+45:                return 0;
+1516  0E00     MOVLW 0x0
+1518  EFB4     GOTO 0x1568
+151A  F00A     NOP
+46:              }
+47:              
+48:              *data = buffer->buffer[buffer->tail_index];
+151C  EE20     LFSR 2, 0x20
+151E  F020     NOP
+1520  5005     MOVF buffer, W, ACCESS
+1522  26D9     ADDWF FSR2, F, ACCESS
+1524  5006     MOVF buffer, W, ACCESS
+1526  22DA     ADDWFC FSR2H, F, ACCESS
+1528  50DF     MOVF INDF2, W, ACCESS
+152A  6E09     MOVWF 0x9, ACCESS
+152C  5009     MOVF 0x9, W, ACCESS
+152E  2405     ADDWF buffer, W, ACCESS
+1530  6ED9     MOVWF FSR2, ACCESS
+1532  0E00     MOVLW 0x0
+1534  2006     ADDWFC buffer, W, ACCESS
+1536  6EDA     MOVWF FSR2H, ACCESS
+1538  C007     MOVFF data, FSR1
+153A  FFE1     NOP
+153C  C008     MOVFF data, FSR1H
+153E  FFE2     NOP
+1540  CFDF     MOVFF INDF2, INDF1
+1542  FFE7     NOP
+49:              buffer->tail_index = ((buffer->tail_index + 1) & RING_BUFFER_MASK);
+1544  EE20     LFSR 2, 0x20
+1546  F020     NOP
+1548  5005     MOVF buffer, W, ACCESS
+154A  26D9     ADDWF FSR2, F, ACCESS
+154C  5006     MOVF buffer, W, ACCESS
+154E  22DA     ADDWFC FSR2H, F, ACCESS
+1550  EE10     LFSR 1, 0x20
+1552  F020     NOP
+1554  5005     MOVF buffer, W, ACCESS
+1556  26E1     ADDWF FSR1, F, ACCESS
+1558  5006     MOVF buffer, W, ACCESS
+155A  22E2     ADDWFC FSR1H, F, ACCESS
+155C  50E7     MOVF INDF1, W, ACCESS
+155E  6E09     MOVWF 0x9, ACCESS
+1560  2809     INCF 0x9, W, ACCESS
+1562  0B1F     ANDLW 0x1F
+1564  6EDF     MOVWF INDF2, ACCESS
+50:              return 1;
+1566  0E01     MOVLW 0x1
+51:            }
+1568  0012     RETURN 0
+52:            
+53:            ring_buffer_size_t ring_buff_read_arr(ring_buffer_t *const buffer, char *data, ring_buffer_size_t len) {
+54:              if(ring_buff_is_empty(buffer)) {
+1488  C00A     MOVFF buffer, __pcstackCOMRAM
+148A  F001     NOP
+148C  C00B     MOVFF fp, c
+148E  F002     NOP
+1490  EC72     CALL 0x16E4, 0
+1492  F00B     NOP
+1494  0900     IORLW 0x0
+1496  B4D8     BTFSC STATUS, 2, ACCESS
+1498  EF50     GOTO 0x14A0
+149A  F00A     NOP
+149C  EF52     GOTO 0x14A4
+149E  F00A     NOP
+14A0  EF55     GOTO 0x14AA
+14A2  F00A     NOP
+55:            
+56:                return 0;
+14A4  0E00     MOVLW 0x0
+14A6  EF7C     GOTO 0x14F8
+14A8  F00A     NOP
+57:              }
+58:            
+59:              char *data_ptr = data;
+14AA  C00C     MOVFF data, size
+14AC  F00F     NOP
+14AE  C00D     MOVFF s, nuls
+14B0  F010     NOP
+60:              ring_buffer_size_t cnt = 0;
+14B2  0E00     MOVLW 0x0
+14B4  6E11     MOVWF cnt, ACCESS
+61:              while((cnt < len) && ring_buff_read(buffer, data_ptr)) {
+14B6  EF60     GOTO 0x14C0
+14B8  F00A     NOP
+14C0  500E     MOVF len, W, ACCESS
+14C2  5C11     SUBWF cnt, W, ACCESS
+14C4  B0D8     BTFSC STATUS, 0, ACCESS
+14C6  EF67     GOTO 0x14CE
+14C8  F00A     NOP
+14CA  EF69     GOTO 0x14D2
+14CC  F00A     NOP
+14CE  EF7B     GOTO 0x14F6
+14D0  F00A     NOP
+14D2  C00A     MOVFF buffer, buffer
+14D4  F005     NOP
+14D6  C00B     MOVFF fp, buffer
+14D8  F006     NOP
+14DA  C00F     MOVFF size, data
+14DC  F007     NOP
+14DE  C010     MOVFF nuls, data
+14E0  F008     NOP
+14E2  EC7D     CALL 0x14FA, 0
+14E4  F00A     NOP
+14E6  0900     IORLW 0x0
+14E8  A4D8     BTFSS STATUS, 2, ACCESS
+14EA  EF79     GOTO 0x14F2
+14EC  F00A     NOP
+14EE  EF7B     GOTO 0x14F6
+14F0  F00A     NOP
+14F2  EF5D     GOTO 0x14BA
+14F4  F00A     NOP
+62:                cnt++;
+14BA  2A11     INCF cnt, F, ACCESS
+63:                data_ptr++;
+14BC  4A0F     INFSNZ size, F, ACCESS
+14BE  2A10     INCF nuls, F, ACCESS
+64:              }
+65:              return cnt;
+14F6  5011     MOVF cnt, W, ACCESS
+66:            }
+14F8  0012     RETURN 0
+67:            
+68:            uint8_t ring_buff_peek(ring_buffer_t *const buffer, char *data, ring_buffer_size_t index) {
+69:              if(index >= ring_buff_num_items(buffer)) {
+70:                return 0;
+71:              }
+72:              
+73:              ring_buffer_size_t data_index = ((buffer->tail_index + index) & RING_BUFFER_MASK);
+74:              *data = buffer->buffer[data_index];
+75:              return 1;
+76:            }
+---  C:/Users/MBa/MPLABXProjects/ring_buffer_rev.X/main.c  ----------------------------------------------
+1:             // <editor-fold defaultstate="collapsed" desc="confbits">
+2:             // CONFIG1H
+3:             #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
+4:             #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
+5:             #pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
+6:             #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
+7:             #pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
+8:             
+9:             // CONFIG2L
+10:            #pragma config PWRTEN = OFF     // Power-up Timer Enable bit (Power up timer disabled)
+11:            #pragma config BOREN = SBORDIS  // Brown-out Reset Enable bits (Brown-out Reset enabled in hardware only (SBOREN is disabled))
+12:            #pragma config BORV = 190       // Brown Out Reset Voltage bits (VBOR set to 1.90 V nominal)
+13:            
+14:            // CONFIG2H
+15:            #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+16:            #pragma config WDTPS = 32768    // Watchdog Timer Postscale Select bits (1:32768)
+17:            
+18:            // CONFIG3H
+19:            #pragma config CCP2MX = PORTC1  // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
+20:            #pragma config PBADEN = ON      // PORTB A/D Enable bit (PORTB<5:0> pins are configured as analog input channels on Reset)
+21:            #pragma config CCP3MX = PORTB5  // P3A/CCP3 Mux bit (P3A/CCP3 input/output is multiplexed with RB5)
+22:            #pragma config HFOFST = ON      // HFINTOSC Fast Start-up (HFINTOSC output and ready status are not delayed by the oscillator stable status)
+23:            #pragma config T3CMX = PORTC0   // Timer3 Clock input mux bit (T3CKI is on RC0)
+24:            #pragma config P2BMX = PORTD2   // ECCP2 B output mux bit (P2B is on RD2)
+25:            #pragma config MCLRE = EXTMCLR  // MCLR Pin Enable bit (MCLR pin enabled, RE3 input pin disabled)
+26:            
+27:            // CONFIG4L
+28:            #pragma config STVREN = ON      // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
+29:            #pragma config LVP = ON         // Single-Supply ICSP Enable bit (Single-Supply ICSP enabled if MCLRE is also 1)
+30:            #pragma config XINST = OFF      // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled (Legacy mode))
+31:            
+32:            // CONFIG5L
+33:            #pragma config CP0 = OFF        // Code Protection Block 0 (Block 0 (000800-003FFFh) not code-protected)
+34:            #pragma config CP1 = OFF        // Code Protection Block 1 (Block 1 (004000-007FFFh) not code-protected)
+35:            #pragma config CP2 = OFF        // Code Protection Block 2 (Block 2 (008000-00BFFFh) not code-protected)
+36:            #pragma config CP3 = OFF        // Code Protection Block 3 (Block 3 (00C000-00FFFFh) not code-protected)
+37:            
+38:            // CONFIG5H
+39:            #pragma config CPB = OFF        // Boot Block Code Protection bit (Boot block (000000-0007FFh) not code-protected)
+40:            #pragma config CPD = OFF        // Data EEPROM Code Protection bit (Data EEPROM not code-protected)
+41:            
+42:            // CONFIG6L
+43:            #pragma config WRT0 = OFF       // Write Protection Block 0 (Block 0 (000800-003FFFh) not write-protected)
+44:            #pragma config WRT1 = OFF       // Write Protection Block 1 (Block 1 (004000-007FFFh) not write-protected)
+45:            #pragma config WRT2 = OFF       // Write Protection Block 2 (Block 2 (008000-00BFFFh) not write-protected)
+46:            #pragma config WRT3 = OFF       // Write Protection Block 3 (Block 3 (00C000-00FFFFh) not write-protected)
+47:            
+48:            // CONFIG6H
+49:            #pragma config WRTC = OFF       // Configuration Register Write Protection bit (Configuration registers (300000-3000FFh) not write-protected)
+50:            #pragma config WRTB = OFF       // Boot Block Write Protection bit (Boot Block (000000-0007FFh) not write-protected)
+51:            #pragma config WRTD = OFF       // Data EEPROM Write Protection bit (Data EEPROM not write-protected)
+52:            
+53:            // CONFIG7L
+54:            #pragma config EBTR0 = OFF      // Table Read Protection Block 0 (Block 0 (000800-003FFFh) not protected from table reads executed in other blocks)
+55:            #pragma config EBTR1 = OFF      // Table Read Protection Block 1 (Block 1 (004000-007FFFh) not protected from table reads executed in other blocks)
+56:            #pragma config EBTR2 = OFF      // Table Read Protection Block 2 (Block 2 (008000-00BFFFh) not protected from table reads executed in other blocks)
+57:            #pragma config EBTR3 = OFF      // Table Read Protection Block 3 (Block 3 (00C000-00FFFFh) not protected from table reads executed in other blocks)
+58:            
+59:            // CONFIG7H
+60:            #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0007FFh) not protected from table reads executed in other blocks)
+61:            
+62:            // </editor-fold>
+63:            
+64:            #include <xc.h>
+65:            #include <stdint.h>
+66:            #include <stdio.h>
+67:            #include "ring_buff.h"
+68:            
+69:            #define _XTAL_FREQ 32E6
+70:            
+71:            void init(void){
+72:                
+73:                TRISBbits.TRISB5 = 0;
+175C  9A93     BCF TRISB, 5, ACCESS
+74:            
+75:                ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
+175E  0E00     MOVLW 0x0
+1760  010F     MOVLB 0xF
+1762  6F3A     MOVWF 0x3A, BANKED
+76:                TRISD = 0x00;           // PORTD jako vystup
+1764  0E00     MOVLW 0x0
+1766  6E95     MOVWF TRISD, ACCESS
+77:                TRISCbits.TRISC6 = 1;   // TX pin jako vystup
+1768  8C94     BSF TRISC, 6, ACCESS
+78:                TRISCbits.TRISC7 = 1;   // rx pin jako vstup
+176A  8E94     BSF TRISC, 7, ACCESS
+79:               
+80:                /*baudrate*/
+81:                SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
+176C  0E33     MOVLW 0x33
+176E  6EAF     MOVWF SPBRG1, ACCESS
+82:                
+83:                RCSTA1bits.SPEN = 1;      // zapnuti UART
+1770  8EAB     BSF RCSTA1, 7, ACCESS
+84:                TXSTA1bits.TXEN = 1;      // zapnuti TX
+1772  8AAC     BSF TXSTA1, 5, ACCESS
+85:                RCSTA1bits.CREN = 1;      // zapnuti RX 
+1774  88AB     BSF RCSTA1, 4, ACCESS
+86:                
+87:                return;
+88:            }
+1776  0012     RETURN 0
+89:            
+90:            void putch(unsigned char data);
+91:            
+92:            void main(void) {
+93:            
+94:                init();
+140C  ECAE     CALL 0x175C, 0
+140E  F00B     NOP
+95:            
+96:                char i, cnt;
+97:                char buf;
+98:                char buf_arr[50];
+99:                
+100:               ring_buffer_t ring_buffer;
+101:               ring_buff_init(&ring_buffer);
+1410  0E93     MOVLW 0x93
+1412  6E01     MOVWF __pcstackCOMRAM, ACCESS
+1414  0E00     MOVLW 0x0
+1416  6E02     MOVWF c, ACCESS
+1418  EC9D     CALL 0x173A, 0
+141A  F00B     NOP
+102:               
+103:               while(1){
+104:           
+105:                   /*
+106:                   for(i = 0; i < 50; i++) {
+107:                       ring_buff_write(&ring_buffer, i);
+108:                   } 
+109:           
+110:                   cnt = ring_buff_peek(&ring_buffer, &buf, 1);
+111:                   
+112:                   cnt = ring_buff_num_items(&ring_buffer);
+113:                   
+114:           
+115:                   for(cnt = 0; ring_buff_read(&ring_buffer, &buf) > 0; cnt++) {
+116:                       printf("Read: %d\n", buf);
+117:                   }
+118:           
+119:                   ring_buff_write_arr(&ring_buffer, "Hello, Ring Buffer!", 20);
+120:           
+121:                   while(ring_buff_read(&ring_buffer, &buf) > 0) {
+122:                       printf("Read: %c\n", buf);
+123:                   }
+124:                   */
+125:                   LATB5 = 1;
+141C  8A8A     BSF LATB, 5, ACCESS
+126:                   ring_buff_write_arr(&ring_buffer, __LINE__, 26);
+141E  0E93     MOVLW 0x93
+1420  6E0A     MOVWF buffer, ACCESS
+1422  0E00     MOVLW 0x0
+1424  6E0B     MOVWF fp, ACCESS
+1426  0E7E     MOVLW 0x7E
+1428  6E0C     MOVWF data, ACCESS
+142A  0E00     MOVLW 0x0
+142C  6E0D     MOVWF s, ACCESS
+142E  0E00     MOVLW 0x0
+1430  6E0E     MOVWF len, ACCESS
+1432  0E1A     MOVLW 0x1A
+1434  6E0F     MOVWF size, ACCESS
+1436  ECE5     CALL 0x15CA, 0
+1438  F00A     NOP
+127:           
+128:                   cnt = ring_buff_read_arr(&ring_buffer, buf_arr, 30);
+143A  0E93     MOVLW 0x93
+143C  6E0A     MOVWF buffer, ACCESS
+143E  0E00     MOVLW 0x0
+1440  6E0B     MOVWF fp, ACCESS
+1442  0E60     MOVLW 0x60
+1444  6E0C     MOVWF data, ACCESS
+1446  0E00     MOVLW 0x0
+1448  6E0D     MOVWF s, ACCESS
+144A  0E1E     MOVLW 0x1E
+144C  6E0E     MOVWF len, ACCESS
+144E  EC44     CALL 0x1488, 0
+1450  F00A     NOP
+129:                   printf("%s", buf_arr);
+1452  0E01     MOVLW 0x1
+1454  6E33     MOVWF fmt, ACCESS
+1456  0E10     MOVLW 0x10
+1458  6E34     MOVWF 0x34, ACCESS
+145A  0E60     MOVLW 0x60
+145C  6E35     MOVWF 0x35, ACCESS
+145E  0E00     MOVLW 0x0
+1460  6E36     MOVWF 0x36, ACCESS
+1462  EC8A     CALL 0x1714, 0
+1464  F00B     NOP
+130:                   LATB5 = 0;
+1466  9A8A     BCF LATB, 5, ACCESS
+131:                  __delay_ms(100);
+1468  0E05     MOVLW 0x5
+146A  6E3C     MOVWF 0x3C, ACCESS
+146C  0E0F     MOVLW 0xF
+146E  6E3B     MOVWF 0x3B, ACCESS
+1470  0EF1     MOVLW 0xF1
+1472  2EE8     DECFSZ WREG, F, ACCESS
+1474  D7FE     BRA 0x1472
+1476  2E3B     DECFSZ 0x3B, F, ACCESS
+1478  D7FC     BRA 0x1472
+147A  2E3C     DECFSZ 0x3C, F, ACCESS
+147C  D7FA     BRA 0x1472
+147E  F000     NOP
+1480  EF0E     GOTO 0x141C
+1482  F00A     NOP
+1484  EF00     GOTO 0x0
+1486  F000     NOP
+132:               }
+133:               
+134:               return;
+135:           }
+136:           
+137:           void putch(unsigned char data){
+1778  6E01     MOVWF __pcstackCOMRAM, ACCESS
+138:               while(!TX1IF);
+177A  A89E     BTFSS PIR1, 4, ACCESS
+177C  EFC2     GOTO 0x1784
+177E  F00B     NOP
+1780  EFC4     GOTO 0x1788
+1782  F00B     NOP
+1784  EFBD     GOTO 0x177A
+1786  F00B     NOP
+139:               TXREG1 = data;
+1788  C001     MOVFF __pcstackCOMRAM, TXREG1
+178A  FFAD     NOP
+140:           }
+178C  0012     RETURN 0
+---  C:/Users/MBa/AppData/Local/Temp/s320.s  ------------------------------------------------------------
+1670  0E8E     MOVLW 0x8E
+1672  6EF6     MOVWF TBLPTR, ACCESS
+1674  0E17     MOVLW 0x17
+1676  6EF7     MOVWF TBLPTRH, ACCESS
+1678  0E00     MOVLW 0x0
+167A  6EF8     MOVWF TBLPTRU, ACCESS
+167C  EE00     LFSR 0, 0x45
+1680  EE10     LFSR 1, 0x7
+1684  0009     TBLRD*+
+1686  CFF5     MOVFF TABLAT, POSTINC0
+168A  50E5     MOVF POSTDEC1, W, ACCESS
+168C  50E1     MOVF FSR1, W, ACCESS
+168E  E1FA     BNZ 0x1684
+1690  EE00     LFSR 0, 0xB5
+1694  0E20     MOVLW 0x20
+1696  6AEE     CLRF POSTINC0, ACCESS
+1698  06E8     DECF WREG, F, ACCESS
+169A  E1FD     BNZ 0x1696
+169C  EE00     LFSR 0, 0x3D
+16A0  0E08     MOVLW 0x8
+16A2  6AEE     CLRF POSTINC0, ACCESS
+16A4  06E8     DECF WREG, F, ACCESS
+16A6  E1FD     BNZ 0x16A2
+16A8  0100     MOVLB 0x0
+16AA  EF06     GOTO 0x140C
+---  C:/Program Files/Microchip/xc8/v2.31/pic/sources/c99/common/strlen.c  ------------------------------
+1:             #include <string.h>
+2:             #include <stdint.h>
+3:             #include <limits.h>
+4:             
+5:             size_t strlen(const char *s)
+6:             {
+7:             	const char *a = s;
+16AE  C001     MOVFF __pcstackCOMRAM, a
+16B0  F003     NOP
+16B2  C002     MOVFF c, fp
+16B4  F004     NOP
+8:             	while(*s) {
+16B6  EF5F     GOTO 0x16BE
+16B8  F00B     NOP
+16BE  C001     MOVFF __pcstackCOMRAM, FSR2
+16C0  FFD9     NOP
+16C2  C002     MOVFF c, FSR2H
+16C4  FFDA     NOP
+16C6  50DF     MOVF INDF2, W, ACCESS
+16C8  A4D8     BTFSS STATUS, 2, ACCESS
+16CA  EF69     GOTO 0x16D2
+16CC  F00B     NOP
+16CE  EF6B     GOTO 0x16D6
+16D0  F00B     NOP
+16D2  EF5D     GOTO 0x16BA
+16D4  F00B     NOP
+9:             		s++;
+16BA  4A01     INFSNZ __pcstackCOMRAM, F, ACCESS
+16BC  2A02     INCF c, F, ACCESS
+10:            	}
+11:            	return (size_t)(s-a);
+16D6  5003     MOVF a, W, ACCESS
+16D8  5C01     SUBWF __pcstackCOMRAM, W, ACCESS
+16DA  6E01     MOVWF __pcstackCOMRAM, ACCESS
+16DC  5004     MOVF fp, W, ACCESS
+16DE  5802     SUBWFB c, W, ACCESS
+16E0  6E02     MOVWF c, ACCESS
+12:            }
+16E2  0012     RETURN 0
+---  C:/Program Files/Microchip/xc8/v2.31/pic/sources/c99/common/printf.c  ------------------------------
+1:             #include <stdio.h>
+2:             #include <stdarg.h>
+3:             #include "stdio_impl.h"
+4:             
+5:             int printf(const char *restrict fmt, ...)
+6:             {
+7:             	int ret;
+8:             	va_list ap;
+9:             	va_start(ap, fmt);
+1714  0E35     MOVLW 0x35
+1716  6E39     MOVWF ap, ACCESS
+1718  0E00     MOVLW 0x0
+171A  6E3A     MOVWF 0x3A, ACCESS
+10:            	ret = vfprintf(stdout, fmt, ap);
+171C  0E00     MOVLW 0x0
+171E  6E2B     MOVWF fp, ACCESS
+1720  0E00     MOVLW 0x0
+1722  6E2C     MOVWF 0x2C, ACCESS
+1724  C033     MOVFF fmt, fmt
+1726  F02D     NOP
+1728  C034     MOVFF 0x34, 0x2E
+172A  F02E     NOP
+172C  0E39     MOVLW 0x39
+172E  6E2F     MOVWF ap, ACCESS
+1730  0E00     MOVLW 0x0
+1732  6E30     MOVWF 0x30, ACCESS
+1734  ECB5     CALL 0x156A, 0
+1736  F00A     NOP
+11:            	va_end(ap);
+12:            	return ret;
+13:            }
+1738  0012     RETURN 0
+---  C:/Program Files/Microchip/xc8/v2.31/pic/sources/c99/common/nf_fputc.c  ----------------------------
+1:             #include <stdio.h>
+2:             
+3:             #include "stdio_impl.h"
+4:             
+5:             #ifdef STDIO_NO_FILE_IO
+6:             /* "No file system" fputc */
+7:             
+8:             int fputc(int c, FILE *fp)
+9:             {
+10:                extern void putch(char);
+11:            
+12:                if ((fp == stdout) || (fp == stderr)) {
+12F4  5004     MOVF fp, W, ACCESS
+12F6  1005     IORWF buffer, W, ACCESS
+12F8  B4D8     BTFSC STATUS, 2, ACCESS
+12FA  EF81     GOTO 0x1302
+12FC  F009     NOP
+12FE  EF83     GOTO 0x1306
+1300  F009     NOP
+1302  EF8C     GOTO 0x1318
+1304  F009     NOP
+1306  5004     MOVF fp, W, ACCESS
+1308  1005     IORWF buffer, W, ACCESS
+130A  A4D8     BTFSS STATUS, 2, ACCESS
+130C  EF8A     GOTO 0x1314
+130E  F009     NOP
+1310  EF8C     GOTO 0x1318
+1312  F009     NOP
+1314  EF91     GOTO 0x1322
+1316  F009     NOP
+13:                    putch((char)c);
+1318  5002     MOVF c, W, ACCESS
+131A  ECBC     CALL 0x1778, 0
+131C  F00B     NOP
+14:                } else {
+131E  EFC4     GOTO 0x1388
+1320  F009     NOP
+15:            		if((fp->limit == 0) || (fp->count < fp->limit)) {
+1322  EE20     LFSR 2, 0x4
+1324  F004     NOP
+1326  5004     MOVF fp, W, ACCESS
+1328  26D9     ADDWF FSR2, F, ACCESS
+132A  5005     MOVF buffer, W, ACCESS
+132C  22DA     ADDWFC FSR2H, F, ACCESS
+132E  50DE     MOVF POSTINC2, W, ACCESS
+1330  10DE     IORWF POSTINC2, W, ACCESS
+1332  B4D8     BTFSC STATUS, 2, ACCESS
+1334  EF9E     GOTO 0x133C
+1336  F009     NOP
+1338  EFA0     GOTO 0x1340
+133A  F009     NOP
+133C  EFBB     GOTO 0x1376
+133E  F009     NOP
+1340  EE20     LFSR 2, 0x4
+1342  F004     NOP
+1344  5004     MOVF fp, W, ACCESS
+1346  26D9     ADDWF FSR2, F, ACCESS
+1348  5005     MOVF buffer, W, ACCESS
+134A  22DA     ADDWFC FSR2H, F, ACCESS
+134C  EE10     LFSR 1, 0x2
+134E  F002     NOP
+1350  5004     MOVF fp, W, ACCESS
+1352  26E1     ADDWF FSR1, F, ACCESS
+1354  5005     MOVF buffer, W, ACCESS
+1356  22E2     ADDWFC FSR1H, F, ACCESS
+1358  50DE     MOVF POSTINC2, W, ACCESS
+135A  5CE6     SUBWF POSTINC1, W, ACCESS
+135C  50E6     MOVF POSTINC1, W, ACCESS
+135E  0A80     XORLW 0x80
+1360  6E0A     MOVWF buffer, ACCESS
+1362  50DE     MOVF POSTINC2, W, ACCESS
+1364  0A80     XORLW 0x80
+1366  580A     SUBWFB buffer, W, ACCESS
+1368  B0D8     BTFSC STATUS, 0, ACCESS
+136A  EFB9     GOTO 0x1372
+136C  F009     NOP
+136E  EFBB     GOTO 0x1376
+1370  F009     NOP
+1372  EFC4     GOTO 0x1388
+1374  F009     NOP
+16:            #pragma warning push
+17:            #pragma warning disable 1498
+18:            			fp->buffer[fp->count] = (char)c;
+19:            #pragma warning pop
+20:            			++fp->count;
+1376  EE20     LFSR 2, 0x2
+1378  F002     NOP
+137A  5004     MOVF fp, W, ACCESS
+137C  26D9     ADDWF FSR2, F, ACCESS
+137E  5005     MOVF buffer, W, ACCESS
+1380  22DA     ADDWFC FSR2H, F, ACCESS
+1382  2ADE     INCF POSTINC2, F, ACCESS
+1384  0E00     MOVLW 0x0
+1386  22DD     ADDWFC POSTDEC2, F, ACCESS
+21:            		}
+22:                }
+23:                return (unsigned char)c;
+24:            }
+1388  0012     RETURN 0
+25:            
+26:            #endif
+---  C:/Program Files/Microchip/xc8/v2.31/pic/sources/c99/common/doprnt.c  ------------------------------
+1:             /* vfprintf with configurable support for format conversions */
+2:             /* This code is specifically for XC8 */
+3:             #include <ctype.h>
+4:             #include <math.h>
+5:             #include <stdarg.h>
+6:             #include <stddef.h>
+7:             #include <stdint.h>
+8:             #include <stdio.h>
+9:             #include <stdlib.h>
+10:            #include <string.h>
+11:            #include <inline.h>
+12:            
+13:            /* Configuration options */
+14:            #ifdef _VFPF_ALL
+15:            #define _VFPF_CONVERT
+16:            #define _VFPF_FLAGS
+17:            #define _VFPF_WIDTH
+18:            #define _VFPF_PRECISION
+19:            
+20:            #define _VFPF_HH
+21:            #define _VFPF_H
+22:            #define _VFPF_L
+23:            #define _VFPF_LL
+24:            #define _VFPF_J
+25:            #define _VFPF_T
+26:            #define _VFPF_Z
+27:            
+28:            #define _VFPF_A
+29:            #define _VFPF_C
+30:            #define _VFPF_D
+31:            #define _VFPF_E
+32:            #define _VFPF_F
+33:            #define _VFPF_G
+34:            #define _VFPF_O
+35:            #define _VFPF_N
+36:            #define _VFPF_P
+37:            #define _VFPF_S
+38:            #define _VFPF_U
+39:            #define _VFPF_X
+40:            #endif
+41:            
+42:            #ifndef ARRAYSIZE
+43:            #define ARRAYSIZE(a)	(sizeof(a)/sizeof(a[0]))
+44:            #endif
+45:            #ifndef CSTRLEN
+46:            #define CSTRLEN(s)	(ARRAYSIZE(s)-1)
+47:            #endif
+48:            
+49:            /* Flags, precision, width */
+50:            #define MINUS_FLAG (1 << 0)
+51:            #define ZERO_FLAG (1 << 1)
+52:            #define PLUS_FLAG (1 << 2)
+53:            #define SPACE_FLAG (1 << 3)
+54:            #define POUND_FLAG (1 << 4)
+55:            static int flags, prec, width;
+56:            
+57:            #ifdef _VFPF_CONVERT
+58:            /* This buffer must be at least 32 bytes long for this code to be safe */
+59:            /* Output that would exceed buffer capacity is truncated */
+60:            #if defined(_VFPF_A) || defined(_VFPF_E) || defined(_VFPF_F) || defined(_VFPF_G)
+61:            #define DBLEN 80
+62:            #define EXPLEN 5
+63:            #else
+64:            #define DBLEN 32
+65:            #endif
+66:            static char dbuf[DBLEN];
+67:            
+68:            /* Character count */
+69:            static int nout;
+70:            
+71:            /* Output the string in dbuf, padded on the left or right */
+72:            static _INLINE int pad(FILE *fp, char *buf, int p)
+73:            {
+74:                int i, w;
+75:            
+76:                /* Left justify ? Put out string */
+77:                if (flags & MINUS_FLAG) {
+78:                    fputs((const char *)buf, fp);
+79:                }
+80:            
+81:                /* Put out padding */
+82:                w = (p < 0) ? 0 : p;
+83:                i = 0;
+84:                while (i < w) {
+85:                    fputc(' ', fp);
+86:                    ++i;
+87:                }
+88:            
+89:                /* Right justify ? Put out string */
+90:                if (!(flags & MINUS_FLAG)) {
+91:                    fputs((const char *)buf, fp);
+92:                }
+93:            
+94:                return (int)(strlen(buf) + (size_t)w);
+95:            }
+96:            #endif
+97:            
+98:            #ifdef _VFPF_A
+99:            static _INLINE int atoa(FILE *fp, long double f, char c)
+100:           {
+101:               char mode, nmode;
+102:               int d, e, i, m, n, ne, p, pp, sign, t, w;
+103:               long double g, h, l, ou, u;
+104:           
+105:               /* Record sign, get absolute value */
+106:               sign = 0;
+107:               g = f;
+108:               if (g < 0.0) {
+109:                   sign = 1;
+110:                   g = -g;
+111:               }
+112:           
+113:               /* Print sign, prefix */
+114:               n = 0;
+115:               w = width;
+116:               if (sign || (flags & PLUS_FLAG)) {
+117:                   dbuf[n] = sign ? '-' : '+';
+118:                   ++n;
+119:                   --w;
+120:               }
+121:               dbuf[n++] = '0';
+122:               dbuf[n++] = isupper((int)c) ? 'X' : 'x';
+123:           
+124:               /* Catch infinities, NaNs here */
+125:               if (isinf(g)) {
+126:                   if (isupper((int)c)) {
+127:                       strcpy(&dbuf[n], "INF");
+128:                   } else {
+129:                       strcpy(&dbuf[n], "inf");
+130:                   }
+131:                   w -= CSTRLEN("inf");
+132:                   return pad(fp, &dbuf[0], w);
+133:               }
+134:               if (isnan(g)) {
+135:                   if (isupper((int)c)) {
+136:                       strcpy(&dbuf[n], "NAN");
+137:                   } else {
+138:                       strcpy(&dbuf[n], "nan");
+139:                   }
+140:                   w -= CSTRLEN("inf");
+141:                   return pad(fp, &dbuf[0], w);
+142:               }
+143:           
+144:               /* First find the largest power of 2 not larger than number to print */
+145:               u = 1.0;
+146:               e = 0;
+147:               if (!(g == 0.0)) {
+148:                   while (!(g < (u*2.0))) {
+149:                       u = u*2.0;
+150:                       ++e;
+151:                   }
+152:                   while (g < u) {
+153:                       u = u/2.0;
+154:                       --e;
+155:                   }
+156:               }
+157:           
+158:               /* Get precision */
+159:               p = (prec < 0) ? 6 : prec;
+160:           
+161:               /* Hex places, total */
+162:               m = p + 1;
+163:           
+164:               /* Go through the conversion once to get to the rounding step */
+165:               i = 0;
+166:               h = g;
+167:               ou = u;
+168:               while (i < m) {
+169:                   l = floor(h/u);
+170:                   d = (int)l;
+171:                   h -= l*u;
+172:                   u = u/16.0;
+173:                   ++i;
+174:               }
+175:               
+176:               /* Remainder >= halfway ? */
+177:               l = u*8.0;
+178:               if (h < l) {
+179:                   l = 0.0;
+180:               } else {
+181:                   /* On tie choose even number */
+182:                   if ((h == l) && !(d % 2)) {
+183:                       l = 0.0;
+184:                   }
+185:               }
+186:           
+187:               /* Round */
+188:               h = g + l;
+189:               
+190:               /* Convert again, after rounding */
+191:               u = ou;
+192:               ne = 0;
+193:               pp = 0;
+194:               t = 0;
+195:               i = 0;
+196:               while ((i < m) && (n < (DBLEN - EXPLEN))) {
+197:                   l = floor(h/u);
+198:                   d = (int)l;
+199:                   if (!(flags & POUND_FLAG) && !d && (ne < 0)) {
+200:                       ++t;
+201:                   } else {
+202:                       if (!pp && (ne < 0)) {
+203:                           dbuf[n++] = '.';
+204:                           --w;
+205:                           pp = 1;
+206:                       }
+207:                       while (t) {
+208:                           dbuf[n++] = '0';
+209:                           --w;
+210:                           --t;
+211:                       }
+212:                       d = (d < 10) ? (int)'0' + d : (int)'a' + (d - 10);
+213:                       if (isupper((int)c) && isalpha(d)) {
+214:                           d = toupper(d);
+215:                       }
+216:                       dbuf[n++] = (char)d;
+217:                       --w;
+218:                   }
+219:                   h -= l*u;
+220:                   u = u/16.0;
+221:                   --ne;
+222:                   ++i;
+223:               }
+224:               if (!pp && (flags & POUND_FLAG)) {
+225:                   dbuf[n++] = '.';
+226:               }
+227:               dbuf[n] = '\0';
+228:           
+229:               /* Convert exponent */
+230:               i = sizeof(dbuf) - 1;
+231:               dbuf[i] = '\0';
+232:               sign = 0;
+233:               if (e < 0) {
+234:                   sign = 1;
+235:                   e = -e;
+236:               }
+237:               p = 1;
+238:               while (e || (0 < p)) {
+239:                   --i;
+240:                   dbuf[i] = '0' + (e % 10);
+241:                   e = e / 10;
+242:                   --p;
+243:                   --w;
+244:               }
+245:               --i;
+246:               dbuf[i] = sign ? '-' : '+';
+247:               --w;
+248:               --i;
+249:               dbuf[i] = isupper((int)c) ? 'P' : 'p';
+250:               --w;
+251:               strcpy(&dbuf[n], &dbuf[i]);
+252:           
+253:               /* Put out padded string */
+254:               return pad(fp, &dbuf[0], w);
+255:           }
+256:           #endif
+257:           
+258:           #ifdef _VFPF_C
+259:           static _INLINE int ctoa(FILE *fp, char c)
+260:           {
+261:               int l, w;
+262:           
+263:               /* Get width */
+264:               w = width ? width - 1 : width;
+265:           
+266:               /* Left justify ? Put out character */
+267:               if (flags & MINUS_FLAG) {
+268:                   fputc(c, fp);
+269:               }
+270:               /* Put out padding */
+271:               w = (w < 0) ? 0 : w;
+272:               l = 0;
+273:               while (l < w) {
+274:                   fputc(' ', fp);
+275:                   ++l;
+276:               }
+277:               /* Right justify ? Put out string */
+278:               if (!(flags & MINUS_FLAG)) {
+279:                   fputc(c, fp);
+280:               }
+281:           
+282:               return l+1;
+283:           }
+284:           #endif
+285:           
+286:           #ifdef _VFPF_D
+287:           static _INLINE int dtoa(FILE *fp, long long d)
+288:           {
+289:               int i, p, s, w;
+290:               long long n;
+291:           
+292:               /* Record sign, get absolute value */
+293:               n = d;
+294:               s = n < 0 ? 1 : 0;
+295:               if (s) {
+296:                   n = -n;
+297:               }
+298:           
+299:               /* Adjust flags, precision, width */
+300:               if (!(prec < 0)) {
+301:                   flags &= ~ZERO_FLAG;
+302:               }
+303:               p = (0 < prec) ? prec : 1;
+304:               w = width;
+305:               if (s || (flags & PLUS_FLAG)) {
+306:                   --w;
+307:               }
+308:           
+309:               /* Convert to decimal, possibly filling on the left with zeroes */
+310:               i = sizeof(dbuf) - 1;
+311:               dbuf[i] = '\0';
+312:               while (!(i < 1) && (n || (0 < p) || ((0 < w) && (flags & ZERO_FLAG)))) {
+313:                   --i;
+314:                   dbuf[i] = (char)((int)'0' + abs(n % 10));
+315:                   --p;
+316:                   --w;
+317:                   n = n / 10;
+318:               }
+319:           
+320:               /* Display sign if required */
+321:               if (s || (flags & PLUS_FLAG)) {
+322:                   --i;
+323:                   dbuf[i] = s ? '-' : '+';
+324:               }
+325:           
+326:               /* Put out padded string */
+327:               return pad(fp, &dbuf[i], w);
+328:           }
+329:           #endif
+330:           
+331:           #if defined(_VFPF_E) || defined(_VFPF_F) || defined(_VFPF_G)
+332:           static _INLINE int efgtoa(FILE *fp, long double f, char c)
+333:           {
+334:               char mode, nmode;
+335:               int d, e, i, m, n, ne, p, pp, sign, t, w;
+336:               long double g, h, l, ou, u;
+337:           
+338:               /* Record sign, get absolute value */
+339:               sign = 0;
+340:               g = f;
+341:               if (g < 0.0) {
+342:                   sign = 1;
+343:                   g = -g;
+344:               }
+345:           
+346:               /* Print sign */
+347:               n = 0;
+348:               w = width;
+349:               if (sign || (flags & PLUS_FLAG)) {
+350:                   dbuf[n] = sign ? '-' : '+';
+351:                   ++n;
+352:                   --w;
+353:               }
+354:           
+355:               /* Catch infinities, NaNs here */
+356:               if (isinf(g)) {
+357:                   if (isupper((int)c)) {
+358:                       strcpy(&dbuf[n], "INF");
+359:                   } else {
+360:                       strcpy(&dbuf[n], "inf");
+361:                   }
+362:                   w -= CSTRLEN("inf");
+363:                   return pad(fp, &dbuf[0], w);
+364:               }
+365:               if (isnan(g)) {
+366:                   if (isupper((int)c)) {
+367:                       strcpy(&dbuf[n], "NAN");
+368:                   } else {
+369:                       strcpy(&dbuf[n], "nan");
+370:                   }
+371:                   w -= CSTRLEN("inf");
+372:                   return pad(fp, &dbuf[0], w);
+373:               }
+374:           
+375:               /* First find the largest power of 10 not larger than number to print */
+376:               u = 1.0;
+377:               e = 0;
+378:               if (!(g == 0.0)) {
+379:                   while (!(g < (u*10.0))) {
+380:                       u = u*10.0;
+381:                       ++e;
+382:                   }
+383:                   while (g < u) {
+384:                       u = u/10.0;
+385:                       --e;
+386:                   }
+387:               }
+388:           
+389:               /* Get mode, precision */
+390:               mode = (char)tolower((int)c);
+391:               nmode = mode;
+392:               if (mode == 'g') {
+393:           		if (prec == 0) {
+394:           			prec = 1;
+395:           		}
+396:                   p = (0 < prec) ? prec : 6;
+397:               } else {
+398:                   p = (prec < 0) ? 6 : prec;
+399:               }
+400:           
+401:               /* Choose e or f mode from g mode */
+402:               if (mode == 'g') {
+403:                   if (!(e < -4) && !((p - 1) < e)) {
+404:                       nmode = 'f';
+405:                   } else {
+406:                       nmode = 'e';
+407:                   }
+408:               }
+409:           
+410:               /* Decimal places or significant digits */
+411:               m = p;
+412:               if (!(mode == 'g') || ((nmode == 'f') && (e < 0))) {
+413:                   ++m;
+414:               }
+415:           
+416:               /* Adjust starting exponent, string length for 'f' conversions */
+417:               if (nmode == 'f') {
+418:                   if (e < 0) {
+419:                       u = 1.0;
+420:                       e = 0;
+421:                   }
+422:                   if (!(mode == 'g')) {
+423:                       m += e;
+424:                   }
+425:               }
+426:           
+427:               /* Go through the conversion once to get to the rounding step */
+428:               i = 0;
+429:               h = g;
+430:               ou = u;
+431:               while (i < m) {
+432:                   l = floor(h/u);
+433:                   d = (int)l;
+434:                   h -= l*u;
+435:                   u = u/10.0;
+436:                   ++i;
+437:               }
+438:               
+439:               /* Remainder >= halfway ? */
+440:               l = u*5.0;
+441:               if (h < l) {
+442:                   l = 0.0;
+443:               } else {
+444:                   /* On tie choose even number */
+445:                   if ((h == l) && !(d % 2)) {
+446:                       l = 0.0;
+447:                   }
+448:               }
+449:           
+450:               /* Round */
+451:               h = g + l;
+452:               /* Has rounding increased the power above 10^0? */
+453:           	if (h >= (ou*10.0)) {
+454:           		e++;
+455:           		ou *= 10.0;
+456:           		if (nmode == 'f') {
+457:           			// the increase in power will only affect the number of digits in 'f' mode
+458:           			m++;
+459:           		}
+460:           	}
+461:               
+462:               /* Convert again, after rounding */
+463:               u = ou;
+464:               ne = (nmode == 'e') ? 0 : e;
+465:               pp = 0;
+466:               t = 0;
+467:               i = 0;
+468:               while ((i < m) && (n < (DBLEN - EXPLEN))) {
+469:                   l = floor(h/u);
+470:                   d = (int)l;
+471:                   if (!(flags & POUND_FLAG) && !d && (mode == 'g') && (ne < 0)) {
+472:                       ++t;
+473:                   } else {
+474:                       if (!pp && (ne < 0)) {
+475:                           dbuf[n++] = '.';
+476:                           --w;
+477:                           pp = 1;
+478:                       }
+479:                       while (t) {
+480:                           dbuf[n++] = '0';
+481:                           --w;
+482:                           --t;
+483:                       }
+484:                       dbuf[n++] = (char)((int)'0' + d);
+485:                       --w;
+486:                   }
+487:                   h -= l*u;
+488:                   u = u/10.0;
+489:                   --ne;
+490:                   ++i;
+491:               }
+492:               if (!pp && (flags & POUND_FLAG)) {
+493:                   dbuf[n++] = '.';
+494:               }
+495:               dbuf[n] = '\0';
+496:           
+497:               /* Convert exponent */
+498:               if (nmode == 'e') {
+499:                   i = sizeof(dbuf) - 1;
+500:                   dbuf[i] = '\0';
+501:                   sign = 0;
+502:                   if (e < 0) {
+503:                       sign = 1;
+504:                       e = -e;
+505:                   }
+506:                   p = 2;
+507:                   while (e || (0 < p)) {
+508:                       --i;
+509:                       dbuf[i] = '0' + (e % 10);
+510:                       e = e / 10;
+511:                       --p;
+512:                       --w;
+513:                   }
+514:                   --i;
+515:                   dbuf[i] = sign ? '-' : '+';
+516:                   --w;
+517:                   --i;
+518:                   dbuf[i] = isupper((int)c) ? 'E' : 'e';
+519:                   --w;
+520:                   strcpy(&dbuf[n], &dbuf[i]);
+521:               }
+522:           
+523:               /* Put out padded string */
+524:               return pad(fp, &dbuf[0], w);
+525:           }
+526:           #endif
+527:           
+528:           #ifdef _VFPF_O
+529:           static _INLINE int otoa(FILE *fp, unsigned long long d)
+530:           {
+531:               int i, p, t, w;
+532:               unsigned long long n;
+533:           
+534:               /* Adjust flags, precision, width */
+535:               if (!(prec < 0)) {
+536:                   flags &= ~ZERO_FLAG;
+537:               }
+538:               p = (0 < prec) ? prec : 1;
+539:               w = width;
+540:           
+541:               /* Convert to octal, possibly filling on the left with zeroes */
+542:               n = d;
+543:               i = sizeof(dbuf) - 1;
+544:               dbuf[i] = '\0';
+545:               t = 0;
+546:               while (!(i < 1) && (n || (0 < p) || ((0 < w) && (flags & ZERO_FLAG)))) {
+547:                   --i;
+548:                   t = n & 07;
+549:                   dbuf[i] = (char)((int)'0' + t);
+550:                   --p;
+551:                   --w;
+552:                   n = n >> 3;
+553:               }
+554:           
+555:               /* Display prefix if required */
+556:               if ((flags & POUND_FLAG) && t) {
+557:                   --i;
+558:                   dbuf[i] = '0';
+559:                   --w;
+560:               }
+561:           
+562:               /* Put out padded string */
+563:               return pad(fp, &dbuf[i], w);
+564:           }
+565:           #endif
+566:           
+567:           #ifdef _VFPF_S
+568:           static _INLINE int stoa(FILE *fp, char *s)
+569:           {
+570:               char *cp, nuls[] = "(null)";
+1006  EE20     LFSR 2, 0x45
+1008  F045     NOP
+100A  EE10     LFSR 1, 0x10
+100C  F010     NOP
+100E  0E06     MOVLW 0x6
+1010  CFDB     MOVFF PLUSW2, PLUSW1
+1012  FFE3     NOP
+1014  06E8     DECF WREG, F, ACCESS
+1016  E2FC     BC 0x1010
+571:               int i, l, p, w;
+572:           
+573:               /* Check for null string */
+574:               cp = s;
+1018  C00D     MOVFF s, cp
+101A  F01B     NOP
+101C  C00E     MOVFF len, 0x1C
+101E  F01C     NOP
+575:               if (!cp) {
+1020  501B     MOVF cp, W, ACCESS
+1022  101C     IORWF 0x1C, W, ACCESS
+1024  A4D8     BTFSS STATUS, 2, ACCESS
+1026  EF17     GOTO 0x102E
+1028  F008     NOP
+102A  EF19     GOTO 0x1032
+102C  F008     NOP
+102E  EF1D     GOTO 0x103A
+1030  F008     NOP
+576:                   cp = nuls;
+1032  0E10     MOVLW 0x10
+1034  6E1B     MOVWF cp, ACCESS
+1036  0E00     MOVLW 0x0
+1038  6E1C     MOVWF 0x1C, ACCESS
+577:               }
+578:           
+579:               /* Get length, precision, width */
+580:               l = (int)strlen(cp);
+103A  C01B     MOVFF cp, __pcstackCOMRAM
+103C  F001     NOP
+103E  C01C     MOVFF 0x1C, c
+1040  F002     NOP
+1042  EC57     CALL 0x16AE, 0
+1044  F00B     NOP
+1046  C001     MOVFF __pcstackCOMRAM, l
+1048  F01F     NOP
+104A  C002     MOVFF c, 0x20
+104C  F020     NOP
+581:               p = prec;
+104E  C041     MOVFF prec, p
+1050  F01D     NOP
+1052  C042     MOVFF 0x42, 0x1E
+1054  F01E     NOP
+582:               l = (!(p < 0) && (p < l)) ? p : l;
+1056  BE1E     BTFSC 0x1E, 7, ACCESS
+1058  EF30     GOTO 0x1060
+105A  F008     NOP
+105C  EF32     GOTO 0x1064
+105E  F008     NOP
+1060  EF47     GOTO 0x108E
+1062  F008     NOP
+1064  501F     MOVF l, W, ACCESS
+1066  5C1D     SUBWF p, W, ACCESS
+1068  501E     MOVF 0x1E, W, ACCESS
+106A  0A80     XORLW 0x80
+106C  6E0F     MOVWF size, ACCESS
+106E  5020     MOVF 0x20, W, ACCESS
+1070  0A80     XORLW 0x80
+1072  580F     SUBWFB size, W, ACCESS
+1074  A0D8     BTFSS STATUS, 0, ACCESS
+1076  EF3F     GOTO 0x107E
+1078  F008     NOP
+107A  EF41     GOTO 0x1082
+107C  F008     NOP
+107E  EF43     GOTO 0x1086
+1080  F008     NOP
+1082  EF47     GOTO 0x108E
+1084  F008     NOP
+1086  C01D     MOVFF p, l
+1088  F01F     NOP
+108A  C01E     MOVFF 0x1E, 0x20
+108C  F020     NOP
+583:               p = l;
+108E  C01F     MOVFF l, p
+1090  F01D     NOP
+1092  C020     MOVFF 0x20, 0x1E
+1094  F01E     NOP
+584:               w = width;
+1096  C03F     MOVFF width, w
+1098  F019     NOP
+109A  C040     MOVFF 0x40, 0x1A
+109C  F01A     NOP
+585:           
+586:               /* Right justify, pad on left ? */
+587:               if (!(flags & MINUS_FLAG)) {
+109E  B043     BTFSC flags, 0, ACCESS
+10A0  EF54     GOTO 0x10A8
+10A2  F008     NOP
+10A4  EF56     GOTO 0x10AC
+10A6  F008     NOP
+10A8  EF73     GOTO 0x10E6
+10AA  F008     NOP
+10AC  EF64     GOTO 0x10C8
+10AE  F008     NOP
+588:                   while (l < w) {
+10C8  5019     MOVF w, W, ACCESS
+10CA  5C1F     SUBWF l, W, ACCESS
+10CC  5020     MOVF 0x20, W, ACCESS
+10CE  0A80     XORLW 0x80
+10D0  6E0F     MOVWF size, ACCESS
+10D2  501A     MOVF 0x1A, W, ACCESS
+10D4  0A80     XORLW 0x80
+10D6  580F     SUBWFB size, W, ACCESS
+10D8  A0D8     BTFSS STATUS, 0, ACCESS
+10DA  EF71     GOTO 0x10E2
+10DC  F008     NOP
+10DE  EF73     GOTO 0x10E6
+10E0  F008     NOP
+10E2  EF58     GOTO 0x10B0
+10E4  F008     NOP
+589:                       fputc(' ', fp);
+10B0  0E00     MOVLW 0x0
+10B2  6E03     MOVWF a, ACCESS
+10B4  0E20     MOVLW 0x20
+10B6  6E02     MOVWF c, ACCESS
+10B8  C00B     MOVFF fp, fp
+10BA  F004     NOP
+10BC  C00C     MOVFF data, buffer
+10BE  F005     NOP
+10C0  EC7A     CALL 0x12F4, 0
+10C2  F009     NOP
+590:                       ++l;
+10C4  4A1F     INFSNZ l, F, ACCESS
+10C6  2A20     INCF 0x20, F, ACCESS
+591:                   }
+592:               }
+593:           
+594:               /* Put out string */
+595:               i = 0;
+10E6  0E00     MOVLW 0x0
+10E8  6E18     MOVWF 0x18, ACCESS
+10EA  0E00     MOVLW 0x0
+10EC  6E17     MOVWF i, ACCESS
+596:               while (i < p) {
+10EE  EF8C     GOTO 0x1118
+10F0  F008     NOP
+1118  501D     MOVF p, W, ACCESS
+111A  5C17     SUBWF i, W, ACCESS
+111C  5018     MOVF 0x18, W, ACCESS
+111E  0A80     XORLW 0x80
+1120  6E0F     MOVWF size, ACCESS
+1122  501E     MOVF 0x1E, W, ACCESS
+1124  0A80     XORLW 0x80
+1126  580F     SUBWFB size, W, ACCESS
+1128  A0D8     BTFSS STATUS, 0, ACCESS
+112A  EF99     GOTO 0x1132
+112C  F008     NOP
+112E  EF9B     GOTO 0x1136
+1130  F008     NOP
+1132  EF79     GOTO 0x10F2
+1134  F008     NOP
+597:                   fputc(*cp, fp);
+10F2  C01B     MOVFF cp, FSR2
+10F4  FFD9     NOP
+10F6  C01C     MOVFF 0x1C, FSR2H
+10F8  FFDA     NOP
+10FA  50DF     MOVF INDF2, W, ACCESS
+10FC  6E0F     MOVWF size, ACCESS
+10FE  500F     MOVF size, W, ACCESS
+1100  6E02     MOVWF c, ACCESS
+1102  6A03     CLRF a, ACCESS
+1104  C00B     MOVFF fp, fp
+1106  F004     NOP
+1108  C00C     MOVFF data, buffer
+110A  F005     NOP
+110C  EC7A     CALL 0x12F4, 0
+110E  F009     NOP
+598:                   ++cp;
+1110  4A1B     INFSNZ cp, F, ACCESS
+1112  2A1C     INCF 0x1C, F, ACCESS
+599:                   ++i;
+1114  4A17     INFSNZ i, F, ACCESS
+1116  2A18     INCF 0x18, F, ACCESS
+600:               }
+601:           
+602:               /* Left justify, pad on right ? */
+603:               if (flags & MINUS_FLAG) {
+1136  A043     BTFSS flags, 0, ACCESS
+1138  EFA0     GOTO 0x1140
+113A  F008     NOP
+113C  EFA2     GOTO 0x1144
+113E  F008     NOP
+1140  EFBF     GOTO 0x117E
+1142  F008     NOP
+1144  EFB0     GOTO 0x1160
+1146  F008     NOP
+604:                   while (l < w) {
+1160  5019     MOVF w, W, ACCESS
+1162  5C1F     SUBWF l, W, ACCESS
+1164  5020     MOVF 0x20, W, ACCESS
+1166  0A80     XORLW 0x80
+1168  6E0F     MOVWF size, ACCESS
+116A  501A     MOVF 0x1A, W, ACCESS
+116C  0A80     XORLW 0x80
+116E  580F     SUBWFB size, W, ACCESS
+1170  A0D8     BTFSS STATUS, 0, ACCESS
+1172  EFBD     GOTO 0x117A
+1174  F008     NOP
+1176  EFBF     GOTO 0x117E
+1178  F008     NOP
+117A  EFA4     GOTO 0x1148
+117C  F008     NOP
+605:                       fputc(' ', fp);
+1148  0E00     MOVLW 0x0
+114A  6E03     MOVWF a, ACCESS
+114C  0E20     MOVLW 0x20
+114E  6E02     MOVWF c, ACCESS
+1150  C00B     MOVFF fp, fp
+1152  F004     NOP
+1154  C00C     MOVFF data, buffer
+1156  F005     NOP
+1158  EC7A     CALL 0x12F4, 0
+115A  F009     NOP
+606:                       ++l;
+115C  4A1F     INFSNZ l, F, ACCESS
+115E  2A20     INCF 0x20, F, ACCESS
+607:                   }
+608:               }
+609:           
+610:               return l;
+117E  C01F     MOVFF l, fp
+1180  F00B     NOP
+1182  C020     MOVFF 0x20, data
+1184  F00C     NOP
+611:           }
+1186  0012     RETURN 0
+612:           #endif
+613:           
+614:           #ifdef _VFPF_U
+615:           static _INLINE int utoa(FILE *fp, unsigned long long d)
+616:           {
+617:               int i, p, w;
+618:               unsigned long long n;
+619:           
+620:               /* Adjust flags, precision, width */
+621:               if (!(prec < 0)) {
+622:                   flags &= ~ZERO_FLAG;
+623:               }
+624:               p = (0 < prec) ? prec : 1;
+625:               w = width;
+626:           
+627:               /* Convert to decimal, possibly filling on the left with zeroes */
+628:               n = d;
+629:               i = sizeof(dbuf) - 1;
+630:               dbuf[i] = '\0';
+631:               while (i && (n || (0 < p) || ((0 < w) && (flags & ZERO_FLAG)))) {
+632:                   --i;
+633:                   dbuf[i] = '0' + (n % 10);
+634:                   --p;
+635:                   --w;
+636:                   n = n / 10;
+637:               }
+638:           
+639:               /* Put out padded string */
+640:               return pad(fp, &dbuf[i], w);
+641:           }
+642:           #endif
+643:           
+644:           #if defined(_VFPF_X) || defined(_VFPF_P)
+645:           static _INLINE int xtoa(FILE *fp, unsigned long long d, char x)
+646:           {
+647:               int c, i, p, w;
+648:               unsigned long long n;
+649:           
+650:               /* Adjust, flags, precision, width */
+651:               if (!(prec < 0)) {
+652:                   flags &= ~ZERO_FLAG;
+653:               }
+654:               p = (0 < prec) ? prec : 1;
+655:               w = width;
+656:               if (flags & POUND_FLAG) {
+657:                   w -= 2;
+658:               }
+659:           
+660:               /* Convert to hexadecimal, possibly filling on the left with zeroes */
+661:               n = d;
+662:               i = sizeof(dbuf) - 1;
+663:               dbuf[i] = '\0';
+664:               while (!(i < 2) && (n || (0 < p) || ((0 < w) && (flags & ZERO_FLAG)))) {
+665:                   --i;
+666:                   c = n & 0x0f;
+667:                   c = (c < 10) ? (int)'0' + c : (int)'a' + (c - 10);
+668:                   if (isupper((int)x) && isalpha(c)) {
+669:                       c = toupper(c);
+670:                   }
+671:                   dbuf[i] = (char)c;
+672:                   --p;
+673:                   --w;
+674:                   n = n >> 4;
+675:               }
+676:           
+677:               /* Display prefix if required */
+678:               if (flags & POUND_FLAG) {
+679:                   --i;
+680:                   dbuf[i] = x;
+681:                   --i;
+682:                   dbuf[i] = '0';
+683:               }
+684:           
+685:               /* Put out padded string */
+686:               return pad(fp, &dbuf[i], w);
+687:           }
+688:           #endif
+689:           
+690:           /* Consume and convert the next part of the format string */
+691:           #ifdef _VFPF_CONVERT
+692:           static _INLINE int vfpfcnvrt(FILE *fp, char *fmt[], va_list ap)
+693:           {
+694:               char c, *cp, ct[3];
+695:               int done, i;
+696:               long long ll;
+697:               unsigned long long llu;
+698:               long double f;
+699:               void *vp;
+700:           
+701:               /* Conversion ? */
+702:               if ((*fmt)[0] == '%') {
+1188  C023     MOVFF fmt, FSR2
+118A  FFD9     NOP
+118C  C024     MOVFF 0x24, FSR2H
+118E  FFDA     NOP
+1190  CFDE     MOVFF POSTINC2, TBLPTR
+1192  FFF6     NOP
+1194  CFDD     MOVFF POSTDEC2, TBLPTRH
+1196  FFF7     NOP
+1198  6AF8     CLRF TBLPTRU, ACCESS
+119A  0008     TBLRD*
+119C  50F5     MOVF TABLAT, W, ACCESS
+119E  0A25     XORLW 0x25
+11A0  A4D8     BTFSS STATUS, 2, ACCESS
+11A2  EFD5     GOTO 0x11AA
+11A4  F008     NOP
+11A6  EFD7     GOTO 0x11AE
+11A8  F008     NOP
+11AA  EF5D     GOTO 0x12BA
+11AC  F009     NOP
+703:                   ++*fmt;
+11AE  C023     MOVFF fmt, FSR2
+11B0  FFD9     NOP
+11B2  C024     MOVFF 0x24, FSR2H
+11B4  FFDA     NOP
+11B6  2ADE     INCF POSTINC2, F, ACCESS
+11B8  0E00     MOVLW 0x0
+11BA  22DD     ADDWFC POSTDEC2, F, ACCESS
+704:           
+705:                   flags = width = 0;
+11BC  0E00     MOVLW 0x0
+11BE  6E40     MOVWF 0x40, ACCESS
+11C0  0E00     MOVLW 0x0
+11C2  6E3F     MOVWF width, ACCESS
+11C4  C03F     MOVFF width, flags
+11C6  F043     NOP
+11C8  C040     MOVFF 0x40, 0x44
+11CA  F044     NOP
+706:                   prec = -1;
+11CC  6841     SETF prec, ACCESS
+11CE  6842     SETF 0x42, ACCESS
+707:           
+708:           #ifdef _VFPF_FLAGS
+709:                   /* Get flags */
+710:                   done = 0;
+711:                   while (!done) {
+712:                       switch ((*fmt)[0]) {
+713:                           case '-' :
+714:                               flags |= MINUS_FLAG;
+715:                               ++*fmt;
+716:                               break;
+717:                           case '0' :
+718:                               flags |= ZERO_FLAG;
+719:                               ++*fmt;
+720:                               break;
+721:                           case '+' :
+722:                               flags |= PLUS_FLAG;
+723:                               ++*fmt;
+724:                               break;
+725:                           case ' ' :
+726:                               flags |= SPACE_FLAG;
+727:                               ++*fmt;
+728:                               break;
+729:                           case '#' :
+730:                               flags |= POUND_FLAG;
+731:                               ++*fmt;
+732:                               break;
+733:                           default:
+734:                               done = 1;
+735:                               break;
+736:                       }
+737:                   }
+738:                   if (flags & MINUS_FLAG) {
+739:                       flags &= ~ZERO_FLAG;
+740:                   }
+741:           #endif
+742:           
+743:           #ifdef _VFPF_WIDTH
+744:                   /* Get field width */
+745:                   if ((*fmt)[0] == '*') {
+746:                       ++*fmt;
+747:                       width = va_arg(ap, int);
+748:                       if (width < 0) {
+749:                           flags |= MINUS_FLAG;
+750:                           width = -width;
+751:                       }
+752:                   } else {
+753:                       width = atoi(*fmt);
+754:                       while (isdigit((*fmt)[0])) {
+755:                           ++*fmt;
+756:                       }
+757:                   }
+758:           #endif
+759:           
+760:           #ifdef _VFPF_PRECISION
+761:                   /* Get precision */
+762:                   if ((*fmt)[0] == '.') {
+763:                       prec = 0;
+764:                       ++*fmt;
+765:                       if ((*fmt)[0] == '*') {
+766:                           ++*fmt;
+767:                           prec = va_arg(ap, int);
+768:                       } else {
+769:                           prec = atoi(*fmt);
+770:                           while (isdigit((*fmt)[0])) {
+771:                               ++*fmt;
+772:                           }
+773:                       }
+774:                   }
+775:           #endif
+776:           
+777:           #if defined(_VFPF_A) || defined(_VFPF_E) || defined(_VFPF_F) || defined(_VFPF_G)
+778:                   /* Case-folded conversion types */
+779:                   ct[0] = (char)tolower((int)(*fmt)[0]);
+780:                   if (ct[0]) {
+781:                       ct[1] = (char)tolower((int)(*fmt)[1]);
+782:                       if (ct[1]) {
+783:                           ct[2] = (char)tolower((int)(*fmt)[2]);
+784:                       }
+785:                   }
+786:           #endif
+787:           
+788:           #ifdef _VFPF_A
+789:                   /* 'a' style (hex) floating point */
+790:                   if (ct[0] == 'a') {
+791:           
+792:                       c = (*fmt)[0];
+793:                       ++*fmt;
+794:                       f = (long double)va_arg(ap, double);
+795:                                   
+796:                       return atoa(fp, f, c);
+797:                   }
+798:                   if (!strncmp(ct, "la", CSTRLEN("la"))) {
+799:           
+800:                       c = (*fmt)[1];
+801:                       if (isupper((int)(*fmt)[0])) {
+802:                           f = va_arg(ap, long double);
+803:                       } else {
+804:                           f = (long double)va_arg(ap, double);
+805:                       }
+806:                       *fmt += CSTRLEN("la");
+807:                                   
+808:                       return atoa(fp, f, c);
+809:                   }
+810:           #endif
+811:           
+812:           #ifdef _VFPF_C
+813:                   /* Character */
+814:                   if (*fmt[0] == 'c') {
+815:                       ++*fmt;
+816:                       c = (unsigned char)va_arg(ap, int);
+817:                       return ctoa(fp, c);
+818:                   }
+819:           #endif
+820:           
+821:           #ifdef _VFPF_D
+822:           #ifdef _VFPF_HH
+823:                   /* Character decimal integer */
+824:                   if (!strncmp(*fmt, "hhd", CSTRLEN("hhd")) || \
+825:                       !strncmp(*fmt, "hhi", CSTRLEN("hhi"))) {
+826:           
+827:                       *fmt += CSTRLEN("hhd");
+828:                       ll = (long long)(signed char)va_arg(ap, int);
+829:                                   
+830:                       return dtoa(fp, ll);
+831:                   }
+832:           #endif
+833:           
+834:           #ifdef _VFPF_H
+835:                   /* Short decimal integer */
+836:                   if (!strncmp(*fmt, "hd", CSTRLEN("hd")) || \
+837:                       !strncmp(*fmt, "hi", CSTRLEN("hi"))) {
+838:           
+839:                       *fmt += CSTRLEN("hd");
+840:                       ll = (long long)(short)va_arg(ap, int);
+841:                                   
+842:                       return dtoa(fp, ll);
+843:                   }
+844:           #endif
+845:           
+846:                   /* Decimal integer */
+847:                   if ((*fmt[0] == 'd') || (*fmt[0] == 'i')) {
+848:           
+849:                       ++*fmt;
+850:                       ll = (long long)va_arg(ap, int);
+851:                                   
+852:                       return dtoa(fp, ll);
+853:                   }
+854:           
+855:           #ifdef _VFPF_L
+856:                   /* Long decimal integer */
+857:                   if (!strncmp(*fmt, "ld", CSTRLEN("ld")) || \
+858:                       !strncmp(*fmt, "li", CSTRLEN("li"))) {
+859:           
+860:                       *fmt += CSTRLEN("ld");
+861:                       ll = (long long)va_arg(ap, long);
+862:                                   
+863:                       return dtoa(fp, ll);
+864:                   }
+865:           #endif
+866:           
+867:           #ifdef _VFPF_LL
+868:                   /* Long long decimal integer */
+869:                   if (!strncmp(*fmt, "lld", CSTRLEN("lld")) || \
+870:                       !strncmp(*fmt, "lli", CSTRLEN("lli"))) {
+871:           
+872:                       *fmt += CSTRLEN("lld");
+873:                       ll = va_arg(ap, long long);
+874:                                   
+875:                       return dtoa(fp, ll);
+876:                   }
+877:           #endif
+878:           
+879:           #ifdef _VFPF_J
+880:                   /* intmax_t decimal integer */
+881:                   if (!strncmp(*fmt, "jd", CSTRLEN("jd")) || \
+882:                       !strncmp(*fmt, "ji", CSTRLEN("ji"))) {
+883:           
+884:                       *fmt += CSTRLEN("jd");
+885:                       ll = (long long)va_arg(ap, intmax_t);
+886:                                   
+887:                       return dtoa(fp, ll);
+888:                   }
+889:           #endif
+890:           
+891:           #ifdef _VFPF_T
+892:                   /* ptrdiff_t decimal integer */
+893:                   if (!strncmp(*fmt, "td", CSTRLEN("td")) || \
+894:                       !strncmp(*fmt, "ti", CSTRLEN("ti"))) {
+895:           
+896:                       *fmt += CSTRLEN("td");
+897:                       ll = (long long)va_arg(ap, ptrdiff_t);
+898:                                   
+899:                       return dtoa(fp, ll);
+900:                   }
+901:           #endif
+902:           
+903:           #ifdef _VFPF_Z
+904:                   /* size_t decimal integer */
+905:                   if (!strncmp(*fmt, "zd", CSTRLEN("zd")) || \
+906:                       !strncmp(*fmt, "zi", CSTRLEN("zi"))) {
+907:           
+908:                       *fmt += CSTRLEN("zd");
+909:                       ll = (long long)va_arg(ap, size_t);
+910:                                   
+911:                       return dtoa(fp, ll);
+912:                   }
+913:           #endif
+914:           #endif
+915:           
+916:           #ifdef _VFPF_E
+917:                   /* 'e' style floating point */
+918:                   if (ct[0] == 'e') {
+919:           
+920:                       c = (*fmt)[0];
+921:                       ++*fmt;
+922:                       f = (long double)va_arg(ap, double);
+923:                                   
+924:                       return efgtoa(fp, f, c);
+925:                   }
+926:                   if (!strncmp(ct, "le", CSTRLEN("le"))) {
+927:           
+928:                       c = (*fmt)[1];
+929:                       if (isupper((int)(*fmt)[0])) {
+930:                           f = va_arg(ap, long double);
+931:                       } else {
+932:                           f = (long double)va_arg(ap, double);
+933:                       }
+934:                       *fmt += CSTRLEN("lf");
+935:                                   
+936:                       return efgtoa(fp, f, c);
+937:                   }
+938:           #endif
+939:           
+940:           #ifdef _VFPF_F
+941:                   /* 'f' style floating point */
+942:                   if (ct[0] == 'f') {
+943:           
+944:                       c = (*fmt)[0];
+945:                       ++*fmt;
+946:                       f = (long double)va_arg(ap, double);
+947:                                   
+948:                       return efgtoa(fp, f, c);
+949:                   }
+950:                   if (!strncmp(ct, "lf", CSTRLEN("lf"))) {
+951:           
+952:                       c = (*fmt)[1];
+953:                       if (isupper((int)(*fmt)[0])) {
+954:                           f = va_arg(ap, long double);
+955:                       } else {
+956:                           f = (long double)va_arg(ap, double);
+957:                       }
+958:                       *fmt += CSTRLEN("lf");
+959:                                   
+960:                       return efgtoa(fp, f, c);
+961:                   }
+962:           #endif
+963:           
+964:           #ifdef _VFPF_G
+965:                   /* 'g' style floating point */
+966:                   if (ct[0] == 'g') {
+967:           
+968:                       c = (*fmt)[0];
+969:                       ++*fmt;
+970:                       f = (long double)va_arg(ap, double);
+971:                                   
+972:                       return efgtoa(fp, f, c);
+973:                   }
+974:                   if (!strncmp(ct, "lg", CSTRLEN("lg"))) {
+975:           
+976:                       c = (*fmt)[1];
+977:                       if (isupper((int)(*fmt)[0])) {
+978:                           f = va_arg(ap, long double);
+979:                       } else {
+980:                           f = (long double)va_arg(ap, double);
+981:                       }
+982:                       *fmt += CSTRLEN("lg");
+983:                                   
+984:                       return efgtoa(fp, f, c);
+985:                   }
+986:           #endif
+987:           
+988:           #ifdef _VFPF_O
+989:           #ifdef _VFPF_HH
+990:                   /* Character octal integer */
+991:                   if (!strncmp(*fmt, "hho", CSTRLEN("hho"))) {
+992:           
+993:                       *fmt += CSTRLEN("hho");
+994:                       llu = (unsigned long long)(unsigned char)va_arg(ap, int);
+995:                                   
+996:                       return otoa(fp, llu);
+997:                   }
+998:           #endif
+999:           
+1000:          #ifdef _VFPF_H
+1001:                  /* Short octal integer */
+1002:                  if (!strncmp(*fmt, "ho", CSTRLEN("ho"))) {
+1003:          
+1004:                      *fmt += CSTRLEN("ho");
+1005:                      llu = (unsigned long long)(unsigned short)va_arg(ap, int);
+1006:                                  
+1007:                      return otoa(fp, llu);
+1008:                  }
+1009:          #endif
+1010:          
+1011:                  /* Octal integer */
+1012:                  if (*fmt[0] == 'o') {
+1013:          
+1014:                      ++*fmt;
+1015:                      llu = (unsigned long long)va_arg(ap, unsigned int);
+1016:                                  
+1017:                      return otoa(fp, llu);
+1018:                  }
+1019:          
+1020:          #ifdef _VFPF_L
+1021:                  /* Long octal integer */
+1022:                  if (!strncmp(*fmt, "lo", CSTRLEN("lo"))) {
+1023:          
+1024:                      *fmt += CSTRLEN("lo");
+1025:                      llu = (unsigned long long)va_arg(ap, unsigned long);
+1026:                                  
+1027:                      return otoa(fp, llu);
+1028:                  }
+1029:          #endif
+1030:          
+1031:          #ifdef _VFPF_LL
+1032:                  /* Long long octal integer */
+1033:                  if (!strncmp(*fmt, "llo", CSTRLEN("llo"))) {
+1034:          
+1035:                      *fmt += CSTRLEN("llo");
+1036:                      llu = va_arg(ap, unsigned long long);
+1037:                                  
+1038:                      return otoa(fp, llu);
+1039:                  }
+1040:          #endif
+1041:          
+1042:          #ifdef _VFPF_J
+1043:                  /* uintmax_t octal integer */
+1044:                  if (!strncmp(*fmt, "jo", CSTRLEN("jo"))) {
+1045:          
+1046:                      *fmt += CSTRLEN("jo");
+1047:                      llu = (unsigned long long)va_arg(ap, uintmax_t);
+1048:                                  
+1049:                      return otoa(fp, llu);
+1050:                  }
+1051:          #endif
+1052:          
+1053:          #ifdef _VFPF_T
+1054:                  /* ptrdiff_t octal integer */
+1055:                  if (!strncmp(*fmt, "to", CSTRLEN("to"))) {
+1056:          
+1057:                      *fmt += CSTRLEN("to");
+1058:                      llu = (unsigned long long)va_arg(ap, ptrdiff_t);
+1059:                                  
+1060:                      return otoa(fp, llu);
+1061:                  }
+1062:          #endif
+1063:          
+1064:          #ifdef _VFPF_Z
+1065:                  /* size_t octal integer */
+1066:                  if (!strncmp(*fmt, "zo", CSTRLEN("zo"))) {
+1067:          
+1068:                      *fmt += CSTRLEN("zo");
+1069:                      llu = (unsigned long long)va_arg(ap, size_t);
+1070:                                  
+1071:                      return otoa(fp, llu);
+1072:                  }
+1073:          #endif
+1074:          #endif
+1075:          
+1076:                  /* Character count */
+1077:          #ifdef _VFPF_N
+1078:          
+1079:          #ifdef _VFPF_HH
+1080:                  if (!strncmp(*fmt, "hhn", CSTRLEN("hhn"))) {
+1081:          
+1082:                      *fmt += CSTRLEN("hhn");
+1083:                      vp = (void *)va_arg(ap, char *);
+1084:                      *(char *)vp = (char)nout;
+1085:                      return 0;
+1086:                  }
+1087:          #endif
+1088:          
+1089:          #ifdef _VFPF_H
+1090:                  if (!strncmp(*fmt, "hn", CSTRLEN("hn"))) {
+1091:          
+1092:                      *fmt += CSTRLEN("hn");
+1093:                      vp = (void *)va_arg(ap, short *);
+1094:                      *(short *)vp = (short)nout;
+1095:                      return 0;
+1096:                  }
+1097:          #endif
+1098:          
+1099:                  if (*fmt[0] == 'n') {
+1100:                      ++*fmt;
+1101:                      vp = (void *)va_arg(ap, int *);
+1102:                      *(int *)vp = nout;
+1103:                      return 0;
+1104:                  }
+1105:          
+1106:          #ifdef _VFPF_L
+1107:                  if (!strncmp(*fmt, "ln", CSTRLEN("ln"))) {
+1108:          
+1109:                      *fmt += CSTRLEN("ln");
+1110:                      vp = (void *)va_arg(ap, long *);
+1111:                      *(long *)vp = (long)nout;
+1112:                      return 0;
+1113:                  }
+1114:          #endif
+1115:          
+1116:          #ifdef _VFPF_LL
+1117:                  if (!strncmp(*fmt, "lln", CSTRLEN("lln"))) {
+1118:          
+1119:                      *fmt += CSTRLEN("lln");
+1120:                      vp = (void *)va_arg(ap, long long *);
+1121:                      *(long long *)vp = (long long)nout;
+1122:                      return 0;
+1123:                  }
+1124:          #endif
+1125:          
+1126:          #ifdef _VFPF_J
+1127:                  if (!strncmp(*fmt, "jn", CSTRLEN("jn"))) {
+1128:          
+1129:                      *fmt += CSTRLEN("jn");
+1130:                      vp = (void *)va_arg(ap, uintmax_t *);
+1131:                      *(uintmax_t *)vp = (uintmax_t)nout;
+1132:                      return 0;
+1133:                  }
+1134:          #endif
+1135:          
+1136:          #ifdef _VFPF_T
+1137:                  if (!strncmp(*fmt, "tn", CSTRLEN("tn"))) {
+1138:          
+1139:                      *fmt += CSTRLEN("tn");
+1140:                      vp = (void *)va_arg(ap, ptrdiff_t *);
+1141:                      *(ptrdiff_t *)vp = (ptrdiff_t)nout;
+1142:                      return 0;
+1143:                  }
+1144:          #endif
+1145:          
+1146:          #ifdef _VFPF_Z
+1147:                  if (!strncmp(*fmt, "zn", CSTRLEN("zn"))) {
+1148:          
+1149:                      *fmt += CSTRLEN("zn");
+1150:                      vp = (void *)va_arg(ap, size_t *);
+1151:                      *(size_t *)vp = (size_t)nout;
+1152:                      return 0;
+1153:                  }
+1154:          #endif
+1155:          
+1156:          #endif
+1157:          
+1158:          #ifdef _VFPF_P
+1159:                  /* Pointer */
+1160:                  if (*fmt[0] == 'p') {
+1161:          
+1162:                      ++*fmt;
+1163:                      llu = (unsigned long long)(uintptr_t)va_arg(ap, void *);
+1164:                                  
+1165:                      return xtoa(fp, llu, 'x');
+1166:                  }
+1167:          #endif
+1168:          
+1169:          #ifdef _VFPF_S
+1170:                  /* String */
+1171:                  if (*fmt[0] == 's') {
+11D0  C023     MOVFF fmt, FSR2
+11D2  FFD9     NOP
+11D4  C024     MOVFF 0x24, FSR2H
+11D6  FFDA     NOP
+11D8  CFDE     MOVFF POSTINC2, TBLPTR
+11DA  FFF6     NOP
+11DC  CFDD     MOVFF POSTDEC2, TBLPTRH
+11DE  FFF7     NOP
+11E0  6AF8     CLRF TBLPTRU, ACCESS
+11E2  0008     TBLRD*
+11E4  50F5     MOVF TABLAT, W, ACCESS
+11E6  0A73     XORLW 0x73
+11E8  A4D8     BTFSS STATUS, 2, ACCESS
+11EA  EFF9     GOTO 0x11F2
+11EC  F008     NOP
+11EE  EFFB     GOTO 0x11F6
+11F0  F008     NOP
+11F2  EF26     GOTO 0x124C
+11F4  F009     NOP
+1172:          
+1173:                      ++*fmt;
+11F6  C023     MOVFF fmt, FSR2
+11F8  FFD9     NOP
+11FA  C024     MOVFF 0x24, FSR2H
+11FC  FFDA     NOP
+11FE  2ADE     INCF POSTINC2, F, ACCESS
+1200  0E00     MOVLW 0x0
+1202  22DD     ADDWFC POSTDEC2, F, ACCESS
+1174:                      cp = va_arg(ap, char *);
+1204  C025     MOVFF ap, FSR2
+1206  FFD9     NOP
+1208  C026     MOVFF 0x26, FSR2H
+120A  FFDA     NOP
+120C  CFDF     MOVFF INDF2, 0x27
+120E  F027     NOP
+1210  0E02     MOVLW 0x2
+1212  26DE     ADDWF POSTINC2, F, ACCESS
+1214  CFDF     MOVFF INDF2, 0x28
+1216  F028     NOP
+1218  0E00     MOVLW 0x0
+121A  22DD     ADDWFC POSTDEC2, F, ACCESS
+121C  C027     MOVFF 0x27, FSR2
+121E  FFD9     NOP
+1220  C028     MOVFF 0x28, FSR2H
+1222  FFDA     NOP
+1224  CFDE     MOVFF POSTINC2, cp
+1226  F029     NOP
+1228  CFDD     MOVFF POSTDEC2, 0x2A
+122A  F02A     NOP
+1175:          
+1176:                      return stoa(fp, cp);
+122C  C021     MOVFF fp, fp
+122E  F00B     NOP
+1230  C022     MOVFF 0x22, data
+1232  F00C     NOP
+1234  C029     MOVFF cp, s
+1236  F00D     NOP
+1238  C02A     MOVFF 0x2A, len
+123A  F00E     NOP
+123C  EC03     CALL 0x1006, 0
+123E  F008     NOP
+1240  C00B     MOVFF fp, fp
+1242  F021     NOP
+1244  C00C     MOVFF data, 0x22
+1246  F022     NOP
+1248  EF79     GOTO 0x12F2
+124A  F009     NOP
+1177:                  }
+1178:          #endif
+1179:          
+1180:          #ifdef _VFPF_U
+1181:          #ifdef _VFPF_HH
+1182:                  /* Unsigned character decimal integer */
+1183:                  if (!strncmp(*fmt, "hhu", CSTRLEN("hhu"))) {
+1184:          
+1185:                      *fmt += CSTRLEN("hhu");
+1186:                      llu = (unsigned long long)(unsigned char)va_arg(ap, int);
+1187:                                  
+1188:                      return utoa(fp, llu);
+1189:                  }
+1190:          #endif
+1191:          
+1192:          #ifdef _VFPF_H
+1193:                  /* Unsigned short decimal integer */
+1194:                  if (!strncmp(*fmt, "hu", CSTRLEN("hu"))) {
+1195:          
+1196:                      *fmt += CSTRLEN("hu");
+1197:                      llu = (unsigned long long)(unsigned short)va_arg(ap, int);
+1198:                                  
+1199:                      return utoa(fp, llu);
+1200:                  }
+1201:          #endif
+1202:          
+1203:                  /* Unsigned decimal integer */
+1204:                  if (*fmt[0] == 'u') {
+1205:          
+1206:                      ++*fmt;
+1207:                      llu = (unsigned long long)va_arg(ap, unsigned int);
+1208:                                  
+1209:                      return utoa(fp, llu);
+1210:                  }
+1211:          
+1212:          #ifdef _VFPF_L
+1213:                  /* Unsigned long decimal integer */
+1214:                  if (!strncmp(*fmt, "lu", CSTRLEN("lu"))) {
+1215:          
+1216:                      *fmt += CSTRLEN("lu");
+1217:                      llu = (unsigned long long)va_arg(ap, unsigned long);
+1218:                                  
+1219:                      return utoa(fp, llu);
+1220:                  }
+1221:          #endif
+1222:          
+1223:          #ifdef _VFPF_LL
+1224:                  /* Unsigned long long decimal integer */
+1225:                  if (!strncmp(*fmt, "llu", CSTRLEN("llu"))) {
+1226:          
+1227:                      *fmt += CSTRLEN("llu");
+1228:                      llu = va_arg(ap, unsigned long long);
+1229:                                  
+1230:                      return utoa(fp, llu);
+1231:                  }
+1232:          #endif
+1233:          
+1234:          #ifdef _VFPF_J
+1235:                  /* uintmax_t decimal integer */
+1236:                  if (!strncmp(*fmt, "ju", CSTRLEN("ju"))) {
+1237:          
+1238:                      *fmt += CSTRLEN("ju");
+1239:                      llu = (unsigned long long)va_arg(ap, uintmax_t);
+1240:                                  
+1241:                      return utoa(fp, llu);
+1242:                  }
+1243:          #endif
+1244:          
+1245:          #ifdef _VFPF_T
+1246:                  /* ptrdiff_t decimal integer */
+1247:                  if (!strncmp(*fmt, "tu", CSTRLEN("tu"))) {
+1248:          
+1249:                      *fmt += CSTRLEN("tu");
+1250:                      llu = (unsigned long long)va_arg(ap, ptrdiff_t);
+1251:                                  
+1252:                      return utoa(fp, llu);
+1253:                  }
+1254:          #endif
+1255:          
+1256:          #ifdef _VFPF_Z
+1257:                  /* size_t decimal integer */
+1258:                  if (!strncmp(*fmt, "zu", CSTRLEN("zu"))) {
+1259:          
+1260:                      *fmt += CSTRLEN("zu");
+1261:                      llu = (unsigned long long)va_arg(ap, size_t);
+1262:                                  
+1263:                      return utoa(fp, llu);
+1264:                  }
+1265:          #endif
+1266:          #endif
+1267:          
+1268:          #ifdef _VFPF_X
+1269:          #ifdef _VFPF_HH
+1270:                  /* Character hexadecimal integer */
+1271:                  if (!strncmp(*fmt, "hhx", CSTRLEN("hhx")) || \
+1272:                      !strncmp(*fmt, "hhX", CSTRLEN("hhX"))) {
+1273:          
+1274:                      c = (*fmt)[2];
+1275:                      *fmt += CSTRLEN("hhx");
+1276:                      llu = (unsigned long long)(unsigned char)va_arg(ap, int);
+1277:                                  
+1278:                      return xtoa(fp, llu, c);
+1279:                  }
+1280:          #endif
+1281:          
+1282:          #ifdef _VFPF_H
+1283:                  /* Short hexadecimal integer */
+1284:                  if (!strncmp(*fmt, "hx", CSTRLEN("hx")) || \
+1285:                      !strncmp(*fmt, "hX", CSTRLEN("hX"))) {
+1286:          
+1287:                      c = (*fmt)[1];
+1288:                      *fmt += CSTRLEN("hx");
+1289:                      llu = (unsigned long long)(unsigned short)va_arg(ap, int);
+1290:                                  
+1291:                      return xtoa(fp, llu, c);
+1292:                  }
+1293:          #endif
+1294:          
+1295:                  /* Hexadecimal integer */
+1296:                  if ((*fmt[0] == 'x') || (*fmt[0] == 'X')) {
+1297:          
+1298:                      c = (*fmt)[0];
+1299:                      ++*fmt;
+1300:                      llu = (unsigned long long)va_arg(ap, unsigned int);
+1301:                                  
+1302:                      return xtoa(fp, llu, c);
+1303:                  }
+1304:          
+1305:          #ifdef _VFPF_L
+1306:                  /* Long hexadecimal integer */
+1307:                  if (!strncmp(*fmt, "lx", CSTRLEN("lx")) || \
+1308:                      !strncmp(*fmt, "lX", CSTRLEN("lX"))) {
+1309:          
+1310:                      c = (*fmt)[1];
+1311:                      *fmt += CSTRLEN("lx");
+1312:                      llu = (unsigned long long)va_arg(ap, unsigned long);
+1313:                                  
+1314:                      return xtoa(fp, llu, c);
+1315:                  }
+1316:          #endif
+1317:          
+1318:          #ifdef _VFPF_LL
+1319:                  /* Long long hexadecimal integer */
+1320:                  if (!strncmp(*fmt, "llx", CSTRLEN("llx")) || \
+1321:                      !strncmp(*fmt, "llX", CSTRLEN("llX"))) {
+1322:          
+1323:                      c = (*fmt)[2];
+1324:                      *fmt += CSTRLEN("llx");
+1325:                      llu = va_arg(ap, unsigned long long);
+1326:                                  
+1327:                      return xtoa(fp, llu, c);
+1328:                  }
+1329:          #endif
+1330:          
+1331:          #ifdef _VFPF_J
+1332:                  /* uintmax_t hexadecimal integer */
+1333:                  if (!strncmp(*fmt, "jx", CSTRLEN("jx")) || \
+1334:                      !strncmp(*fmt, "jX", CSTRLEN("jX"))) {
+1335:          
+1336:                      c = (*fmt)[1];
+1337:                      *fmt += CSTRLEN("jx");
+1338:                      llu = (unsigned long long)va_arg(ap, uintmax_t);
+1339:                                  
+1340:                      return xtoa(fp, llu, c);
+1341:                  }
+1342:          #endif
+1343:          
+1344:          #ifdef _VFPF_T
+1345:                  /* ptrdiff_t hexadecimal integer */
+1346:                  if (!strncmp(*fmt, "tx", CSTRLEN("tx")) || \
+1347:                      !strncmp(*fmt, "tX", CSTRLEN("tX"))) {
+1348:          
+1349:                      c = (*fmt)[1];
+1350:                      *fmt += CSTRLEN("tx");
+1351:                      llu = (unsigned long long)va_arg(ap, ptrdiff_t);
+1352:                                  
+1353:                      return xtoa(fp, llu, c);
+1354:                  }
+1355:          #endif
+1356:          
+1357:          #ifdef _VFPF_Z
+1358:                  /* size_t hexadecimal integer */
+1359:                  if (!strncmp(*fmt, "zx", CSTRLEN("zx")) || \
+1360:                      !strncmp(*fmt, "zX", CSTRLEN("zX"))) {
+1361:          
+1362:                      c = (*fmt)[1];
+1363:                      *fmt += CSTRLEN("zx");
+1364:                      llu = (unsigned long long)va_arg(ap, size_t);
+1365:                                  
+1366:                      return xtoa(fp, llu, c);
+1367:                  }
+1368:          #endif
+1369:          #endif
+1370:          
+1371:                  /* 'Escaped' '%' character */
+1372:                  if ((*fmt)[0] == '%') {
+124C  C023     MOVFF fmt, FSR2
+124E  FFD9     NOP
+1250  C024     MOVFF 0x24, FSR2H
+1252  FFDA     NOP
+1254  CFDE     MOVFF POSTINC2, TBLPTR
+1256  FFF6     NOP
+1258  CFDD     MOVFF POSTDEC2, TBLPTRH
+125A  FFF7     NOP
+125C  6AF8     CLRF TBLPTRU, ACCESS
+125E  0008     TBLRD*
+1260  50F5     MOVF TABLAT, W, ACCESS
+1262  0A25     XORLW 0x25
+1264  A4D8     BTFSS STATUS, 2, ACCESS
+1266  EF37     GOTO 0x126E
+1268  F009     NOP
+126A  EF39     GOTO 0x1272
+126C  F009     NOP
+126E  EF50     GOTO 0x12A0
+1270  F009     NOP
+1373:                      ++*fmt;
+1272  C023     MOVFF fmt, FSR2
+1274  FFD9     NOP
+1276  C024     MOVFF 0x24, FSR2H
+1278  FFDA     NOP
+127A  2ADE     INCF POSTINC2, F, ACCESS
+127C  0E00     MOVLW 0x0
+127E  22DD     ADDWFC POSTDEC2, F, ACCESS
+1374:                      fputc((int)'%', fp);
+1280  0E00     MOVLW 0x0
+1282  6E03     MOVWF a, ACCESS
+1284  0E25     MOVLW 0x25
+1286  6E02     MOVWF c, ACCESS
+1288  C021     MOVFF fp, fp
+128A  F004     NOP
+128C  C022     MOVFF 0x22, buffer
+128E  F005     NOP
+1290  EC7A     CALL 0x12F4, 0
+1292  F009     NOP
+1375:                      return 1;
+1294  0E00     MOVLW 0x0
+1296  6E22     MOVWF 0x22, ACCESS
+1298  0E01     MOVLW 0x1
+129A  6E21     MOVWF fp, ACCESS
+129C  EF79     GOTO 0x12F2
+129E  F009     NOP
+1376:                  }
+1377:          
+1378:                  /* Unrecognized conversion */
+1379:                  ++*fmt;
+12A0  C023     MOVFF fmt, FSR2
+12A2  FFD9     NOP
+12A4  C024     MOVFF 0x24, FSR2H
+12A6  FFDA     NOP
+12A8  2ADE     INCF POSTINC2, F, ACCESS
+12AA  0E00     MOVLW 0x0
+12AC  22DD     ADDWFC POSTDEC2, F, ACCESS
+1380:                  return 0;
+12AE  0E00     MOVLW 0x0
+12B0  6E22     MOVWF 0x22, ACCESS
+12B2  0E00     MOVLW 0x0
+12B4  6E21     MOVWF fp, ACCESS
+12B6  EF79     GOTO 0x12F2
+12B8  F009     NOP
+1381:              }
+1382:          
+1383:              /* No conversion, just intervening text */
+1384:              fputc((int)(*fmt)[0], fp);
+12BA  C023     MOVFF fmt, FSR2
+12BC  FFD9     NOP
+12BE  C024     MOVFF 0x24, FSR2H
+12C0  FFDA     NOP
+12C2  CFDE     MOVFF POSTINC2, TBLPTR
+12C4  FFF6     NOP
+12C6  CFDD     MOVFF POSTDEC2, TBLPTRH
+12C8  FFF7     NOP
+12CA  6AF8     CLRF TBLPTRU, ACCESS
+12CC  0008     TBLRD*
+12CE  50F5     MOVF TABLAT, W, ACCESS
+12D0  6E02     MOVWF c, ACCESS
+12D2  6A03     CLRF a, ACCESS
+12D4  C021     MOVFF fp, fp
+12D6  F004     NOP
+12D8  C022     MOVFF 0x22, buffer
+12DA  F005     NOP
+12DC  EC7A     CALL 0x12F4, 0
+12DE  F009     NOP
+1385:              ++*fmt;
+12E0  C023     MOVFF fmt, FSR2
+12E2  FFD9     NOP
+12E4  C024     MOVFF 0x24, FSR2H
+12E6  FFDA     NOP
+12E8  2ADE     INCF POSTINC2, F, ACCESS
+12EA  0E00     MOVLW 0x0
+12EC  22DD     ADDWFC POSTDEC2, F, ACCESS
+12EE  EF4A     GOTO 0x1294
+12F0  F009     NOP
+1386:              return 1;
+1387:          }
+12F2  0012     RETURN 0
+1388:          #endif
+1389:          
+1390:          int vfprintf(FILE *fp, const char *fmt, va_list ap)
+1391:          {
+1392:          #ifdef _VFPF_CONVERT
+1393:              char *cfmt;
+1394:          
+1395:              cfmt = (char *)fmt;
+156A  C02D     MOVFF fmt, cfmt
+156C  F031     NOP
+156E  C02E     MOVFF 0x2E, 0x32
+1570  F032     NOP
+1396:              nout = 0;
+1572  0E00     MOVLW 0x0
+1574  6E3E     MOVWF 0x3E, ACCESS
+1576  0E00     MOVLW 0x0
+1578  6E3D     MOVWF nout, ACCESS
+1397:              while (*cfmt) {
+157A  EFD1     GOTO 0x15A2
+157C  F00A     NOP
+15A2  C031     MOVFF cfmt, TBLPTR
+15A4  FFF6     NOP
+15A6  C032     MOVFF 0x32, TBLPTRH
+15A8  FFF7     NOP
+15AA  6AF8     CLRF TBLPTRU, ACCESS
+15AC  0008     TBLRD*
+15AE  50F5     MOVF TABLAT, W, ACCESS
+15B0  0900     IORLW 0x0
+15B2  A4D8     BTFSS STATUS, 2, ACCESS
+15B4  EFDE     GOTO 0x15BC
+15B6  F00A     NOP
+15B8  EFE0     GOTO 0x15C0
+15BA  F00A     NOP
+15BC  EFBF     GOTO 0x157E
+15BE  F00A     NOP
+1398:                  nout += vfpfcnvrt(fp, &cfmt, ap);
+157E  C02B     MOVFF fp, fp
+1580  F021     NOP
+1582  C02C     MOVFF 0x2C, 0x22
+1584  F022     NOP
+1586  0E31     MOVLW 0x31
+1588  6E23     MOVWF fmt, ACCESS
+158A  0E00     MOVLW 0x0
+158C  6E24     MOVWF 0x24, ACCESS
+158E  C02F     MOVFF ap, ap
+1590  F025     NOP
+1592  C030     MOVFF 0x30, 0x26
+1594  F026     NOP
+1596  ECC4     CALL 0x1188, 0
+1598  F008     NOP
+159A  5021     MOVF fp, W, ACCESS
+159C  263D     ADDWF nout, F, ACCESS
+159E  5022     MOVF 0x22, W, ACCESS
+15A0  223E     ADDWFC 0x3E, F, ACCESS
+1399:              }
+1400:              return nout;
+15C0  C03D     MOVFF nout, fp
+15C2  F02B     NOP
+15C4  C03E     MOVFF 0x3E, 0x2C
+15C6  F02C     NOP
+1401:          #else
+1402:              return fputs(fmt, fp);
+1403:          #endif
+1404:          }
+15C8  0012     RETURN 0
