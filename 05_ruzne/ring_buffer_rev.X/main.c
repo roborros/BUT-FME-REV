@@ -102,7 +102,7 @@ void main(void) {
     ring_buff_init(&ring_buffer);
     
     while(1){
-
+        
         for(i = 0; i < 50; i++) {
             ring_buff_write(&ring_buffer, i);
         } 
@@ -115,15 +115,14 @@ void main(void) {
         for(cnt = 0; ring_buff_read(&ring_buffer, &buf) > 0; cnt++) {
             printf("R: %d\n", buf);
         }
-
+        
         ring_buff_write_arr(&ring_buffer, "Testovaci zprava pro buffer!", 28);
 
         while(ring_buff_read(&ring_buffer, &buf) > 0) {
             printf("R: %c\n", buf);
         }
 
-        LATB5 = 1;
-        ring_buff_write_arr(&ring_buffer, "Testovaci  zprava pro buffer, znovu", 35);
+        ring_buff_write_arr(&ring_buffer, "Testovaci zprava pro buffer, znovu", 35);
 
         cnt = ring_buff_read_arr(&ring_buffer, buf_arr, 35);
         printf("%s", buf_arr);

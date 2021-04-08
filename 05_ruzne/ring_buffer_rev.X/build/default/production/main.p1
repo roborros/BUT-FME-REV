@@ -119,11 +119,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31
 [; ;./ring_buff.h: 31: void ring_buff_write_arr(ring_buffer_t *const buffer, const char *data, ring_buffer_size_t size);
 [v _ring_buff_write_arr `(v ~T0 @X0 0 ef3`C*S856`*Cuc`uc ]
-"18779 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k22.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k22.h: 18779: extern volatile __bit LATB5 __attribute__((address(0x7C55)));
-[v _LATB5 `Vb ~T0 @X0 0 e@31829 ]
 [v F6347 `*S856 ~T0 @X0 1 t ]
-"35 ./ring_buff.h
+"35
 [; ;./ring_buff.h: 35: ring_buffer_size_t ring_buff_read_arr(ring_buffer_t *const buffer, char *data, ring_buffer_size_t len);
 [v _ring_buff_read_arr `(uc ~T0 @X0 0 ef3`C*S856`*uc`uc ]
 [v F5956 `(v ~T0 @X0 1 tf1`ul ]
@@ -1103,56 +1100,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ > -> ( _ring_buff_read (2 , &U _ring_buffer &U _buf `i -> 0 `i 870  ]
 [e :U 871 ]
 "125
-[; ;main.c: 125:         LATB5 = 1;
-[e = _LATB5 -> -> 1 `i `b ]
-"126
-[; ;main.c: 126:         ring_buff_write_arr(&ring_buffer, "Testovaci  zprava pro buffer, znovu", 35);
+[; ;main.c: 125:         ring_buff_write_arr(&ring_buffer, "Testovaci zprava pro buffer, znovu", 35);
 [e ( _ring_buff_write_arr (3 , , &U _ring_buffer :s 4C -> -> 35 `i `uc ]
-"128
-[; ;main.c: 128:         cnt = ring_buff_read_arr(&ring_buffer, buf_arr, 35);
+"127
+[; ;main.c: 127:         cnt = ring_buff_read_arr(&ring_buffer, buf_arr, 35);
 [e = _cnt -> ( _ring_buff_read_arr (3 , , &U _ring_buffer &U _buf_arr -> -> 35 `i `uc `uc ]
-"129
-[; ;main.c: 129:         printf("%s", buf_arr);
+"128
+[; ;main.c: 128:         printf("%s", buf_arr);
 [e ( _printf , (. :s 5C &U _buf_arr ]
-"130
-[; ;main.c: 130:        _delay((unsigned long)((1000)*(32E6/4000.0)));
+"129
+[; ;main.c: 129:        _delay((unsigned long)((1000)*(32E6/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / .32e6 .4000.0 `ul ]
-"131
-[; ;main.c: 131:     }
+"130
+[; ;main.c: 130:     }
 }
 [e :U 859 ]
 [e $U 860  ]
 [e :U 861 ]
-"133
-[; ;main.c: 133:     return;
+"132
+[; ;main.c: 132:     return;
 [e $UE 858  ]
-"134
-[; ;main.c: 134: }
+"133
+[; ;main.c: 133: }
 [e :UE 858 ]
 }
-"136
-[; ;main.c: 136: void putch(unsigned char data){
+"135
+[; ;main.c: 135: void putch(unsigned char data){
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _putch ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-"137
-[; ;main.c: 137:     while(!TX1IF);
+"136
+[; ;main.c: 136:     while(!TX1IF);
 [e $U 873  ]
 [e :U 874 ]
 [e :U 873 ]
 [e $ ! _TX1IF 874  ]
 [e :U 875 ]
-"138
-[; ;main.c: 138:     TXREG1 = data;
+"137
+[; ;main.c: 137:     TXREG1 = data;
 [e = _TXREG1 _data ]
-"139
-[; ;main.c: 139: }
+"138
+[; ;main.c: 138: }
 [e :UE 872 ]
 }
 [p f _printf 9175168 ]
-[a 4C 84 101 115 116 111 118 97 99 105 32 32 122 112 114 97 118 97 32 112 114 111 32 98 117 102 102 101 114 44 32 122 110 111 118 117 0 ]
+[a 4C 84 101 115 116 111 118 97 99 105 32 122 112 114 97 118 97 32 112 114 111 32 98 117 102 102 101 114 44 32 122 110 111 118 117 0 ]
 [a 5C 37 115 0 ]
 [a 2C 84 101 115 116 111 118 97 99 105 32 122 112 114 97 118 97 32 112 114 111 32 98 117 102 102 101 114 33 0 ]
 [a 1C 82 58 32 37 100 10 0 ]

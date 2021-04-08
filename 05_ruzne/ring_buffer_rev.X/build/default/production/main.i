@@ -9944,8 +9944,7 @@ void main(void) {
             printf("R: %c\n", buf);
         }
 
-        LATB5 = 1;
-        ring_buff_write_arr(&ring_buffer, "Testovaci  zprava pro buffer, znovu", 35);
+        ring_buff_write_arr(&ring_buffer, "Testovaci zprava pro buffer, znovu", 35);
 
         cnt = ring_buff_read_arr(&ring_buffer, buf_arr, 35);
         printf("%s", buf_arr);

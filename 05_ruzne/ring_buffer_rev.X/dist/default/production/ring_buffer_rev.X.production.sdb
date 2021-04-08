@@ -57,7 +57,7 @@
 [v _init init `(v  1 e 1 0 ]
 "93
 [v _main main `(v  1 e 1 0 ]
-"136
+"135
 [v _putch putch `(v  1 e 1 0 ]
 "3 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\ring_buff.c
 [v _ring_buff_init ring_buff_init `(v  1 e 1 0 ]
@@ -186,8 +186,6 @@
 [v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
 "11366
 [v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
-"18779
-[v _LATB5 LATB5 `VEb  1 e 0 @31829 ]
 "20585
 [v _TX1IF TX1IF `VEb  1 e 0 @31988 ]
 "55 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
@@ -211,7 +209,7 @@
 "97
 [v main@i i `uc  1 a 1 57 ]
 [v main@cnt cnt `uc  1 a 1 56 ]
-"134
+"133
 } 0
 "34 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\ring_buff.c
 [v _ring_buff_write_arr ring_buff_write_arr `(v  1 e 1 0 ]
@@ -309,9 +307,9 @@
 {
 "1393
 [v vfprintf@cfmt cfmt `*.32uc  1 a 2 89 ]
-[s S881 _IO_FILE 0 ]
+[s S880 _IO_FILE 0 ]
 "1390
-[v vfprintf@fp fp `*.2S881  1 p 2 83 ]
+[v vfprintf@fp fp `*.2S880  1 p 2 83 ]
 [v vfprintf@fmt fmt `*.32Cuc  1 p 2 85 ]
 [v vfprintf@ap ap `*.39*.39v  1 p 2 87 ]
 "1404
@@ -324,9 +322,9 @@
 "694
 [v vfpfcnvrt@cp cp `*.39uc  1 a 2 80 ]
 [v vfpfcnvrt@c c `uc  1 a 1 82 ]
-[s S881 _IO_FILE 0 ]
+[s S880 _IO_FILE 0 ]
 "692
-[v vfpfcnvrt@fp fp `*.2S881  1 p 2 64 ]
+[v vfpfcnvrt@fp fp `*.2S880  1 p 2 64 ]
 [v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 66 ]
 [v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 68 ]
 "1387
@@ -344,9 +342,9 @@
 "571
 [v stoa@w w `i  1 a 2 24 ]
 [v stoa@i i `i  1 a 2 22 ]
-[s S881 _IO_FILE 0 ]
+[s S880 _IO_FILE 0 ]
 "568
-[v stoa@fp fp `*.2S881  1 p 2 10 ]
+[v stoa@fp fp `*.2S880  1 p 2 10 ]
 [v stoa@s s `*.39uc  1 p 2 12 ]
 "570
 [v stoa@F1146 F1146 `[7]uc  1 s 7 F1146 ]
@@ -362,9 +360,9 @@
 [v dtoa@s s `i  1 a 2 52 ]
 [v dtoa@w w `i  1 a 2 50 ]
 [v dtoa@p p `i  1 a 2 48 ]
-[s S881 _IO_FILE 0 ]
+[s S880 _IO_FILE 0 ]
 "287
-[v dtoa@fp fp `*.2S881  1 p 2 28 ]
+[v dtoa@fp fp `*.2S880  1 p 2 28 ]
 [v dtoa@d d `o  1 p 8 30 ]
 "328
 } 0
@@ -374,9 +372,9 @@
 "74
 [v pad@w w `i  1 a 2 26 ]
 [v pad@i i `i  1 a 2 24 ]
-[s S881 _IO_FILE 0 ]
+[s S880 _IO_FILE 0 ]
 "72
-[v pad@fp fp `*.2S881  1 p 2 17 ]
+[v pad@fp fp `*.2S880  1 p 2 17 ]
 [v pad@buf buf `*.39uc  1 p 2 19 ]
 [v pad@p p `i  1 p 2 21 ]
 "95
@@ -399,8 +397,8 @@
 [v fputs@c c `uc  1 a 1 14 ]
 "8
 [v fputs@s s `*.39Cuc  1 p 2 10 ]
-[s S864 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
-[v fputs@fp fp `*.2S864  1 p 2 12 ]
+[s S863 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputs@fp fp `*.2S863  1 p 2 12 ]
 "19
 } 0
 "1 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\abs.c
@@ -439,9 +437,9 @@
 "261
 [v ctoa@w w `i  1 a 2 16 ]
 [v ctoa@l l `i  1 a 2 14 ]
-[s S881 _IO_FILE 0 ]
+[s S880 _IO_FILE 0 ]
 "259
-[v ctoa@fp fp `*.2S881  1 p 2 10 ]
+[v ctoa@fp fp `*.2S880  1 p 2 10 ]
 [v ctoa@c c `uc  1 p 1 12 ]
 "283
 } 0
@@ -449,17 +447,17 @@
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 1 ]
-[s S864 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
-[v fputc@fp fp `*.2S864  1 p 2 3 ]
+[s S863 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputc@fp fp `*.2S863  1 p 2 3 ]
 "24
 } 0
-"136 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\main.c
+"135 C:\Users\MBa\MPLABXProjects\ring_buffer_rev.X\main.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@data data `uc  1 a 1 wreg ]
 [v putch@data data `uc  1 a 1 wreg ]
 [v putch@data data `uc  1 a 1 0 ]
-"139
+"138
 } 0
 "72
 [v _init init `(v  1 e 1 0 ]
