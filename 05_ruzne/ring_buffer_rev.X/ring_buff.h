@@ -15,11 +15,11 @@ typedef uint8_t ring_buffer_size_t;
 
 // buffer object
 typedef struct ring_buffer_t {
-  /** Buffer memory. */
+ 
   char buffer[RING_BUFFER_SIZE];
-  /** Index of tail. */
+
   ring_buffer_size_t tail_index;
-  /** Index of head. */
+
   ring_buffer_size_t head_index;
 }ring_buffer_t;
 
