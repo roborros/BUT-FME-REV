@@ -10,4 +10,4 @@
 * 08--PWM
 * 09--WDT
 * 10--SPI DAC
-* 11--Stavové automaty FSM a LookUP table
+* 11--FAQ
