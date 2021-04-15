@@ -5,7 +5,9 @@
 
 
 Kód je níže, můžete použít online interpreter Pythonu např. 
--https://www.programiz.com/python-programming/online-compiler/
+
+https://www.programiz.com/python-programming/online-compiler/
+
 ```Python
 import random
 
