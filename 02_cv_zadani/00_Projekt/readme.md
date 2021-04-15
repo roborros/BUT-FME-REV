@@ -1,7 +1,7 @@
 # REV - Závěrečný projekt
 - Odkaz video
 
-##-Rozbalte a vygenerujte si zadaní (vstupem je číslo studenta, možná budete muset potvrdit spuštění neznámé aplikace)
+## - Rozbalte a vygenerujte si zadaní (vstupem je číslo studenta, možná budete muset potvrdit spuštění neznámé aplikace)
 
 
 Kód je níže, můžete použít online interpreter Pythonu např. 
