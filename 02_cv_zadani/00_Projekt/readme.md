@@ -1,5 +1,5 @@
 # REV - Závěrečný projekt
-- Odkaz video
+- [Odkaz video](https://youtu.be/4OCYCeq3aVA)
 
 ### Rozbalte a vygenerujte si zadaní (vstupem je číslo studenta, možná budete muset potvrdit spuštění neznámé aplikace)
 
