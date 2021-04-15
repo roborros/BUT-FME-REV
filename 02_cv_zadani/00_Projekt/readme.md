@@ -4,7 +4,8 @@
 ## Rozbalte a vygenerujte si zadaní (vstupem je číslo studenta, možná budete muset potvrdit spuštění neznámé aplikace)
 
 
-## Kód je níže, můžete použít online interpreter Pythonu např. https://www.programiz.com/python-programming/online-compiler/
+Kód je níže, můžete použít online interpreter Pythonu např. 
+-https://www.programiz.com/python-programming/online-compiler/
 ```Python
 import random
 
