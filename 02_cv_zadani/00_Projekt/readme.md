@@ -1,4 +1,4 @@
-# REV - Závěrečný projekt
+# REV - Závěrečný projekt (odevzdání do 21.5.2021)
 - [Odkaz video](https://youtu.be/4OCYCeq3aVA)
 
 ### Rozbalte a vygenerujte si zadaní (vstupem je číslo studenta, možná budete muset potvrdit spuštění neznámé aplikace)
