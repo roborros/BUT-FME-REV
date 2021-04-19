@@ -99,7 +99,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "23
 [; ;./point.h: 23: void RGB_point_init( st_RGB_Point *const self,int x, int y, char R, char G, char B);
 [v _RGB_point_init `(v ~T0 @X0 0 ef6`C*S857`i`i`uc`uc`uc ]
-"111 C:\Program Files\Microchip\xc8\v2.31\pic\include\c99\stdio.h
+"111 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [v F6343 `*S858 ~T0 @X0 1 t ]
 "15 ./pid.h

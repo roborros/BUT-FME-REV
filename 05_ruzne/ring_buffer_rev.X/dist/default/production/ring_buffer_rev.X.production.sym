@@ -20,7 +20,7 @@ pad@i 19 0 COMRAM 1
 pad@p 16 0 COMRAM 1
 ?_pad 12 0 COMRAM 1
 pad@w 1B 0 COMRAM 1
-_prec E1 0 BANK0 1
+_prec DF 0 BANK0 1
 _ctoa 1BA2 0 CODE 0
 _dtoa 1054 0 CODE 0
 _stoa 1760 0 CODE 0
@@ -30,8 +30,8 @@ _main 1A4A 0 CODE 0
 ___sp 0 0 STACK 2
 _init 2224 0 CODE 0
 start 0 0 CODE 0
-_nout DD 0 BANK0 1
-printf@ap 62 0 BANK0 1
+_nout DB 0 BANK0 1
+printf@ap 60 0 BANK0 1
 _TX1IF 7CF4 0 ABS 0
 _TRISD F95 0 ABS 0
 __Hirdata 0 0 CODE 0
@@ -47,7 +47,7 @@ ctoa@c D 0 COMRAM 1
 dtoa@d 1F 0 COMRAM 1
 dtoa@i 3F 0 COMRAM 1
 stoa@i 17 0 COMRAM 1
-main@i 99 0 BANK0 1
+main@i 97 0 BANK0 1
 ctoa@l F 0 COMRAM 1
 stoa@l 1F 0 COMRAM 1
 dtoa@n 37 0 COMRAM 1
@@ -72,10 +72,10 @@ __Hcomram 0 0 ABS 0
 _putch 2240 0 CODE 0
 __Lcomram 0 0 ABS 0
 _fputc 1D40 0 CODE 0
-_width DF 0 BANK0 1
+_width DD 0 BANK0 1
 __Hsfr 0 0 ABS 0
 __Lsfr 0 0 ABS 0
-_flags E3 0 BANK0 1
+_flags E1 0 BANK0 1
 __Hbss 0 0 RAM 1
 __Lbss 0 0 RAM 1
 ___param_bank 0 0 ABS 0
@@ -86,7 +86,7 @@ ring_buff_read_arr@data C 0 COMRAM 1
 _fputs 20C8 0 CODE 0
 __end_of_ring_buff_write_arr 20C8 0 CODE 0
 __end_of_abs 214C 0 CODE 0
-stoa@F1146 E5 0 BANK0 1
+stoa@F1146 E3 0 BANK0 1
 _TXREG1 FAD 0 ABS 0
 _SPBRG1 FAF 0 ABS 0
 __end_of_vfpfcnvrt 15D8 0 CODE 0
@@ -122,6 +122,7 @@ __Lfardata 0 0 FARRAM 0
 _ring_buff_init 2202 0 CODE 0
 __Habs1 0 0 ABS 0
 __Labs1 0 0 ABS 0
+isa$xinst 0 0 ABS 0
 __size_of_fputc 0 0 ABS 0
 ring_buff_write_arr@data C 0 COMRAM 1
 __HnvFARRAM 0 0 FARRAM 0
@@ -136,6 +137,7 @@ ring_buff_peek@index 9 0 COMRAM 1
 __Hdata 0 0 ABS 0
 __Ldata 0 0 ABS 0
 stoa@cp 1B 0 COMRAM 1
+isa$std 1 0 ABS 0
 fputs@s B 0 COMRAM 1
 ctoa@fp B 0 COMRAM 1
 dtoa@fp 1D 0 COMRAM 1
@@ -167,7 +169,7 @@ __Ltext 0 0 ABS 0
 _ring_buff_read_arr 1E58 0 CODE 0
 __HdataBANK0 0 0 ABS 0
 __LdataBANK0 0 0 ABS 0
-__pdataBANK0 E5 0 BANK0 1
+__pdataBANK0 E3 0 BANK0 1
 __size_of_pad 0 0 ABS 0
 end_of_initialization 2076 0 CODE 0
 ___aodiv@sign 12 0 COMRAM 1
@@ -243,7 +245,7 @@ __Htext9 0 0 ABS 0
 __Ltext9 0 0 ABS 0
 __ptext8 21B2 0 CODE 0
 __ptext9 2202 0 CODE 0
-main@buf_arr 66 0 BANK0 1
+main@buf_arr 64 0 BANK0 1
 _vfpfcnvrt 1338 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
@@ -266,7 +268,7 @@ __Lrdata 0 0 COMRAM 1
 fputc@fp 4 0 COMRAM 1
 __Hidloc 200008 0 IDLOC 5
 __Lidloc 0 0 IDLOC 5
-main@buf 9A 0 BANK0 1
+main@buf 98 0 BANK0 1
 fputs@fp D 0 COMRAM 1
 __Hstack 0 0 STACK 2
 __Lstack 0 0 STACK 2
@@ -287,7 +289,7 @@ __Lspace_1 0 0 ABS 0
 ?_strlen 1 0 COMRAM 1
 __Hsmallconst 1054 0 SMALLCONST 0
 __Lsmallconst 1000 0 SMALLCONST 0
-main@cnt 98 0 BANK0 1
+main@cnt 96 0 BANK0 1
 __psmallconst 1000 0 SMALLCONST 0
 ring_buff_is_empty@buffer 1 0 COMRAM 1
 __Hspace_2 0 0 ABS 0
@@ -316,7 +318,7 @@ __end_of_pad 1D40 0 CODE 0
 __HbssBANK0 0 0 ABS 0
 __LbssBANK0 0 0 ABS 0
 __Hbank10 0 0 ABS 0
-__pbssBANK0 DD 0 BANK0 1
+__pbssBANK0 DB 0 BANK0 1
 __Lbank10 0 0 ABS 0
 _ring_buff_write_arr 2084 0 CODE 0
 __Hbank11 0 0 ABS 0
@@ -392,7 +394,7 @@ __end_of_dtoa 1338 0 CODE 0
 _ring_buff_num_items 21B2 0 CODE 0
 _ring_buff_is_empty 2182 0 CODE 0
 ___aodiv@divisor 9 0 COMRAM 1
-main@ring_buffer 9B 0 BANK0 1
+main@ring_buffer 99 0 BANK0 1
 vfpfcnvrt@fmt 43 0 COMRAM 1
 __smallconst 1000 0 SMALLCONST 0
 __Hreset_vec 0 0 CODE 0
@@ -438,49 +440,49 @@ ___aodiv@dividend 1 0 COMRAM 1
 reset_vec 0 3 CODE 0 0
 smallconst 1000 1053 SMALLCONST 1000 0
 cstackCOMRAM 1 5F COMRAM 1 1
-cstackBANK0 60 EB BANK0 60 1
+cstackBANK0 60 E9 BANK0 60 1
 bssBANK1 100 11F BANK1 100 1
 text14 1054 225C CODE 1054 0
 %locals
 dist/default/production\ring_buffer_rev.X.production.o
 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f46k22.h
-C:\Users\MBa\AppData\Local\Temp\s4ac.s
-834 203E 0 CODE 0
-836 203E 0 CODE 0
-839 203E 0 CODE 0
-869 203E 0 CODE 0
-870 2040 0 CODE 0
-871 2042 0 CODE 0
-872 2044 0 CODE 0
-873 2046 0 CODE 0
-874 2048 0 CODE 0
-875 204A 0 CODE 0
-876 204E 0 CODE 0
-877 2052 0 CODE 0
+C:\Users\adame\AppData\Local\Temp\xcAs7e8.s
+835 203E 0 CODE 0
+837 203E 0 CODE 0
+840 203E 0 CODE 0
+870 203E 0 CODE 0
+871 2040 0 CODE 0
+872 2042 0 CODE 0
+873 2044 0 CODE 0
+874 2046 0 CODE 0
+875 2048 0 CODE 0
+876 204A 0 CODE 0
+877 204E 0 CODE 0
 878 2052 0 CODE 0
-879 2054 0 CODE 0
-880 2058 0 CODE 0
-881 205A 0 CODE 0
-882 205C 0 CODE 0
-886 205E 0 CODE 0
-887 2062 0 CODE 0
-888 2064 0 CODE 0
+879 2052 0 CODE 0
+880 2054 0 CODE 0
+881 2058 0 CODE 0
+882 205A 0 CODE 0
+883 205C 0 CODE 0
+887 205E 0 CODE 0
+888 2062 0 CODE 0
 889 2064 0 CODE 0
-890 2066 0 CODE 0
-891 2068 0 CODE 0
-894 206A 0 CODE 0
-895 206E 0 CODE 0
-896 2070 0 CODE 0
+890 2064 0 CODE 0
+891 2066 0 CODE 0
+892 2068 0 CODE 0
+895 206A 0 CODE 0
+896 206E 0 CODE 0
 897 2070 0 CODE 0
-898 2072 0 CODE 0
-899 2074 0 CODE 0
-905 2076 0 CODE 0
-908 2076 0 CODE 0
-909 2078 0 CODE 0
-910 207A 0 CODE 0
-911 207C 0 CODE 0
-912 207E 0 CODE 0
-913 2080 0 CODE 0
+898 2070 0 CODE 0
+899 2072 0 CODE 0
+900 2074 0 CODE 0
+906 2076 0 CODE 0
+909 2076 0 CODE 0
+910 2078 0 CODE 0
+911 207A 0 CODE 0
+912 207C 0 CODE 0
+913 207E 0 CODE 0
+914 2080 0 CODE 0
 main.c
 93 1A4A 0 CODE 0
 95 1A4A 0 CODE 0
@@ -559,12 +561,12 @@ ring_buff.c
 4 2202 0 CODE 0
 5 2212 0 CODE 0
 6 2222 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\printf.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\printf.c
 5 21DA 0 CODE 0
 9 21DA 0 CODE 0
 10 21E4 0 CODE 0
 13 2200 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\doprnt.c
 1390 1F3A 0 CODE 0
 1395 1F3A 0 CODE 0
 1396 1F42 0 CODE 0
@@ -573,7 +575,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
 1397 1F76 0 CODE 0
 1400 1F92 0 CODE 0
 1404 1F9A 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\doprnt.c
 692 1338 0 CODE 0
 702 1338 0 CODE 0
 703 135C 0 CODE 0
@@ -600,7 +602,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
 1384 15A0 0 CODE 0
 1385 15C4 0 CODE 0
 1387 15D6 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\doprnt.c
 568 1760 0 CODE 0
 570 1760 0 CODE 0
 574 1772 0 CODE 0
@@ -628,7 +630,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
 608 18DC 0 CODE 0
 610 18DC 0 CODE 0
 611 18E4 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\doprnt.c
 287 1054 0 CODE 0
 293 1054 0 CODE 0
 294 1074 0 CODE 0
@@ -645,16 +647,32 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
 312 1138 0 CODE 0
 313 113C 0 CODE 0
 314 1142 0 CODE 0
+314 116E 0 CODE 0
+314 1172 0 CODE 0
+314 1176 0 CODE 0
+314 117A 0 CODE 0
+314 117E 0 CODE 0
+314 1182 0 CODE 0
+314 1186 0 CODE 0
+314 118A 0 CODE 0
 315 11C4 0 CODE 0
 316 11CA 0 CODE 0
 317 11D0 0 CODE 0
+317 11F0 0 CODE 0
+317 11F4 0 CODE 0
+317 11F8 0 CODE 0
+317 11FC 0 CODE 0
+317 1200 0 CODE 0
+317 1204 0 CODE 0
+317 1208 0 CODE 0
+317 120C 0 CODE 0
 312 1234 0 CODE 0
 321 12B0 0 CODE 0
 322 12D2 0 CODE 0
 323 12D8 0 CODE 0
 327 130E 0 CODE 0
 328 1336 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\doprnt.c
 72 1C7A 0 CODE 0
 77 1C7A 0 CODE 0
 78 1C8A 0 CODE 0
@@ -668,7 +686,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
 91 1D12 0 CODE 0
 94 1D26 0 CODE 0
 95 1D3E 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\strlen.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\strlen.c
 5 214C 0 CODE 0
 7 214C 0 CODE 0
 8 2154 0 CODE 0
@@ -676,7 +694,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\strlen.c
 8 215C 0 CODE 0
 11 2174 0 CODE 0
 12 2180 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputs.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\nf_fputs.c
 8 20C8 0 CODE 0
 13 20C8 0 CODE 0
 14 20D0 0 CODE 0
@@ -684,11 +702,11 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputs.c
 16 20E6 0 CODE 0
 14 20EA 0 CODE 0
 19 210A 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\abs.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\abs.c
 1 210C 0 CODE 0
 3 210C 0 CODE 0
 4 214A 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aomod.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\aomod.c
 9 18E6 0 CODE 0
 14 18E6 0 CODE 0
 15 18EA 0 CODE 0
@@ -710,7 +728,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aomod.c
 34 1A08 0 CODE 0
 35 1A28 0 CODE 0
 36 1A48 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aodiv.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\aodiv.c
 9 15D8 0 CODE 0
 15 15D8 0 CODE 0
 16 15DC 0 CODE 0
@@ -736,7 +754,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\aodiv.c
 41 171E 0 CODE 0
 42 173E 0 CODE 0
 43 175E 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\doprnt.c
 259 1BA2 0 CODE 0
 264 1BA2 0 CODE 0
 267 1BCE 0 CODE 0
@@ -751,7 +769,7 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\doprnt.c
 279 1C5A 0 CODE 0
 282 1C6C 0 CODE 0
 283 1C78 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\nf_fputc.c
+C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\nf_fputc.c
 8 1D40 0 CODE 0
 12 1D40 0 CODE 0
 13 1D64 0 CODE 0

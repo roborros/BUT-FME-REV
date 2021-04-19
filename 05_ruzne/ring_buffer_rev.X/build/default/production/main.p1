@@ -109,7 +109,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "43
 [; ;./ring_buff.h: 43: ring_buffer_size_t ring_buff_num_items(ring_buffer_t *const buffer);
 [v _ring_buff_num_items `(uc ~T0 @X0 0 ef1`C*S856 ]
-"111 C:\Program Files\Microchip\xc8\v2.31\pic\include\c99\stdio.h
+"111 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [v F6342 `*S856 ~T0 @X0 1 t ]
 "33 ./ring_buff.h

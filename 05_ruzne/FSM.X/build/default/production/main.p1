@@ -52,7 +52,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40 ./bsp.h
 [; ;./bsp.h: 40: void bsp_set_timeout(long timeout);
 [v _bsp_set_timeout `(v ~T0 @X0 0 ef1`l ]
-"111 C:\Program Files\Microchip\xc8\v2.31\pic\include\c99\stdio.h
+"111 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [v F6366 `(v ~T0 @X0 0 tf2`*S858`uc ]
 "25 ./fsm.h
@@ -85,7 +85,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8 ./lcd.h
 [; ;./lcd.h: 8: void LCD_Clear(void);
 [v _LCD_Clear `(v ~T0 @X0 0 ef ]
-"113 C:\Program Files\Microchip\xc8\v2.31\pic\include\c99\stdio.h
+"113 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "11 ./adc.h
 [; ;./adc.h: 11: uint16_t adc_read(uint8_t channel);
@@ -1164,8 +1164,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 123: }
 [e :UE 879 ]
 }
-[p f _printf 8388608 ]
 [p f _sprintf 8388736 ]
+[p f _printf 8388608 ]
 [a 1C 87 101 108 99 111 109 101 32 32 32 32 32 32 32 32 32 0 ]
 [a 7C 80 79 84 58 32 37 100 32 32 32 32 32 32 32 32 32 32 0 ]
 [a 5C 83 116 97 116 101 50 32 32 32 32 32 32 32 32 32 32 32 0 ]
