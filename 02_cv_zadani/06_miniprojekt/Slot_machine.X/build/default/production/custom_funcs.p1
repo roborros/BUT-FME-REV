@@ -1,0 +1,200 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"39 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdlib.h
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdlib.h: 39: int rand (void);
+[v _rand `(i ~T0 @X0 0 ef ]
+"41 ./gpio.h
+[; ;./gpio.h: 41: void gpio_drive_led(char input);
+[v _gpio_drive_led `(v ~T0 @X0 0 ef1`uc ]
+"11 ./custom_funcs.h
+[; ;./custom_funcs.h: 11: typedef struct {
+[s S7 `uc 1 `uc 1 `uc 1 `us 1 ]
+[n S7 . id first_entry changed timeout ]
+"6 custom_funcs.c
+[; ;custom_funcs.c: 6: char generate_symbol(void) {
+[v _generate_symbol `(uc ~T0 @X0 1 ef ]
+{
+[e :U _generate_symbol ]
+[f ]
+"7
+[; ;custom_funcs.c: 7:     int random = rand() % 4;
+[v _random `i ~T0 @X0 1 a ]
+[e = _random % ( _rand ..  -> 4 `i ]
+"9
+[; ;custom_funcs.c: 9:     switch(random){
+[e $U 10  ]
+{
+"10
+[; ;custom_funcs.c: 10:         case 0:
+[e :U 11 ]
+"11
+[; ;custom_funcs.c: 11:             return '&';
+[e ) -> -> 38 `ui `uc ]
+[e $UE 8  ]
+"12
+[; ;custom_funcs.c: 12:         case 1:
+[e :U 12 ]
+"13
+[; ;custom_funcs.c: 13:             return '%';
+[e ) -> -> 37 `ui `uc ]
+[e $UE 8  ]
+"14
+[; ;custom_funcs.c: 14:         case 2:
+[e :U 13 ]
+"15
+[; ;custom_funcs.c: 15:             return '#';
+[e ) -> -> 35 `ui `uc ]
+[e $UE 8  ]
+"16
+[; ;custom_funcs.c: 16:         case 3:
+[e :U 14 ]
+"17
+[; ;custom_funcs.c: 17:             return '@';
+[e ) -> -> 64 `ui `uc ]
+[e $UE 8  ]
+"18
+[; ;custom_funcs.c: 18:         default:
+[e :U 15 ]
+"19
+[; ;custom_funcs.c: 19:             return '%';
+[e ) -> -> 37 `ui `uc ]
+[e $UE 8  ]
+"20
+[; ;custom_funcs.c: 20:     }
+}
+[e $U 9  ]
+[e :U 10 ]
+[e [\ _random , $ -> 0 `i 11
+ , $ -> 1 `i 12
+ , $ -> 2 `i 13
+ , $ -> 3 `i 14
+ 15 ]
+[e :U 9 ]
+"21
+[; ;custom_funcs.c: 21: }
+[e :UE 8 ]
+}
+"23
+[; ;custom_funcs.c: 23: uint16_t check_win(char* symbols) {
+[v _check_win `(us ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _check_win ]
+[v _symbols `*uc ~T0 @X0 1 r1 ]
+[f ]
+"24
+[; ;custom_funcs.c: 24:     if(symbols[0] == '#' && symbols[1] == '#' && symbols[2] == '#') {
+[e $ ! && && == -> *U + _symbols * -> -> 0 `i `x -> -> # *U _symbols `i `x `ui -> 35 `ui == -> *U + _symbols * -> -> 1 `i `x -> -> # *U _symbols `i `x `ui -> 35 `ui == -> *U + _symbols * -> -> 2 `i `x -> -> # *U _symbols `i `x `ui -> 35 `ui 17  ]
+{
+"25
+[; ;custom_funcs.c: 25:         return 5;
+[e ) -> -> 5 `i `us ]
+[e $UE 16  ]
+"26
+[; ;custom_funcs.c: 26:     } else if (symbols[0] == '@' && symbols[1] == '@' && symbols[2] == '@') {
+}
+[e $U 18  ]
+[e :U 17 ]
+[e $ ! && && == -> *U + _symbols * -> -> 0 `i `x -> -> # *U _symbols `i `x `ui -> 64 `ui == -> *U + _symbols * -> -> 1 `i `x -> -> # *U _symbols `i `x `ui -> 64 `ui == -> *U + _symbols * -> -> 2 `i `x -> -> # *U _symbols `i `x `ui -> 64 `ui 19  ]
+{
+"27
+[; ;custom_funcs.c: 27:         return 3;
+[e ) -> -> 3 `i `us ]
+[e $UE 16  ]
+"28
+[; ;custom_funcs.c: 28:     } else if (symbols[0] == '&' && symbols[1] == '&' && symbols[2] == '&') {
+}
+[e $U 20  ]
+[e :U 19 ]
+[e $ ! && && == -> *U + _symbols * -> -> 0 `i `x -> -> # *U _symbols `i `x `ui -> 38 `ui == -> *U + _symbols * -> -> 1 `i `x -> -> # *U _symbols `i `x `ui -> 38 `ui == -> *U + _symbols * -> -> 2 `i `x -> -> # *U _symbols `i `x `ui -> 38 `ui 21  ]
+{
+"29
+[; ;custom_funcs.c: 29:         return 2;
+[e ) -> -> 2 `i `us ]
+[e $UE 16  ]
+"30
+[; ;custom_funcs.c: 30:     }else if (symbols[0] == '%' && symbols[1] == '%' && symbols[2] == '%') {
+}
+[e $U 22  ]
+[e :U 21 ]
+[e $ ! && && == -> *U + _symbols * -> -> 0 `i `x -> -> # *U _symbols `i `x `ui -> 37 `ui == -> *U + _symbols * -> -> 1 `i `x -> -> # *U _symbols `i `x `ui -> 37 `ui == -> *U + _symbols * -> -> 2 `i `x -> -> # *U _symbols `i `x `ui -> 37 `ui 23  ]
+{
+"31
+[; ;custom_funcs.c: 31:         return 1;
+[e ) -> -> 1 `i `us ]
+[e $UE 16  ]
+"32
+[; ;custom_funcs.c: 32:     } else {
+}
+[e $U 24  ]
+[e :U 23 ]
+{
+"33
+[; ;custom_funcs.c: 33:         return 0;
+[e ) -> -> 0 `i `us ]
+[e $UE 16  ]
+"34
+[; ;custom_funcs.c: 34:     }
+}
+[e :U 24 ]
+[e :U 22 ]
+[e :U 20 ]
+[e :U 18 ]
+"35
+[; ;custom_funcs.c: 35: }
+[e :UE 16 ]
+}
+"37
+[; ;custom_funcs.c: 37: void show_credit(uint8_t credit) {
+[v _show_credit `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _show_credit ]
+[v _credit `uc ~T0 @X0 1 r1 ]
+[f ]
+"38
+[; ;custom_funcs.c: 38:     uint8_t leds = 0xFF;
+[v _leds `uc ~T0 @X0 1 a ]
+[e = _leds -> -> 255 `i `uc ]
+"39
+[; ;custom_funcs.c: 39:     if (credit > 6) {
+[e $ ! > -> _credit `i -> 6 `i 26  ]
+{
+"40
+[; ;custom_funcs.c: 40:         leds = (uint8_t)~(leds << 6);
+[e = _leds -> ~ << -> _leds `i -> 6 `i `uc ]
+"41
+[; ;custom_funcs.c: 41:     } else {
+}
+[e $U 27  ]
+[e :U 26 ]
+{
+"42
+[; ;custom_funcs.c: 42:         leds = (uint8_t)~(leds << credit);
+[e = _leds -> ~ << -> _leds `i -> _credit `i `uc ]
+"43
+[; ;custom_funcs.c: 43:     }
+}
+[e :U 27 ]
+"45
+[; ;custom_funcs.c: 45:     gpio_drive_led(leds);
+[e ( _gpio_drive_led (1 -> _leds `uc ]
+"46
+[; ;custom_funcs.c: 46: }
+[e :UE 25 ]
+}
+"48
+[; ;custom_funcs.c: 48: void change_state(state_struct* state, uint8_t state_id) {
+[v _change_state `(v ~T0 @X0 1 ef2`*S7`uc ]
+{
+[e :U _change_state ]
+[v _state `*S7 ~T0 @X0 1 r1 ]
+[v _state_id `uc ~T0 @X0 1 r2 ]
+[f ]
+"49
+[; ;custom_funcs.c: 49:     state->id = state_id;
+[e = . *U _state 0 _state_id ]
+"50
+[; ;custom_funcs.c: 50:     state->changed = 1;
+[e = . *U _state 2 -> -> 1 `i `uc ]
+"51
+[; ;custom_funcs.c: 51: }
+[e :UE 28 ]
+}
