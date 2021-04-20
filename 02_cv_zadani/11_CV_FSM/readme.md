@@ -8,6 +8,11 @@ Uvedeme si zde možné nastavení pro větší projekt. Umístené složek v sys
   <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/projektsetup.png">
 </p>
 
+Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). Nečitelný soubor v podobě knihovny lze vygenerovat: 
+```c
+xc8 --chip=18f46k22 --output=lpp soubor.c nazev.
+```
+
 ## LookUp tabulka:
 Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i k přepočtům zavislostí, pro kterou funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
 
