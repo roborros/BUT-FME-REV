@@ -209,10 +209,12 @@ int readADC(char channel)
 }
 ```
 ## Kruhový buffer:
-Jedná se o abstraktní strukturu, která realizuje LIFO frontu. V podstate se jedná pole na datový typ jednodho typu a o další mechanismus, který umožňuje přechod mezi poslední a první položkou. Dle obrázku. 
+Jedná se o abstraktní strukturu, která realizuje LIFO frontu. V podstate se jedná pole na datový typ jednodho typu a o další mechanismus, který umožňuje přechod mezi poslední a první položkou. Dle obrázku:
 <p align="center">
   <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/Circular_Buffer_Animation.gif">
 </p>
+
+
 
 ```c
 // buffer object
