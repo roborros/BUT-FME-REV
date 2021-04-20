@@ -5,7 +5,7 @@
 Uvedeme si zde možné nastavení pro větší projekt. Umístění složek v systému je následovné:
 
 <p align="center">
-  <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/projektsetup.png">
+  <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/projektsetup.png">
 </p>
 
 Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). Nečitelný soubor v podobě knihovny lze vygenerovat:
@@ -33,11 +33,11 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 Všichni znáte jednotkovou kružnici. Představme si, že požadovýný úhel budeme volit potenciometrem a to mezi 0..255. Získat pak budeme chtít hodnotu sinus, kterou ale také přepočítáme na -127..127. Níže je graf s takto vygenerovanou sinusovkou. Pro naši tabulku zvolíme krok 15 (je dobre si pamatovat, že číslo 255 lze beze zbytku dělit třeba: ..5,15,17..). Naše tabulka bude mít 18 hodnot.
 
 <p align="center">
-  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/RevKruznice.png">
+  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/RevKruznice.png">
 </p>
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/REVsinus.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/REVsinus.png">
 </p>
 
 ### Kód pro matlab:
@@ -95,7 +95,7 @@ Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte f
 ### Nepoužívejte floating point, kontrolér na to nemá hardware (tzv. FPU):
 
 <p align="center">
-  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/interpolation.png">
+  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/interpolation.png">
 </p>
 
 ## Přiklad 10.1:
