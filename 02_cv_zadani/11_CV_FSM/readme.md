@@ -1,7 +1,7 @@
 
 # REV - Rekreační cvičení
 
-## Nastavení pro porjekt:
+## Nastavení pro větší projekty:
 Uvedeme si zde možné nastavení pro větší projekt. Umístené složek v systému je následovné:
 
 <p align="center">
