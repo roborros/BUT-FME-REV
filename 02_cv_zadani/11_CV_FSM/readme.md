@@ -13,8 +13,14 @@ Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). 
 ```c
 xc8 --chip=18f46k22 --output=lpp soubor.c nazev.
 ```
-knihovna .lpp se pote přidává do abstraktní složky libraries v MPLABu
-## Zkuste si s cvičícím nastavit takový projekt do složky drv dejte adc
+knihovna .lpp se pote přidává do abstraktní složky libraries v MPLABu. Pro tyto knihovny může sloužit složka lib.
+
+## Zkuste si s cvičícím nastavit takový projekt.
+1)Vygenerujte .lpp pro lcd
+2)Použijte tuto knihovnu v projektu v MPLAB libraries
+3)Vytvorte uart.c a adc.c (i hlavičkové soubory)
+4)Přidejte je do projektu
+5)Zkuste zahrnout inc složky v include path compilátoru (potom se používají <adc.h>, <uart.h>)
 
 ## LookUp tabulka:
 Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i k přepočtům zavislostí, pro kterou funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
