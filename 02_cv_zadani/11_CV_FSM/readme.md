@@ -5,7 +5,7 @@
 Uvedeme si zde možné nastavení pro větší projekt. Umístené složek v systému je následovné:
 
 <p align="center">
-  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/projektsetup.png">
+  <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/projektsetup.png">
 </p>
 
 ## LookUp tabulka:
