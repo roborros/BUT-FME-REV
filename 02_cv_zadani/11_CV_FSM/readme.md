@@ -216,7 +216,7 @@ Jedná se o abstraktní strukturu, která realizuje LIFO frontu. V podstate se j
 
 
 ### Realizace:
-Vytvoření vlastního datového typu. Obsahuje pole hodnot a index pročtení a zápis. Pokud použiji velikost 2**n mohu zrychlit některé potřebné operace. 
+Vytvoření vlastního datového typu. Obsahuje pole hodnot a index pro čtení a zápis. Pokud použiji velikost 2**n mohu zrychlit některé potřebné operace. 
 
 ```c
 // buffer object
