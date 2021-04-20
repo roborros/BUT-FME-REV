@@ -1,6 +1,13 @@
 
 # REV - Rekreační cvičení
 
+## Nastavení pro porjekt:
+Uvedeme si zde možné nastavení pro větší projekt. Umístené složek v systému je následovné:
+
+<p align="center">
+  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/RevKruznice.png">
+</p>
+
 ## LookUp tabulka:
 Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i k přepočtům zavislostí, pro kterou funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
 
