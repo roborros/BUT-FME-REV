@@ -208,3 +208,7 @@ int readADC(char channel)
     return ADRESH;
 }
 ```
+## Kruhový buffer:
+<p align="center">
+  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/Circular_Buffer_Animation.gif">
+</p>
