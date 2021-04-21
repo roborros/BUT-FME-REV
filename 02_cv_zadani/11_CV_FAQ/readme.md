@@ -304,6 +304,21 @@ int main(void){
 C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. Projděte se s cvičícím příklad OOP.X.
 
 ## Stavové automaty:
+
+* Stavový automat je abstraktní popis problému, který jej uzavírá do tzv. Stavů. Lze je samozřejmě popsat matematicky.
+* Podstatné však je, že funkcionalitu zařízení uzavírám do stavů a k přechodům z jednoho stavu do druhého používám události. 
+* Stavový automat má vždy počáteční stav, ve kterém se nachází po uvedení do provozu.
+* Kolem automatů existuje rozsáhlá teorie, důležitá je však základní myšlenka.
+* Není přesně určeno jak se potom daný automat naprogramuje
+
+* Popis pomocí stavového automatu je tedy převod komplexních systému, do abstraktního popisu pomocí stavů.
+
+* Výhodou je právě to, že tato abstrakce umožňuje snadné ověření funkce, zda takto vytvořený automat skutečně myslí na vše (proofability)
+
+* řešení pomocí stavového automatu je tedy jednoduší ověřit tzv verifikovat
+
+* Možností jak FSM programovat je několik, jednoduché automaty lze dělat pomocí switch-case, což je poněkud nepřehledné, ale často se používá. Dále pak lze použít různý koncept tabulek a  struktur a pointery. 
+
 <p align="center">
   <img width="450" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/fsm.jpg">
 </p>
