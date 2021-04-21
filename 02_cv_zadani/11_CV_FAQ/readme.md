@@ -325,6 +325,8 @@ C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. 
 
 ## Příklad FSM.x:
 Projekt realizuje automat, ktery je v tomto případě řízen událostmi. Pro zachycení události je zde fronta událostí (kruhový buffer). Události mohu do fronty přidat třeba z ISR, nebo v podstate tam kde zavolám write_evt(evt).
+
+### Zápis stavu pak může vypadat např.:
 ```c
 void init(fsm_t *fsm, uint8_t event){
     
