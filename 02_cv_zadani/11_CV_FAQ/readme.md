@@ -245,13 +245,21 @@ typedef struct ring_buffer_t {
 #define buff_mask buff_size-1
 
 
+// bitfields
+
+typedef struct {
+	uint8_t head :3;
+	uint8_t tail :3;
+}buff_t;
+
 int main(void){
 	
 	
 	uint8_t head=0;
 	uint8_t tail=0;
-	
 	uint8_t result;
+	
+	buff_t buff={.head=0, .tail=0};
 	
 	// circulation
 	char i;
@@ -259,7 +267,8 @@ int main(void){
 		head = (head+1) & buff_mask;
 		printf("Head idx: %d \n", head);
 	}
-		
+	
+	printf("############################################ \n");	
 	// number of items
 	
 	tail = 1;
@@ -273,9 +282,16 @@ int main(void){
 	
 	result = (head - tail) & buff_mask;
 	printf("Num of items: %d \n", result);
+	
+	printf("############################################ \n");	
+	
+	for (i = 0; i < 17; i++){
+		printf("Head idx: %d \n", buff.head++);
+	}
 
 	return 0;
 }
+
 
 ```
 
