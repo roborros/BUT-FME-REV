@@ -8,7 +8,7 @@ Uvedeme si zde možné nastavení pro větší projekt. Umístění složek v sy
   <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/projektsetup.png">
 </p>
 
-Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). 
+Složky jsou rozděleny na inc/src (hlavičkové soubory a zdrojové soubory). 
 
 ## Vztvoření knihovny:
 
