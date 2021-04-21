@@ -8,8 +8,11 @@ Uvedeme si zde možné nastavení pro větší projekt. Umístění složek v sy
   <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/projektsetup.png">
 </p>
 
-Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). Nečitelný soubor v podobě knihovny lze vygenerovat:
+Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). 
 
+## Vztvoření knihovny:
+
+Nečitelný soubor v podobě knihovny lze vygenerovat v příkazovém řádku, XC8 musí být v systémových cestách:
 ```c
 xc8 --chip=18f46k22 --output=lpp soubor.c nazev.
 ```
