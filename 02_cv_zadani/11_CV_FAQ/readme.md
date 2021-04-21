@@ -299,3 +299,6 @@ int main(void){
 ```
 
 1) Projděte si projekt s kruhovým bufferem na PIC18.
+
+## OOP
+C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. Projděte se s cvičícím příklad OOP.X.
