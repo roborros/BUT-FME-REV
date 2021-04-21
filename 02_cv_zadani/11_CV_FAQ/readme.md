@@ -208,6 +208,12 @@ int readADC(char channel)
     return ADRESH;
 }
 ```
+## Cvičení.
+1)Doplňte funkci searchIndex
+
+2)Doplňte funkci interpolate
+
+
 ## Kruhový buffer:
 Jedná se o abstraktní strukturu, která realizuje LIFO frontu. V podstate se jedná pole na datový typ jednodho typu a o další mechanismus, který umožňuje přechod mezi poslední a první položkou. Dle obrázku:
 <p align="center">
