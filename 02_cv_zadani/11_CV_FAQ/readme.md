@@ -322,3 +322,23 @@ C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. 
 <p align="center">
   <img width="520" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/fsm.jpg">
 </p>
+
+## Priklad FSM.x:
+Projekt realizuje automat, ktery je v tomto případě řízen událostmi. Pro zachycení události je zde fronta událostí (kruhový buffer). Události mohu do fronty přidat třeba z ISR, nebo v podstate tam kde zavolám write_evt(evt).
+"""c
+void init(fsm_t *fsm, uint8_t event){
+    
+    switch(event){
+        case EV_ENTRY:
+            LCD_ShowString(1, "Welcome         ");
+            bsp_set_timeout(5000);
+            break;
+        case EV_EXIT:
+            printf("Init state exit\n");
+            break;
+        case EV_TIMEOUT:
+            fsm_transition(fsm, &state1);
+            break;
+    }
+}
+"""
