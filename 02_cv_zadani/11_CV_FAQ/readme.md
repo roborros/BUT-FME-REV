@@ -5,7 +5,7 @@
 Uvedeme si zde možné nastavení pro větší projekt. Umístění složek v systému je následovné:
 
 <p align="center">
-  <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/projektsetup.png">
+  <img width="200" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/projektsetup.png">
 </p>
 
 Složky jsou rozděleny na inc/src (hlavičkévé soubory a zdrojové soubory). Nečitelný soubor v podobě knihovny lze vygenerovat:
@@ -16,15 +16,15 @@ xc8 --chip=18f46k22 --output=lpp soubor.c nazev.
 knihovna .lpp se pote přidává do abstraktní složky libraries v MPLABu. Pro tyto knihovny může sloužit složka lib.
 
 ## Zkuste si s cvičícím nastavit takový projekt.
-1)Vygenerujte .lpp pro lcd.
+1) Vygenerujte .lpp pro lcd.
 
-2)Použijte tuto knihovnu v projektu v MPLAB libraries.
+2) Použijte tuto knihovnu v projektu (složka MPLAB libraries).
 
-3)Vytvorte uart.c a adc.c (i hlavičkové soubory).
+3) Vytvorte uart.c a adc.c (i hlavičkové soubory).
 
-4)Přidejte je do projektu.
+4) Přidejte je do projektu.
 
-5)Zkuste zahrnout inc složky v include path compilátoru (potom se používají <adc.h>, <uart.h>).
+5) Zkuste zahrnout inc složky v include path compilátoru (potom se používají <adc.h>, <uart.h>).
 
 ## LookUp tabulka:
 Jedná se o hojně využívanou metodu v embedded systémech. V našem případě ji budeme využívat k rychlému určení nelineární funkce. Hodí se však i k přepočtům zavislostí, pro kterou funkci neznáme, ale máme hodnoty z naměřených (experimentálních) dat. Závislosti odporu na teplotě čidla, odbuzovací charakteristika elektrického stroje a tak podobně... v jednoduché podobě se jedná o tabulku s hodnotami X a Y. Tabulka má nějákou konečnou hodnotu, nemůže být tedy libovolně přesná. Mezi body, které znám je třeba  provádět interpolaci. Nejpoužívanější je lineární. 
@@ -33,11 +33,11 @@ Jedná se o hojně využívanou metodu v embedded systémech. V našem případ�
 Všichni znáte jednotkovou kružnici. Představme si, že požadovýný úhel budeme volit potenciometrem a to mezi 0..255. Získat pak budeme chtít hodnotu sinus, kterou ale také přepočítáme na -127..127. Níže je graf s takto vygenerovanou sinusovkou. Pro naši tabulku zvolíme krok 15 (je dobre si pamatovat, že číslo 255 lze beze zbytku dělit třeba: ..5,15,17..). Naše tabulka bude mít 18 hodnot.
 
 <p align="center">
-  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/RevKruznice.png">
+  <img width="250" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/RevKruznice.png">
 </p>
 
 <p align="center">
-  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/REVsinus.png">
+  <img width="600" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/REVsinus.png">
 </p>
 
 ### Kód pro matlab:
@@ -95,7 +95,7 @@ Nejdříve je třeba určit body, kde budete interpolovat, proto implementujte f
 ### Nepoužívejte floating point, kontrolér na to nemá hardware (tzv. FPU):
 
 <p align="center">
-  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/interpolation.png">
+  <img width="600" height="230" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/interpolation.png">
 </p>
 
 ## Přiklad 10.1:
@@ -208,10 +208,16 @@ int readADC(char channel)
     return ADRESH;
 }
 ```
+## Cvičení.
+1) Doplňte funkci searchIndex
+
+2) Doplňte funkci interpolate
+
+
 ## Kruhový buffer:
 Jedná se o abstraktní strukturu, která realizuje LIFO frontu. V podstate se jedná pole na datový typ jednodho typu a o další mechanismus, který umožňuje přechod mezi poslední a první položkou. Dle obrázku:
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/Circular_Buffer_Animation.gif">
+  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/Circular_Buffer_Animation.gif">
 </p>
 
 
@@ -229,3 +235,48 @@ typedef struct ring_buffer_t {
   ring_buffer_size_t head_index;
 }ring_buffer_t;
 ```
+1) Projděte si následující kód na desktopu. Demonstruje přetečení indexu i vrácení položek v bufferu
+```c
+// REV ring buffer
+#include <stdio.h>
+#include <stdint.h>
+
+#define buff_size 8
+#define buff_mask buff_size-1
+
+
+int main(void){
+	
+	
+	uint8_t head=0;
+	uint8_t tail=0;
+	
+	uint8_t result;
+	
+	// circulation
+	char i;
+	for (i = 0; i < 17; i++){
+		head = (head+1) & buff_mask;
+		printf("Head idx: %d \n", head);
+	}
+		
+	// number of items
+	
+	tail = 1;
+	head = 5;
+	
+	result = (head - tail) & buff_mask;
+	printf("Num of items: %d \n", result);
+	
+	tail = 5;
+	head = 1;
+	
+	result = (head - tail) & buff_mask;
+	printf("Num of items: %d \n", result);
+
+	return 0;
+}
+
+```
+
+1) Projděte si projekt s kruhovým bufferem na PIC18.
