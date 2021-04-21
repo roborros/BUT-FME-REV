@@ -235,6 +235,7 @@ typedef struct ring_buffer_t {
   ring_buffer_size_t head_index;
 }ring_buffer_t;
 ```
+1) Projděte si následující kód na desktopu. Demonstruje přetečení indexu i vrácení položek v bufferu
 ```c
 // REV ring buffer
 #include <stdio.h>
