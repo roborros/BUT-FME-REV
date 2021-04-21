@@ -235,3 +235,45 @@ typedef struct ring_buffer_t {
   ring_buffer_size_t head_index;
 }ring_buffer_t;
 ```
+```c
+// REV ring buffer
+#include <stdio.h>
+#include <stdint.h>
+
+#define buff_size 8
+#define buff_mask buff_size-1
+
+
+int main(void){
+	
+	
+	uint8_t head=0;
+	uint8_t tail=0;
+	
+	uint8_t result;
+	
+	// circulation
+	char i;
+	for (i = 0; i < 17; i++){
+		head = (head+1) & buff_mask;
+		printf("Head idx: %d \n", head);
+	}
+		
+	// number of items
+	
+	tail = 1;
+	head = 5;
+	
+	result = (head - tail) & buff_mask;
+	printf("Num of items: %d \n", result);
+	
+	tail = 5;
+	head = 1;
+	
+	result = (head - tail) & buff_mask;
+	printf("Num of items: %d \n", result);
+
+	return 0;
+}
+
+```
