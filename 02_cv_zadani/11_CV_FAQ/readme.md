@@ -300,5 +300,10 @@ int main(void){
 
 1) Projděte si projekt s kruhovým bufferem na PIC18.
 
-## OOP
+## OOP:
 C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. Projděte se s cvičícím příklad OOP.X.
+
+## Stavové automaty:
+<p align="center">
+  <img width="400" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/RevKruznice.png">
+</p>
