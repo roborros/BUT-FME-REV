@@ -320,5 +320,5 @@ C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. 
 * Možností jak FSM programovat je několik, jednoduché automaty lze dělat pomocí switch-case, což je poněkud nepřehledné, ale často se používá. Dále pak lze použít různý koncept tabulek a  struktur a pointery. 
 
 <p align="center">
-  <img width="450" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/fsm.jpg">
+  <img width="520" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/fsm.jpg">
 </p>
