@@ -18,7 +18,7 @@ knihovna .lpp se pote přidává do abstraktní složky libraries v MPLABu. Pro 
 ## Zkuste si s cvičícím nastavit takový projekt.
 1)Vygenerujte .lpp pro lcd.
 
-2)Použijte tuto knihovnu v projektu v MPLAB libraries.
+2)Použijte tuto knihovnu v projektu (složka MPLAB libraries).
 
 3)Vytvorte uart.c a adc.c (i hlavičkové soubory).
 
