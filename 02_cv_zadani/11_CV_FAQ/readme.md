@@ -278,3 +278,5 @@ int main(void){
 }
 
 ```
+
+1) Projděte si projekt s kruhovým bufferem na PIC18.
