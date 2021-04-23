@@ -10,7 +10,7 @@ Uvedeme si zde možné nastavení pro větší projekt. Umístění složek v sy
 
 Složky jsou rozděleny na inc/src (hlavičkové soubory a zdrojové soubory). 
 
-## Vztvoření knihovny:
+## Vytvoření knihovny:
 
 Nečitelný soubor v podobě knihovny lze vygenerovat v příkazovém řádku, XC8 musí být v systémových cestách:
 ```c
