@@ -298,6 +298,7 @@ int main(void){
 
 ```
 
+### Zadání:
 1) Projděte si projekt s kruhovým bufferem na PIC18. A následně implementujte plovoucí průměr na výstup POT2. Plovoucí průměr počítejte z 32 hodnot a přes UART posílejte do PC zprůměrovanou hodnotu a surový výstup z ADC. Obě hodnoty zobrazte pomocí Serial Oscilloscope.
 
 ## OOP:
