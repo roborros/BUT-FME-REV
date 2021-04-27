@@ -348,5 +348,5 @@ void init(fsm_t *fsm, uint8_t event){
 ## Úkol:
 Upravte projekt FSM dostupný v tomto cvičení tak, aby stavový automat odpovídal diagramu níže.
 <p align="center">
-  <img width="600"  src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/FSM_diagram_ukol.png">
+  <img width="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/FSM_diagram_ukol.png">
 </p>
