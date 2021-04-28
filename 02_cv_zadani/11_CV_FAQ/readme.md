@@ -325,7 +325,9 @@ C není objektově orientovaný jazyk, ale nekteré prvky lze realizovat i tak. 
 </p>
 
 ## Příklad FSM.x:
-Projekt realizuje automat, ktery je v tomto případě řízen událostmi. Pro zachycení události je zde fronta událostí (kruhový buffer). Události mohu do fronty přidat třeba z ISR, nebo v podstate tam kde zavolám write_evt(evt).
+Projekt realizuje automat, ktery je v tomto případě řízen událostmi. Pro zachycení události je zde fronta událostí (kruhový buffer). Události mohu do fronty přidat třeba z ISR, nebo v podstate tam kde zavolám write_evt(evt). V této implementaci se využíva rekurze a k tomu je na platformě PIC18 třeba povolit reentrant stack v nastavení projektu. 
+
+[Video k reentrant stack](https://www.youtube.com/watch?v=gs6YYRIwYAs)
 
 ### Zápis stavu pak může vypadat např.:
 ```c
