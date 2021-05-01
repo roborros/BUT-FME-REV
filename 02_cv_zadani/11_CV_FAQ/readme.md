@@ -352,3 +352,6 @@ Upravte projekt FSM dostupný v tomto cvičení tak, aby stavový automat odpov�
 <p align="center">
   <img width="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/FSM_diagram_ukol.png">
 </p>
+
+### Vyplňtě formulář a zapojte se tak k rozvoji REV:
+[Klikni here!](https://forms.gle/A33xbxAvhHY1zMWy9)
