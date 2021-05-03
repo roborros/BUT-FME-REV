@@ -14,7 +14,7 @@ Složky jsou rozděleny na inc/src (hlavičkové soubory a zdrojové soubory).
 
 Nečitelný soubor v podobě knihovny lze vygenerovat v příkazovém řádku, XC8 musí být v systémových cestách:
 ```c
-xc8 --chip=18f46k22 --output=lpp soubor.c nazev.
+xc8 --chip=18f46k22 --output=lpp soubor.c 
 ```
 knihovna .lpp se pote přidává do abstraktní složky libraries v MPLABu. Pro tyto knihovny může sloužit složka lib.
 
