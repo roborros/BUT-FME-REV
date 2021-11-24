@@ -81,7 +81,7 @@ K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pr
 
 #define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 50000)      // hodnota timeru pro 0.05 s
+#define DELAY (0xFFFF - 49999)      // hodnota timeru pro 0.05 s
 
 
 void __interrupt() T1_ISR_HANDLER(void){
@@ -151,7 +151,7 @@ jako statické označujeme proměnné, které lze používat pouze vně bloku, v
 
 #define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
 #define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 1000)       // hodnota timeru pro 1 ms
+#define DELAY (0xFFFF - 999)       // hodnota timeru pro 1 ms
 
 volatile unsigned char flag = 0;             // globalni promenna 
 
