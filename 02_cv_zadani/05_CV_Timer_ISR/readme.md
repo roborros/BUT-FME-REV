@@ -66,7 +66,7 @@ K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pr
 * TMR1IF - Změna 0->1 vyvolá přerušení. Je nutní příznak smazat během přerušení. (Interrupt Flag)
 
 <p align="center">
-  <img width="300" height="33" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/CounterValue.png">
+  <img width="300" height="22" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/CounterValue.png">
 </p>
 
 ```c
