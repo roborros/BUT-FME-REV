@@ -2,7 +2,7 @@
 
 ## Obsah HWkitu
 <p align="center">
-  <img width="700" src="Figures/HW_kit.png">
+  <img width="600" src="Figures/HW_kit.png">
 </p>
 
 ## Popis základních komponent
@@ -35,12 +35,12 @@ Sada obsahuje barevné LED diody. Tato dioda svítí pouze prochází-li jí pro
 U THT LED lze orientaci poznat buď podle velikosti vývodů, kdy delší vývod bývá anoda. Případně lez poznat polaritu podle zkosení na pouzdře LED, kdy toto zkosení indikuje katodu. Oba tyto způsoby jsou znázorněné na obrázku níže. Výjimkou jsou RGB a podobné diody, které mají více vývodů. Zde je nutné polaritu zjistit z datasheetu.
 
 <p align="center">
-  <img width="300" src="Figures/LED.png">
+  <img width="250" src="Figures/LED.png">
 </p>
 
 ### Nepájivé pole (breadboard)
 Nepájivé pole umožňuje rozebíratelné propojení jednotlivých komponent bez nutnosti jejich pájení. Komponenty se umísťují do jednotlivých děr. Tyto díry jsou vzájemně propojeny po jednotlivých očíslovaných řádcích, jak je zobrazeno na obrázku níže. Jednotlivé řádky na levé a pravé straně nejsou spolu propojeny. Po obou stranách nepájivého pole se nachází ještě dvě samostatné části, které se obvykle používají pro rozvedení napájecího napětí.
 
 <p align="center">
-  <img width="300" src="Figures/breadboard_connections.jpg">
+  <img width="250" src="Figures/breadboard_connections.jpg">
 </p>
