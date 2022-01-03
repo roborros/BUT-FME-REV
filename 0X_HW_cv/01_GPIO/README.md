@@ -93,9 +93,121 @@ Závislost těchto dvou veličin bývá specifikována v datasheetu, jak je vid�
 Z rozboru víme, jaké parametry LED jsou pro návrh obvodu na obrázku níže důležité a v datasheetu si můžeme dohledat konkrétní hodnoty U<sub>F</sub> a I<sub>F</sub> pro naši diodu. Na základě znalostí těchto hodnot, hodnoty napájecího napětí U a Ohmova zákona můžeme určit hodnotu rezistoru zapojeného do série s LED následově:
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.image?R&space;=&space;\frac{U-U_F}{I_F}" title="R = \frac{U-U_F}{I_F}" />
+    <img src="https://latex.codecogs.com/svg.image?R&space;=&space;\frac{U-U_F}{I_F}" title="R = \frac{U-U_F}{I_F}" />
 </p>
 
 <p align="center">
   <img width="350" src="Figures/LED.png">
 </p>
+
+## Úloha 4: Spínání LED pomocí NPN tranzistoru
+
+### Zadání
+Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal externí LED pomocí bipolárního NPN tranzistoru spínaného pinem RB5.
+
+### Rozbor
+NPN tranzistor je bipolární tranzistor, kdy NPN vyjadřuje vnitřní polovodičovou strukturu, která je zobrazena spolu se značkou tranzistoru na obrázku níže. Ze struktury vidíme, že se v tranzistoru nachází dva PN přechody, tedy v podstatě dvě diody zapojené proti sobě v sérii.
+
+<p align="center">
+  <img width="350" src="Figures/NPN_structure.png">
+</p>
+
+Tranzistor má tři vývody odznačované jako **B**-báze, **C**-kolektor a **E**-emitor. Báze je řídicí elektroda, kdy proud bází ovlivňuje velikost proudu protékajícího mezi kolektorem a emitorem.
+
+V další části si popíšeme, jak volit tranzistor a jeho zapojení v případě, že jej chceme používat jako spínač.
+
+Pokud chceme tranzistor používat jako spínač, musíme jej provozovat v takzvaném pásmu saturace, které je zobrazeno na výstupní charakteristice na obrázku dole.
+
+<p align="center">
+  <img width="350" src="Figures/NPN_output_characteristic.png">
+</p>
+
+V tomto pásmu vidíme, že má tranzistor téměř lineární závislost mezi V<sub>CE</sub> a I<sub>C</sub>, chová se tedy jako odpor a má nejmenší ztráty. Pásmo saturace se nazývá proto, že nehledě na zvyšování I<sub>B</sub>, tak proud I<sub>C</sub> již dále neporoste.
+
+Další charakteristika důležitá pro pochopení fungování tranzistoru je vstupní charakteristika zobrazená na obrázku dole. Tato charakteristika má stejný tvar, jako V-A charakteristika diody v propustném směru (viz předchozí úloha). To, že se tranzistor chová mezi B a E jako dioda je vidět i z obrázku zobrazujícího strukturu tranzistoru. Z této charakteristiky plyne, že aby tranzistor mohl vést elektrický proud, musí být napětí mezi B a E alespoň 0,7 V.
+
+<p align="center">
+  <img width="350" src="Figures/NPN_input_characteristic.png">
+</p>
+
+Z charakteristik tedy vidíme, že jediné, jak můžeme tranzistor ovládat, je velikost proudu bází, za podmínky, že napětí mezi bází a emitorem je vyšší, než 0,7 V.
+
+Pokud tranzistor není saturován, tak velikost protékajícího proudu mezi kolektorem a emitorem je přímo úměrná velikosti proudu tekoucího do báze. Konstantou úměrnosti je zesilovací činitel označovaný jako h<sub>FE</sub> (*DC current gain*).
+
+Každý tranzistor má samozřejmě svá omezení na maximální proudy a napětí, které je schopen zvládnout.
+
+### Zapojení
+
+Z rozboru výše víme, že pro správné spínání tranzistoru musíme vhodně zvolit proud bází I<sub>B</sub> a tedy rezistor, který nám tento proud zajistí. K tomu ještě musíme znát maximální proud I<sub>C</sub>. Hodnotu I<sub>B</sub> můžeme buď zjistit z výstupní charakteristiky nebo výpočtem, kdy vyjdeme ze závislosti mezi h<sub>FE</sub> = I<sub>C</sub>/I<sub>B</sub>. Hodnotu h<sub>FE</sub> najdeme v datasheetu a použijeme její minimální hodnotu, tím získáme proud I<sub>B</sub>. Následně u výpočtu hodnoty odporu použijeme hodnotu napětí na našem řídicím pinu od které musíme odečíst hodnotu úbytku napětí na přechodu mezi B a E.
+
+
+**Příklad:**
+
+Chceme spínat proud 150 mA, hFE je 50 a spínací signál má maximální hodnotu 5 V.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?I_B&space;=&space;\frac{I_C}{h_{FE}}&space;=&space;&space;\frac{150&space;\,&space;mA}{50}=&space;3&space;\,&space;mA&space;&space;&space;&space;" title="I_B = \frac{I_C}{h_{FE}} = \frac{150 \, mA}{50}= 3 \, mA " />
+</p>
+
+Abychom si byli jisti, že je tranzistor plně sepnut, zvýšíme hodnotu požadovaného IB na dvojnásobek, tedy 6 mA. Potom RB bude:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?R_B&space;=&space;\frac{U-0,7}{I_B}&space;=&space;&space;\frac{5&space;\,&space;V&space;-&space;0,7&space;\,&space;V}{3&space;\,&space;mA}=&space;1\,433&space;\,\Omega&space;&space;&space;&space;" title="R_B = \frac{U-0,7}{I_B} = \frac{5 \, V - 0,7 \, V}{3 \, mA}= 1\,433 \,\Omega " />
+</p>
+
+Pro hodnotu bázového odporu tedy použijeme nejbližší nižší standardní hodnotu rezistoru.
+
+Pro zapojení tranzistoru existuje řada možností, my zde použijeme zapojení se společným emitorem (*common emmitor*), které je nejběžnější.
+
+<p align="center">
+  <img width="250" src="Figures/NPN.png">
+</p>
+
+## Úloha 5: Spínání LED pomocí N-MOSFET
+
+### Zadání
+Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal externí LED pomocí bipolárního N-MOSFET spínaného pinem RB5.
+
+### Rozbor
+MOSFET je moderní nástupce bipolárního tranzistoru. Hlavním rozdílem oproti svému předchůdci je to, že velikost protékajícího proudu přes tranzistor není závislá na proudu přiváděného na řídicí pin, ale na napětí. Schematická značka i značení elektrod je odlišné od bipolárního tranzistoru, jak je ukázáno na obrázku dole.
+
+<p align="center">
+  <img width="150" src="Figures/MOSFET_symbol.png">
+</p>
+
+Podmínkou k tomu, aby N-MOSFET vedl elektrický proud mezi I<sub>D</sub> mezi D a S, je ta, aby napětí mezi G a S bylo větší, než prahové napětí V<sub>GS(th)</sub> uváděné v datasheetu. My budeme opět používat tranzistor jako spínač, budeme se tedy chtít pohybovat v Ohmické části charakteristiky na obrázku dole. Zde vidíme, jakému napětí V<sub>GS</sub> a proudu I<sub>D</sub> odpovídá úbytek napětí na tranzistoru V<sub>DS</sub>. Cílem je dosáhnout co nejnižšího V<sub>DS</sub> a tedy i nejnižších ztrát.
+
+Každý tranzistor má samozřejmě svá omezení na maximální proudy a napětí, které je schopen zvládnout
+
+### Zapojení
+Tím, že je N-MOSFET spínán pouze napětím, nebudeme v našem obvodu potřebovat sériový rezistor u G. Nicméně, budeme zde potřebovat pull-down rezistor, tento rezistor nám zajistí, že gate tranzistoru bude mít nulový potenciál i v případě, že není připojen řídicí signál a nedojde k nechtěnému sepnutí tranzistoru.
+
+```
+Sami si vyzkoušejte, že pokud odpojíte řídicí signál na gate i pull-down rezistor, tak můžete sepnout tranzistor pouze dotekem prstu.
+```
+
+Výsledné schéma zapojení tranzistoru je na obrázku níže.
+
+<p align="center">
+  <img width="200" src="Figures/MOSFET.png">
+</p>
+
+```
+Zkuste měnit velikost napětí spínacího signálu tranzistoru z pinu RB5 pomocí potenciometru. Jaký to bude mít vliv?
+```
+
+## Úloha 6: Spínání LED přes optočlen
+
+### Zadání
+Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal přes optočlen připojenou LED pomocí pinu RB5.
+
+### Rozbor
+Optočlen je elektronická součástka sloužící ke galvanickému oddělení obvodů. Skládá se z LED na vstupu a fotodetektoru na výstupu (typicky fototranzistoru), mezi kterými je izolační vrstva. Optočleny se používají na přenos analogového nebo digitálního signálu, a to pouze jedním směrem.
+
+Jelikož se optočlen skládá ze dvou komponent, jejichž zapojení a použití jsme si už ukázali, viz schematický symbol optočlenu níže. Měli byste být již sami schopni na základě datasheetu výsledný obvod sestavit.
+
+<p align="center">
+  <img width="200" src="Figures/opto.png">
+</p>
+
+Pro detailnější pochopení optočlenů doporučuji následující odkaz: [www]( https://www.edn.com/guidelines-for-reading-an-optocoupler-datasheet/)
