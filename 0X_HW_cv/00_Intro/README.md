@@ -1,4 +1,9 @@
-# REV - HW cvičení - Seznámení s HWkitem
+# REV - HW cvičení - Úvod
+
+## Popis HW cvičení
+Cílem doplňkových HW cvičení je seznámit studenty se základními elektronickými komponenty formou praktických úloh, na kterých si mohou sami vyzkoušet reálné využití právě probírané látky.
+
+Cílem těchto cvičení není poskytnou detailní výklad dané problematiky, ale prakticky si sestavit vlastní elektrické obvody. Hlubší pochopení a vysvětlení poskytnou ostatní předměty během studia mechatroniky, případně si je zvídavý studující může sám dohledat.
 
 ## Obsah HWkitu
 <p align="center">

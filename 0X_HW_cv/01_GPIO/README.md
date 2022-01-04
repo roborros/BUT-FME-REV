@@ -11,7 +11,8 @@ Digitální vstupy integrovaných obvodů dávají na svém výstupu logickou ho
 V případě, že digitální vstup není k ničemu připojen, je takzvaně plovoucí (*floating*). Nemůžeme určit, jaká bude hodnota napětí na tomto pinu a může být snadno ovlivněn rušením z okolí, od sousedních pinů atd. Digitální hodnota vstupu tedy může nabývat náhodné hodnoty podle okolních podmínek.
 
 ```
-Sami si nyní vyzkoušejte, co se stane, pokud naprogramuje mikrokontrolér tak, že hodnotu na digitálním vstupu RB4, budete přímo zapisovat na pin ovládající LED1. Uvidíte, že i dotek prstu na pin RB4 můžete měnit stav LED1.
+Sami si nyní vyzkoušejte, co se stane, pokud naprogramuje mikrokontrolér tak, že hodnotu na digitálním vstupu RB4, budete přímo zapisovat na pin ovládající LED1.
+Uvidíte, že i dotek prstu na pin RB4 můžete měnit stav LED1.
 ```
 
 Pro správnou funkci je tedy nutné, aby na digitálním vstupu bylo neustále definované napětí.
@@ -33,6 +34,12 @@ Správné zapojení je zobrazeno níže na obrázku v levo, kdy je použit takzv
 </p>
 
 Hodnotu pull-up/down rezistoru volíme zpravidla od 1 kΩ do 100 kΩ v závislosti na kapacitě cesty, frekvenci signálu, požadavcích na spotřebu a dalších vlivech. V našich aplikacích budeme používat hodnotu 10 kΩ.
+
+Princip zapojení jednotlivých komponent na nepájivé pole pro variantu pull-up je na obrázku níže. 
+
+<p align="center">
+  <img width="300" src="Figures/fritzing.png">
+</p>
 
 ## Úloha 2: Debouncing tlačítka
 
@@ -97,7 +104,7 @@ Z rozboru víme, jaké parametry LED jsou pro návrh obvodu na obrázku níže d
 </p>
 
 <p align="center">
-  <img width="350" src="Figures/LED.png">
+  <img width="300" src="Figures/LED.png">
 </p>
 
 ## Úloha 4: Spínání LED pomocí NPN tranzistoru
@@ -109,7 +116,7 @@ Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného t
 NPN tranzistor je bipolární tranzistor, kdy NPN vyjadřuje vnitřní polovodičovou strukturu, která je zobrazena spolu se značkou tranzistoru na obrázku níže. Ze struktury vidíme, že se v tranzistoru nachází dva PN přechody, tedy v podstatě dvě diody zapojené proti sobě v sérii.
 
 <p align="center">
-  <img width="350" src="Figures/NPN_structure.png">
+  <img width="400" src="Figures/NPN_structure.png">
 </p>
 
 Tranzistor má tři vývody odznačované jako **B**-báze, **C**-kolektor a **E**-emitor. Báze je řídicí elektroda, kdy proud bází ovlivňuje velikost proudu protékajícího mezi kolektorem a emitorem.
@@ -160,7 +167,7 @@ Pro hodnotu bázového odporu tedy použijeme nejbližší nižší standardní 
 Pro zapojení tranzistoru existuje řada možností, my zde použijeme zapojení se společným emitorem (*common emmitor*), které je nejběžnější.
 
 <p align="center">
-  <img width="250" src="Figures/NPN.png">
+  <img width="200" src="Figures/NPN.png">
 </p>
 
 ## Úloha 5: Spínání LED pomocí N-MOSFET
@@ -202,12 +209,12 @@ Zkuste měnit velikost napětí spínacího signálu tranzistoru z pinu RB5 pomo
 Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal přes optočlen připojenou LED pomocí pinu RB5.
 
 ### Rozbor
-Optočlen je elektronická součástka sloužící ke galvanickému oddělení obvodů. Skládá se z LED na vstupu a fotodetektoru na výstupu (typicky fototranzistoru), mezi kterými je izolační vrstva. Optočleny se používají na přenos analogového nebo digitálního signálu, a to pouze jedním směrem.
+Optočlen je elektronická součástka sloužící ke galvanickému oddělení obvodů. Skládá se z LED na vstupu a fotodetektoru na výstupu (typicky fototranzistoru), mezi kterými je izolační vrstva. Optočleny se používají pro přenos analogového nebo digitálního signálu, a to pouze jedním směrem.
 
 Jelikož se optočlen skládá ze dvou komponent, jejichž zapojení a použití jsme si už ukázali, viz schematický symbol optočlenu níže. Měli byste být již sami schopni na základě datasheetu výsledný obvod sestavit.
 
 <p align="center">
-  <img width="200" src="Figures/opto.png">
+  <img width="200" src="Figures/opto.png" />
 </p>
 
 Pro detailnější pochopení optočlenů doporučuji následující odkaz: [www]( https://www.edn.com/guidelines-for-reading-an-optocoupler-datasheet/)
