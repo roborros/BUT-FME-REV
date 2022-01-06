@@ -41,13 +41,26 @@ Princip zapojení jednotlivých komponent na nepájivé pole pro variantu pull-u
   <img width="300" src="Figures/fritzing.png">
 </p>
 
-## Úloha 2: Debouncing tlačítka
+## Úloha 2: Využití interních pull-up rezistorů mikrokontroléru
+
+### Zadání
+Místo použití externích pull-up rezistorů, zkuste využít interní pull-up rezistory, které jsou dostupné pro všechny piny z PORTB k vyřešení úlohy 1.
+
+### Rozbor
+Mikrokontrolér použitý na REVkitu umožňuje využít interní slabé pull-up rezistory na všech pinech z PORTB a pinu RE3. Tím nám odpadne nutnost použít externí pull-up rezistory. Nicméně vnitřní pull-upy nemusí být vhodné pro každou aplikaci.
+
+Zkuste si vnitřní pull-up rezistory na pinu RB4 nastavit sami dle sekce 10.3.1 z datasheetu.
+
+### Zapojení
+Oproti zapojení z předchozího příkaldu již není nutné používat externí pull-up rezistor. K zapojení tlačítka nám tedy postačí GND a signál do pinu RB4.
+
+## Úloha 3: Debouncing tlačítka
 
 ### Zadání
 Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a při každém stlačení tlačítka měnil stav LED2 na REVkitu. První stlačení rozsvítí LED, druhé stlačení ji zhasne, třetí zase rozsvítí a tak dále.
 
 ### Rozbor
-Pokud implementujete algoritmus ze zadání a použijete zapojení z předchozího úkolu, tak zjistíte, že občas LED bude reagovat nejen na stlačení, ale i na uvolnění tlačítka, případně dojde pouze k jejímu probliknutí. Tento jev je způsoben mechanickými odskoky kontaktů tlačítka (*bouncing*) při jeho stlačení a uvolnění, průběh napětí při tomto jevu je zobrazen na obrázku níže. Jednotlivé změny napětí způsobují změnu logické hodnoty, kterou čteme na digitálním pinu a tedy i změnu stavu LED.
+Pokud implementujete algoritmus ze zadání a použijete zapojení z úkolu 1, tak zjistíte, že občas LED bude reagovat nejen na stlačení, ale i na uvolnění tlačítka, případně dojde pouze k jejímu probliknutí. Tento jev je způsoben mechanickými odskoky kontaktů tlačítka (*bouncing*) při jeho stlačení a uvolnění, průběh napětí při tomto jevu je zobrazen na obrázku níže. Jednotlivé změny napětí způsobují změnu logické hodnoty, kterou čteme na digitálním pinu a tedy i změnu stavu LED.
 
 <p align="center">
   <img width="350" src="Figures/bouncing.png">
@@ -70,7 +83,7 @@ Přechodový děj může obvykle trvat od 100 us až po jednotky milisekund. Ča
   <img width="200" src="Figures/debouncing.png">
 </p>
 
-## Úloha 3: Zapojení externí LED
+## Úloha 4: Zapojení externí LED
 
 ### Zadání
 Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka podle něj spínal externí LED připojenou k pinu RB5.
@@ -107,7 +120,7 @@ Z rozboru víme, jaké parametry LED jsou pro návrh obvodu na obrázku níže d
   <img width="300" src="Figures/LED.png">
 </p>
 
-## Úloha 4: Spínání LED pomocí NPN tranzistoru
+## Úloha 5: Spínání LED pomocí NPN tranzistoru
 
 ### Zadání
 Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal externí LED pomocí bipolárního NPN tranzistoru spínaného pinem RB5.
@@ -170,7 +183,7 @@ Pro zapojení tranzistoru existuje řada možností, my zde použijeme zapojení
   <img width="200" src="Figures/NPN.png">
 </p>
 
-## Úloha 5: Spínání LED pomocí N-MOSFET
+## Úloha 6: Spínání LED pomocí N-MOSFET
 
 ### Zadání
 Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal externí LED pomocí bipolárního N-MOSFET spínaného pinem RB5.
@@ -203,7 +216,7 @@ Výsledné schéma zapojení tranzistoru je na obrázku níže.
 Zkuste měnit velikost napětí spínacího signálu tranzistoru z pinu RB5 pomocí potenciometru. Jaký to bude mít vliv?
 ```
 
-## Úloha 6: Spínání LED přes optočlen
+## Úloha 7: Spínání LED přes optočlen
 
 ### Zadání
 Naprogramujte REVkit tak, aby digitální vstup RB4 snímal stav připojeného tlačítka a podle něj spínal přes optočlen připojenou LED pomocí pinu RB5.
