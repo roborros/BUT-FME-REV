@@ -23,7 +23,7 @@ Jelikož je reproduktor v podstatě cívka, je nutné brát zřetel na jeho zapo
 
 Musíme si dát pozor na dvě věci: impedanci cívky a indukované napětí při jejím spínání (*back EMF*)
 
-Impedance cívky v našem reproduktoru je 8 Ω. Při připojení k napětí 3,3 V to odpovídá proudu 412 mA. To je jednak důvod proč nemůžeme spínat cívku přímo digitálním pinem (protože by to proudově nezvládl) a dále je tato hodnota příliš velká i pro samotný linerání regulátor použitý na REVkitu, musíme proto protékající proud omezit vhodným sériovým rezistorem. Ve vaší sadě se nachází rezistor s hodnotou 20 Ω, který k tomu použijte.
+Impedance cívky v našem reproduktoru je 8 Ω. Při připojení k napětí 3,3 V to odpovídá proudu 412 mA. To je jednak důvod proč nemůžeme spínat cívku přímo digitálním pinem (protože by to proudově nezvládl) a dále je tato hodnota příliš velká i pro samotný lineární regulátor použitý na REVkitu, musíme proto protékající proud omezit vhodným sériovým rezistorem. Ve vaší sadě se nachází rezistor s hodnotou 20 Ω, který k tomu použijte.
 
 Dalším důvodem, proč je nutné být opatrný při spínání jakékoliv induktivní zátěže (elektromotor, relé, reproduktor, ale i dlouhé vodiče) je indukované napětí způsobené změnou procházejícího proudu cívkou. Při sepnutí nám toto napětí pouze způsobí exponencionální nárůst proudu cívkou, nicméně při vypnutí dojde k náhlé změně proudu a tedy i k velkému nárůstu indukovaného napětí. Dle indukčnosti cívky může toto indukované napětí dosáhnout až stovek voltů, které mohou zničit použitý tranzistor. Nejběžnějším řešením je zapojit paralelně s cívkou nulovou diodu (*flywheel diode*), která umožní, aby i po vypnutí tranzistoru mohl proudit proud cívkou a nedošlo k poškození tranzistoru.
 
