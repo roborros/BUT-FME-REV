@@ -44,7 +44,7 @@ U THT LED lze orientaci poznat buď podle velikosti vývodů, kdy delší vývod
 </p>
 
 ### Nepájivé pole (breadboard)
-Nepájivé pole umožňuje rozebíratelné propojení jednotlivých komponent bez nutnosti jejich pájení. Komponenty se umísťují do jednotlivých děr. Tyto díry jsou vzájemně propojeny po jednotlivých očíslovaných řádcích, jak je zobrazeno na obrázku níže. Jednotlivé řádky na levé a pravé straně nejsou spolu propojeny. Po obou stranách nepájivého pole se nachází ještě dvě samostatné části, které se obvykle používají pro rozvedení napájecího napětí.
+Nepájivé pole umožňuje rozebíratelné propojení jednotlivých komponent bez nutnosti jejich pájení. Komponenty se umísťují do jednotlivých děr. Tyto díry jsou vzájemně propojeny po jednotlivých řádcích, jak je zobrazeno na obrázku níže. Jednotlivé řádky na levé a pravé straně nejsou spolu propojeny.
 
 <p align="center">
   <img width="250" src="Figures/breadboard_connections.jpg">
