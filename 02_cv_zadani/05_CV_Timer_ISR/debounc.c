@@ -20,16 +20,18 @@
 
 typedef struct {
     char btn1_acc;
-    char btn1_stat;
-    
-    char btn2_acc;
-    char btn2_stat;
+   
+    char btn2_acc;   
     
     char btn3_acc;
-    char btn3_stat;
-    
+       
     char btn4_acc;
+        
+    char btn1_stat;
+    char btn2_stat;
+    char btn3_stat;
     char btn4_stat;
+    
 }btn_filter_t;
 
 
@@ -37,10 +39,8 @@ volatile btn_filter_t buttons = {0};
 
 void __interrupt(low_priority) ISR_HANDLER(void){
      
-    if (TMR2IF && TMR2IE ){             // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)  
-        
-        LATB5 = 1;
-        
+    if (TMR2IF && TMR2IE ){             
+              
         buttons.btn1_acc<<=1;
         buttons.btn1_acc |= BTN1;
         
@@ -56,17 +56,28 @@ void __interrupt(low_priority) ISR_HANDLER(void){
         if(buttons.btn1_acc == RAISING_EDGE){
            buttons.btn1_stat = 1; 
         }
+        else if(buttons.btn1_acc){
+            buttons.btn1_stat = 0;
+        }
         if(buttons.btn2_acc == RAISING_EDGE){
            buttons.btn2_stat = 1; 
+        }
+        else if(buttons.btn2_acc){
+            buttons.btn2_stat = 0;
         }
         if(buttons.btn3_acc == FALLING_EDGE){
            buttons.btn3_stat = 1; 
         }
+        else if(buttons.btn3_acc){
+            buttons.btn3_stat = 0;
+        }
         if(buttons.btn4_acc == FALLING_EDGE){
            buttons.btn4_stat = 1; 
         }
-        
-        LATB5 = 0;
+        else if(buttons.btn4_acc){
+            buttons.btn4_stat = 0;
+        }
+       
         TMR2IF = 0;                     // smazani IF
     }
 }
@@ -135,4 +146,3 @@ void driveLED(char in){
     LATD5 = in & 16 ? 1 : 0;    //LED4
     LATD6 = in & 32 ? 1 : 0;    //LED5
 }
-
