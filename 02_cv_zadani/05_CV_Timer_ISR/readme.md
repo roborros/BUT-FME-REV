@@ -20,8 +20,6 @@ PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které m
 // REV TIMER
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = OFF     // 4X PLL Enable (Oscillator OFF)
-#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
-#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
 #include <xc.h>
