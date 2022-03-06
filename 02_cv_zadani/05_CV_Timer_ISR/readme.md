@@ -71,8 +71,6 @@ K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pr
 // REV INTERRUPT
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
-#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
 #include <xc.h>
@@ -142,8 +140,6 @@ jako statické označujeme proměnné, které lze používat pouze vně bloku, v
 // REV INTERRUPT
 #pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
 #pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config PRICLKEN = ON    // Primary clock enable bit (Primary clock is always enabled)
-#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 #include <xc.h>
 
