@@ -1,5 +1,5 @@
 
-# REV - Rekreační cvičení
+# REV - FSM
 
 ## Nastavení pro větší projekty:
 Uvedeme si zde možné nastavení pro větší projekt. Umístění složek v systému je následovné:
