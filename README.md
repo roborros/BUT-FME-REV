@@ -7,9 +7,9 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
 * Další materiály
 
  # Bodové hodnoceni:
- * Závěrečný projekt  35b
+ * Závěrečný projekt  50b
  * Domácí úlohy 3x5 = 15b
- * Zápočtové testy 2x15 + 1x20 = 50b; 
+ * Zápočtové testy 2x10 + 1x15 = 35b; 
 
 ## Odkazy:
 [MPLAB](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide)
