@@ -31,7 +31,7 @@ void main(void){
 
         printf("Vloz cislo A:");
 
-        *p_i = getch() - '0';
+        *p_i = getchar() - '0';
         //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
 
         printf("Cislo A = %d = %d\n", a, *p_i); // * je operator dereference
@@ -46,7 +46,7 @@ void main(void){
         p_i = &b;    // zmena reference, p_i ukazuje na b
 
         //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
-        *p_i = getch() - '0';
+        *p_i = getchar() - '0';
 
         printf("Cislo B = %d = %d\n",b, *p_i); // * je operator dereference
         printf("Cislo B je na adrese: %p = %p\n",&b, p_i);
@@ -123,9 +123,9 @@ void main(void){
         for(i = 0; i < DELKA; i++){
               printf("Vloz %d. cislo:\n", i + 1);
 
-              // funkci getch() se zadava ukazatel na prvek pole
-              cisla[i] = getch() - '0';
-
+              // funkci getchar() se zadava ukazatel na prvek pole
+              cisla[i] = getchar() - '0';
+	      getchar();
         }
 
         // vypis pole - pres index
