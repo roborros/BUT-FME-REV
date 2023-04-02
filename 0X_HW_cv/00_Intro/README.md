@@ -15,7 +15,7 @@ Cílem těchto cvičení není poskytnou detailní výklad dané problematiky, a
 ### Resistory
 Sada vývodových metalických rezistorů s maximálním ztrátovým výkonem 0,25 W. Hodnota odporu je určena podle barevných proužků na povrchu rezistoru.
 
-HWkit obsahuje rezistory následujících hodnot: 20R, 4k7, 10k, ... <mark>Upravit podle skutečnosti</mark>
+HWkit obsahuje rezistory následujících hodnot: 20R, 220R, 4k7, 10k
 
 ### Potenciometr
 Rotační potenciometr s odporem 10 kΩ. Prostřední vývod je připojen na jezdec potenciometru.
@@ -42,6 +42,11 @@ U THT LED lze orientaci poznat buď podle velikosti vývodů, kdy delší vývod
 <p align="center">
   <img width="250" src="Figures/LED.png">
 </p>
+
+### IR LED a IR Fototranzistor
+IR dioda (průhledná) je LED, která vyzařuje infračervené záření, které je lidskému oku neviditelné. Nicméně její charateristika a zapojení je totožné s klasickými LED.
+
+Fototranzistor je bipolární tranzistor, v našem případě NPN, na jehož kolektorový PN přechod může dopadat světelné záření a tím ovlivňovat průchod proudu mezi bází a emitorem. Svým vzhledem vypadá shodně jako LED a může být snad zaměněn. V našem HWkitu má fototranzistor tmavě modrou barvu a kratší vývod je kolktor, delší poté emitor.
 
 ### Nepájivé pole (breadboard)
 Nepájivé pole umožňuje rozebíratelné propojení jednotlivých komponent bez nutnosti jejich pájení. Komponenty se umísťují do jednotlivých děr. Tyto díry jsou vzájemně propojeny po jednotlivých řádcích, jak je zobrazeno na obrázku níže. Jednotlivé řádky na levé a pravé straně nejsou spolu propojeny.
