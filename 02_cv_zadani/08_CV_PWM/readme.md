@@ -161,4 +161,3 @@ void main(void) {
   
   3) Nakonfigurujte PWM1 jako Half-bridge P1A motor a P1B LED5 (Tak že P1B je invertovaná k P1A).
   
-  ## Pozor je zadan ukol! Naleznete jej v teto složce.
