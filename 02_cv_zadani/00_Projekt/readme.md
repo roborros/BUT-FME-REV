@@ -7,7 +7,7 @@ Kód je níže, můžete použít online interpreter Pythonu:
 
 https://www.programiz.com/python-programming/online-compiler/
 
-### Odevzdejte .zip dle zadani v PDF součástí je kompletní MPLAB projekt
+### Odevzdejte .zip dle zadani v PDF jako kompletní MPLAB projekt
 
 ```Python
 import random
