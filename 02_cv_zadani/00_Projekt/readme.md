@@ -1,12 +1,13 @@
-# REV - Závěrečný projekt (odevzdání do 21.5.2023)
+# REV - Závěrečný projekt (odevzdání do 19.5.2024)
 - [Odkaz video](https://youtu.be/4OCYCeq3aVA)
 
 ### Rozbalte a vygenerujte si zadaní (vstupem je číslo studenta)
 
-
 Kód je níže, můžete použít online interpreter Pythonu:
 
 https://www.programiz.com/python-programming/online-compiler/
+
+### Odevzdejte .zip dle zadani v PDF jako kompletní MPLAB projekt
 
 ```Python
 import random
