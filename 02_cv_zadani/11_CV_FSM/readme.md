@@ -18,7 +18,7 @@
 * Možností jak FSM programovat je několik, jednoduché automaty lze dělat pomocí switch-case, což je poněkud nepřehledné, ale často se používá. Dále pak lze použít různý koncept tabulek a  struktur a pointery. 
 
 <p align="center">
-  <img width="520" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/fsm.jpg">
+  <img width="520" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/fsm.jpg">
 </p>
 
 ## Příklad FSM.x:
@@ -47,7 +47,7 @@ void init(fsm_t *fsm, uint8_t event){
 ## Úkol:
 Upravte projekt FSM dostupný v tomto cvičení tak, aby stavový automat odpovídal diagramu níže.
 <p align="center">
-  <img width="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FAQ/FSM_diagram_ukol.png">
+  <img width="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_FSM/FSM_diagram_ukol.png">
 </p>
 
 ### Vyplňtě formulář a zapojte se tak k rozvoji REV:
