@@ -111,6 +111,7 @@ int main(void) {
 ```
 Tipy:
 Povšimněte si především přístupu k jednotlivým bitům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
+Je možné použít knihovní funkci __delay_ms(100); Je třeba definovat makro (např.): #define _XTAL_FREQ 32000000
 ```
 
 ### Upravte program tak, aby zobrazoval různé sekvence:
