@@ -45,7 +45,7 @@ Postup:
     1) vytvorte projekt(Standalone project)
     2) cilove zarizeni je PIC18F46K22
     3) jako prekladac zvolte Microchip XC8
-    4) jako programator zvolte PICKIT3
+    4) jako programator zvolte PICKIT3, nebo Snap
     5) vytvorte novy soubor main.c, zkopirujte do nej prilozeny kod
     6) pomoci “Build main project” sestavte projekt
     7) pomoci “Make and Program device” naprogramujte zarizeni
