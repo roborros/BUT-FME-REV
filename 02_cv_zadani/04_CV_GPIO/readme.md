@@ -45,7 +45,7 @@ Postup:
     1) vytvorte projekt(Standalone project)
     2) cilove zarizeni je PIC18F46K22
     3) jako prekladac zvolte Microchip XC8
-    4) jako programator zvolte PICKIT3
+    4) jako programator zvolte PICKIT3, nebo Snap
     5) vytvorte novy soubor main.c, zkopirujte do nej prilozeny kod
     6) pomoci “Build main project” sestavte projekt
     7) pomoci “Make and Program device” naprogramujte zarizeni
@@ -111,6 +111,7 @@ int main(void) {
 ```
 Tipy:
 Povšimněte si především přístupu k jednotlivým bitům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
+Je možné použít knihovní funkci __delay_ms(100); Je třeba definovat makro (např.): #define _XTAL_FREQ 32000000
 ```
 
 ### Upravte program tak, aby zobrazoval různé sekvence:
