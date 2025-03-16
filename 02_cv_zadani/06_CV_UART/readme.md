@@ -173,7 +173,7 @@ void main(void)
 
 #define _XTAL_FREQ 32E6
 
-void putch(unsigned char data);
+void putch(char data);
 
 /*--------main--------*/
 int main(void) {
@@ -198,7 +198,7 @@ int main(void) {
     }
 }
 
-void putch(unsigned char data){
+void putch(char data){
     while(!TX1IF);
     TXREG1 = data;
 }
