@@ -1,0 +1,243 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F46K22 ]
+[d frameptr 4065 ]
+"670 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+"1368
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"9 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"24 D:\MOJE\VUT\Vyuka\REV\2020\CV6_Z.X\main_u5.c
+[v _ISR ISR `IIH(v  1 e 1 0 ]
+"40
+[v _main main `(i  1 e 2 0 ]
+"15 D:\MOJE\VUT\Vyuka\REV\2020\CV6_Z.X\UartIO.c
+[v _UART_PutChar UART_PutChar `(v  1 e 1 0 ]
+"27
+[v _UART_PutStr UART_PutStr `(v  1 e 1 0 ]
+"35
+[v _putch putch `(v  1 e 1 0 ]
+"147 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f46k22.h
+[v _ANSELC ANSELC `VEuc  1 e 1 @3898 ]
+[s S127 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"8536
+[s S136 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S145 . 1 `S127 1 . 1 0 `S136 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES145  1 e 1 @3988 ]
+"8726
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+[s S24 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"10432
+[s S33 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S36 . 1 `uc 1 RX9D1 1 0 :1:0 
+`uc 1 OERR1 1 0 :1:1 
+`uc 1 FERR1 1 0 :1:2 
+`uc 1 ADDEN1 1 0 :1:3 
+`uc 1 CREN1 1 0 :1:4 
+`uc 1 SREN1 1 0 :1:5 
+`uc 1 RX91 1 0 :1:6 
+`uc 1 SPEN1 1 0 :1:7 
+]
+[s S45 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S49 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S52 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[u S55 . 1 `S24 1 . 1 0 `S33 1 . 1 0 `S36 1 . 1 0 `S45 1 . 1 0 `S49 1 . 1 0 `S52 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES55  1 e 1 @4011 ]
+[s S207 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"10876
+[s S216 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S225 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S229 . 1 `S207 1 . 1 0 `S216 1 . 1 0 `S225 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES229  1 e 1 @4012 ]
+"11210
+[v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
+"11288
+[v _RCREG1 RCREG1 `VEuc  1 e 1 @4014 ]
+"11366
+[v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
+"18491
+[v _GIE GIE `VEb  1 e 0 @32663 ]
+"19352
+[v _PEIE PEIE `VEb  1 e 0 @32662 ]
+"19454
+[v _RC1IE RC1IE `VEb  1 e 0 @31981 ]
+"19457
+[v _RC1IF RC1IF `VEb  1 e 0 @31989 ]
+"20585
+[v _TX1IF TX1IF `VEb  1 e 0 @31988 ]
+"55 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
+[v _flags flags `i  1 s 2 flags ]
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"69
+[v _nout nout `i  1 s 2 nout ]
+[s S118 . 82 `[80]uc 1 data 80 0 `uc 1 i 1 80 `uc 1 full 1 81 ]
+"22 D:\MOJE\VUT\Vyuka\REV\2020\CV6_Z.X\main_u5.c
+[v _message_in message_in `VES118  1 e 82 0 ]
+"40
+[v _main main `(i  1 e 2 0 ]
+{
+"64
+[v main@k k `i  1 a 2 80 ]
+"58
+[v main@muj_str muj_str `[80]uc  1 a 80 0 ]
+"71
+} 0
+"9 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[s S786 _IO_FILE 6 `*.39uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+"13
+[v sprintf@f f `S786  1 a 6 35 ]
+"12
+[v sprintf@ap ap `[1]*.39v  1 a 2 33 ]
+"9
+[v sprintf@s s `*.39uc  1 p 2 27 ]
+[v sprintf@fmt fmt `*.32Cuc  1 p 2 29 ]
+"23
+} 0
+"1368 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1371
+[v vfprintf@cfmt cfmt `*.32uc  1 a 2 25 ]
+[s S301 _IO_FILE 0 ]
+"1368
+[v vfprintf@fp fp `*.39S301  1 p 2 19 ]
+[v vfprintf@fmt fmt `*.32Cuc  1 p 2 21 ]
+[v vfprintf@ap ap `*.39*.39v  1 p 2 23 ]
+"1382
+} 0
+"670
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+{
+[s S301 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.39S301  1 p 2 13 ]
+[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 15 ]
+[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 17 ]
+"1365
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 4 ]
+[s S786 _IO_FILE 6 `*.39uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputc@fp fp `*.39S786  1 p 2 6 ]
+"21
+} 0
+"35 D:\MOJE\VUT\Vyuka\REV\2020\CV6_Z.X\UartIO.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@data data `uc  1 a 1 wreg ]
+[v putch@data data `uc  1 a 1 wreg ]
+[v putch@data data `uc  1 a 1 3 ]
+"38
+} 0
+"27
+[v _UART_PutStr UART_PutStr `(v  1 e 1 0 ]
+{
+"28
+[v UART_PutStr@i i `i  1 a 2 6 ]
+"27
+[v UART_PutStr@str str `*.39uc  1 p 2 4 ]
+"33
+} 0
+"15
+[v _UART_PutChar UART_PutChar `(v  1 e 1 0 ]
+{
+[v UART_PutChar@c c `uc  1 a 1 wreg ]
+[v UART_PutChar@c c `uc  1 a 1 wreg ]
+[v UART_PutChar@c c `uc  1 a 1 3 ]
+"18
+} 0
+"24 D:\MOJE\VUT\Vyuka\REV\2020\CV6_Z.X\main_u5.c
+[v _ISR ISR `IIH(v  1 e 1 0 ]
+{
+"26
+[v ISR@chachar chachar `uc  1 a 1 2 ]
+"37
+} 0
