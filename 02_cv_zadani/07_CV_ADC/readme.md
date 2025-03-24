@@ -127,7 +127,7 @@ void main(void) {
     ADCON0bits.ADON = 1;            //ADC zapnout
     
     uint16_t pot1;                  // promenna pro vysledek prevodu
-    char text[17] = "";             // retezec zatim prazdny
+    char text[32] = "";             // retezec zatim prazdny
     
     while(1){
         
@@ -191,7 +191,7 @@ void main(void) {
     ADIE = 1;       // ADC Interrupt
     GIE  = 1;       // globalni povoleni Interrupt
     
-    char text[17] = "";             // retezec zatim prazdny
+    char text[32] = "";             // retezec zatim prazdny
     
     while(1){
         
