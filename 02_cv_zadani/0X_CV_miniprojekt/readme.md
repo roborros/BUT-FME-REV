@@ -18,5 +18,5 @@ Zapojení:
 
 ## Pro rychlíky a rychlice
 * Implementujte debouncing tlačítka s využitím časovače, posuvného registru, masky, stavových proměnných atd...
-* Přidejte další tlačítko sloužící pro změnu skladby. Další noty naleznete na odkazu v hlavičkovém souboru.
+* Přidejte další tlačítko sloužící pro změnu skladby. Další noty naleznete na [odkazu v hlavičkovém souboru.](https://github.com/robsoncouto/arduino-songs )
 
