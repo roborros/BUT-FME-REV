@@ -8,6 +8,12 @@ Zapojení:
 * Tlačítko -> RB4
 * MOSFET -> RB5
 
+### Pinová lišta vpravo od tlačítek:
+
+<p align="center">
+  <img width="150" heigh="350" src="pinout.png" />
+</p>
+
 ## Postup
 1. Na breadboardu si zapojte LED diodu a vyzkoušejte si její spínání. Využijte následující zapojení [Úloha 4: Zapojení externí LED](https://github.com/MBrablc/BUT-FME-REV/tree/master/0X_HW_cv/01_GPIO#%C3%BAloha-4-zapojen%C3%AD-extern%C3%AD-led)
 2. Na breadboardu vytvořte obvod obsahující tlačítko a pull-up resistor. Vyzkoušejte funkcionalitu spínáním externí LED zapojené v předchozím kroku (tlačítko stisknuto = LED svítí a opačně). Využijte následující zapojení [Úloha 1: Pull-up, pull-down rezistory](https://github.com/MBrablc/BUT-FME-REV/tree/master/0X_HW_cv/01_GPIO#%C3%BAloha-1-pull-up-pull-down-rezistory)
