@@ -83,7 +83,7 @@ void init(void){
     RCSTA1bits.CREN = 1;        // zapnuti RX 
 }
 
-void putch(unsigned char data);
+void putch(char data);
 void SPIWrite(uint8_t channel ,uint8_t data);
 
 void main(void) {
@@ -121,7 +121,7 @@ void SPIWrite(uint8_t channel ,uint8_t data){
     
 }
 
-void putch(unsigned char data){
+void putch(char data){
     while(!TX1IF);
     TXREG1 = data;
 }
