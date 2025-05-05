@@ -51,4 +51,4 @@ Upravte projekt FSM dostupný v tomto cvičení tak, aby stavový automat odpov�
 </p>
 
 ### Vyplňtě formulář a zapojte se tak k rozvoji REV:
-[Klikni here!](https://forms.gle/XMxoySbtPJ3iUvsB7)
+[Formulář REV](https://forms.gle/XMxoySbtPJ3iUvsB7)
