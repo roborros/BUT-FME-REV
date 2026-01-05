@@ -8,7 +8,7 @@
   <img width="700" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Prostredi.png">
 </p>
 
-Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instalační setup. Pokud je vše v pořádku pojde vám kompilovat a spustit zkušební kód, který vytiskne do konzole "Ahoj svete!". V prostředí můžete pracovat s jednotlivým scriptem, nebo projektem. Většinou je výhodné mít na vše projekt. Vytvořme si tedy projekt.
+Prostředí DEV c++ ma intuitivní instalaci, kde je třeba jen projít instalační setup. Pokud je vše v pořádku půjde vám kompilovat a spustit zkušební kód, který vytiskne do konzole "Ahoj svete!". V prostředí můžete pracovat s jednotlivým scriptem, nebo projektem. Většinou je výhodné mít na vše projekt. Vytvořme si tedy projekt.
 
 - pro spuštění programu je třeba jej zkompilovat (F9) a spustit (F10), nebo oboje (F11). Tlačítka jsou i na horní liště.
 
