@@ -1,5 +1,4 @@
-# REV - Druhé cvičení
-- Funkce()
+# REV - Druhé cvičení-Funkce()
 ```c
 // REV-funkce
 
