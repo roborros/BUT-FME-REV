@@ -12,12 +12,10 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
  * Zápočtové testy 2x15 + 1x10 = 40b; 
 
 ## Odkazy:
-[MPLAB V6.20](https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v6.20-windows-installer.exe)
+[MPLAB V6.20](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide#tabs)
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
 
 [Program Termite](https://www.compuphase.com/software_termite.htm)
 
-[Datasheet PIC18F46K22](http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf)
-
-[Datasheet XC8](http://ww1.microchip.com/downloads/en/devicedoc/50002053g.pdf)
+[Datasheet AVR128DB48](http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf)
