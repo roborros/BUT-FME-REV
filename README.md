@@ -13,6 +13,8 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
  * Zápočtové testy 2x15 + 1x10 = 40b; 
 
 ## Odkazy:
+[DEV c++](https://sourceforge.net/projects/orwelldevcpp/)
+
 [MPLAB IDE](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide#tabs)
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
