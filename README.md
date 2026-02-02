@@ -19,4 +19,6 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
 
 [Program Termite](https://www.compuphase.com/software_termite.htm)
 
-[Datasheet AVR128DB48]([http://ww1.microchip.com/downloads/en/DeviceDoc/40001412G.pdf](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR128DB28-32-48-64-DataSheet-DS40002247.pdf))
+[Datasheet AVR128DB48](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR128DB28-32-48-64-DataSheet-DS40002247.pdf)
+
+[AVR KIT](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/AVR128DB48-Curiosity-Nano-HW-UserG-DS50003037A.pdf)
