@@ -1,3 +1,3 @@
 # Různé materialy a odkazy
 
-[C tutorial](https://www.programiz.com/c-programming/c-input-output)
+[C tutorial](https://www.programiz.com/c-programming/getting-started)
