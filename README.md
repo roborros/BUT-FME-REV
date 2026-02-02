@@ -13,14 +13,14 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
  * Zápočtové testy 2x15 + 1x10 = 40b; 
 
 ## Odkazy:
-[DEV c++](https://sourceforge.net/projects/orwelldevcpp/)
+[DEV c++ IDE](https://sourceforge.net/projects/orwelldevcpp/)
 
 [MPLAB IDE](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide#tabs)
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
 
-[Program Termite](https://www.compuphase.com/software_termite.htm)
+[Program Termite komunikace](https://www.compuphase.com/software_termite.htm)
 
 [Datasheet AVR128DB48](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/AVR128DB28-32-48-64-DataSheet-DS40002247.pdf)
 
-[AVR KIT](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/AVR128DB48-Curiosity-Nano-HW-UserG-DS50003037A.pdf)
+[AVR KIT manual](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/UserGuides/AVR128DB48-Curiosity-Nano-HW-UserG-DS50003037A.pdf)
