@@ -143,3 +143,43 @@ int main(void) {
 <p align="center">
   <img width="700" height="450" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/01_CV_Uvod/Debug.png">
 </p>
+
+
+# 🚀 Prompty pro studium C
+
+Tento seznam obsahuje prompty pro LLM (jako Gemini nebo ChatGPT)
+
+---
+
+## 🏗️ 1. Popis základního programu v C
+**Prompt:**
+> Napiš jednoduchý program v C, který sečte dvě proměnné typu `int32_t` a výsledek vypíše. Vysvětli:
+> - Význam `#include` (zejména `stdio.h` a `stdint.h`).
+> - Proč je `main` tzv. **entry point**.
+> - Mechanismus fungování `printf` a formátovacích značek (Použití standardních značek `%d`, `%f`, `%c` atd.).
+> - Význam návratové hodnoty `return 0`.
+
+## 📋 2. Datové typy a paměť
+**Prompt:**
+> Vysvětli základní datové typy v C (`int`, `char`, `float`, `double`). Vytvoř tabulku s jejich obvyklou velikostí v bajtech a rozsahem hodnot. Dále se zaměř na moderní standardy:
+> 1. Vysvětli typy s pevnou šířkou z knihovny `<stdint.h>` (jako `int8_t`, `uint32_t`, `int16_t` atd.) a proč je lepší je používat místo běžného `int`.
+> 2. Vysvětli použití knihovny `<stdbool.h>` pro práci s logickými hodnotami `true` a `false`.
+> 3. Ujasni rozdíl mezi `signed` a `unsigned` variantami a co se stane při přetečení (overflow) u `unsigned` typu.
+
+---
+
+## 🔀 3. Řízení toku (Podmínky a Cykly)
+**Prompt:**
+> Vytvoř přehledné srovnání pro začátečníka v C:
+> - Rozdíl mezi `if-else` a `switch-case` (kdy je co efektivnější a proč nezapomenout na `break`).
+> - Srovnání cyklů `for`, `while` a `do-while` v tabulce.
+> - Praktické ukázky použití příkazů `break` a `continue` uvnitř cyklů, aby bylo jasné, jak ovlivňují průběh.
+
+---
+
+## 🔢 4. Logické vs. Bitové operátory
+**Prompt:**
+> Vysvětli rozdíl mezi logickými operátory (`&&`, `||`, `!`) a bitovými operátory (`&`, `|`, `^`, `~`, `<<`, `>>`).
+> - U bitových operátorů ukaž názorný příklad na dvou 8bitových číslech (např. 5 a 3) převedených do binární soustavy, aby bylo vidět, co se děje s jednotlivými bity.
+
+---
