@@ -1,7 +1,7 @@
-# REV - První cvičení
+# 🚀 REV - První cvičení
 - Seznamte se s vývojovým prostředím DEV C++. Prostředí obsahuje vše co začátečník v C potřebuje a je velmi jednoduché. Nepotřebuje žádnou dodatečnou instalaci kompilátoru atd. První seznámení s prostředím projdete s cvičícím.
 
-## Odkaz na stažení DEV C++: 
+## 📂 Odkaz na stažení DEV C++: 
 [Odkaz ke stažení](https://sourceforge.net/projects/orwelldevcpp/)
 
 <p align="center">
@@ -28,7 +28,7 @@ int main(void) {
 }
 ```
 
-## 🚀 Příklad 1.1
+## 🏗️ Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. 
 Pokud si zatím nejste v jazyce jistí vše pro dnešní cvičení najdete: [C tutorial](https://www.programiz.com/c-programming/c-input-output)
 
@@ -104,7 +104,7 @@ int main(void) {
    4) program vypise fibonaciho posloupnost do 55 (0 1 1 2 3 5 8 13 21 34 55)
    5) program vyhodnotí jestli je číslo dělitelné 3, nebo 7, ale ne zároveň
 
-#  🚀  Debugging 
+#  ⚙️ Debugging 
 - projděte si základní debugging s cvičícím
 - je nutné přepnout kompilátor na Debug pak (F5)
 - program zastavuje breakpoint
