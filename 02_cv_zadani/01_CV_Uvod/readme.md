@@ -28,7 +28,7 @@ int main(void) {
 }
 ```
 
-## Příklad 1.1
+## 🚀 Příklad 1.1
 * Následující výpis ukazuje jednoduchý příklad v jazyce C. 
 Pokud si zatím nejste v jazyce jistí vše pro dnešní cvičení najdete: [C tutorial](https://www.programiz.com/c-programming/c-input-output)
 
@@ -96,7 +96,7 @@ int main(void) {
 }
 ```
 
-### Upravte příklad 1.1 takto:
+###  📋  Upravte příklad 1.1 takto:
 
    1) program vypíše řetězec “Ahoj svete!” třináctkrát za sebou. Každý řetězec bude na novém řádku a uvozen pořadovým číslem – využijte cyklus!
    2) pro každé pořadové číslo program zjistí, zda je číslo dělitelné pěti a vypíše poznámku do závorky.
@@ -104,7 +104,7 @@ int main(void) {
    4) program vypise fibonaciho posloupnost do 55 (0 1 1 2 3 5 8 13 21 34 55)
    5) program vyhodnotí jestli je číslo dělitelné 3, nebo 7, ale ne zároveň
 
-# Debugging 
+#  🚀  Debugging 
 - projděte si základní debugging s cvičícím
 - je nutné přepnout kompilátor na Debug pak (F5)
 - program zastavuje breakpoint
