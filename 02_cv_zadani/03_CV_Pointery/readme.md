@@ -1,8 +1,8 @@
-# REV - Třetí cvičení
+# 🚀 REV - Třetí cvičení
 - Pole, řetězce, struktury a pointery
 ## Příklad 3.1: pointery
 
-Vzpomeňte si:
+💡 Vzpomeňte si:
 
    1)každá proměnná je místo v paměti, opatřené názvem, velikost místa v paměti je daná datovým typem
    
@@ -78,14 +78,14 @@ int *max1(int *a, int* b){
     return b;
 }
 ```
- ### Program demonstruje základní rysy práce s ukazateli-pointery. Povšimněte si:
+ ### ⚠️ Program demonstruje základní rysy práce s ukazateli-pointery. Povšimněte si:
 
    1) ukazatel se definuje jako proměnná, pouze se syntaktickou hvezdičkou navíc: int *p_i;
    2) operátorem reference & se získá adresa proměnné: p_i = &a;
    3) operátorem dereference * se získá hodnota na adrese ukazatele: a = *p_i;
    4) ukazatel jako argument funkce umožňuje tzv. volání referencí, tj. funkce může mj. měnit obsah referencované proměnné
 
-### Úloha 3.2: Cvičení s ukazateli
+### 📋 Úloha 3.2: Cvičení s ukazateli
 
 1) Vytvořte funkci prohod(int *a, int *b), která prohodí obsahy proměnných a a b.
 
@@ -94,7 +94,7 @@ Poznámka: s výhodou můžete využít tělo programu z předchozího příklad
 ```
 2) Vytvořte funkci pricti(int *a, int prirustek), která k hodnotě proměnné a připočte prirustek.
 
-## Příklad 3.3: Pole
+## 🏗️ Příklad 3.3: Pole
 
 ```c
 #include <stdio.h>
@@ -188,7 +188,7 @@ int max1(int *p,int len){
    9) pole je v zásadě konstantní ukazatel
 
 
-## Úloha 3.4: Polní cvičení
+## 📋 Úloha 3.4: Polní cvičení
 
 Vytvořte funkci pro práci s poli:
 
@@ -203,7 +203,7 @@ Vytvořte funkci pro práci s poli:
 int pole[8] = {1,5,7,6,3,5,2,1};
 ```
 
-## Úloha 3.5: Řetězce
+## 📋 Úloha 3.5: Řetězce
 
 ### Řetězce jsou v C realizovány jako pole typu char, například:
 ```c
@@ -218,7 +218,7 @@ Důležité je, že řetězec je vždy ukončen znakem '\0' (ordinálni hodnota 
 
 3) Program rozšiřte o funkci int naopak(char *ret), který vypíše řetězec naopak. Využijte procházení pole pomocí ukazatelů.
 
-## Příklad 3.6: Základní práce se strukturou
+## 🏗️ Příklad 3.6: Základní práce se strukturou
 
 - Ukázka demonstruje základní práci se strukturou - definici struktury a datového typu, definici a inicializaci proměnné tohoto typu, práci s prvky struktury, práci s ukazatelem: 
 
@@ -270,3 +270,54 @@ void pozdrav(void){
 	printf("Ahoj\n");
 }
 ```
+
+
+
+# 🚀 Prompty pro studium C
+
+Tento seznam obsahuje prompty pro LLM (jako Gemini nebo ChatGPT)
+
+---
+## 📍 1. Pointery (Ukazatele) a paměť
+**Prompt:**
+> Vysvětli základy pointerů v C:
+> - **Operátory `&` a `*`:** Rozdíl mezi získáním adresy a čtením hodnoty z adresy.
+> - **Typy:** Co nám říká typ pointeru (např. `int32_t *`) o datech, na která ukazuje.
+> - **NULL:** Význam `NULL` pointeru jako bezpečnostního prvku.
+
+## 📏 2. Pole a Pointerová aritmetika
+**Prompt:**
+> Vysvětli vztah mezi polem a ukazatelem:
+> - **Identita:** Proč je jméno pole v podstatě pointer na první prvek.
+> - **Aritmetika:** Jak funguje posouvání v paměti pomocí `*(ptr + i)`.
+> - **Funkce:** Jak správně předat pole do funkce (včetně předání jeho délky).
+
+---
+
+## 🔤 3. Znaky a řetězce (Strings)
+**Prompt:**
+> Vysvětli práci s textem v C jako s polem charakterů:
+> - **Null Terminator:** Význam znaku `\0` pro ukončení řetězce a jeho vliv na délku pole.
+> - **Literály:** Rozdíl mezi zápisem znaků v `' '` a řetězců v `" "`.
+> - **Knihovna <string.h>:** Proč pro práci s textem potřebujeme funkce jako `strlen`, `strcpy` a `strcmp` namísto běžných operátorů.
+> - **Bezpečnost:** Na co si dát pozor, aby nedošlo k přetečení pole při kopírování textu.
+
+---
+
+## 🧠 4. Dynamická alokace a alokace ve funkcích
+**Prompt:**
+> Vysvětli principy správy paměti na haldě (heap):
+> - **malloc & free:** Základní životní cyklus paměti a prevence Memory Leaků.
+> - **Alokace skrze argument:** Proč pro alokaci paměti uvnitř funkce potřebujeme double pointer (`**`).
+> - **Předávání adresou:** Rozdíl mezi změnou hodnoty a změnou adresy, na kterou pointer ukazuje.
+> - **Bezpečnost:** Kontrola návratové hodnoty mallocu a nulování pointerů po uvolnění.
+---
+
+## 🏗️ 5. Složené typy a paměť (struct, union, enum)
+**Prompt:**
+> Vysvětli tvorbu vlastních datových typů a jejich uložení v paměti:
+> - **Struct & Padding:** Jak definovat strukturu a proč vzniká "vatar" (padding) mezi prvky kvůli zarovnání paměti.
+> - **Typedef:** Vytváření čitelných přezdívek pro složité typy.
+> - **Union:** Sdílení jednoho paměťového místa různými proměnnými a praktické využití.
+> - **Enum:** Definice pojmenovaných celočíselných konstant pro přehlednější kód.
+---
