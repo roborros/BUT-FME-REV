@@ -3,7 +3,7 @@
 3) Poté nainstalujte kompilátor XC8 (zaškrtněte ať se vám přidá do system path)
 
 ## Odkazy:
-[MPLAB V6.20](https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/MPLABX-v6.20-windows-installer.exe)
+[MPLAB IDE](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide#tabs)
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
 
