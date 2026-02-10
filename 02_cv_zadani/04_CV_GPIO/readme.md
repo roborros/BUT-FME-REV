@@ -11,7 +11,7 @@
 - GPIO (Rozpis pinů na AVR desce)
 
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/IOEduKit.png">
+  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/AVR_pinout.png">
 </p>
 
 - Mapa SFR pro PIC18f46k22 str.78:
