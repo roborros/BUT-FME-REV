@@ -95,28 +95,28 @@ int main(void) {
 Naštěstí má výrobce k dispozici soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru xc.h. Názvy korespondují s názvy SFRs v datasheetu.
 
 ```c
-// REV GPIO
-#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
 
-#include <xc.h>
+#define F_CPU 4000000UL    // Definice frekvence (výchozí u AVR DB je 4 MHz)
+#include <avr/io.h>
+#include <util/delay.h>
 
+#define LED_PIN 3          // Definujeme pin PB3
 
 int main(void) {
-    
-    TRISDbits.TRISD2 = 0;
-    TRISCbits.TRISC0 = 1;
-    
-    while(1){
-        
-        if (PORTCbits.RC0){             //  kontrola stisknuti BTN1
-            LATDbits.LATD2 ^= 1;        //  prevráceni LED1 pomoci XOR
-        }
-        for(long i=1; i<100000; i++);   //  cekani...  
+    // 1. Nastavení pinu jako VÝSTUP (Output)
+    // Používáme registr DIRSET pro atomický zápis
+    PORTB.DIRSET = (1 << LED_PIN);
+
+    while (1) {
+        // 2. Překlopení (Toggle) stavu pinu
+        // Každým zápisem 1 do OUTTGL se stav LED změní (z 0 na 1 a naopak)
+        PORTB.OUTTGL = (1 << LED_PIN);
+
+        // 3. Čekání (500 ms)
+        _delay_ms(500);
     }
-    return 0;                           // nikdy se neprovede
 }
+
 ```
 
 ```
