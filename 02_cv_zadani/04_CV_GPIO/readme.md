@@ -7,10 +7,8 @@
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
 
-# REV - Čtvrté cvičení
-- GPIO
-[Link na video-návod](https://youtu.be/gWOVH6w8qZA)
-- GPIO (Rozpis pinů na EduKitu)
+# REV - Čtvrté cvičení GPIO
+- GPIO (Rozpis pinů na AVR desce)
 
 <p align="center">
   <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/IOEduKit.png">
