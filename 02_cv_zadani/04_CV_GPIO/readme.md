@@ -17,11 +17,11 @@
 ### Peripheral Address Map pro AVR128DB48 str.68:
 
 <p align="center">
-  <img width="467" height="540" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/SFRegisters.png">
+  <img width=750" height="700" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/registry_map.png">
 </p>
 
 ## Prace s registry peiferii:
-Registr periferie je hardwarový prvek, který je namapován na konkrétní adresu v datovém prostoru. Na rozdíl od běžné RAM však zápis do tohoto místa vyvolá fyzickou akci v čipu (změnu napětí na pinu, spuštění čítače atd.).Báze je počáteční adresa instancovaného bloku periferie, například registry pro PORTA: 0x0400.
+Registr periferie je hardwarový prvek, který je namapován na konkrétní adresu. Na rozdíl od běžné RAM však zápis do tohoto místa vyvolá fyzickou akci v čipu (změnu napětí na pinu, spuštění čítače atd.).Báze je počáteční adresa bloku periferie, například registry pro PORTA: 0x0400.
 Periferie pak může mít více různých registrů, ktere jsou umístěny na daném offsetu od základní adresy. 
 
 <p align="center">
