@@ -20,29 +20,43 @@
   <img width=750" height="700" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/registry_map.png">
 </p>
 
-## Prace s registry peiferii:
-Registr periferie je hardwarový prvek, který je namapován na konkrétní adresu. Na rozdíl od běžné RAM však zápis do tohoto místa vyvolá fyzickou akci v čipu (změnu napětí na pinu, spuštění čítače atd.).Báze je počáteční adresa bloku periferie, například registry pro PORTA: 0x0400.
-Periferie pak může mít více různých registrů, ktere jsou umístěny na daném offsetu od základní adresy. 
+## Struktura Periferie (Base & Offset)
+Každý port (PORTA, PORTB, atd.) je v paměti reprezentován jako blok registrů začínající na **Base Address** (např. `PORTA` = `0x0400`). Konkrétní funkce se pak adresují pomocí **Offsetu** (vzdálenosti od báze).
 
-<p align="center">
-  <img width="533" height="140" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/LATx.png">
-</p>
 
-## Pro práci s GPIO slouží tyto registry:
+| Registr | Offset | Popis funkce |
+| :--- | :--- | :--- |
+| **DIR** | `+0x00` | **Direction**: Určuje směr (0 = Vstup, 1 = Výstup). |
+| **OUT** | `+0x04` | **Output**: Nastavuje logickou úroveň výstupu. |
+| **IN** | `+0x08` | **Input**: Slouží pro čtení aktuálního stavu pinu. |
 
-1) TRISx  // Slouží k nastavení vstup 1 /výstup 0
-2) LATx   // výstupní registr
-3) PORTx  // vstupní registr
-4) ANSELx // ovládání analogových funkcí ( ADC, nebo komparátor)
+
+
+## Atomické Registry (SET, CLR, TGL)
+Pro bezpečnou a rychlou manipulaci s jednotlivými bity bez ovlivnění ostatních slouží specializované registry:
+
+* **`SET` (Např. `OUTSET`):** Zápis `1` nastaví daný bit na **logickou 1**. (Zápis `0` nemá žádný vliv).
+* **`CLR` (Např. `OUTCLR`):** Zápis `1` vynuluje daný bit na **logickou 0**.
+* **`TGL` (Např. `OUTTGL`):** Zápis `1` invertuje (přepne) aktuální stav bitu.
+
+
+## Konfigurace Pinu (PINnCTRL)
+Každý fyzický pin má svůj vlastní konfigurační registr `PINnCTRL` (kde `n` je číslo pinu 0–7). Tento registr umožňuje nastavit specifické vlastnosti hardwaru:
+
+* **PULLUPEN:** Aktivuje interní pull-up rezistor.
+* **INVEN:** Invertuje logiku pinu přímo na hardwarové úrovni (vhodné pro tlačítka se spínáním proti zemi).
+* **ISC:** Konfigurace přerušení (vypnuto, náběžná hrana, sestupná hrana, obě hrany, nízká úroveň).
+
+---
 
 ## Příklad 4.1
 
 Postup:
 
     1) vytvorte projekt(Standalone project)
-    2) cilove zarizeni je PIC18F46K22
+    2) cilove zarizeni je AVR128DB48
     3) jako prekladac zvolte Microchip XC8
-    4) jako programator zvolte PICKIT3, nebo Snap
+    4) jako programator/debugger zvolte ten na kitu
     5) vytvorte novy soubor main.c, zkopirujte do nej prilozeny kod
     6) pomoci “Build main project” sestavte projekt
     7) pomoci “Make and Program device” naprogramujte zarizeni
@@ -75,7 +89,7 @@ int main(void) {
 }
 ```
 ## Úloha:
-   1) Přidejte stejnou funkcionalitu LED3 blika jen po stisku BTN3
+   1) Přidejte tlačítko na kitu. Led bliká, pokud držím tlačítko.
    
 ## Příklad 4.2
 Naštěstí má výrobce k dispozici soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru xc.h. Názvy korespondují s názvy SFRs v datasheetu.
