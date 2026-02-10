@@ -1,4 +1,4 @@
-## Nainstalujte toolchain MPLAB+XC8:
+# Nainstalujte toolchain MPLAB+XC8:
 1) Napřed nainstalujte MPLAB (nejlépe defaultně do program files)
 3) Poté nainstalujte kompilátor XC8 (zaškrtněte ať se vám přidá do system path)
 
@@ -7,23 +7,22 @@
 
 [XC8 compiler](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers#tabs)
 
-# REV - Čtvrté cvičení GPIO
+## REV - Čtvrté cvičení GPIO
 - GPIO (Rozpis pinů na AVR desce)
 
 <p align="center">
-  <img width="600" height="400" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/AVR_pinout.png">
+  <img width="800" height="800" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/AVR_pinout.png">
 </p>
 
-- Mapa SFR pro PIC18f46k22 str.78:
+### Peripheral Address Map pro AVR128DB48 str.68:
 
 <p align="center">
   <img width="467" height="540" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/SFRegisters.png">
 </p>
 
-## Prace s registry SFR:
-K ovládání pinů slouží specialní registry SFR TRISx, LATx, PORTx (někdy je třeba vypnout analogové funkce pomocí ANSELx). Zápisem, nebo čtením těchto registrů můžeme ovladat/zjistit stav periferie. V C pro překladač XC8 můžeme použít adresu v paměti na které se příslušný registr nachazí. Používá se zápis volatile int "mujnazev" __at("adresa"). Slovicko volatile je pokyn pro překladač, který vyloženě zakazuje optimalizace teto proměnné (bude dále diskutováno v dalších cvičeních). S proměnou se pak pracuje jako obvykle lze ji nastavovat i číst. Záleží na konkrétních vlastnostech příslušného registru. U GPIO slouží např. registr LATx pro zápis na pin, naopak registr PORTx ke čtení stavu pinu.  
-
-- Registry LATx (bity odpovídají jednotlivým pinům):
+## Prace s registry peiferii:
+Registr periferie je hardwarový prvek, který je namapován na konkrétní adresu v datovém prostoru. Na rozdíl od běžné RAM však zápis do tohoto místa vyvolá fyzickou akci v čipu (změnu napětí na pinu, spuštění čítače atd.).Báze je počáteční adresa instancovaného bloku periferie, například registry pro PORTA: 0x0400.
+Periferie pak může mít více různých registrů, ktere jsou umístěny na daném offsetu od základní adresy. 
 
 <p align="center">
   <img width="533" height="140" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/LATx.png">
