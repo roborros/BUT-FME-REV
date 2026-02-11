@@ -1,4 +1,4 @@
-# Nainstalujte toolchain MPLAB+XC8:
+# 🚀 Nainstalujte toolchain MPLAB+XC8:
 1) Napřed nainstalujte MPLAB (nejlépe defaultně do program files)
 3) Poté nainstalujte kompilátor XC8 (zaškrtněte ať se vám přidá do system path)
 
@@ -20,7 +20,7 @@
   <img width=750" height="700" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/registry_map.png">
 </p>
 
-## Struktura Periferie (Base & Offset)
+## 💡 Struktura Periferie (Base & Offset)
 Každý port (PORTA, PORTB, atd.) je v paměti reprezentován jako blok registrů začínající na **Base Address** (např. `PORTA` = `0x0400`). Konkrétní funkce se pak adresují pomocí **Offsetu** (vzdálenosti od báze).
 
 
@@ -49,7 +49,7 @@ Každý fyzický pin má svůj vlastní konfigurační registr `PINnCTRL` (kde `
 
 ---
 
-## Příklad 4.1
+## 🏗️ Příklad 4.1
 
 Postup:
 
@@ -90,10 +90,10 @@ int main(void) {
     
 }
 ```
-## Úloha:
+## 📝 Úloha:
    1) Přidejte tlačítko na kitu. Led bliká, pokud držím tlačítko.
    
-## Příklad 4.2
+## 🏗️ Příklad 4.2
 Naštěstí má výrobce k dispozici hlavičkové soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru <avr/io.h>. Názvy korespondují s názvy registrů v datasheetu.
 
 ```c
@@ -122,12 +122,12 @@ int main(void) {
 ```
 
 ```
-Tipy:
+ 📌 Tipy:
 Povšimněte si především přístupu k jednotlivým registrům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
 Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (např.): #define F_CPU 4000000UL
 ```
 
-### Upravte program tak, aby zobrazoval různé sekvence:
+### 📝 Upravte program tak, aby zobrazoval různé sekvence:
     
    1) Zaveďte makra LED1 a BTN1. Zkuste si jejich použití místo plného názvu
    2) Had: Hada predstavuje dvojice sousednich sviticich LED. Had se posouva tak dlouho, než dorazi na konec radku, pak se otoci a plazi se zpet. Sekvence tedy bude vypadat takto: 00011 → 00110 → 01100 → 11000 → 01100 atd.
@@ -135,14 +135,14 @@ Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (
    4) Counter strike alias binarni citani, sekvence vypada nasledovne: 0000 → 0001 → 0010 → 0011 → 0100 → …
 
 
-### Upravte program tak, aby reagoval na stisknuta tlacitka (na jednorazove stlaceni, nikoliv na podrzeni!)
+### 📝 Upravte program tak, aby reagoval na stisknuta tlacitka (na jednorazove stlaceni, nikoliv na podrzeni!)
 
    1) Upravte program tak, aby jedno stisknuti tlacitka BUT1 zmenilo rychlost blikani cele rady LED. Definujte tri rychlosti, prepinejte mezi nimi cyklicky. Nezapomente na debouncing!
    2) Tlacitko BUT2 bude funkovat jako Pause/Resume
    3) Tlacitko BUT3 bude fungovat jako prepinac jednotlivych rezimu (viz ulohy 2) - 4))
    4) BONUS: tlacitko BUT4 bude fungovat jako prepinac intenzity svitu LED (pouzijte princip PWM)
 
-## Doma:
+## 💥 Doma:
  - Debugujte následující kód. Jaky je rozdil v disassembly? 
  
  ```c
