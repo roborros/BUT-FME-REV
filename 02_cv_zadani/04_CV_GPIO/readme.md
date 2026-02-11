@@ -62,37 +62,39 @@ Postup:
     7) pomoci “Make and Program device” naprogramujte zarizeni
     
 ```c
-// REV GPIO
-#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
-
-volatile unsigned char TRISD     __at(0xf95);  
-volatile unsigned char TRISC     __at(0xf94);
-
-volatile unsigned char LATD      __at(0xf8c);
-volatile unsigned char PORTC     __at(0xf82);
-
 int main(void) {
     
-    TRISD &= ~(1 << 2);     // nastaveni RD2 jako výstup
-    TRISC |= 0b1;           // nastavení RC0 jako vstup
+    char *DIRSETB   = (char*)(0x0420 + 0x01);
+    char *OUTTGLB   = (char*)(0x0420 + 0x07);
+    char *INB       = (char*)(0x0420 + 0x08);
+    char *PIN2CTRL  = (char*)(0x0420 + 0x12);
+    
+    *DIRSETB  |= (1 << 3);
+    *PIN2CTRL |= (1 << 3);
+    
+    volatile long i;
     
     while(1){
         
-        if (PORTC & 0b1){               //  kontrola stisknutí BTN1
-            LATD ^= (1 << 2);           //  prevrácení LED1 pomocí XOR
-        }
-        for(long i=1; i<100000; i++);   //  cekání...  
+        if(!(*INB & (1 << 2))){
+            
+            for(i = 0; i < 10000; i++){
+        
+            }
+        
+            *OUTTGLB |= (1 << 3);
+        
+        
+        } 
     }
-    return 0;                           // nikdy se neprovede
+    
 }
 ```
 ## Úloha:
    1) Přidejte tlačítko na kitu. Led bliká, pokud držím tlačítko.
    
 ## Příklad 4.2
-Naštěstí má výrobce k dispozici soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru xc.h. Názvy korespondují s názvy SFRs v datasheetu.
+Naštěstí má výrobce k dispozici hlavičkové soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru <avr/io.h>. Názvy korespondují s názvy registrů v datasheetu.
 
 ```c
 
@@ -121,8 +123,8 @@ int main(void) {
 
 ```
 Tipy:
-Povšimněte si především přístupu k jednotlivým bitům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
-Je možné použít knihovní funkci __delay_ms(100); Je třeba definovat makro (např.): #define _XTAL_FREQ 32000000
+Povšimněte si především přístupu k jednotlivým registrům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
+Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (např.): #define F_CPU 4000000UL
 ```
 
 ### Upravte program tak, aby zobrazoval různé sekvence:
@@ -131,19 +133,6 @@ Je možné použít knihovní funkci __delay_ms(100); Je třeba definovat makro 
    2) Had: Hada predstavuje dvojice sousednich sviticich LED. Had se posouva tak dlouho, než dorazi na konec radku, pak se otoci a plazi se zpet. Sekvence tedy bude vypadat takto: 00011 → 00110 → 01100 → 11000 → 01100 atd.
    3) Knight rider: jednotlive LED se postupne poporade rozsveci a pak v opacnem poradi zhasinaji. Na 3 led by sekvence vypadala takto: 000 → 001 → 011 → 111 → 011 → 001
    4) Counter strike alias binarni citani, sekvence vypada nasledovne: 0000 → 0001 → 0010 → 0011 → 0100 → …
-
-### Ovládání LED binárním kódem:
-
-```c
-void driveLED(char in){
-        LATD2 = in & 1;             //LED0
-        LATD3 = in & 2 ? 1 : 0;     //LED1
-        LATC4 = in & 4 ? 1 : 0;     //LED2
-        LATD4 = in & 8 ? 1 : 0;     //LED3
-        LATD5 = in & 16 ? 1 : 0;    //LED4
-        LATD6 = in & 32 ? 1 : 0;    //LED5
-}
-```
 
 
 ### Upravte program tak, aby reagoval na stisknuta tlacitka (na jednorazove stlaceni, nikoliv na podrzeni!)
