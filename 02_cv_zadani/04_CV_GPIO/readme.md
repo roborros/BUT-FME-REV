@@ -135,7 +135,11 @@ Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (
    4) Counter strike alias binarni citani, sekvence vypada nasledovne: 0000 → 0001 → 0010 → 0011 → 0100 → …
 
 
-### 📝 Upravte program tak, aby reagoval na stisknuta tlacitka (na jednorazove stlaceni, nikoliv na podrzeni!)
+### 📝 Připojte ke kitu led semafor a další tlačítko
+
+<p align="center">
+  <img width="600" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/rgb_circuit.png">
+</p>
 
    1) Upravte program tak, aby jedno stisknuti tlacitka BUT1 zmenilo rychlost blikani cele rady LED. Definujte tri rychlosti, prepinejte mezi nimi cyklicky. Nezapomente na debouncing!
    2) Tlacitko BUT2 bude funkovat jako Pause/Resume
