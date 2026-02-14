@@ -18,11 +18,12 @@
 #include <stdio.h>
  
 //deklarace
+
 void krat2(int *a);
 int *max1(int *q, int *w);
  
-//main
-void main(void){
+
+int main(void){
   
         int a, b;      // deklarace promenne typu int
         int *p_i;      // deklarace promenne typu ukazatel na int
@@ -31,8 +32,7 @@ void main(void){
 
         printf("Vloz cislo A:");
 
-        *p_i = getchar() - '0';
-        //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
+        scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
 
         printf("Cislo A = %d = %d\n", a, *p_i); // * je operator dereference
         printf("Cislo A je na adrese: %p = %p\n", &a, p_i);
@@ -41,12 +41,12 @@ void main(void){
 
         printf("Cislo A*2 = %d\n",a);    // opet lze pouzit "*p_i" misto "a"
 
-         printf("Vloz cislo B:");
+        printf("Vloz cislo B:");
 
         p_i = &b;    // zmena reference, p_i ukazuje na b
 
-        //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
-        *p_i = getchar() - '0';
+        scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
+;
 
         printf("Cislo B = %d = %d\n",b, *p_i); // * je operator dereference
         printf("Cislo B je na adrese: %p = %p\n",&b, p_i);
@@ -61,9 +61,7 @@ void main(void){
         
         printf("a: %d\n", a);
         printf("Prvni: %d a druhy: %d bajt \n", *(char*)p_v, *(char*)(p_v+1));
-        
-    
-        getch();
+
 }
  
  
