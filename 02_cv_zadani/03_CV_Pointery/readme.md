@@ -46,7 +46,6 @@ int main(void){
         p_i = &b;    // zmena reference, p_i ukazuje na b
 
         scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
-;
 
         printf("Cislo B = %d = %d\n",b, *p_i); // * je operator dereference
         printf("Cislo B je na adrese: %p = %p\n",&b, p_i);
