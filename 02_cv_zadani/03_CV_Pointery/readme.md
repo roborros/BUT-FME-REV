@@ -122,7 +122,7 @@ void main(void){
 
               // funkci getchar() se zadava ukazatel na prvek pole
               cisla[i] = getchar() - '0';
-	      getchar();
+              getchar();
         }
 
         // vypis pole - pres index
@@ -132,7 +132,7 @@ void main(void){
 
         // volani funkci - predava pole=konstantni pointer a delka
         vypis_pole(cisla,DELKA);   // nevraci nic
-        a = max1(cisla,DELKA);      // vraci int
+        a = max1(cisla,sizeof(cisla)/sizeof(cisla[0]));      // vraci int
 
         printf("Nejvetsi bylo cislo %d\n",a);
 
@@ -161,6 +161,7 @@ int max1(int *p,int len){
     }
     return max;
 }
+
 ```
 
  ### Povšimněte si:
