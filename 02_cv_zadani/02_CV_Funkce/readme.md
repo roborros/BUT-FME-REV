@@ -86,7 +86,7 @@ void main(void) {
     cislo = getchar() - '0';
     printf("\n");
         
-    printf("Suma %d je: %ld\n", (int)cislo, sum((int)cislo));
+    printf("Suma %d je: %d\n", (int)cislo, sum((int)cislo));
 
 }
 
