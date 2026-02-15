@@ -136,8 +136,6 @@ void main(void){
 
         printf("Nejvetsi bylo cislo %d\n",a);
 
-        getch();
-
 }
  
 // definice funkce vypis pole
@@ -255,7 +253,6 @@ int main() {
         
         Michal.pozdrav();
 
-        getche();
     return 0;
 }
 
