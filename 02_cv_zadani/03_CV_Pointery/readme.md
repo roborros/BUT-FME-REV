@@ -106,7 +106,6 @@ void vypis_pole(int *p,int len);
 void main(void){
     
         // definice pole o delce dane symbolickou konstantou
-        // delka musi byt vzdy konstanta!
         int cisla[DELKA];   
 
         /*
