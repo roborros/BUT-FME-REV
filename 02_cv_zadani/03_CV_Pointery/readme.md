@@ -18,11 +18,12 @@
 #include <stdio.h>
  
 //deklarace
+
 void krat2(int *a);
 int *max1(int *q, int *w);
  
-//main
-void main(void){
+
+int main(void){
   
         int a, b;      // deklarace promenne typu int
         int *p_i;      // deklarace promenne typu ukazatel na int
@@ -31,8 +32,7 @@ void main(void){
 
         printf("Vloz cislo A:");
 
-        *p_i = getchar() - '0';
-        //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
+        scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
 
         printf("Cislo A = %d = %d\n", a, *p_i); // * je operator dereference
         printf("Cislo A je na adrese: %p = %p\n", &a, p_i);
@@ -41,12 +41,11 @@ void main(void){
 
         printf("Cislo A*2 = %d\n",a);    // opet lze pouzit "*p_i" misto "a"
 
-         printf("Vloz cislo B:");
+        printf("Vloz cislo B:");
 
         p_i = &b;    // zmena reference, p_i ukazuje na b
 
-        //scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
-        *p_i = getchar() - '0';
+        scanf("%d",p_i);   // stejne jako: scanf("%d",&a);
 
         printf("Cislo B = %d = %d\n",b, *p_i); // * je operator dereference
         printf("Cislo B je na adrese: %p = %p\n",&b, p_i);
@@ -61,9 +60,7 @@ void main(void){
         
         printf("a: %d\n", a);
         printf("Prvni: %d a druhy: %d bajt \n", *(char*)p_v, *(char*)(p_v+1));
-        
-    
-        getch();
+
 }
  
  
@@ -109,7 +106,6 @@ void vypis_pole(int *p,int len);
 void main(void){
     
         // definice pole o delce dane symbolickou konstantou
-        // delka musi byt vzdy konstanta!
         int cisla[DELKA];   
 
         /*
@@ -125,7 +121,7 @@ void main(void){
 
               // funkci getchar() se zadava ukazatel na prvek pole
               cisla[i] = getchar() - '0';
-	      getchar();
+              getchar();
         }
 
         // vypis pole - pres index
@@ -135,11 +131,9 @@ void main(void){
 
         // volani funkci - predava pole=konstantni pointer a delka
         vypis_pole(cisla,DELKA);   // nevraci nic
-        a = max1(cisla,DELKA);      // vraci int
+        a = max1(cisla,sizeof(cisla)/sizeof(cisla[0]));      // vraci int
 
         printf("Nejvetsi bylo cislo %d\n",a);
-
-        getch();
 
 }
  
@@ -166,6 +160,7 @@ int max1(int *p,int len){
     }
     return max;
 }
+
 ```
 
  ### Povšimněte si:
@@ -258,7 +253,6 @@ int main() {
         
         Michal.pozdrav();
 
-        getche();
     return 0;
 }
 
