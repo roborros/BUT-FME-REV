@@ -267,9 +267,9 @@ void pozdrav(void){
 
 ## 📋 Doma:
 
-1) Alokujte člověka pomocí malloc clovek* p_Michal = (clovek*)malloc(sizeof(clovek)); zkontrolujte zda nenní null a na konci paměť uvolněte.
+1) Alokujte člověka pomocí malloc -> clovek* p_Michal = (clovek*)malloc(sizeof(clovek)); zkontrolujte zda není null a na konci paměť uvolněte.
 
-2) Vytvořte funkce na tvorbu člověka, ktera alokuje paměť clovek* vytvor_cloveka(char* jmeno, int vek, int vyska) a také fci na odstranění void odstran_cloveka(clovek* k).
+2) Vytvořte funkce na tvorbu člověka, ktera alokuje paměť -> clovek* vytvor_cloveka(char* jmeno, int vek, int vyska) a také funkci na odstranění -> void odstran_cloveka(clovek* k).
 
 3) Upravte program tak, aby se uživatele zeptal: "Kolik lidí chcete zadat?"
 
