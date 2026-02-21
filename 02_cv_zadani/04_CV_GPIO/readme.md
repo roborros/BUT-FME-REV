@@ -86,7 +86,7 @@ int main(void) {
    1) Přidejte tlačítko na kitu. Led bliká, pokud držím tlačítko. (Tlačítko je na PB2 a je třeba zapnout interní pull-up rezistor)
    
 ## 🏗️ Příklad 4.2
-Naštěstí má výrobce k dispozici hlavičkové soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru <avr/io.h>. Názvy korespondují s názvy registrů v datasheetu.
+Naštěstí má výrobce k dispozici hlavičkové soubory, kde jsou již makra a struktury pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Můžeme je používat po přidání hlavičkového souboru <avr/io.h>. Názvy korespondují s názvy registrů v datasheetu.
 
 ```c
 #define F_CPU 4000000UL    // Definice frekvence (výchozi je 4 MHz)
@@ -104,7 +104,7 @@ int main(void) {
         // Každým zápisem 1 do OUTTGL se stav LED změní (z 0 na 1 a naopak)
         PORTB.OUTTGL = PIN3_bm;
 
-        // Čekání
+        // Čekání 
         _delay_ms(500);
     }
 }
@@ -113,7 +113,7 @@ int main(void) {
 ```
  📌 Tipy:
 Povšimněte si především přístupu k jednotlivým registrům přes tečkovou notaci. MPLAB obsahuje nápovědu ctrl + mezerník.
-Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (např.): #define F_CPU 4000000UL
+Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (např.): #define F_CPU 4000000UL a #include <util/delay.h>
 ```
 
 ### 📝 Upravte program tak, aby zobrazoval různé sekvence:
