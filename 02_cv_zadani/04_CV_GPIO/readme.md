@@ -121,7 +121,7 @@ Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (
    1) Přidejte tlačítko i pomocí tohoto přístupu a zapněte interní pull-up rezistor.
    2) Zapojte semafor dle obrázku níže. Nastavte příslušné piny jako output a vyzkoušejte funkčnost.
    3) Knight rider: jednotlivé led se postupně rozsvěcují. Na 3 led sekvence vypadá takto: 000 → 001 → 011 → 111 → 011 → 001
-   4) Counter strike alias binarni citani, sekvence vypada nasledovne: 000 → 001 → 010 → 011 → 100 → 
+   4) Counter strike alias binární čítání, sekvence vypadá následovně: 000 → 001 → 010 → 011 → 100 → 
 
 
 ### 📝 Připojte ke kitu další tlačítko
@@ -130,8 +130,9 @@ Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (
   <img width="600" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/rgb_circuit.png">
 </p>
 
-   1) Upravte program tak, aby jedno stisknutí tlačítka BUT1 změnilo rychlost blikání celé řady LED. Definujte tři rychlosti, přepínejte mezi nimi cyklicky.
-   2) Tlačítko BTN2 bude fungovat jako PAUSE/RESUME (detekujte pouze stisknutí, hranu)
+   1) Tlačítka jsou zapojena tak, že mají opačnou logiku, tedy stisknuto je 0. Upravte to v configuračním registru pinu, aby byla invertovaná.
+   2) Upravte program tak, aby jedno stisknutí tlačítka BUT1 změnilo rychlost blikání celé řady LED. Definujte tři rychlosti, přepínejte mezi nimi cyklicky. (detekujte pouze stisknutí a řešte debouncing)
+   3) Tlačítko BTN2 bude fungovat jako PAUSE/RESUME (detekujte pouze stisknutí a řešte debouncing)
 
 ## 💥 Doma:
  - Debugujte následující kód. Jaky je rozdil v disassembly? 
