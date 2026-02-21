@@ -66,29 +66,20 @@ int main(void) {
     
     char *DIRSETB   = (char*)(0x0420 + 0x01);
     char *OUTTGLB   = (char*)(0x0420 + 0x07);
-    char *INB       = (char*)(0x0420 + 0x08);
-    char *PIN2CTRL  = (char*)(0x0420 + 0x12);
     
     *DIRSETB  |= (1 << 3);
-    *PIN2CTRL |= (1 << 3);
-    
-    volatile long i;
     
     while(1){
         
-        if(!(*INB & (1 << 2))){
             
-            for(i = 0; i < 10000; i++){
+        for(volatile long i = 0; i < 100000; i++){
         
-            }
+        }
         
-            *OUTTGLB |= (1 << 3);
+        *OUTTGLB |= (1 << 3);
         
-        
-        } 
-    }
-    
-}
+    } 
+}  
 ```
 ## 📝 Úloha:
    1) Přidejte tlačítko na kitu. Led bliká, pokud držím tlačítko.
