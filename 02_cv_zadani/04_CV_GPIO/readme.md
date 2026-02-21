@@ -88,28 +88,25 @@ int main(void) {
 Naštěstí má výrobce k dispozici hlavičkové soubory, kde jsou již makra pro práci s registry. Jejich používání šetří čas a minimalizuje chybu. Tyto makra můžeme používat po přidání hlavičkového souboru <avr/io.h>. Názvy korespondují s názvy registrů v datasheetu.
 
 ```c
-
-#define F_CPU 4000000UL    // Definice frekvence (výchozí u AVR DB je 4 MHz)
+#define F_CPU 4000000UL    // Definice frekvence (výchozi je 4 MHz)
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define LED_PIN 3          // Definujeme pin PB3
 
 int main(void) {
-    // 1. Nastavení pinu jako VÝSTUP (Output)
+    // Nastavení pinu jako VÝSTUP (Output)
     // Používáme registr DIRSET pro atomický zápis
-    PORTB.DIRSET = (1 << LED_PIN);
+    PORTB.DIRSET = PIN3_bm;
 
     while (1) {
-        // 2. Překlopení (Toggle) stavu pinu
+        // Překlopení (Toggle) stavu pinu
         // Každým zápisem 1 do OUTTGL se stav LED změní (z 0 na 1 a naopak)
-        PORTB.OUTTGL = (1 << LED_PIN);
+        PORTB.OUTTGL = PIN3_bm;
 
-        // 3. Čekání (500 ms)
+        // Čekání
         _delay_ms(500);
     }
 }
-
 ```
 
 ```
