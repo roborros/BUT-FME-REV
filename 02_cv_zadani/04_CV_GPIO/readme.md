@@ -127,7 +127,7 @@ Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (
 ### 📝 Připojte ke kitu další tlačítko
 
 <p align="center">
-  <img width="600" height="600" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/rgb_circuit.png">
+  <img width="600" height="750" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/04_CV_GPIO/rgb_circuit.png">
 </p>
 
    1) Tlačítka jsou zapojena tak, že mají opačnou logiku, tedy stisknuto je 0. Upravte to v configuračním registru pinu, aby byla invertovaná.
