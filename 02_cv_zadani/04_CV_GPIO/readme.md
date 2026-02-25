@@ -135,7 +135,7 @@ Je možné použít knihovní funkci _delay_ms(500); Je třeba definovat makro (
    3) Tlačítko BTN2 bude fungovat jako PAUSE/RESUME (detekujte pouze stisknutí a řešte debouncing)
 
 ## 💥 Doma:
- - Debugujte následující kód. Jaky je rozdil v disassembly? 
+ - Debugujte následující kód. Vyzkoušejte breakpointy, watches, nastavování registrů, prohlídku pamětí a zobrazení assembleru. 
  
  ```c
 #define F_CPU 4000000UL
