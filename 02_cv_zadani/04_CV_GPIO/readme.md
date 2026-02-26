@@ -188,6 +188,26 @@ uint16_t test_fcn(uint8_t val) {
     }
     return result;
 }
- 
-
 ```
+
+
+# 🚀 Prompty pro studium MCU: 
+
+Tento seznam obsahuje prompty pro LLM (jako Gemini nebo ChatGPT)
+
+---
+## 📍 1. GPIO periferie
+**Prompt:**
+> - Vysvětli koncept GPIO pinů na mikrokontroléru:
+> - K čemu jsou v praxi vhodné. Jaké jsou režimy a různá nastavení.
+> - Jaké jsou možnosti práce s GPIO na AVR128DB48 (input, output, pull-up, inverze logiky).
+> - Vysvětli práci s SET CLR a TOGGLE registry na AVR128DB48
+
+---
+
+## 📍 1. Periferie a registry a definition files
+**Prompt:**
+> - Vysvětli koncept registrů periferii a práce s nimi na mikrokontrolérech
+> - Vysvětli jak fungují bitové masky pro práci s registry 
+> - Jaké možnosti mám jako programátor v C nastavit registr na příslušné adrese
+> - K čemu je dobré používat difinnition files od výrobce například na AVR128DB48 po includu avr/io.h
