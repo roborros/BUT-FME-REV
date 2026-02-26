@@ -205,7 +205,7 @@ Tento seznam obsahuje prompty pro LLM (jako Gemini nebo ChatGPT)
 
 ---
 
-## 📍 1. Periferie a registry a definition files
+## 📍 1. Periferie, registry a definition files
 **Prompt:**
 > - Vysvětli koncept registrů periferii a práce s nimi na mikrokontrolérech
 > - Vysvětli jak fungují bitové masky pro práci s registry 
