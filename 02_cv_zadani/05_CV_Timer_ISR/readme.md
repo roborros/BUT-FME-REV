@@ -1,196 +1,163 @@
-# REV - Páte cvičení
-- čítače, přerušení
-[Link na video-návod](https://youtu.be/_rkvzKf5naM)
+# 🚀 REV - Páte cvičení - čítače/časovače, přerušení
 
-## Příklad 5.1:
+## 💡 časovač TCA:
 
-PIC18F46K22 obsahuje několik čítačů. Zaměříme se na TIMER 1/3/5 které mají 16-bit. Timer je periferie, kterou ovládáme pomocí SFR. Programátorský model je jednoduchý, TIMER je binární čítač, který načítá vstupní pulzy. Výsledek pak drží v příslušném registru. Periferie je při svém provozu nezavislá na CPU. Čítač se používá k časovaní. Můžeme ho použít k relativně přesnému měření času na pozadí běhu programu, nebo také k vyvolání přerušení.
-## Výpočet:
+Časovač (Timer) v mikrokontroléru (MCU) je nezávislý hardwarový modul, který slouží k přesnému měření času a počítání událostí bez nutnosti neustálého vytěžování procesoru (CPU). Funguje na principu inkrementace registru (čítače) v rytmu hodinového signálu. Mezi jeho hlavní funkce patří generování přesných časových prodlev, spouštění přerušení v pravidelných intervalech pro úlohy v reálném čase a vytváření signálů s pulzně šířkovou modulací (PWM) pro řízení motorů či jasu LED. Dále umožňuje měření délky trvání externích impulzů (Input Capture) nebo počítání vnějších pulsů, čímž zajišťuje vysokou efektivitu a deterministické časování celého systému.
 
-<p align="center">
-  <img width="188" height="42" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/Period.png">
-</p>
+---
 
-### SFR:
-* TxCON - Konfigurační registr čítače (Výběr zdroje pulzů, děličky)
-* TMR1ON - Spuštění
-* TMR1 - Aktuální hodnota čítače (lze přepsat z programu)
+## 1. Princip funkce (Single Mode)
+
+Časovač **TCA** v režimu **Normal** čítá od 0 směrem nahoru. Horní mez je určena registrem periody (`PER`). Jakmile čítač dosáhne této hodnoty, dojde k:
+
+1. Nastavení příznaku přetečení (`OVF` v registru `INTFLAGS`).
+2. Vyvolání přerušení (pokud je povoleno v `INTCTRL`).
+3. Resetování čítače na 0 a pokračování v čítání.
+
+### Výpočet hodnoty PER
+Pro dosažení konkrétní frekvence přerušení použijte vzorec:
+
+$$PER = \frac{f_{clk}}{f_{des} \cdot Prescaler} - 1$$
+
+---
+
+### 🏗️ Příklad 5.1 - polling (pravidelné čtení čítače):
+
 
 ```c 
-// REV TIMER
-#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = OFF     // 4X PLL Enable (Oscillator OFF)
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+#define F_CPU 4000000UL
+#include <avr/io.h>
 
-#include <xc.h>
 
-#define _XTAL_FREQ 8E6              // definice fosc pro knihovnu
-#define LED LATDbits.LATD2          // ledka
-#define DELAY 25000                // hodnota timeru pro 0.1 s
-
-void init(void){
+int main(void) {
     
-    TRISDbits.TRISD2 = 0;           // RD2 jako vystup
-    
-    T1CONbits.TMR1CS = 0b00;        // zdroj casovace 1
-    T1CONbits.T1CKPS = 0b11;        // nastaveni delicky                                             
-    TMR1ON = 1;                     // spusteni TMR1
-}
+    PORTB.DIRSET = PIN3_bm;
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
 
-void main(void) {
-    init();                         // provedeni inicializace
-    
     while(1){
-        if(TMR1 >= DELAY){         // kontrola registru casovace
-            LED ^= 1;               // prevraceni pinu RD2
-            TMR1 = 0;               // vynulovani registru casovace
-        }
+        
+        
+        if(TCA0.SINGLE.CNT >= 10000){
+            
+            TCA0.SINGLE.CNT = 0x0000;
+            PORTB.OUTTGL = PIN3_bm;
+        
+        }   
     }
+    
 }
 ```
 
-## Příklad 5.2:
-Přerušení je opravdu důležitý koncept v embedded systémech. Přerušení dovoluje procesoru přerušit současný program, vykonat jiný (kratký) a vratit se zpět. Tato přerušení mohou vyvolávat různé události. Může ho vyvolat TIMER, příchod dat na sběrnici, stisk tlačítka a jiné. Přerušení se zapisuje v XC8 podobně jako funkce. Má však několik specifik. V první řadě je to vždy void...void funkce. Přerušení vyvolává jiný mechanismus a tuto funkci nemůže používat programátor jako běžnou funkci. Zapis v xc8 je např. void __interrupt() muj_ISR(void). Za muj_ISR si můžete dosadit název. PIC18F46K22 nemá tzv. interrupt vector. Zavádí pouze dvě priority přerušení low a high. Mohu tedy v programu napsat 2xISR(). V přerušení potom testuji příznaky IF.
-
-```
-Poznamka:
-K vyvolání přerušení dojde v návaznosti na přetečení čítače, tedy pro 16bit je to mezi hodnotou 65535 65536.
-```
-
-### Důležité nastavení SFR:
-* GIE - zapnutí přerušení globálně (Global Interrupt Enable)
-* PEIE - zapnutí přerušení od periferii (Peripheral Interrupt Enable)
-* TMR1IE - Zapnuti přerušení TMR1 (TiMeR1 Interrupt Enable) 
-* TMR1IF - Změna 0->1 vyvolá přerušení. Je nutní příznak smazat během přerušení. (Interrupt Flag)
-
-<p align="center">
-  <img width="300" height="22" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/CounterValue.png">
-</p>
+## 🏗️ Příklad 5.2 - nastavení interruptu:
 
 ```c
-// REV INTERRUPT
-#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
-#include <xc.h>
+#define F_CPU 4000000UL
+#include <util/delay.h>
 
-#define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
-#define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 49999)      // hodnota timeru pro 0.05 s
+ISR(TCA0_OVF_vect){
+    
+    TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;
+    
+    PORTB.OUTTGL = PIN3_bm;
 
-
-void __interrupt() T1_ISR_HANDLER(void){
-     
-    if (TMR1IF && TMR1IE ){         // kontrola priznaku IF (interrupt flag) a IE (interrupt enabled)             
-        LED ^= 1;
-        TMR1 = DELAY;               // nastaveni registru timeru (preruseni vyvolava preteceni registru)
-        TMR1IF = 0;                 // smazani IF jinak dojde k opakovanému volání ISR a kód se zde zacyklí.
-    }
 }
 
-void init(void){
+int main(void) {
     
-    TRISDbits.TRISD2 = 0;           // RD2 jako vystup
+    // PB3 jako out
+    PORTB.DIRSET = PIN3_bm;
     
-    T1CONbits.TMR1CS = 0b00;        // zdroj casovace 1
-    T1CONbits.T1CKPS = 0b11;        // nastaveni delicky                                             
-    TMR1IE = 1;                     // povoleni preruseni pro TMR1
-    TMR1IF = 0;                     // smazani priznaku (pro jistotu)
-    PEIE = 1;                       // povoleni preruseni od periferii
-    TMR1ON = 1;                     // spusteni TMR1
-    GIE = 1;                        // globalni povoleni preruseni
-}
+    // interrrupt na preteceni 
+    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
+    // nastaveni priod registru (kolik bude perioda??)
+    TCA0.SINGLE.PER = 49999;
+    // zapneme timer
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
+    // globalni enable preruseni
+    sei();
 
-void main(void) {
-    init();                         // provedeni inicializace
-    
-    while(1){
-        __delay_ms(100);            // cekani 100ms s knihovni funkci
-    }
+    while(1){ 
+
+    }    
 }
 ```
 
-## Rozšiřující úlohy:
+## 📝 Rozšiřující úlohy:
 
-1) rozšiřte Ukázku 1 tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant.
+1) rozšiřte Ukázku 1 tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant (preprocesor makro #define).
 
-2) rozšiřte Ukázku 2 ve stejném duchu jako v úloze tj. pouze použijete přerušení. Tj. upravte program tak, aby do registru TMR1 vkládal jednu ze dvou konstant, které upraví periodu čekání.
+2) rozšiřte Ukázku 2 ve stejném duchu jako v úloze tj. pouze použijete přerušení. Tj. upravte program tak, aby do registru PER vkládal jednu ze dvou konstant, které upraví periodu.
 
-3) rozšiřte Ukázku 2 tak, že použijete i druhý časovač (dle datasheetu použijte Timer5) s rozdílnou délkou čítaní a rozblikejte druhou LED, která bude blikat s různou periodou. Stisknutím tlačítka periody blikání prohoďte (tou formou, že vyměníte hodnotu vkládanou do TMR1 a TMR5).
+3) rozšiřte Ukázku 2 tak, že použijete i druhý časovač (TCA1) s rozdílnou délkou čítaní a rozblikejte druhou LED, která bude blikat s různou periodou. Stisknutím tlačítka periody blikání prohoďte (tou formou, že vyměníte hodnotu PER pro timery TCA0 TCA1).
 
-4) použijte druhé tlačítko pro zastavení a znovuspuštěni blikání. Použijte bity TMRxON pro zastavení a znovuspuštěni čítače (T1CONbits.TMR1ON pro TMR1 a T5CONbits.TMR5ON pro TMR5).
+4) použijte druhé tlačítko pro zastavení a znovuspuštěni blikání. Použijte bity enable pro zastavení a znovuspuštěni čítače.
 
-5) Vytvořte obecnou obsluhu pomoci přerušení pro všechna 4 tlačítka: pomoci jednoho časovače (tj. použijete jedno přerušení) periodicky detekujte stav na jednotlivých tlačítkách, a prováděje debouncing. V hlavním programu ovládejte celou sadu LED, zobrazujte na ní binární číslo n a reagujte na stisknutí jednotlivých tlačítek následovně:
+5) Vytvořte obecnou obsluhu pomoci přerušení pro všechna 4 tlačítka: pomoci jednoho časovače (tj. použijete jedno přerušení) periodicky detekujte stav na jednotlivých tlačítkách, a prováděje debouncing. V hlavním programu ovládejte celou sadu semafaru RGB led, zobrazujte na ních binární číslo n a reagujte na stisknutí jednotlivých tlačítek následovně:
 
     - BUT1 – inkrementuje n,
     - BUT2 – dekrementuje n,
-    - BUT3 – bitové invertuje n,
-    - BUT4 – nastaví n na 0
 
-## Příklad 5.3:
-Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako volatile. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé SFR např. PORTx mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile char flag. Slouží k jednoduchému řízení. Je zde zavedene i volatile static uint i. 
-jako statické označujeme proměnné, které lze používat pouze vně bloku, v tomto případě jen programu přerušení. Chová se však jako globální proměnná. Zachovává si hodnotu. 
+## 🏗️  Příklad 5.3:
 
-<p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/main_isr_flag.png">
-</p>
+Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile uint8_t millis. Tu pak mohu používat k neblokujícímu časování nekritických událostí v hlavní smyčce.
+
     
 ```c 
-// REV INTERRUPT
-#pragma config FOSC = HSMP      // Oscillator Selection bits (HS oscillator (medium power 4-16 MHz))
-#pragma config PLLCFG = ON      // 4X PLL Enable (Oscillator multiplied by 4)
-#pragma config WDTEN = OFF      // Watchdog Timer Enable bits (Watch dog timer is always disabled. SWDTEN has no effect.)
-#include <xc.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/atomic.h>
 
-#define _XTAL_FREQ 32E6             // definice fosc pro knihovnu
-#define LED LATDbits.LATD2          // ledka
-#define DELAY (0xFFFF - 999)       // hodnota timeru pro 1 ms
+#define F_CPU 4000000UL
+#include <util/delay.h>
 
-volatile unsigned char flag = 0;             // globalni promenna 
+volatile uint32_t millis = 0;
 
-void __interrupt() T1_ISR_HANDLER(void){
+
+ISR(TCA0_OVF_vect){
     
-    volatile unsigned static int i = 0;      // staticka promenna nelze pouzit mimo ISR
-    if (TMR1IF && TMR1IE ){         // kontrala priznaku a povoleni
-        if (i >= 500) {
-            flag = 1;               // nastaveni vlajky
-            i = 0;
-        }  
-    i++;
-    TMR1 = DELAY;                   // nastaveni registru TMR1
-    TMR1IF = 0;
-    }
+    TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;
+    
+    millis++;
+    
 }
 
-void init(void){
+int main(void) {
     
-    /* vyber pinu jako vystupy */    
-    TRISDbits.TRISD2 = 0;
-
-    T1CONbits.TMR1CS = 0b00;
-    T1CONbits.T1CKPS = 0b11;
-    GIE = 1;
-    PEIE = 1;
-    TMR1IE = 1;
-    TMR1IF = 0;
-    TMR1ON = 1;
-}
-
-void main(void) {
-    init(); // provedeni inicializace
+    PORTB.DIRSET = PIN3_bm;
     
-    /* hlavni smycka */
+    // zapnout preruseni
+    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
+    
+    // nastavit period registr 
+    TCA0.SINGLE.PER = 999;
+    
+    // nastaveni delicky a zapnuti timeru
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV4_gc | TCA_SINGLE_ENABLE_bm;
+       
+    uint32_t millis_prev = 0;
+    uint32_t millis_now = 0;
+    
+    sei();
+
     while(1){
-        if (flag) {
-            LED ^= 1;
-            flag = 0;
+        // nebude preruseno
+        ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {     
+            millis_now = millis;
         }
+        
+        if ((millis_now - millis_prev) >= 1000){
+        
+            PORTB.OUTTGL = PIN3_bm;
+            millis_prev = millis_now;
+        }
+
     }
+    
 }
 ```
-## Další:
-1) Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--ma jen 8 bitu a obsahuje postscaler, a period register)
-2) Použíjte obě priority PIC18 funkce se odlišují  __interrupt(low_priority); __interrupt(high_priority)
-3) Je treba nastavit IPRx registry pro low_priority pro TMR2IF
-4) Vyšší priorita je schopna přerušit nižší! Vyzkoušejte třeba umístěním while(BTN1), tedy něco co bychom normálně dělat něměli!!
+## 📝 Doma:
+1) Rozchoďte i druhý typ timeru TCB (je trochu jiný než TCA)
+2) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. 
