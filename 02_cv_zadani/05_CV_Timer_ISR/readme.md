@@ -1,15 +1,14 @@
-# REV - Páte cvičení
-- čítače, přerušení
+# 🚀 REV - Páte cvičení
+- čítače/časovače, přerušení
+
+## 💡 časovač TCB:
 
 
-## Příklad 5.1:
-
-
-## Výpočet:
+## 📌 Výpočet:
 
 
 
-### Registry:
+### 🏗️ Příklad 5.1:
 
 
 ```c 
@@ -23,13 +22,13 @@ void main(void) {
 }
 ```
 
-## Příklad 5.2:
+## 🏗️ Příklad 5.2:
 
 ```
 
 ```
 
-### Nastavení interruptu:
+### 🚀 Nastavení interruptu:
 
 
 ```c
@@ -43,7 +42,7 @@ void main(void) {
 }
 ```
 
-## Rozšiřující úlohy:
+## 📝 Rozšiřující úlohy:
 
 1) rozšiřte Ukázku 1 tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant.
 
@@ -58,8 +57,8 @@ void main(void) {
     - BUT1 – inkrementuje n,
     - BUT2 – dekrementuje n,
 
-## Příklad 5.3:
-Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako volatile. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé SFR např. PORTx mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile char flag. Slouží k jednoduchému řízení. Je zde zavedene i volatile static uint i. 
+## 🏗️  Příklad 5.3:
+Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile char flag. Slouží k jednoduchému řízení. Je zde zavedene i volatile static uint i. 
 jako statické označujeme proměnné, které lze používat pouze vně bloku, v tomto případě jen programu přerušení. Chová se však jako globální proměnná. Zachovává si hodnotu. 
 
 <p align="center">
@@ -78,7 +77,7 @@ void main(void) {
 
 }
 ```
-## Další:
+## 📝 Další úlohy:
 1) Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--ma jen 8 bitu a obsahuje postscaler, a period register)
 2) Použíjte obě priority PIC18 funkce se odlišují  __interrupt(low_priority); __interrupt(high_priority)
 3) Je treba nastavit IPRx registry pro low_priority pro TMR2IF
