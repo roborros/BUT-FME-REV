@@ -1,10 +1,25 @@
-# 🚀 REV - Páte cvičení
-- čítače/časovače, přerušení
+# 🚀 REV - Páte cvičení - čítače/časovače, přerušení
 
 ## 💡 časovač TCA:
 
+Časovač (Timer) v mikrokontroléru (MCU) je nezávislý hardwarový modul, který slouží k přesnému měření času a počítání událostí bez nutnosti neustálého vytěžování procesoru (CPU). Funguje na principu inkrementace registru (čítače) v rytmu hodinového signálu. Mezi jeho hlavní funkce patří generování přesných časových prodlev, spouštění přerušení v pravidelných intervalech pro úlohy v reálném čase a vytváření signálů s pulzně šířkovou modulací (PWM) pro řízení motorů či jasu LED. Dále umožňuje měření délky trvání externích impulzů (Input Capture) nebo počítání vnějších pulsů, čímž zajišťuje vysokou efektivitu a deterministické časování celého systému.
 
+---
 
+## 1. Princip funkce (Single Mode)
+
+Časovač **TCA** v režimu **Normal** čítá od 0 směrem nahoru. Horní mez je určena registrem periody (`PER`). Jakmile čítač dosáhne této hodnoty, dojde k:
+
+1. Nastavení příznaku přetečení (`OVF` v registru `INTFLAGS`).
+2. Vyvolání přerušení (pokud je povoleno v `INTCTRL`).
+3. Resetování čítače na 0 a pokračování v čítání.
+
+### Výpočet hodnoty PER
+Pro dosažení konkrétní frekvence přerušení použijte vzorec:
+
+$$PER = \frac{f_{clk}}{f_{des} \cdot Prescaler} - 1$$
+
+---
 
 ### 🏗️ Příklad 5.1:
 
