@@ -21,7 +21,7 @@ $$PER = \frac{f_{clk}}{f_{des} \cdot Prescaler} - 1$$
 
 ---
 
-### 🏗️ Příklad 5.1:
+### 🏗️ Příklad 5.1 - polling (pravidelné čtení čítače):
 
 
 ```c 
@@ -48,13 +48,7 @@ int main(void) {
 }
 ```
 
-## 🏗️ Příklad 5.2:
-
-```
-
-```
-
-### 🚀 Nastavení interruptu:
+## 🏗️ Příklad 5.2 - nastavení interruptu:
 
 ```c
 #include <avr/io.h>
@@ -93,15 +87,15 @@ int main(void) {
 
 ## 📝 Rozšiřující úlohy:
 
-1) rozšiřte Ukázku 1 tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant.
+1) rozšiřte Ukázku 1 tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant (preprocesor makro #define).
 
-2) rozšiřte Ukázku 2 ve stejném duchu jako v úloze tj. pouze použijete přerušení. Tj. upravte program tak, aby do registru TMR1 vkládal jednu ze dvou konstant, které upraví periodu čekání.
+2) rozšiřte Ukázku 2 ve stejném duchu jako v úloze tj. pouze použijete přerušení. Tj. upravte program tak, aby do registru PER vkládal jednu ze dvou konstant, které upraví periodu.
 
-3) rozšiřte Ukázku 2 tak, že použijete i druhý časovač (dle datasheetu použijte Timer5) s rozdílnou délkou čítaní a rozblikejte druhou LED, která bude blikat s různou periodou. Stisknutím tlačítka periody blikání prohoďte (tou formou, že vyměníte hodnotu vkládanou do TMR1 a TMR5).
+3) rozšiřte Ukázku 2 tak, že použijete i druhý časovač (TCA1) s rozdílnou délkou čítaní a rozblikejte druhou LED, která bude blikat s různou periodou. Stisknutím tlačítka periody blikání prohoďte (tou formou, že vyměníte hodnotu PER pro timery TCA0 TCA1).
 
-4) použijte druhé tlačítko pro zastavení a znovuspuštěni blikání. Použijte bity TMRxON pro zastavení a znovuspuštěni čítače (T1CONbits.TMR1ON pro TMR1 a T5CONbits.TMR5ON pro TMR5).
+4) použijte druhé tlačítko pro zastavení a znovuspuštěni blikání. Použijte bity enable pro zastavení a znovuspuštěni čítače.
 
-5) Vytvořte obecnou obsluhu pomoci přerušení pro všechna 4 tlačítka: pomoci jednoho časovače (tj. použijete jedno přerušení) periodicky detekujte stav na jednotlivých tlačítkách, a prováděje debouncing. V hlavním programu ovládejte celou sadu LED, zobrazujte na ní binární číslo n a reagujte na stisknutí jednotlivých tlačítek následovně:
+5) Vytvořte obecnou obsluhu pomoci přerušení pro všechna 4 tlačítka: pomoci jednoho časovače (tj. použijete jedno přerušení) periodicky detekujte stav na jednotlivých tlačítkách, a prováděje debouncing. V hlavním programu ovládejte celou sadu semafaru RGB led, zobrazujte na ních binární číslo n a reagujte na stisknutí jednotlivých tlačítek následovně:
 
     - BUT1 – inkrementuje n,
     - BUT2 – dekrementuje n,
