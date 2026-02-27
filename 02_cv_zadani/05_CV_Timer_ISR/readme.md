@@ -53,11 +53,9 @@ int main(void) {
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdio.h>
 
 #define F_CPU 4000000UL
 #include <util/delay.h>
-
 
 ISR(TCA0_OVF_vect){
     
@@ -69,19 +67,21 @@ ISR(TCA0_OVF_vect){
 
 int main(void) {
     
+    // PB3 jako out
     PORTB.DIRSET = PIN3_bm;
     
-    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
-    TCA0.SINGLE.PER = 49999;
+    // interrrupt na preteceni 
     TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
-    
+    // nastaveni priod registru (kolik bude perioda??)
+    TCA0.SINGLE.PER = 49999;
+    // zapneme timer
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
+    // globalni enable preruseni
     sei();
 
-    while(1){
-        
+    while(1){ 
 
-    }
-    
+    }    
 }
 ```
 
@@ -102,22 +102,60 @@ int main(void) {
 
 ## 🏗️  Příklad 5.3:
 
-Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile uint8_t flag. 
+Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile uint8_t millis. Tu pak mohu používat k neblokujícímu časování nekritických událostí v hlavní smyčce.
 
-<p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/main_isr_flag.png">
-</p>
     
 ```c 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/atomic.h>
+
+#define F_CPU 4000000UL
+#include <util/delay.h>
+
+volatile uint32_t millis = 0;
 
 
-
-void init(void){
+ISR(TCA0_OVF_vect){
+    
+    TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;
+    
+    millis++;
     
 }
 
-void main(void) {
+int main(void) {
+    
+    PORTB.DIRSET = PIN3_bm;
+    
+    // zapnout preruseni
+    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
+    
+    // nastavit period registr 
+    TCA0.SINGLE.PER = 999;
+    
+    // nastaveni delicky a zapnuti timeru
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV4_gc | TCA_SINGLE_ENABLE_bm;
+       
+    uint32_t millis_prev = 0;
+    uint32_t millis_now = 0;
+    
+    sei();
 
+    while(1){
+        // nebude preruseno
+        ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {     
+            millis_now = millis;
+        }
+        
+        if ((millis_now - millis_prev) >= 1000){
+        
+            PORTB.OUTTGL = PIN3_bm;
+            millis_prev = millis_now;
+        }
+
+    }
+    
 }
 ```
 ## 📝 Doma:
