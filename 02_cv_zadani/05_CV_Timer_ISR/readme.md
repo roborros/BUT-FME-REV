@@ -40,15 +40,13 @@ int main(void) {
 
     while(1){
         
-        
         if(TCA0.SINGLE.CNT >= 10000){
             
             TCA0.SINGLE.CNT = 0x0000;
             PORTB.OUTTGL = PIN3_bm;
         
         }   
-    }
-    
+    } 
 }
 ```
 
