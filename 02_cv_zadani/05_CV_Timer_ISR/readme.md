@@ -1,10 +1,8 @@
 # 🚀 REV - Páte cvičení
 - čítače/časovače, přerušení
 
-## 💡 časovač TCB:
+## 💡 časovač TCA:
 
-
-## 📌 Výpočet:
 
 
 
@@ -12,13 +10,26 @@
 
 
 ```c 
+#define F_CPU 4000000UL
+#include <avr/io.h>
 
-void init(void){
 
-}
+int main(void) {
+    
+    PORTB.DIRSET = PIN3_bm;
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
 
-void main(void) {
-
+    while(1){
+        
+        
+        if(TCA0.SINGLE.CNT >= 10000){
+            
+            TCA0.SINGLE.CNT = 0x0000;
+            PORTB.OUTTGL = PIN3_bm;
+        
+        }   
+    }
+    
 }
 ```
 
@@ -30,15 +41,38 @@ void main(void) {
 
 ### 🚀 Nastavení interruptu:
 
-
 ```c
-void init(void){
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdio.h>
+
+#define F_CPU 4000000UL
+#include <util/delay.h>
+
+
+ISR(TCA0_OVF_vect){
     
+    TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;
+    
+    PORTB.OUTTGL = PIN3_bm;
 
 }
 
-void main(void) {
+int main(void) {
+    
+    PORTB.DIRSET = PIN3_bm;
+    
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
+    TCA0.SINGLE.PER = 49999;
+    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
+    
+    sei();
 
+    while(1){
+        
+
+    }
+    
 }
 ```
 
@@ -58,8 +92,8 @@ void main(void) {
     - BUT2 – dekrementuje n,
 
 ## 🏗️  Příklad 5.3:
-Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile char flag. Slouží k jednoduchému řízení. Je zde zavedene i volatile static uint i. 
-jako statické označujeme proměnné, které lze používat pouze vně bloku, v tomto případě jen programu přerušení. Chová se však jako globální proměnná. Zachovává si hodnotu. 
+
+Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Případně proměnné. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile uint8_t flag. 
 
 <p align="center">
   <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/05_CV_Timer_ISR/main_isr_flag.png">
@@ -77,8 +111,6 @@ void main(void) {
 
 }
 ```
-## 📝 Další úlohy:
-1) Rozchoďte TMR1 a TMR2 (TMR2 je trochu jiný--ma jen 8 bitu a obsahuje postscaler, a period register)
-2) Použíjte obě priority PIC18 funkce se odlišují  __interrupt(low_priority); __interrupt(high_priority)
-3) Je treba nastavit IPRx registry pro low_priority pro TMR2IF
-4) Vyšší priorita je schopna přerušit nižší! Vyzkoušejte třeba umístěním while(BTN1), tedy něco co bychom normálně dělat něměli!!
+## 📝 Doma:
+1) Rozchoďte i druhý typ timeru TCB (je trochu jiný než TCA)
+2) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. 
