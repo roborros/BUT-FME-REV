@@ -50,7 +50,7 @@ int main(void) {
 }
 ```
 
-## 🏗️ Příklad 5.2 - nastavení interruptu:
+## 🏗️ Příklad 5.2 - nastavení interruptu a zápis ISR (Interrupt Service Routine):
 
 ```c
 #include <avr/io.h>
@@ -156,6 +156,58 @@ int main(void) {
     }  
 }
 ```
+
+## 🏗️  Příklad 5.4:
+
+Externí přerušení (External Interrupt) je hardwarový mechanismus, který umožňuje procesoru okamžitě reagovat na změnu napěťové úrovně na konkrétním pinu (např. stisk tlačítka nebo signál ze senzoru) bez nutnosti neustálého dotazování v hlavní smyčce (polling). 
+
+- konfigurace PORTx.PINnCTRL
+- interrupt flag PORTx.INTFLAGS
+
+  V ISR je nutné softwarem určit konkrétní pin.
+
+
+```c 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+
+void io_init(void) {
+    // PB3 out
+    PORTB.DIRSET = PIN3_bm;
+
+    // PB2 je vstup
+    PORTB.DIRCLR = PIN2_bm;
+    
+    // PULL-UP a preruseni na sestupnou hranu
+    PORTB.PIN2CTRL = PORT_PULLUPEN_bm | PORT_ISC_FALLING_gc;
+
+}  
+
+ISR(PORTB_PORT_vect) {
+    // Kontrola, zda přerušení způsobil PIN2 (pomocí registru INTFLAGS)
+    if (PORTB.INTFLAGS & PIN2_bm) {
+        
+        // Otočení (toggle) stavu pinu PB3
+        PORTB.OUTTGL = PIN3_bm;
+
+        // Vynulování příznaku přerušení pro PIN2
+        PORTB.INTFLAGS = PIN2_bm;
+    }
+}
+
+int main(void) {
+    
+    io_init();
+    
+    sei(); // globalni povoleni preruseni
+
+    while (1) {
+        // nic tu neni, ale musi byt loop
+    }
+}
+```
+
 ## 💥 Doma:
 1) Rozchoďte i druhý typ timeru TCB (je trochu jiný než TCA)
-2) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. 
+2) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. (datasheet str. 135)
