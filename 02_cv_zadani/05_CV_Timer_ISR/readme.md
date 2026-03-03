@@ -91,6 +91,8 @@ int main(void) {
     // globalni enable preruseni
     sei();
 
+    //cli(); to slouzi ke globalnimu vypnuti reruseni
+
     while(1){ 
 
     }    
