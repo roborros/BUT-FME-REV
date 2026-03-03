@@ -68,6 +68,16 @@ ISR(TCA0_OVF_vect){
 }
 
 int main(void) {
+
+    /* timto lze pripojit externi crystal
+    _PROTECTED_WRITE(CLKCTRL_XOSCHFCTRLA, 0x05);
+    _PROTECTED_WRITE(CLKCTRL_MCLKCTRLA, 0x03);
+    
+    while (!(CLKCTRL.MCLKSTATUS & (1 << 4)));
+    */
+    
+    // timto lze zmenit frekvenci interniho osci na maximum 24 MHz
+    //_PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
     
     // PB3 jako out
     PORTB.DIRSET = PIN3_bm;
