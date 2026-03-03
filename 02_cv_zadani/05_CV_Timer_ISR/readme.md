@@ -173,8 +173,8 @@ int main(void) {
 
 Externí přerušení (External Interrupt) je hardwarový mechanismus, který umožňuje procesoru okamžitě reagovat na změnu napěťové úrovně na konkrétním pinu (např. stisk tlačítka nebo signál ze senzoru) bez nutnosti neustálého dotazování v hlavní smyčce (polling). 
 
-- konfigurace PORTx.PINnCTRL
-- interrupt flag PORTx.INTFLAGS
+- konfigurace:      **PORTx.PINnCTRL**
+- interrupt flag:   **PORTx.INTFLAGS**
 
   V ISR je nutné softwarem určit konkrétní pin.
 
