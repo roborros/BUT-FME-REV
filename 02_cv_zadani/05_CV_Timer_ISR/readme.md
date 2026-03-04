@@ -223,3 +223,75 @@ int main(void) {
 ## 💥 Doma:
 1) Rozchoďte i druhý typ timeru TCB (je trochu jiný než TCA)
 2) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. (datasheet str. 135)
+
+
+# 🚀 Prompty pro studium MCU
+
+Tento seznam obsahuje prompty pro LLM (jako Gemini nebo ChatGPT).
+
+---
+
+## 📍 1. Timer/Counter – základní koncept
+**Prompt:**
+> - Vysvětli, co je Timer/Counter v mikrokontroléru a jak funguje.
+> - Jaký je rozdíl mezi režimem timer (časování) a counter (počítání externích impulsů).
+> - Co znamená prescaler, perioda, overflow, compare match.
+> - Vymysli 3 typické use-cases: periodický tick, měření.
+
+---
+
+## 📍 2. Timer/Counter – režimy a praktické použití
+**Prompt:**
+> - Popiš běžné režimy timeru: normal (overflow), CTC/compare, PWM (fast/phase-correct), input capture.
+> - Vysvětli, jak bys nastavil timer pro periodické přerušení každých 1 ms (obecně, bez konkrétního MCU).
+> - Vysvětli, jak funguje input capture a proč je lepší než číst pin v přerušení.
+> - Uveď typické chyby při práci s timery (špatný prescaler, špatný výpočet periody, jitter, špatné mazání flagů).
+
+---
+
+## 📍 3. Interrupts – co to je a proč existují
+**Prompt:**
+> - Vysvětli, co je přerušení (interrupt) a proč se používá místo pollingu.
+> - Popiš životní cyklus přerušení: událost → flag → vector → ISR → návrat.
+> - Vysvětli pojmy: interrupt vector table, ISR, interrupt flag, enable bit, priority (pokud existuje).
+> - Porovnej polling vs interrupt na konkrétním příkladu (tlačítko, UART RX, timer).
+
+---
+
+## 📍 4. Interrupts – bezpečné psaní ISR
+**Prompt:**
+> - Jaká pravidla platí pro ISR (krátká, žádné blokování, žádné delay, opatrně s printf).
+> - Vysvětli, proč se používá `volatile` a kdy.
+> - Vysvětli problém race conditions mezi ISR a main smyčkou a jak ho řešit (atomické sekce, disable/enable interrupts).
+> - Navrhni “pattern” pro předávání dat z ISR do main loop.
+
+---
+
+## 📍 5. Externí přerušení – EXTI / Pin change interrupt
+**Prompt:**
+> - Vysvětli rozdíl mezi externím přerušením na konkrétním pinu a pin-change interrupt (pokud to dané MCU rozlišuje).
+> - Jaké jsou typické triggery (rising/falling edge, level) a kdy je který vhodný.
+> - Navrhni odrušení tlačítka: čistě software vs hardware vs kombinace.
+> - Uveď typické chyby: bounce, opakované triggery, špatná konfigurace pull-up/down, zapomenutý flag.
+
+---
+
+## 📍 6. AVR128DB48 – jak funguje TCA v základním režimu (periodický interrupt)
+**Prompt:**
+> - Vysvětli, co je TCA (Timer/Counter Type A) na AVR128DB48 a jaké má typické vlastnosti oproti jiným timerům.
+> - Popiš “základní režim” pro periodický interrupt: jak se nastavuje clock zdroj, prescaler a perioda (TOP).
+> - Vysvětli, jaký je rozdíl mezi přerušením z overflow (přetečení) a compare match (pokud je relevantní pro zvolený režim).
+> - Uveď krok za krokem, jak bys nakonfiguroval TCA na tick každých 1 ms (včetně obecného výpočtu hodnoty periody).
+> - Jak se správně maže interrupt flag u TCA a jaké chyby z toho typicky vznikají.
+
+---
+
+## 📍 7. AVR128DB48 – jak funguje TCB v základním režimu (periodický interrupt)
+**Prompt:**
+> - Vysvětli, co je TCB (Timer/Counter Type B) na AVR128DB48 a v čem se liší od TCA (šířka čítače, účel, režimy).
+> - Popiš “základní režim” pro periodický interrupt: jak se volí zdroj clocku, prescaler (pokud existuje) a hodnota compare/CNT.
+> - Uveď krok za krokem, jak bys nakonfiguroval TCB na periodický tick každých 1 ms (včetně obecného výpočtu hodnoty).
+> - Vysvětli, jak se správně maže interrupt flag u TCB a proč se to liší/nesmí plést s jinými periferiemi.
+> - Uveď typické chyby: špatný clock select, špatná hodnota compare, zapomenuté enable v NVIC/vektor tabulce (podle architektury AVR).
+
+---
