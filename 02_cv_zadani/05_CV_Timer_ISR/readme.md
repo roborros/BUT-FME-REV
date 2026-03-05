@@ -99,7 +99,7 @@ int main(void) {
 }
 ```
 
-## 📝 Rozšiřující úlohy:
+## 📝 úlohy 1:
 
 1) rozšiřte Ukázku 1. tak, aby po stisknutí tlačítka změnila rychlost blikání. Definujte dvojici symbolických konstant (preprocesor makro #define).
 
@@ -220,9 +220,11 @@ int main(void) {
 }
 ```
 
-## 💥 Doma:
-1) Rozchoďte i druhý typ timeru TCB (je trochu jiný než TCA)
-2) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. (datasheet str. 135)
+## 📝 úlohy 2:
+
+1) Nakonfigurujte externí interrupt i na další přídavné tlačítko. Připojte ho na vybraný pin. 
+2) Rozchoďte i druhý typ timeru TCB (je trochu jiný než TCA). Nastavte main clk na 24MHz a nastavte TCB a jeho přerušení tak, že bliknete LED každých 100ms.
+3) Zkuste použít priority přerušení, kde můžete jednomu ISR přidělit vyšší prioritu tak, že může přerušovat ostatní. (datasheet str. 135)
 
 
 # 🚀 Prompty pro studium MCU
