@@ -1,6 +1,6 @@
 # 🚀 REV - Šesté cvičení - UART
 
-UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sběrnic. Na EduKitu je spojena s programatorem, který zajišťuje převod na USB. To, že je sběrnice asynchronní znamená, že není použit synchronizační signál např. společný clock. Periferie odesílá jeden bajt, který je uveden start a ukončen stop bitem. Případně lze přidat paritní bit.Jak je patrné na následujícím obrázku jedná se o dvojici linek, které odesílají TX a příjmají RX zprávu. Při konfiguraci je třeba nastavit rychlost přenosu v Baudech. 
+UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sběrnic. Na Kitu je spojena s programatorem, který zajišťuje převod na USB. To, že je sběrnice asynchronní znamená, že není použit synchronizační signál např. společný clock. Periferie odesílá jeden bajt, který je uveden start a ukončen stop bitem. Případně lze přidat paritní bit.Jak je patrné na následujícím obrázku jedná se o dvojici linek, které odesílají TX a příjmají RX zprávu. Při konfiguraci je třeba nastavit rychlost přenosu v Baudech. 
 
 <p align="center">
   <img width="307" height="120" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/UartSchema.png">
