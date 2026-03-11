@@ -138,4 +138,36 @@ Ve složce různe jsou zazipované soubory LCD.c LCD.h. Ty můžete zahrnout do 
 5) Vytvořte program, který pomocí zpráv z PC bude ovládat LED diodu. ON - zapne, OFF - vypne. Využíjte výsledek z minulé úlohy. (využíjte funkce z knihovny string.h)
 
 6) Příjmutý řetězec vypište na displej. V pořadí první na první řádek, druhá zpráva na druhý a třetí zase na první atd. Základní práci s displejem projdeme na cvičení.
-   
+
+---
+
+# 🚀 Prompty pro studium UART
+
+## 📍 1. UART obecně
+**Prompt:**
+> Vysvětli mi UART obecně na mikrokontroléru.
+> - co je UART,
+> - proč je asynchronní,
+> - k čemu slouží TX a RX,
+> - co je baud rate,
+> - jak vypadá přenosový rámec,
+> - co znamená 8N1,
+> - výhody a nevýhody UART,
+> - běžné použití v praxi.
+
+---
+
+## 📍 2. UART na AVR128DB48
+**Prompt:**
+> Vysvětli mi UART na mikrokontroléru AVR128DB48.
+> - jak funguje USART na AVR128DB48 v asynchronním režimu,
+> - jaké registry se používají,
+> - jak se nastaví baud rate,
+> - jak se povolí TX a RX,
+> - jak se nastaví formát 8N1,
+> - jak odeslat jeden znak,
+> - jak přijmout jeden znak,
+> - jak funguje polling,
+> - jak funguje komunikace přes přerušení.
+
+---
