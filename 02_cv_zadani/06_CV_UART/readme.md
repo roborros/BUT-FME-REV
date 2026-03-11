@@ -131,7 +131,7 @@ Ve složce různe jsou zazipované soubory LCD.c LCD.h. Ty můžete zahrnout do 
    void usart_write_str(char *s);   // vypise retezec az do nuloveho znaku
    ```
    
-3) Společně s funkcemi z 2. vytvořte knihovnu “Uart.c” a k ní příslušný hlavičkový soubor “Uart.h”. Přesuňte do ní funkce k uartu. (Inicializace, příjem/odeslání znaku, odeslání řetězce)
+3) Z ukázek a resení druhé úlohy vytvořte knihovnu “Uart.c” a k ní příslušný hlavičkový soubor “Uart.h”. Přesuňte do ní funkce k uartu. (Inicializace, příjem/odeslání znaku, odeslání řetězce)
 
 4) Vytvořte program, který bude načítat znaky z UARTU (pomocí přerušení) a ukládat je do pole tak dlouho, než načte znak '\n' (LF). Poté znaky pošle v opačném pořadí po UARTu zpět.
 
