@@ -6,7 +6,7 @@ UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sb
   <img width="307" height="120" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/UartSchema.png">
 </p>
 
-
+![uart frame](frame.png)
 
 ## 🏗️  Příklad 6.1:
 
