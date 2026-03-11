@@ -128,7 +128,7 @@ Ve složce různe jsou zazipované soubory LCD.c LCD.h. Ty můžete zahrnout do 
 2) Vytvořte funkci pro odeslání řetězce až do nulového znaku.
     
    ```
-   void usart_write_str(char *s);   // vypise retezec az do nuloveho znaku
+   void uart_write_str(char *s);   // vypise retezec az do nuloveho znaku
    ```
    
 3) Z ukázek a řešení druhé úlohy vytvořte knihovnu “Uart.c” a k ní příslušný hlavičkový soubor “Uart.h”. Přesuňte do ní funkce k uartu. (Inicializace, příjem/odeslání znaku, odeslání řetězce)
