@@ -117,7 +117,7 @@ int main(void) {
 
 ## 💡 Použutí displeje:
 
-Ve složce různe jsou soubory LCD.c LCD.h. Ty můžete zahrnout do projeku a pak používat displej. 
+Ve složce různe jsou zazipované soubory LCD.c LCD.h. Ty můžete zahrnout do projeku a pak používat displej. 
 
 ![zapojeni displej](displej.png)
 
