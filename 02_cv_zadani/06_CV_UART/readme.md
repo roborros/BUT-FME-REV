@@ -16,7 +16,6 @@ UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sb
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdio.h>
 
 #define F_CPU 24000000UL
 #include <util/delay.h>
@@ -73,8 +72,6 @@ int main(void) {
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdio.h>
-#include <string.h>
 
 #define F_CPU 24000000UL
 #include <util/delay.h>
