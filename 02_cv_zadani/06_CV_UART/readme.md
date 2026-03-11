@@ -1,18 +1,14 @@
-# REV - Šesté cvičení - UART
+# 🚀 REV - Šesté cvičení - UART
 
 UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sběrnic. Na EduKitu je spojena s převodníkem FTDI, který zajišťuje převod na USB. To, že je sběrnice asynchronní znamená, že není použit s\nchronizační sygnál např. společný clock. Periferie odesílá jeden bajt, který je uveden start a ukončen stop bitem. Jak je patrné na následujícím obrázku jedná se o dvojici linek, které odesílají TX a příjmají RX zprávu. Při konfiguraci je třeba nastavit rychlost přenosu v Baudech. Jedná se o jednotku modulační rychlosti.
-
-## Registry UART:
-
-- RCSTAx
-- TXSTAx
-- SPBRGx
 
 <p align="center">
   <img width="307" height="120" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/UartSchema.png">
 </p>
 
-## Příklad 6.1:
+
+
+## 🏗️  Příklad 6.1:
 
 - příjem a odeslání znaku
   
@@ -50,167 +46,56 @@ int main(void) {
 }
 
 ```
-## Příklad 6.2:
+##  🏗️ Příklad 6.2:
 - vyvolání přerušení na  příchod znaku
 ```c
-// uart
-#pragma config FOSC = HSMP      // Externi oscilator
-#pragma config PLLCFG = ON      // 4X PLL 
-#pragma config FCMEN = ON       // Fail-Safe Clock 
-#pragma config WDTEN = OFF      // Watchdog Timer OFF
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdio.h>
+#include <string.h>
 
-#include <xc.h>                 // pro prekladac XC8
+#define F_CPU 24000000UL
+#include <util/delay.h>
 
-#define _XTAL_FREQ 32E6
+#define BAUDRATE 115200UL
 
-void __interrupt() RC_ISR_HANDLER(){
-
-    if(RC1IF && RC1IE){
-        TXREG1 = RCREG1;        
-    }
+ISR(USART3_RXC_vect)
+{   
+    uint8_t received_char = USART3.RXDATAL;
+    
+    while (!(USART3.STATUS & USART_DREIF_bm));
+    USART3.TXDATAL = received_char;
+   
 }
 
-/*--------main--------*/
-int main(void) {
-
-    ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
-    TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 1;   // TX pin jako vstup
-    TRISCbits.TRISC7 = 1;   // rx pin jako vstup
-
-    /*baudrate*/
-    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
-
-    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
-    RCSTA1bits.SPEN = 1;      // zapnuti UART
-    TXSTA1bits.TXEN = 1;      // zapnuti TX
-    RCSTA1bits.CREN = 1;      // zapnuti RX 
-
-    RC1IE = 1;                // zap  preruseni od RCREG
-    PEIE = 1;                // preruseni od periferii    
-    GIE = 1;                 // globalni preruseni
-
-    while(1){
-            //nic
-    }
-}
-```
-
-## Příklad 6.3:
-
-- mailbox 
-
-<p align="center">
-  <img width="400" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/mailbox.png">
-</p>
-
-```c
-// uart
-#pragma config FOSC = HSMP      // Externi oscilator
-#pragma config PLLCFG = ON      // 4X PLL 
-#pragma config FCMEN = ON       // Fail-Safe Clock 
-#pragma config WDTEN = OFF      // Watchdog Timer OFF
-
-#include <xc.h>             //-- pro prekladac XC8
-
-#define _XTAL_FREQ 32E6
-
-typedef struct
+void uart_init(uint32_t f_cpu, uint32_t baud)
 {
-    char data;
-    char full;
-} mailbox;
+    
+    PORTB.DIRSET = PIN0_bm;   
+    PORTB.DIRCLR = PIN1_bm;   
 
-volatile mailbox g_mail = {0,0};
-
-void __interrupt() ISR(void)
-{
-    if(RC1IF & RC1IE)
-    {
-        g_mail.data = RC1REG;
-        g_mail.full = 1;        
-    }
+    USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);        
+    USART3.CTRLB |= USART_TXEN_bm | USART_RXEN_bm;
+    
+    USART3.CTRLA = USART_RXCIE_bm;
 }
 
-void main(void)
-{ 
-    ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
-    TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 1;   // TX pin jako vstup
-    TRISCbits.TRISC7 = 1;   // rx pin jako vstup
-
-    /*baudrate*/
-    SPBRG1 = 51;            // (32_000_000 / (64 * 9600)) - 1
-
-    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
-    RCSTA1bits.SPEN = 1;    // zapnuti UART
-    TXSTA1bits.TXEN = 1;    // zapnuti TX
-    RCSTA1bits.CREN = 1;    // zapnuti RX 
-
-    RC1IE = 1;              // zap  preruseni od RCREG
-    PEIE = 1;               // preruseni od periferii    
-    GIE = 1;                // globalni preruseni
-
-    while(1)
-    {
-        if(g_mail.full)
-        {
-            while(!TX1IF);
-            TXREG = g_mail.data;
-            g_mail.full = 0;
-        }
-    }
-}
-```
-
-## Příklad 6.4:
-
-- STDIO
-
-```c
-// uart
-#pragma config FOSC = HSMP      // Externi oscilator
-#pragma config PLLCFG = ON      // 4X PLL 
-#pragma config FCMEN = ON       // Fail-Safe Clock 
-#pragma config WDTEN = OFF      // Watchdog Timer OFF
-
-#include <xc.h>             //-- pro prekladac XC8
-#include <stdio.h>          //   pro printf
-
-#define _XTAL_FREQ 32E6
-
-void putch(char data);
-
-/*--------main--------*/
 int main(void) {
+    
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
+            
+    uart_init(F_CPU, BAUDRATE);
 
-    ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
-    TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 1;   // TX pin jako vstup
-    TRISCbits.TRISC7 = 1;   // rx pin jako vstup
+    sei();
+    
+    while (1)
+    {
 
-    /*baudrate*/
-    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
-
-    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
-    RCSTA1bits.SPEN = 1;      // zapnuti UART
-    TXSTA1bits.TXEN = 1;      // zapnuti TX
-    RCSTA1bits.CREN = 1;      // zapnuti RX 
-
-
-    while(1){
-        __delay_ms(500);
-        printf("ahoj\n");
     }
-}
-
-void putch(char data){
-    while(!TX1IF);
-    TXREG1 = data;
 }
 ```
 
-### Zadání:
+## 📝 Zadání:
 
 1) Nahrejte a rozchodte ukazky 6.1 až 6.4.
 
