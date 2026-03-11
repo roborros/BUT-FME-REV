@@ -13,38 +13,57 @@ UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sb
 - příjem a odeslání znaku
   
   ```c
-  // uart
-  #pragma config FOSC = HSMP      // Externi oscilator
-  #pragma config PLLCFG = ON      // 4X PLL 
-  #pragma config FCMEN = ON       // Fail-Safe Clock 
-  #pragma config WDTEN = OFF      // Watchdog Timer OFF
-  ```
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdio.h>
 
-#include <xc.h>             //-- pro prekladac XC8
-/*--------main--------*/
-int main(void) {
+#define F_CPU 24000000UL
+#include <util/delay.h>
 
-    ANSELC = 0x00;          // vypnuti analogovych funkci na PORTC
-    TRISD = 0x00;           // PORTD jako vystup
-    TRISCbits.TRISC6 = 1;   // TX pin jako vstup
-    TRISCbits.TRISC7 = 1;   // RX pin jako vstup
+#define BAUDRATE 115200UL
+
+
+void uart_init(uint32_t f_cpu, uint32_t baud)
+{
     
-    /*baudrate*/
-    SPBRG1 = 51;              // (32_000_000 / (64 * 9600)) - 1
-    RCSTA1bits.SPEN = 1;      // zapnuti UART
-    TXSTA1bits.SYNC = 0;      // nastaveni asynchroniho modu
-    TXSTA1bits.TXEN = 1;      // zapnuti TX
-    RCSTA1bits.CREN = 1;      // zapnuti RX 
-    
-    while(1){
-        if (RC1IF){
-            LATD2 ^= 1;     // LED 
-            TXREG1 = RCREG1;      // precist a poslad zpet
-        }
-    }
+    PORTB.DIRSET = PIN0_bm;   
+    PORTB.DIRCLR = PIN1_bm;   
 
+    USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);        
+    USART3.CTRLB |= USART_TXEN_bm | USART_RXEN_bm;
+    
+    USART3.CTRLA = USART_RXCIE_bm;
 }
 
+void uart_transmit(uint8_t data) {
+    // cekam na misto v tx bufferu
+    while (!(USART3.STATUS & USART_DREIF_bm));
+    USART3.TXDATAL = data;
+}
+
+uint8_t uart_receive(void) {
+    // cekam na priznak ze RX buffer ma data
+    while (!(USART3.STATUS & USART_RXCIF_bm));
+    return USART3.RXDATAL;
+}
+
+int main(void) {
+    
+    // osci na 24MHz
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
+    
+    // nastaveni uartu ve fci
+    uart_init(F_CPU, BAUDRATE);
+           
+    while (1)
+    {
+    
+        // Echo:
+        uint8_t received_byte = uart_receive();
+        uart_transmit(received_byte);
+
+    }
+}
 ```
 ##  🏗️ Příklad 6.2:
 - vyvolání přerušení na  příchod znaku
