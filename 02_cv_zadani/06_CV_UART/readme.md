@@ -1,6 +1,6 @@
 # 🚀 REV - Šesté cvičení - UART
 
-UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sběrnic. Na EduKitu je spojena s převodníkem FTDI, který zajišťuje převod na USB. To, že je sběrnice asynchronní znamená, že není použit s\nchronizační sygnál např. společný clock. Periferie odesílá jeden bajt, který je uveden start a ukončen stop bitem. Jak je patrné na následujícím obrázku jedná se o dvojici linek, které odesílají TX a příjmají RX zprávu. Při konfiguraci je třeba nastavit rychlost přenosu v Baudech. Jedná se o jednotku modulační rychlosti.
+UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sběrnic. Na EduKitu je spojena s programatorem, který zajišťuje převod na USB. To, že je sběrnice asynchronní znamená, že není použit synchronizační signál např. společný clock. Periferie odesílá jeden bajt, který je uveden start a ukončen stop bitem. Případně lze přidat paritní bit.Jak je patrné na následujícím obrázku jedná se o dvojici linek, které odesílají TX a příjmají RX zprávu. Při konfiguraci je třeba nastavit rychlost přenosu v Baudech. 
 
 <p align="center">
   <img width="307" height="120" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/06_CV_UART/UartSchema.png">
@@ -12,7 +12,8 @@ UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sb
 
 - příjem a odeslání znaku
   
-  ```c
+```c
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdio.h>
@@ -25,14 +26,14 @@ UART (Universal asynchronous receiver-transmitter) je jedna z komunikačních sb
 
 void uart_init(uint32_t f_cpu, uint32_t baud)
 {
-    
+    // nastaveni pinu TX RX
     PORTB.DIRSET = PIN0_bm;   
     PORTB.DIRCLR = PIN1_bm;   
 
-    USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);        
+    // baudrate str. 380
+    USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);
+   // zapnuti TX a RX       
     USART3.CTRLB |= USART_TXEN_bm | USART_RXEN_bm;
-    
-    USART3.CTRLA = USART_RXCIE_bm;
 }
 
 void uart_transmit(uint8_t data) {
@@ -57,14 +58,16 @@ int main(void) {
            
     while (1)
     {
-    
         // Echo:
         uint8_t received_byte = uart_receive();
         uart_transmit(received_byte);
 
     }
 }
+
+
 ```
+
 ##  🏗️ Příklad 6.2:
 - vyvolání přerušení na  příchod znaku
 ```c
@@ -89,13 +92,15 @@ ISR(USART3_RXC_vect)
 
 void uart_init(uint32_t f_cpu, uint32_t baud)
 {
-    
+    // nastaveni pinu TX RX
     PORTB.DIRSET = PIN0_bm;   
-    PORTB.DIRCLR = PIN1_bm;   
+    PORTB.DIRCLR = PIN1_bm;
 
-    USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);        
+    // baudrate str. 380
+    USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);\
+    // zapnuti TX a RX        
     USART3.CTRLB |= USART_TXEN_bm | USART_RXEN_bm;
-    
+    // zapnuti RX interrupt
     USART3.CTRLA = USART_RXCIE_bm;
 }
 
@@ -116,28 +121,19 @@ int main(void) {
 
 ## 📝 Zadání:
 
-1) Nahrejte a rozchodte ukazky 6.1 až 6.4.
+1) Vyzkoušejte ukázky 6.1 a 6.2. Je třeba nějáky prográmek pro příjem např. termite - odkaz na hlavni stránce github projektu. Nastavte rychlost přenosu. Dále je třeba zapnout DTR/DSR. 
 
-2) Vytvořte sadu funkcí, která vytvoří vrstvu pro znakový vstup/vystup. Ošetřete čekání na plný buffer a případné overrun 
-   chyby. 
-   
-   ```c
-   int UART_GetChar();             // nacte jeden znak
-   void UART_PutChar(int c);       // vypise jeden znak
-   int UART_CharAvailable();       // vrati nenulovou hodnotu prave kdyz je alespon jeden znak k dispozici pro cteni
-   void UART_PutStr(char * str);   // vypise retezec az do nuloveho znaku
+2) Vytvořte funkci pro odeslání řetězce až do nulového znaku.
+    
+   ```
+   void usart_write_str(const char *s);   // vypise retezec az do nuloveho znaku
    ```
    
-   3) Vytvořte funkci int UART_Init(), do které přesunte inicializační kód. Společně s funkcemi z 2. vytvořte knihovnu “UartIO.c” a k ní příslušný hlavičkový soubor “UartIO.h”
+3) Společně s funkcemi z 2. vytvořte knihovnu “Uart.c” a k ní příslušný hlavičkový soubor “Uart.h”. Přesuňte do ní funkce k uartu. (Inicializace, příjem/odeslání znaku, odeslání řetězce)
 
-4) Vytvořte program, který bude načítat znaky z UARTU a ukládat je do pole tak dlouho, než načte znak '.'. Poté znaky pošle v opačném pořadí po UARTu zpět. Využijte funkce z předchozí úlohy.
+4) Vytvořte program, který bude načítat znaky z UARTU (pomocí přerušení) a ukládat je do pole tak dlouho, než načte znak '\n' (LF). Poté znaky pošle v opačném pořadí po UARTu zpět.
 
-5) Upravte program tak, aby znaky načítal a vysílal pomocí přerušení.
+5) Vytvořte program, který pomocí zpráv z PC bude ovládat LED diodu. ON - zapne, OFF - vypne. Využíjte výsledek z minulé úlohy. (využíjte funkce z knihovny string.h)
 
-```
-Tip:
-v přerušení nepoužívejte busy waiting; tzn. buď upravte funkce v UartIO tak, aby místo čekání vracely chybovou návratovou hodnotu, nebo je nepoužívejte
-nezapomeňte na modifikátor volatile
-```
-
-6) Vytvořte funkce getch() a putch(), které budou realizovat standardní vstup a výstup přes UART. Funkce zaradte do knihovny UartIO.c. Vytvořte testovací program, který bude na terminál periodicky vypisovat (pomocí funkce printf()) čas od posledního restartu (v sekundách či jiných zvolených jednotkách).
+6) Příjmutý řetězec vypište na displej. V pořadí první na první řádek, druhá zpráva na druhý a třetí zase na první atd.
+   
