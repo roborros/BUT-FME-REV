@@ -119,6 +119,12 @@ int main(void) {
 }
 ```
 
+## 💡 Použutí displeje:
+
+Ve složce různe jsou soubory LCD.c LCD.h. Ty můžete zahrnout do projeku a pak používat displej. 
+
+![zapojeni displej](displej.png)
+
 ## 📝 Zadání:
 
 1) Vyzkoušejte ukázky 6.1 a 6.2. Je třeba nějáky prográmek pro příjem např. termite - odkaz na hlavni stránce github projektu. Nastavte rychlost přenosu. Dále je třeba zapnout DTR/DSR. 
@@ -135,5 +141,5 @@ int main(void) {
 
 5) Vytvořte program, který pomocí zpráv z PC bude ovládat LED diodu. ON - zapne, OFF - vypne. Využíjte výsledek z minulé úlohy. (využíjte funkce z knihovny string.h)
 
-6) Příjmutý řetězec vypište na displej. V pořadí první na první řádek, druhá zpráva na druhý a třetí zase na první atd.
+6) Příjmutý řetězec vypište na displej. V pořadí první na první řádek, druhá zpráva na druhý a třetí zase na první atd. Základní práci s displejem projdeme na cvičení.
    
