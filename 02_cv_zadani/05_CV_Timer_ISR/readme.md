@@ -116,7 +116,7 @@ int main(void) {
 
 ## 🏗️  Příklad 5.3:
 
-Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile uint8_t millis. Tu pak mohu používat k neblokujícímu časování nekritických událostí v hlavní smyčce.
+Jednotlive ISR a hlavní program si mohou předávat informace pomocí globálních proměnných. Tyto proměnné musí být ozančeny jako **volatile**. Jedná se o informaci pro překladač, aby neprováděl žádné optimalizace. Ten by jinak mohl proměnou považovat za optimalizovatelnou. Proměnná je však potřebná v programu přerušení. Volatile jsou proměnné, které mohou měnit hodnotu asynchronně, nehledě na hlavní program. Jsou to i některé registry např. PORTx.IN mění hodnotu na základě napětí na pinu. V příkladu je takovou proměnou volatile uint32_t millis. Tu pak mohu používat k neblokujícímu časování nekritických událostí v hlavní smyčce.
 
     
 ```c 
