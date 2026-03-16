@@ -6,6 +6,9 @@
 ## Tutarial na C:
 [C tutorial-Programiz](https://www.programiz.com/c-programming/getting-started)
 
+## Inspirace k volbě pojektu:
+[Arduino project HUB](https://projecthub.arduino.cc/)
+
 ## Zájímavé odkazy:
 [Fast inverse square root](https://en.wikipedia.org/wiki/Fast_inverse_square_root#)
 
