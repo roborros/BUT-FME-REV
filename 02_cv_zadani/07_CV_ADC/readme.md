@@ -12,7 +12,7 @@ Digitálně-analogový převod v MCU je nejčastěji realizován pomocí odporov
 
 Hlavním parametrem obou převodníků je rozlišení definované počtem bitů (N). Například 12bitové ADC rozděluje rozsah referenčního napětí na 4096 kroků. Velikost nejmenšího možného kroku, označovaná jako LSB (Least Significant Bit), se vypočítá jako:
 
-
+$$LSB = \frac{V_{REF}}{2^N}$$
 
 ## 💡 Blokové schema ADC:
 
