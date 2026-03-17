@@ -1,5 +1,19 @@
 # 🚀 REV - Sedmé cvičení - ADC/DAC
 
+### ADC:
+
+Většina moderních mikrokontrolérů využívá pro ADC architekturu s postupnou aproximací (SAR – Successive Approximation Register). Tento princip pracuje na bázi binárního vyhledávání, kdy vnitřní komparátor postupně porovnává vstupní napětí s referenčními úrovněmi generovanými interním DAC. Algoritmus začíná u nejvýznamnějšího bitu (MSB) a postupně prochází až k nejméně významnému bitu (LSB), čímž v každém kroku zpřesňuje odhad vstupního napětí. Tento proces vyžaduje pro každý převod několik hodinových cyklů, což představuje kompromis mezi rychlostí a přesností převodu.
+
+### DAC:
+
+Digitálně-analogový převod v MCU je nejčastěji realizován pomocí odporové sítě, typicky v konfiguraci R-2R (odporový žebřík) nebo String DAC. Tyto obvody fungují jako precizní napěťové děliče, kde digitální vstup ovládá soustavu tranzistorových spínačů. Tyto spínače připojují odpovídající uzly odporové sítě k referenčnímu napětí, čímž na společném výstupu vzniká součtové napětí lineárně závislé na vstupním binárním kódu. Výstup je často doplněn operačním zesilovačem (bufferem), který zajišťuje nízkou výstupní impedanci pro stabilní buzení zátěže.
+
+### Rozlišení:
+
+Hlavním parametrem obou převodníků je rozlišení definované počtem bitů (N). Například 12bitové ADC rozděluje rozsah referenčního napětí na 4096 kroků. Velikost nejmenšího možného kroku, označovaná jako LSB (Least Significant Bit), se vypočítá jako:
+
+
+
 ## 💡 Blokové schema ADC:
 
 <p align="center">
