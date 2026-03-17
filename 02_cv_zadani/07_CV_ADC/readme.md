@@ -20,21 +20,6 @@ $$LSB = \frac{V_{REF}}{2^N}$$
   <img width="850" height="350" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/07_CV_ADC/ADCscheme.png">
 </p>
 
-### Konfigurace:
-
-    - žádaným vstupům (piny) je třeba přiřadit analogovou funkci (registry ANSELx)
-    - nastavení vstupního rozsahu, tj. volba napěťové reference (pole VCFG v registru ADCON1)
-    - nastavení vstupů pro zvolený kanál (AN4 a AN5 v našem případě)
-    - zapnutí ADC modulu (ADCON0bits.ADON)
-
-### Čtení:
-
-    - spuštění vzorkování
-    - krátká prodleva
-    - spuštění konverze (kvantizace)
-    - čekání na dokončení konverze (kontrolou ADCON0bits.DONE)
-    - čtení výsledku konverze (registr ADRESH nebo ADRESL)
-
 
 ## 🏗️ Přiklad 7.1:
 Rozsviťe LED v případě, že je potenciometr v horní polovině svého rozsahu a zhasněte ji, je-li potenciometr v dolní polovině svého rozsahu.
