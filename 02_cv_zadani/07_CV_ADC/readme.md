@@ -102,7 +102,7 @@ int main(void){
 
 
 ```
-## 🏗️  Přiklad 7.3 vyvolani preruseni na dokoncenou konverzi a využití timeru:
+## 🏗️  Přiklad 7.2 vyvolani preruseni na dokoncenou konverzi a využití timeru:
 
 ```c
 
@@ -113,23 +113,64 @@ void main(void) {
 
 ```
 
-## 🏗️  Přiklad 7.4 využití DAC převodníku:
-
+## 🏗️  Přiklad 7.3 využití DAC převodníku:
+generuje sinus na DAC - otput - PD6 připojte LED semaforu
 ```c
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdio.h>
 
-void main(void) {
+#define F_CPU 24000000UL
+#include <util/delay.h>
+
+// generator: https://deepbluembedded.com/sine-lookup-table-generator-calculator/
+const uint16_t sine_table[] = {
+512, 611, 707, 796, 873, 937, 984, 1013,
+1023, 1013, 984, 937, 873, 796, 707, 611,
+512, 412, 316, 227, 150, 86, 39, 10,
+0, 10, 39, 86, 150, 227, 316, 412};
+
+void dac_init(void)
+{
+    PORTD.PIN6CTRL = PORT_ISC_INPUT_DISABLE_gc;
+    VREF.DAC0REF = VREF_REFSEL_VDD_gc;
+    DAC0.CTRLA = DAC_ENABLE_bm | DAC_OUTEN_bm;  
+}
+
+void DAC_setVal(uint16_t value)
+{
+    DAC0.DATA = value << 6;
+}
+
+int main(void){
     
-
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
+    dac_init();
+     
+    uint16_t i = 0;
+    
+    while (1)
+    {
+        
+        DAC_setVal(sine_table[i++]);
+        
+        if(i >= sizeof(sine_table)/sizeof(sine_table[0])){
+            i = 0;
+        }
+        
+        _delay_ms(50);      
+    }
 }
 
 ```
 
 ### 📝 Zadání:
 
- 1) Načítejte hodnoty z potenciometru (vstup AN4) a postupně rozsvicujte jednotlivé LED0-LED5 (bargraph). Použij funkci driveLED.
+ 1) Vyzkoušejte příklad 7.1 a připojte k adc potenciometr a převeďte hodnotu na napětí ve voltech (float) pošlete zaokrouhleno na 3 desetiná místa.
+  
+ 2) Rozšiřte předchozí úlohu tak, že budete moci změnit kanal ADC a přidejte na něj fotorezistor (měří intenzitu světla).
 
- 2) Vypisujte na UART hodnotu POT1 v celočíselném formátu (cca 1x za sekundu).
+ 5) Vyzkoušejte úlohu 7.3 a výstup DAC-out PD6 připojte na LED semaforu.
 
- 3) Vypisujte POT1 a POT2 na displej ve voltech na na tři desetinná místa (použijte knihovnu pro LCD).
+ 6) Výstup DAC z předchozí úlohy snímejte pomocí ADC a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
  
-
