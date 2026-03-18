@@ -245,5 +245,65 @@ int main(void){
 
  5) Výstup DAC z předchozí úlohy snímejte pomocí ADC (nastavte také ref 2048 mV) a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
     
- 6) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC pomocí [serialscope.](https://x-io.co.uk/serial-oscilloscope/) 
- 
+ 6) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC pomocí [serialscope.](https://x-io.co.uk/serial-oscilloscope/)
+
+---
+
+# 🚀 Prompty pro studium ADC a DAC
+
+## 📍 1. ADC obecně
+**Prompt:**
+> Vysvětli mi ADC obecně pro studium mikrokontrolérů.
+> - co je ADC,
+> - proč je důležitý v mikrokontrolérech,
+> - jak probíhá převod analogového napětí na digitální hodnotu,
+> - co znamená rozlišení ADC,
+> - co je LSB,
+> - jak souvisí referenční napětí s výsledkem převodu,
+> - rozdíl mezi 8bit, 10bit a 12bit ADC,
+> - co je vzorkování,
+> - co ovlivňuje přesnost měření,
+> - běžné použití ADC v praxi.
+
+---
+
+## 📍 2. DAC obecně
+**Prompt:**
+> Vysvětli mi DAC obecně pro studium mikrokontrolérů.
+> - co je DAC,
+> - k čemu slouží,
+> - jak převádí digitální hodnotu na analogové napětí,
+> - co znamená rozlišení DAC,
+> - jak souvisí referenční napětí s výstupním napětím,
+> - jaký je rozdíl mezi ADC a DAC,
+> - jaká jsou omezení DAC,
+> - běžné použití DAC v praxi.
+
+---
+
+## 📍 3. ADC na AVR128DB48
+**Prompt:**
+> Vysvětli mi ADC na mikrokontroléru AVR128DB48.
+> - jak funguje ADC periférie na AVR128DB48,
+> - jaké registry se používají pro základní nastavení,
+> - jak se volí vstupní kanál,
+> - jak se nastavuje referenční napětí,
+> - jak se spouští převod,
+> - jak se čte výsledek převodu,
+> - jak souvisí rozlišení ADC s výslednou hodnotou,
+> - jak funguje polling,
+> - jak funguje převod pomocí přerušení.
+
+---
+
+## 📍 4. DAC na AVR128DB48
+**Prompt:**
+> Vysvětli mi DAC na mikrokontroléru AVR128DB48.
+> - jak funguje DAC periférie na AVR128DB48,
+> - jaké registry se používají pro základní nastavení,
+> - jak se nastavuje referenční napětí DAC,
+> - jak se zapne DAC výstup,
+> - jak se zapisuje digitální hodnota do DAC,
+> - jak souvisí zapsaná hodnota s výsledným výstupním napětím,
+> - jaká jsou omezení DAC výstupu,
+> - k čemu lze DAC na MCU prakticky použít.
