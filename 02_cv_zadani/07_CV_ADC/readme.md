@@ -173,10 +173,12 @@ int main(void){
  1) Vyzkoušejte příklad 7.1 a připojte k adc potenciometr a převeďte hodnotu na napětí ve voltech (float) pošlete zaokrouhleno na 3 číslice.
   
  2) Rozšiřte předchozí úlohu tak, že budete moci změnit kanal ADC a přidejte na něj fotorezistor (měří intenzitu světla).
-
- 3) Vyzkoušejte úlohu 7.3 a výstup DAC-out PD6 připojte na LED semaforu.
-
- 4) Výstup DAC z předchozí úlohy snímejte pomocí ADC a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
     
- 5) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC pomocí [serialscope.](https://x-io.co.uk/serial-oscilloscope/) 
+ 3) Upravte předchozí úlohy tak, že hodnotu z potenciometru zobrazujte na prvním řádku displeje. Hodnotu z fotorezistoru na druhém. 
+
+ 4) Vyzkoušejte úlohu 7.3 a výstup DAC-out PD6 připojte na LED semaforu.
+
+ 5) Výstup DAC z předchozí úlohy snímejte pomocí ADC (nastavte také ref 2048 mV) a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
+    
+ 6) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC pomocí [serialscope.](https://x-io.co.uk/serial-oscilloscope/) 
  
