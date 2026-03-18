@@ -245,7 +245,7 @@ int main(void){
 
  5) Výstup DAC z předchozí úlohy snímejte pomocí ADC (nastavte také ref 2048 mV) a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
     
- 6) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC pomocí [serialscope.m](https://github.com/roborros/BUT-FME-REV/blob/master/02_cv_zadani/07_CV_ADC/serial_scope.m)
+ 6) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC v MATLABu pomocí [serialscope.m](https://github.com/roborros/BUT-FME-REV/blob/master/02_cv_zadani/07_CV_ADC/serial_scope.m)
 
 ---
 
