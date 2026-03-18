@@ -166,11 +166,11 @@ int main(void){
 
 ### 📝 Zadání:
 
- 1) Vyzkoušejte příklad 7.1 a připojte k adc potenciometr a převeďte hodnotu na napětí ve voltech (float) pošlete zaokrouhleno na 3 desetiná místa.
+ 1) Vyzkoušejte příklad 7.1 a připojte k adc potenciometr a převeďte hodnotu na napětí ve voltech (float) pošlete zaokrouhleno na 3 číslice.
   
  2) Rozšiřte předchozí úlohu tak, že budete moci změnit kanal ADC a přidejte na něj fotorezistor (měří intenzitu světla).
 
- 5) Vyzkoušejte úlohu 7.3 a výstup DAC-out PD6 připojte na LED semaforu.
+ 3) Vyzkoušejte úlohu 7.3 a výstup DAC-out PD6 připojte na LED semaforu.
 
- 6) Výstup DAC z předchozí úlohy snímejte pomocí ADC a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
+ 4) Výstup DAC z předchozí úlohy snímejte pomocí ADC a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
  
