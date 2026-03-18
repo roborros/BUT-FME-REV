@@ -2,7 +2,7 @@
 
 ### ADC:
 
-Většina moderních mikrokontrolérů využívá pro ADC architekturu s postupnou aproximací (SAR – Successive Approximation Register). Tento princip pracuje na bázi binárního vyhledávání, kdy vnitřní komparátor postupně porovnává vstupní napětí s referenčními úrovněmi generovanými interním DAC. Algoritmus začíná u nejvýznamnějšího bitu (MSB) a postupně prochází až k nejméně významnému bitu (LSB), čímž v každém kroku zpřesňuje odhad vstupního napětí. Tento proces vyžaduje pro každý převod několik hodinových cyklů, což představuje kompromis mezi rychlostí a přesností převodu.
+Většina moderních mikrokontrolérů využívá pro ADC architekturu s postupnou aproximací (SAR – Successive Approximation Register). Tento princip pracuje na bázi binárního vyhledávání, kdy vnitřní komparátor postupně porovnává vstupní napětí s referenčními úrovněmi generovanými interním DAC. Algoritmus začíná u nejvýznamnějšího bitu (MSB) a postupně prochází až k nejméně významnému bitu (LSB), čímž v každém kroku zpřesňuje odhad vstupního napětí. Tento proces vyžaduje pro každý převod několik hodinových cyklů.
 
 ### DAC:
 
