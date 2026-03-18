@@ -100,9 +100,13 @@ int main(void){
 
 ```
 
+## 💡 Zapojeni potenciometru ADC AN3:
 
-```
-## 🏗️  Přiklad 7.2 vyvolani preruseni na dokoncenou konverzi a využití timeru:
+<p align="center">
+  <img width="550" height="350" src="zapojeni_potebciometer.drawio.png">
+</p>
+
+## 🏗️  Přiklad 7.2 přerušení na dokončení převodu a spouštění timerem:
 
 ```c
 
@@ -173,4 +177,6 @@ int main(void){
  3) Vyzkoušejte úlohu 7.3 a výstup DAC-out PD6 připojte na LED semaforu.
 
  4) Výstup DAC z předchozí úlohy snímejte pomocí ADC a pošlete hodnotu do PC. Vygenerujte si preciznější sinus tabulku.
+    
+ 5) Vygenerujte na DAC trojúhelníkový signál. Snímejte pomocí ADC a zobrazte v PC pomocí [serialscope.](https://x-io.co.uk/serial-oscilloscope/) 
  
