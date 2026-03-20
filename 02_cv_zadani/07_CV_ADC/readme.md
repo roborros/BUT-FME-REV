@@ -35,14 +35,11 @@ Pošleme hodnotu z adc přes uart do PC
 
 void uart_init(uint32_t f_cpu, uint32_t baud)
 {
-    
     PORTB.DIRSET = PIN0_bm;   
     PORTB.DIRCLR = PIN1_bm;   
 
     USART3.BAUD  = (uint16_t)((f_cpu * 4UL) / baud);        
     USART3.CTRLB |= USART_TXEN_bm | USART_RXEN_bm;
-    
-    USART3.CTRLA = USART_RXCIE_bm;
 }
 
 
