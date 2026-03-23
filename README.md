@@ -10,7 +10,10 @@ Studijní materiály pro předmět REV - Aplikace embedded systémů v mechatron
  # Bodové hodnoceni:
  * Závěrečný projekt  50b
  * Domácí úlohy 2x5 = 10b
- * Zápočtové testy 2x15 + 1x10 = 40b; 
+ * Zápočtové testy 2x15 + 1x10 = 40b;
+
+ # Tabulka na zápis projektu:
+ [tabulka projektů]([https://sourceforge.net/projects/orwelldevcpp/](https://docs.google.com/spreadsheets/d/1anKERZ7CYf01hGd3YfysBVCe-KuwXDMAVrbb8SPuM38/edit?usp=sharing))
 
 ## Odkazy:
 [DEV c++ IDE](https://sourceforge.net/projects/orwelldevcpp/)
