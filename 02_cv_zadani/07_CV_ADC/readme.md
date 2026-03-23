@@ -199,13 +199,17 @@ const uint16_t sine_table[] = {
 
 void dac_init(void)
 {
+    // disabluje analog input na pinu
     PORTD.PIN6CTRL = PORT_ISC_INPUT_DISABLE_gc;
+    // vyber reference
     VREF.DAC0REF = VREF_REFSEL_VDD_gc;
+    // zapnuti periferie a outputu
     DAC0.CTRLA = DAC_ENABLE_bm | DAC_OUTEN_bm;  
 }
 
 void DAC_setVal(uint16_t value)
 {
+    // zapis hodnoty 
     DAC0.DATA = value << 6;
 }
 
