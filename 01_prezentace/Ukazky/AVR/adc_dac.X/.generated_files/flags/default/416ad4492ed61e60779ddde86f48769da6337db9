@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mconst-data-in-progmem -mconst-data-in-config-mapped-progmem    C:\Users\micha\Documents\Skola\Rev_Vyuka\Rev_2026\Ukazky\PIC\UkazkyMPLAB\adc_dac.X\main_isr.c
