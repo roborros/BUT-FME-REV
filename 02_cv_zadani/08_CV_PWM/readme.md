@@ -21,12 +21,13 @@ Input Capture je funkce časovače, která umožňuje přesně zaznamenat okamž
 
 void pwm_init(void)
 {
+    // vyberu portc jako alternativni vystup
     PORTMUX.TCAROUTEA = PORTMUX_TCA0_PORTC_gc;
-            
+    // je treba nastavit jako out      
     PORTC.DIRSET = PIN0_bm;
-
+    // povolim komparator a mod periferie je generovani dual slope PWM
     TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_DSBOTTOM_gc | TCA_SINGLE_CMP0EN_bm;             
-
+    // PER udava periodu PWM signalu je nastavena na kolik?? (vzorec je v datasheetu)
     TCA0.SINGLE.PER = 12000;
 
     // Start with 0% duty
@@ -67,17 +68,17 @@ int main(void)
 #define F_CPU 4000000UL
 #include <util/delay.h>
 
-
 void tca0_frq_init(void)
 {
+    // vyberu portc jako alternativni vystup
     PORTMUX.TCAROUTEA = PORTMUX_TCA0_PORTC_gc;
-            
+    // je treba nastavit jako out        
     PORTC.DIRSET = PIN0_bm;
-
+    // povolim komparator a mod periferie je generovani frekvence
     TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_FRQ_gc | TCA_SINGLE_CMP0EN_bm;             
-
+    // zapisu nula do komparatoru
     TCA0.SINGLE.CMP0 = 0;
-
+    // nastaveni delicky a zapnuti
     TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV4_gc | TCA_SINGLE_ENABLE_bm;
 }
 
@@ -91,7 +92,7 @@ int main(void)
     {
         
         freq += 10; 
-        
+        // nastaveni cmp pro generovani vystupu
         TCA0.SINGLE.CMP0 = freq;
         _delay_ms(1);
     }
@@ -113,18 +114,20 @@ int main(void)
 #define F_CPU 4000000UL
 #include <util/delay.h>
 
+// pole frekvenci v Hz
 int16_t melody[] = {250, 500, 750, 1000, 2000, 3000, 5000, 3000, 2000, 1000, 750, 500, 250};
 
 void tca0_frq_init(void)
 {
+    // vyberu portc jako alternativni vystup
     PORTMUX.TCAROUTEA = PORTMUX_TCA0_PORTC_gc;
-            
+    // je treba nastavit jako out        
     PORTC.DIRSET = PIN0_bm;
-
+    // povolim komparator a mod periferie je generovani frekvence
     TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_FRQ_gc | TCA_SINGLE_CMP0EN_bm;             
-
+    // zapisu nula do komparatoru
     TCA0.SINGLE.CMP0 = 0;
-
+    // nastaveni delicky a zapnuti
     TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV4_gc | TCA_SINGLE_ENABLE_bm;
 }
 
@@ -148,9 +151,8 @@ int main(void)
     {
         for (uint16_t thisNote = 0; thisNote < notes; thisNote += 1) {
             
-
             tone = (uint16_t)(2000000/(int32_t)melody[thisNote]);
-
+            // nastavim comparator na nejakou frekvenci
             TCA0.SINGLE.CMP0 = tone;
             
             delay_ms(500);
@@ -224,7 +226,7 @@ void TCB_init(void) {
     
     // zapnuti interruptu
     TCB0.INTCTRL = TCB_CAPT_bm;
-    
+    // zapnu event a filtr
     TCB0.EVCTRL = TCB_CAPTEI_bm | TCB_FILTER_bm;
     
     // spustim musim delat OR at neprepisu delicku
