@@ -99,6 +99,11 @@ int main(void)
 ```
 
 ## 🏗️ Ukázka 8.3:
+
+<p align="center">
+  <img width="360" height="550" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV_PWM/speaker.png">
+</p>
+
 Šablona na přehrátí hudby
 ```c
 #include <avr/io.h>
