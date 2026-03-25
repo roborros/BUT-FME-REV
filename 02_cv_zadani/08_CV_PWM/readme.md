@@ -9,7 +9,7 @@ Input Capture je funkce časovače, která umožňuje přesně zaznamenat okamž
 </p>
 
 ## 🏗️ Ukázka 8.1:
-Nastavení jasu LED pomocí PWM
+**Nastavení jasu LED pomocí PWM**
  
 ```c
 #include <avr/io.h>
@@ -58,7 +58,7 @@ int main(void)
 ```
 
 ## 🏗️ Ukázka 8.2:
-Genervání frekvence pro reproduktor
+**Genervání frekvence pro reproduktor**
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -104,7 +104,7 @@ int main(void)
   <img width="360" height="550" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/08_CV_PWM/speaker.png">
 </p>
 
-Šablona na přehrátí hudby
+**Šablona na přehrátí hudby**
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -162,7 +162,7 @@ int main(void)
 ```
 
 ## 🏗️ Ukázka 8.4:
-Měření frekvence signálu na pinu PA2
+**Měření frekvence signálu na pinu PA2**
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
