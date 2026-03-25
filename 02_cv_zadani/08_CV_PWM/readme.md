@@ -99,7 +99,7 @@ int main(void)
 ```
 
 ## 🏗️ Ukázka 8.3:
-Měření signálu na pinu frekvence, PWM
+Šablona na přehrátí hudby
 ```c
 
 void main(void) {
