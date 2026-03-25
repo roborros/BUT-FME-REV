@@ -12,10 +12,48 @@ Input Capture je funkce časovače, která umožňuje přesně zaznamenat okamž
 Nastavení jasu LED pomocí PWM
  
 ```c
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdio.h>
+
+#define F_CPU 24000000UL
+#include <util/delay.h>
+
+void pwm_init(void)
+{
+    PORTMUX.TCAROUTEA = PORTMUX_TCA0_PORTC_gc;
+            
+    PORTC.DIRSET = PIN0_bm;
+
+    TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_DSBOTTOM_gc | TCA_SINGLE_CMP0EN_bm;             
+
+    TCA0.SINGLE.PER = 12000;
+
+    // Start with 0% duty
+    TCA0.SINGLE.CMP0 = 0;
+
+    // Prescaler + enable
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV1_gc | TCA_SINGLE_ENABLE_bm;
+}
 
 
-void main(void) {
-
+int main(void) 
+{
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
+            
+    pwm_init();
+    
+    uint16_t i = 0;
+    while (1)
+    {
+ 
+        TCA0.SINGLE.CMP0 = i++;
+        
+        if(i == 12000){
+            i = 0;
+        }
+        _delay_us(250);    
+    }
 }
 ```
 
@@ -38,9 +76,11 @@ void main(void) {
 ```
 ### 📝  Zadání:
 
-  1) Otestujte funkčnost kódu pro PWM
+  1) Otestujte a rozšiřte ukázku 8.1 tak, že přídáte další dva kanály PWM. Ovládejte tři LEDky na semaforu. (TCA timer má tři cmp registry).
 
-  2) Ovládejte rychlost a směr motoru pomocí potenciometru POT2. Pokud bude POT2 ve střední poloze, bude motor zastavený. Při otáčení potenciometrem do horní polohy bude motor postupně zrychlovat otáčení na jednu stranu. Při otočení potenciometru do spodní polohy bude motor postupně zrychlovat otáčení na opačnou stranu než v předchozím případě. 
+  2) Podívejte se na PORTMUX.TCAROUTEA registr a změnte výstup PWM na piny PD0-PD2 (pozor na nastaveni pinu jako OUT).
   
-  3) Nakonfigurujte PWM1 jako Half-bridge P1A motor a P1B LED5 (Tak že P1B je invertovaná k P1A).
+  3) Otestujte ukázku 8.2 která generuje frekvenci na pinu PC0. Připojte reproduktor a rozšiřte úlohu tak, že měníte frekvenci na základě ADC vstupu(minulé cvičení) Můžete použít potenciometr, ale lépe fotorezistor.
+     
+  4) Ukázku 8.3 rozšiřte tak, že přehrajete písničky ve formatu: [arduino notes](https://github.com/robsoncouto/arduino-songs/blob/master/harrypotter/harrypotter.ino)
   
