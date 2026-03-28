@@ -294,51 +294,51 @@ int main(void)
 
 ## 📍 1. Generování frekvence a PWM obecně
 **Prompt:**
-> Vysvětli mi generování frekvence a PWM obecně pro studium mikrokontrolérů.
-> - jak lze pomocí timeru generovat periodický signál,
-> - co je frekvence signálu,
-> - co je perioda signálu,
-> - co je PWM,
-> - co znamená střída PWM,
-> - běžné použití PWM v praxi.
+> Vysvětli mi generování frekvence a PWM obecně pro studium mikrokontrolérů
+> - jak lze pomocí timeru generovat periodický signál
+> - co je frekvence signálu
+> - co je perioda signálu
+> - co je PWM
+> - co znamená střída PWM
+> - běžné použití PWM v praxi
 
 ---
 
 ## 📍 2. Generování frekvence a PWM pomocí TCA na AVR128DB48
 **Prompt:**
-> - jak pomocí TCA generovat periodický signál,
-> - jak pomocí TCA generovat PWM,
-> - jak se nastavuje perioda signálu,
-> - jak se nastavuje střída PWM,
-> - jak se zapne výstup PWM na příslušném pinu,
-> - běžné praktické použití TCA na AVR128DB48.
+> - jak pomocí TCA generovat periodický signál
+> - jak pomocí TCA generovat PWM
+> - jak se nastavuje perioda signálu
+> - jak se nastavuje střída PWM
+> - jak se zapne výstup PWM na příslušném pinu
+> - běžné praktické použití TCA na AVR128DB48
 
 ---
 
 ## 📍 3. Měření vstupního signálu obecně
 **Prompt:**
-> Vysvětli mi obecně, jak mikrokontrolér měří vstupní digitální signál.
-> - jak lze měřit frekvenci vstupního signálu,
-> - jak lze měřit periodu signálu,
-> - jak lze měřit šířku pulzu,
-> - co ovlivňuje přesnost měření,
-> - jak souvisí takt timeru s rozlišením měření,
+> Vysvětli mi obecně, jak mikrokontrolér měří vstupní digitální signál
+> - jak lze měřit frekvenci vstupního signálu
+> - jak lze měřit periodu signálu
+> - jak lze měřit šířku pulzu
+> - co ovlivňuje přesnost měření
+> - jak souvisí takt timeru s rozlišením měření
 
 ---
 
 ## 📍 4. Měření frekvence a šířky pulzu pomocí TCB na AVR128DB48
 **Prompt:**
-> Vysvětli mi měření frekvence a šířky pulzu pomocí periférie TCB na mikrokontroléru AVR128DB48.
-> - jak lze pomocí TCB měřit periodu vstupního signálu,
-> - jak lze pomocí TCB měřit frekvenci vstupního signálu,
-> - jak lze pomocí TCB měřit šířku pulzu,
-> - praktické použití TCB na AVR128DB48 pro měření vstupních signálů.
+> Vysvětli mi měření frekvence a šířky pulzu pomocí periférie TCB na mikrokontroléru AVR128DB48
+> - jak lze pomocí TCB měřit periodu vstupního signálu
+> - jak lze pomocí TCB měřit frekvenci vstupního signálu
+> - jak lze pomocí TCB měřit šířku pulzu
+> - praktické použití TCB na AVR128DB48 pro měření vstupních signálů
 
 ---
 
 ## 📍 5. Porovnání TCA a TCB na AVR128DB48
 **Prompt:**
-> Porovnej mi periférie TCA a TCB na mikrokontroléru AVR128DB48 z pohledu generování a měření signálů.
-> - co je hlavní účel TCA,
-> - co je hlavní účel TCB,
-> - jaké jsou praktické příklady použití obou periférií.
+> Porovnej mi periférie TCA a TCB na mikrokontroléru AVR128DB48 z pohledu generování a měření signálů
+> - co je hlavní účel TCA
+> - co je hlavní účel TCB
+> - jaké jsou praktické příklady použití obou periférií
