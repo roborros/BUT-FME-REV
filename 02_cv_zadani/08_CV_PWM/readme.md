@@ -79,7 +79,7 @@ void tca0_frq_init(void)
     // zapisu nula do komparatoru
     TCA0.SINGLE.CMP0 = 0;
     // nastaveni delicky a zapnuti
-    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV4_gc | TCA_SINGLE_ENABLE_bm;
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV1_gc | TCA_SINGLE_ENABLE_bm;
 }
 
 int main(void) 
@@ -128,7 +128,7 @@ void tca0_frq_init(void)
     // zapisu nula do komparatoru
     TCA0.SINGLE.CMP0 = 0;
     // nastaveni delicky a zapnuti
-    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV4_gc | TCA_SINGLE_ENABLE_bm;
+    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV1_gc | TCA_SINGLE_ENABLE_bm;
 }
 
 void delay_ms(int16_t d)
