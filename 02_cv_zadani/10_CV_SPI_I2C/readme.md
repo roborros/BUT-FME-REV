@@ -12,7 +12,7 @@ V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důlež
 
 ## MODY:
 <p align="center">
-  <img width="250" height="200" src="spi_mods.png">
+  <img width="500" height="350" src="spi_mods.png">
 </p>
 
 ## Přiklad 10.1:
