@@ -12,7 +12,7 @@ V našem datasheetu k MCU máme SPI periferii dobře popsanou. Poměrně důlež
 
 ## MODY:
 <p align="center">
-  <img width="1024" height="768" src="spi_mods.png">
+  <img width="400" height="250" src="spi_mod.png">
 </p>
 
 ## I2C sběrnice:
