@@ -1,4 +1,4 @@
-# REV - Desáté cvičení - SPI a I2C
+# 🚀 REV - Desáté cvičení - SPI a I2C
 
 ## SPI sběrnice:
 SPI je základní rozhraní MCU pro komunikaci s obvody např. ADC, DAC, externí paměti apod. Jedná se o poměrně jednoduché rozhraní, které je synchronni master/slave. Obsahuje 3 komunikační vodiče clock, dataout a datain. K určení s kterým zařízením probíhá komunikace je zde další vodič pro každé zařízení. Nevýhodou pak může být velký počet vodičů a to, že veškerou komunikaci musí řídit master a také nemohou komunikovat obvody mezi sebou. Výhodou je jednoduchost a rychlost, která je běžně v  řádu MHz.  
@@ -15,7 +15,7 @@ I2C je základní rozhraní MCU pro komunikaci s obvody např. senzory, EEPROM p
   <img width="500" height="350" src="i2c_bus.png">
 </p>
 
-## Přiklad 10.1:
+## 🏗️ Přiklad 10.1:
 
 <p align="center">
   <img width="750" height="500" src="flash_diagram.png">
@@ -31,7 +31,7 @@ void main(void) {
 }
 ```
 
-## Přiklad 10.2:
+## 🏗️ Přiklad 10.2:
 
 <p align="center">
   <img width="750" height="500" src="imu_diagram.png">
@@ -47,11 +47,11 @@ void main(void) {
 }
 ```
 
-### Zadání:
+### 📝 Zadání:
 
-  1) spi flash
-  2) spi flash
-  3) spi flash
-  4) i2c imu
-  5) i2c imu
-  6) i2c imu
+  1) Vyzkoušejte zadání 10.1 a připojte ke kitu spi flash paměť w25q. Pro ovládání flash použíjte knihovnu. Knihovna vyžaduje implementovat funkce pro spi transfér a pro ovládání CS. 
+  2) Rozšiřte knihovnu o funkci na mazání kompletní flash a take o funkci na vyčtení JEDEC ID (pro náš čip: 0xEF, 0x40, 0x16). 
+  3) 
+  4) Vyzkoušejte zadání 10.2 a připojte ke kitu MPU6500(ACC,GYRO). Zahrňte do projektu knihovnu pro mpu. Zde je třeba poskytnou pointer na I2C funkce. Využíjte seriový plot.[serial plotter web](https://www.atomic14.com/2025/09/03/web-serial-plotter), [serial plotter app](https://github.com/hyOzd/serialplot/releases).
+  5) Rozšiřte knihovnu tak, že bude můžné nastavovat range pro ACC a pro GYRO. Například volit jako orgument do init funkce. (defaultní je +-2G a +-250deg/s).
+  6) 
