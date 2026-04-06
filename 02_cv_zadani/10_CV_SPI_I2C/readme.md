@@ -33,6 +33,10 @@ void main(void) {
 
 ## Přiklad 10.2:
 
+<p align="center">
+  <img width="750" height="500" src="imu_diagram.png">
+</p>
+
 ```c
 void main(void) {
     
