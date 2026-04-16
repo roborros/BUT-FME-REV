@@ -4,7 +4,7 @@
 Watchdog na MCU slouží k hlídání správného běhu programu. Když se software zasekne nebo přestane pracovat správně, watchdog vyvolá reset mikrokontroleru. Windowed watchdog má navíc určené časové okno, ve kterém se musí obnovit, takže pomáhá odhalit i chybné časování programu.
 
 <p align="center">
-  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT/WDT.png">
+  <img width="850" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT_SLEEP/WDT.png">
 </p>
 
 ## Přiklad 11.1:
