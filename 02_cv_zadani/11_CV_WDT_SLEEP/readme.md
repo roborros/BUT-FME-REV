@@ -149,3 +149,4 @@ void main(void) {
   1) Vyzkoušejte příklad 11.1. Je zde implementován SW reset a WDT. Nakonfigurujte WD do tzv. windowed režimu, tedy wdt musí být vyresetovám v určitém okně. (né moc brzy, ani pozdě)
   2) Vyzkoušejte ukázku 11.2. Vyzkoušejte různé sleep režimy. Nakonfigurujte MCU tak, že využijete F_CPU 1MHz. Dále nastavte power down režim, s nejnižší spotřebou. A přidejte i probuzení na GPIO pin. (stisk tlačítka). Přepněte stav diody. Původní PIT vypněte. 
   3) Projděte si zpětně cičení na jednotlivé periferie a připravte si knihovnu pro práci s AVR128DB48. Je zde připravena rev_lib složka, kde jsou šablony pro jednotlivé .c .h soubory. Některé vytvoříme na cvičení (např. uart, ADC).
+  4) Vytvořte si i další knihovny např. PWM, FREQ_GEN (repro), SPI, I2C atd...
