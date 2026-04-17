@@ -1,4 +1,4 @@
-# REV - Jedenácté cvičení - WDT, SLEEP, FINE
+# REV - Jedenácté cvičení - WDT, SLEEP
 
 ## Watchdog timer:
 Watchdog na MCU slouží k hlídání správného běhu programu. Když se software zasekne nebo přestane pracovat správně, watchdog vyvolá reset mikrokontroleru. Windowed watchdog má navíc určené časové okno, ve kterém se musí obnovit, takže pomáhá odhalit i chybné časování programu.
