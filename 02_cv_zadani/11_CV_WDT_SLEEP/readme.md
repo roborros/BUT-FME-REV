@@ -132,6 +132,10 @@ int main(void){
 ```
 ## Přiklad 11.3:
 
+<p align="center">
+  <img width="750" height="520" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT_SLEEP/lib_project.png">
+</p>
+
 ```c
 
 void main(void) {
