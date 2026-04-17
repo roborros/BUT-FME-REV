@@ -139,7 +139,6 @@ int main(void){
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <avr/sleep.h>
 #include <stdio.h>
 
 #define F_CPU 24000000UL
