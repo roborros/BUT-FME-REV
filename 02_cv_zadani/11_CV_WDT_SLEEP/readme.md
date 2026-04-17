@@ -151,7 +151,7 @@ int main(void){
 
 int main(void){
     
-    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_1M_gc);
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
    
     while (1)
     {
