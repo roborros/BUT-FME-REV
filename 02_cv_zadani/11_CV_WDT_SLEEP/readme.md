@@ -137,10 +137,29 @@ int main(void){
 </p>
 
 ```c
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/sleep.h>
+#include <stdio.h>
 
-void main(void) {
+#define F_CPU 24000000UL
+#include <util/delay.h>
 
+#include "adc.h"
+#include "uart.h"
+#include "millis.h"
+
+
+int main(void){
+    
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_1M_gc);
+   
+    while (1)
+    {
+
+    }
 }
+
 ```
 
 
