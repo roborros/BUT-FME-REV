@@ -139,6 +139,7 @@ int main(void){
 ```c
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/sleep.h>
 #include <stdio.h>
 
 #define F_CPU 24000000UL
@@ -147,15 +148,49 @@ int main(void){
 #include "adc.h"
 #include "uart.h"
 #include "millis.h"
+#include "lcd.h"
+#include "debounce.h"
 
+void init(void){
+
+    PORTB.DIRSET = PIN3_bm;
+    PORTB.DIRCLR = PIN2_bm;
+    PORTB.PIN2CTRL = PORT_INVEN_bm | PORT_PULLUPEN_bm;
+    
+}
 
 int main(void){
     
     _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
-   
+    
+    init();
+    uart_init(F_CPU, 115200);
+    adc_init();
+    millis_init();
+    
+    sei();
+    
+    char msg_buf[64];
+    
+    btn_debounc_t btn1 = {.btn_state = 0, .counter = 0};
+    
+    adc_set_channel(3);
+    
+    uint32_t prev_time = get_millis();
+    
     while (1)
     {
+        if((get_millis() - prev_time) >= 1000){
+            prev_time = get_millis();
+            PORTB.OUTTGL = PIN3_bm;
+        }
 
+        if(debounce(&btn1, (PORTB.IN & PIN2_bm))){
+            uint16_t adc_val = adc_read_raw();
+            sprintf(msg_buf, "adc: %.1f\n", (float)adc_val * 3300.0/4096.0);
+            uart_write_str(msg_buf);
+        }
+       
     }
 }
 
