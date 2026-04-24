@@ -153,7 +153,7 @@ int main(void){
 
 ### 📝  Zadání:
 
-  1) V této složce je aktuální rev_lib. Doplňte a otestujte filtry 12.1 a 12.3. Použíjte     [serial plotter web](https://web-serial-plotter.atomic14.com/), [serial plotter app](https://github.com/hyOzd/serialplot/releases).
+  1) V této složce je aktuální rev_lib. Doplňte a otestujte filtry 12.1 a 12.3. Použíjte     [serial plotter web](https://web-serial-plotter.atomic14.com/), [serial plotter app](https://github.com/hyOzd/serialplot/releases). Použijte testovací kód 12.4.
 
   2) Vyzkoušejte i plovoucí průměr a vytvořte filters .c a filters .h v knihovně. Filtry tam přesuňte.
   
