@@ -87,6 +87,69 @@ float mov_avg_step(mov_avg_t *ma, float input)
 }
 ```
 
+## 🏗️ 12.4:
+**testovací kod:**
+ 
+```c
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/sleep.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define F_CPU 24000000UL
+#include <util/delay.h>
+#include "adc.h"
+#include "dac.h"
+#include "uart.h"
+#include "millis.h"
+#include "debounce.h"
+
+int main(void){
+    
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc);
+    uart_init(F_CPU, 115200);
+    adc_init();
+    millis_init();
+    dac_init(); 
+    sei();
+    
+    char msg_buf[64];
+    uint8_t i = 0;
+    
+    //lp_filt_t filter_lp = {.aplha=0.7, .out=0.0};
+    //hp_filt_t filter_hp = {.aplha=0.2, .out=0.0, .prev_input=0.0};
+    //mov_avg_t avg_filter = {.sum=0, .count=0, .index=0};
+    
+    adc_set_channel(3);
+    
+    uint32_t prev_time = get_millis();
+    
+    while (1)
+    {
+        if((get_millis() - prev_time) >= 10){
+            prev_time = get_millis();
+            
+            uint16_t dac_val = (++i > 128) ? 700 : 100;
+            dac_write(dac_val + rand() % 20);
+            if(i >= 255){
+                i = 0;
+            }
+            /*
+            dac_write(waveform_lut[i++]);
+        
+            if(i >= sizeof(waveform_lut)/sizeof(waveform_lut[0])){
+                i = 0;
+            }
+            */
+
+            uint16_t adc_raw = adc_read_raw();
+            float adc_val = (float)adc_raw * 3300.0/4096.0;
+            sprintf(msg_buf, "%.1f,\n", adc_val);
+            uart_write_str(msg_buf);
+        }  
+    }
+}
+```
 
 ### 📝  Zadání:
 
