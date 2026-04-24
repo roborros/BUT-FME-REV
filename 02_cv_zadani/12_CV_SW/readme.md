@@ -1,6 +1,6 @@
 # REV - Dvanácté cvičení - software
 
-## Fitry:
+## Filtry:
 
 Digitální zpracování signálu (DSP) je v aplikacích s mikrokontroléry časté. Mezi nejzákladnější a nejpoužívanější patří digitální filtry typu dolní propust (Low-Pass) a horní propust (High-Pass). Oba tyto algoritmy vycházejí ze svých analogových ekvivalentů v podobě jednoduchých RC článků.
 
