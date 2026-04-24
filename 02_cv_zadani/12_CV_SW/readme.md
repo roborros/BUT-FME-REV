@@ -8,6 +8,8 @@ Digitální zpracování signálu (DSP) je v aplikacích s mikrokontroléry čas
 
 **Horní propust:** naopak odstraňuje stejnosměrnou složku (střední hodnotu) a reaguje pouze na dynamické změny signálu
 
+Diferenční rovnici a její odvození: [wiki-low-pass](https://en.wikipedia.org/wiki/Low-pass_filter)
+
 ## 🏗️ 12.1:
 **šablona na low-pass:**
  
