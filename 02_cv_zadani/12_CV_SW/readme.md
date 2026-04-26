@@ -10,6 +10,8 @@ Digitální zpracování signálu (DSP) je v aplikacích s mikrokontroléry čas
 
 Diferenční rovnici a její odvození: [wiki-low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) ; [wiki-high-pass](https://en.wikipedia.org/wiki/High-pass_filter)
 
+Na téma DSP(digitálního zpracování signálu) existuje skvělá online kniha: [DSP Guide](https://www.dspguide.com/pdfbook.htm)
+
 ## 🏗️ 12.1:
 **šablona na low-pass:**
  
