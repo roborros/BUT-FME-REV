@@ -155,7 +155,7 @@ int main(void){
 
 ## FSM
 
-konečný stavový automat — je způsob, jak popsat chování programu pomocí jasně definovaných stavů a přechodů mezi nimi. Program se v daném okamžiku nachází pouze v jednom stavu, například **IDLE**, **RUNNING** nebo **ERROR**, a podle vstupů, událostí nebo časových podmínek přechází do jiného stavu. V MCU aplikacích je FSM užitečný hlavně proto, že zpřehledňuje logiku programu, usnadňuje přidávání nových stavů, snižuje množství nepřehledných podmínek v hlavní smyčce a umožňuje psát neblokující kód.
+konečný stavový automat je způsob, jak popsat chování programu pomocí jasně definovaných stavů a přechodů mezi nimi. Program se v daném okamžiku nachází pouze v jednom stavu, například **IDLE**, **RUNNING** nebo **ERROR**, a podle vstupů, událostí nebo časových podmínek přechází do jiného stavu. V MCU aplikacích je FSM užitečný hlavně proto, že zpřehledňuje logiku programu, usnadňuje přidávání nových stavů, snižuje množství nepřehledných podmínek v hlavní smyčce a umožňuje psát neblokující kód.
 
 ## 🏗️ 12.5:
 **Ukázka stavového automatu s knihovnou FSM:**
