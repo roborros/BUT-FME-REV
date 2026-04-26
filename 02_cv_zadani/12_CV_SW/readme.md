@@ -8,7 +8,7 @@ Digitální zpracování signálu (DSP) je v aplikacích s mikrokontroléry čas
 
 **Horní propust:** naopak odstraňuje stejnosměrnou složku (střední hodnotu) a reaguje pouze na dynamické změny signálu
 
-Diferenční rovnici a její odvození: [wiki-low-pass](https://en.wikipedia.org/wiki/Low-pass_filter)
+Diferenční rovnici a její odvození: [wiki-low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) ; [wiki-high-pass](https://en.wikipedia.org/wiki/High-pass_filter)
 
 ## 🏗️ 12.1:
 **šablona na low-pass:**
@@ -151,6 +151,9 @@ int main(void){
 }
 ```
 
+## FSM
+
+konečný stavový automat — je způsob, jak popsat chování programu pomocí jasně definovaných stavů a přechodů mezi nimi. Program se v daném okamžiku nachází pouze v jednom stavu, například **IDLE**, **RUNNING** nebo **ERROR**, a podle vstupů, událostí nebo časových podmínek přechází do jiného stavu. V MCU aplikacích je FSM užitečný hlavně proto, že zpřehledňuje logiku programu, usnadňuje přidávání nových stavů, snižuje množství nepřehledných podmínek v hlavní smyčce a umožňuje psát neblokující kód.
 
 ## 🏗️ 12.5:
 **Ukázka stavového automatu s knihovnou FSM:**
@@ -310,4 +313,8 @@ void adc_fcn(fsm_t *fsm, uint8_t event){
   2) Vyzkoušejte i plovoucí průměr a vytvořte filters .c a filters .h v knihovně. Filtry tam přesuňte.
    
   3) Otestujte realizaci stavového automatu 12.5. Přidejte další stavy a přechody podle diagramu:
+
+<p align="center">
+  <img width="750" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT_SLEEP/WDT.png">
+</p>
   
