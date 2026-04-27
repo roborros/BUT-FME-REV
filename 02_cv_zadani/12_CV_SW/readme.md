@@ -322,6 +322,6 @@ Věnujte, prosím, pár minut a poskytněte nám feedback ke kurzu:
   4) Rozšiřte , nebo přepracujte FSM dle vlastního uvážení.
 
 <p align="center">
-  <img width="750" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT_SLEEP/FSM.drawio.png">
+  <img width="750" height="580" src="FSM.drawio.png">
 </p>
   
