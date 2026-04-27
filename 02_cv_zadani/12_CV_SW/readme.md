@@ -310,9 +310,12 @@ void adc_fcn(fsm_t *fsm, uint8_t event){
 
 ### 📝  Zadání:
 
+Věnujte, prosím, pár minut a poskytněte nám feedback ke kurzu:
+[rev-dotaznik](https://forms.gle/k3pbjr2YhkZ2CaHc8)
+
   1) V této složce je aktuální rev_lib. Doplňte a otestujte filtry 12.1 a 12.2. Použíjte     [serial plotter web](https://web-serial-plotter.atomic14.com/), [serial plotter app](https://github.com/hyOzd/serialplot/releases). Použijte testovací kód 12.4.
 
-  2) Vyzkoušejte i plovoucí průměr a vytvořte filters .c a filters .h v knihovně. Filtry tam přesuňte.
+  2) Vyzkoušejte i plovoucí průměr a vytvořte filters .c a filters .h v knihovně. Filtry tam přesuňte. Pomocí skriptu pro generování lookup tabulky waveformgen.m, vygenerujte průběh pro DAC. Vyzkoušejte i nějáký vlastní. 
    
   3) Otestujte realizaci stavového automatu 12.5. Přidejte další stavy a přechody podle diagramu:
 
