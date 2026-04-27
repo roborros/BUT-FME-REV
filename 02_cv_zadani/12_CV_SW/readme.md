@@ -318,10 +318,10 @@ Věnujte, prosím, pár minut a poskytněte nám feedback ke kurzu:
   2) Vyzkoušejte i plovoucí průměr a vytvořte filters .c a filters .h v knihovně. Filtry tam přesuňte. Pomocí skriptu pro generování lookup tabulky waveformgen.m, vygenerujte průběh pro DAC. Vyzkoušejte i nějáký vlastní. 
    
   3) Otestujte realizaci stavového automatu 12.5. Přidejte tlačítko btn2 a další stavy a přechody podle diagramu:
-  4) 
-  5) Rozšiřte , nebo přepracujte FSM dle vlastního uvážení.
+   
+  4) Rozšiřte , nebo přepracujte FSM dle vlastního uvážení.
 
 <p align="center">
-  <img width="750" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT_SLEEP/WDT.png">
+  <img width="750" height="320" src="https://github.com/MBrablc/BUT-FME-REV/blob/master/02_cv_zadani/11_CV_WDT_SLEEP/FSM.drawio.png">
 </p>
   
